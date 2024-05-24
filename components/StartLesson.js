@@ -33,7 +33,6 @@ const StartLesson = ({ module }) => {
     // Weather,
     // Body,
     // House,
-
     // Foods,
     // Clothing,
     // Vacation,
@@ -44,7 +43,6 @@ const StartLesson = ({ module }) => {
     // City,
     // Doctor,
     // Makeup,
-
     // Verbs,
     // Prepositions,
     // Adjectives,
