@@ -1,38 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import StartLesson from "./StartLesson";
+import React, { useState } from "react";
+import Link from "next/link";
+import { AllModules } from "@/data/AllModules";
 
-export const DisplayModules = () => {
-  const [lessonStarted, setLessonStarted] = useState(false);
-  const allModules = [
-    "Greetings",
-    "Letters",
-    "Animals",
-    "Colors",
-    "Numbers",
-    "Weather",
-    "Body",
-    "House",
-    "Foods",
-    "Clothing",
-    "Vacation",
-    "School",
-    "Jobs",
-    "Verbs",
-    "Prepositions",
-    "Adjectives",
-    "Restaurant",
-    "Coffee Shop",
-    "Clothing Store",
-    "City",
-    "Doctor",
-    "Beauty Salon",
-  ];
+export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
 
   const DisplayLights = () => {
-    return allModules.map((item, i) => {
+    return Object.keys(AllModules).map((item, i) => {
       return (
         <button
           key={i}
@@ -50,24 +26,17 @@ export const DisplayModules = () => {
         >
           <div className="flex flex-col justify-center items-center">
             <span className="loading loading-ring loading-lg white"></span>
-            <kbd className="kbd kbd-sm">{allModules[i]}</kbd>
+            <kbd className="kbd kbd-sm">{Object.keys(AllModules)[i]}</kbd>
           </div>
         </button>
       );
     });
   };
 
-  const beginLesson = () => {
-    setLessonStarted(true);
-  };
-
-  useEffect(() => {
-    if (lessonStarted) document.getElementById("my_lesson").showModal();
-  }, [lessonStarted]);
   return (
     <div className=" flex-grow flex flex-row gap-12 flex-wrap w-9/12 my-20 m-auto justify-center justify-self-end ">
       <DisplayLights />
-      {lessonStarted ? <StartLesson module={module} /> : null}
+
       <dialog id="my_lesson_summary" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Module: {module}</h3>
@@ -77,11 +46,10 @@ export const DisplayModules = () => {
           </p>
           <div className="modal-action ">
             <form method="dialog">
-              <button
-                className="btn btn-active btn-secondary"
-                onClick={beginLesson}
-              >
-                Begin Lesson
+              <button className="btn btn-active btn-secondary">
+                <Link href={{ pathname: "/lesson", query: { topic: module } }}>
+                  Begin Lesson
+                </Link>
                 <svg
                   className="w-6 h-6 text-gray-800 dark:text-white"
                   aria-hidden="true"

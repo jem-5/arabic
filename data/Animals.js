@@ -19,7 +19,7 @@ const Animals = [
   },
   {
     english: "Fish",
-    arabic: "سمكة",
+    arabic: "سمك",
     audio: "./audio/animals/fish.mp3",
     image: "./images/animals/fish.jpg",
   },
