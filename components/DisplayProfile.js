@@ -10,7 +10,6 @@ export const DisplayProfile = () => {
   const [signInMode, setSignInMode] = useState(true);
   const { user } = useAuthContext();
   const router = useRouter();
-  console.log(user);
 
   return (
     <dialog id="my_profile" className="modal">
@@ -64,7 +63,7 @@ export const DisplayProfile = () => {
         ) : (
           <>
             <p className="text-lg text-secondary">
-              You are not signed in. Register a n account below.
+              You are not signed in. Register an account below.
             </p>
             <SignUpForm />
             <p

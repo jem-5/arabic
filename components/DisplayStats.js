@@ -1,13 +1,22 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DisplayProfile } from "./DisplayProfile";
 
 import { useAuthContext } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
 
-export const DisplayStats = () => {
+import { AllModules, totalWords } from "@/data/AllModules";
+
+export const DisplayStats = ({ reviewedModules }) => {
   const { user } = useAuthContext();
-  const router = useRouter();
+  const [percentComplete, setPercentComplete] = useState(
+    (reviewedModules.length / Object.keys(AllModules).length) * 100
+  );
+
+  useEffect(() => {
+    setPercentComplete(
+      (reviewedModules.length / Object.keys(AllModules).length) * 100
+    );
+  }, [reviewedModules]);
 
   return (
     <div className=" stats shadow mt-2 align-self-start justify-self-start opacity-80">
@@ -31,7 +40,9 @@ export const DisplayStats = () => {
           </svg>
         </div>
         <div className="stat-title">Total Modules</div>
-        <div className="stat-value text-primary">15</div>
+        <div className="stat-value text-primary">
+          {Object.keys(AllModules).length}
+        </div>
         <div className="stat-desc">General Lesson Topics</div>
       </div>
 
@@ -52,7 +63,7 @@ export const DisplayStats = () => {
           </svg>
         </div>
         <div className="stat-title">Total Vocabulary</div>
-        <div className="stat-value text-secondary">750</div>
+        <div className="stat-value text-secondary">{totalWords}</div>
         <div className="stat-desc">Words, Phrases & Sentences</div>
       </div>
 
@@ -74,7 +85,9 @@ export const DisplayStats = () => {
             />
           </svg>
         </div>
-        <div className="stat-value">0%</div>
+        <div className="stat-value text-secondary">
+          {user ? percentComplete : 0}%
+        </div>
         <div className="stat-title">Modules Completed</div>
         <div className="stat-desc text-secondary">
           {user ? (

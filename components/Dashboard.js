@@ -1,41 +1,112 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AllModules } from "@/data/AllModules";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  getDoc,
+} from "firebase/firestore";
+import { db } from "@/firebase/config";
+import { useAuthContext } from "@/context/AuthContext";
+import { DisplayStats } from "./DisplayStats";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
+  const { user } = useAuthContext();
+  const [reviewedModules, setReviewedModules] = useState([]);
 
-  const DisplayLights = () => {
-    return Object.keys(AllModules).map((item, i) => {
+  const updateReviewedModules = async () => {
+    // const usersRef = collection(db, "users");
+    const userDoc = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userDoc);
+    setReviewedModules(
+      userSnap._document.data.value.mapValue.fields.reviewedModules.arrayValue
+        .values
+    );
+  };
+
+  useEffect(() => {
+    if (user) updateReviewedModules();
+  }, []);
+
+  const DisplayRoad = ({ chunk }) => {
+    return chunk.map((item, i) => {
       return (
-        <button
-          key={i}
-          onClick={() => {
-            document.getElementById("my_lesson_summary").showModal();
-            setModule(item);
-          }}
-          className={
-            i % 2 === 0
-              ? "self-start"
-              : i % 3 === 0
-              ? "self-center"
-              : "self-end"
-          }
-        >
-          <div className="flex flex-col justify-center items-center">
-            <span className="loading loading-ring loading-lg white"></span>
-            <kbd className="kbd kbd-sm">{Object.keys(AllModules)[i]}</kbd>
+        <>
+          <li>
+            <hr className="bg-neutral" />
+
+            <div className="timeline-middle ">
+              {reviewedModules
+                .map((item) => item.stringValue)
+                .includes(item) ? (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5 text-neutral absolute"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="loading loading-ring loading-md bg-neutral opacity-0"></span>
+                </>
+              ) : (
+                <span className="loading loading-ring loading-md bg-neutral"></span>
+              )}
+            </div>
+
+            <div className="timeline-end timeline-box">
+              <button
+                onClick={() => {
+                  document.getElementById("my_lesson_summary").showModal();
+                  setModule(item);
+                }}
+              >
+                {chunk[i]}
+              </button>
+            </div>
+
+            <hr className="bg-neutral" />
+          </li>
+        </>
+      );
+    });
+  };
+
+  const ShowRoads = () => {
+    const chunkSize = 5;
+    const roads = [];
+    for (let i = 0; i < Object.keys(AllModules).length; i += chunkSize) {
+      const chunk = Object.keys(AllModules).slice(i, i + chunkSize);
+      roads.push(chunk);
+    }
+    return roads.map((road) => {
+      return (
+        <>
+          <div>
+            <ul className="timeline w-full flex justify-center ">
+              <DisplayRoad chunk={road} />;
+            </ul>
           </div>
-        </button>
+        </>
       );
     });
   };
 
   return (
-    <div className=" flex-grow flex flex-row gap-12 flex-wrap w-9/12 my-20 m-auto justify-center justify-self-end ">
-      <DisplayLights />
+    <div className=" w-full ">
+      <DisplayStats reviewedModules={reviewedModules} />
+      <ShowRoads />
 
       <dialog id="my_lesson_summary" className="modal">
         <div className="modal-box">

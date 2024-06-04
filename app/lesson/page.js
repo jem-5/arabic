@@ -1,18 +1,50 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
+import { db } from "@/firebase/config";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  getDoc,
+} from "firebase/firestore";
 import Link from "next/link";
 import { AllModules } from "@/data/AllModules";
+import { useAuthContext } from "@/context/AuthContext";
+import { DisplayProfile } from "@/components/DisplayProfile";
 
 export default function Lesson({ searchParams }) {
   const topic = searchParams?.topic;
   const [questionNum, setQuestionNum] = useState(0);
+  const { user } = useAuthContext();
+
+  const saveProgress = async () => {
+    const usersRef = collection(db, "users");
+    const userDoc = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userDoc);
+
+    if (userSnap.exists()) {
+      console.log("updating..");
+      await updateDoc(userDoc, {
+        reviewedModules: arrayUnion(topic),
+      });
+    } else {
+      await setDoc(doc(usersRef, user.uid), {
+        reviewedModules: [topic],
+      });
+    }
+  };
 
   const handleClickNext = (e) => {
     e.preventDefault();
     if (questionNum < AllModules[topic].length - 1)
       setQuestionNum((prev) => prev + 1);
+    if (questionNum === AllModules[topic].length - 1) setQuestionNum(0);
+    if (questionNum === AllModules[topic].length - 2) {
+      saveProgress();
+    }
   };
 
   const handleClickPrevious = (e) => {
@@ -24,21 +56,20 @@ export default function Lesson({ searchParams }) {
     let audio = new Audio(AllModules[topic][questionNum].audio);
     audio.play();
   };
-
   useEffect(() => {
     playAudio();
   }, [questionNum]);
 
   const chooseRandomMascot = () => {
-    const randomSelection = Math.floor(Math.random() * 8);
+    const randomSelection = Math.floor(Math.random() * 13);
     return `./images/mascots/${randomSelection}.jpg`;
   };
 
   return (
     <main className="flex-grow flex flex-col items-center ">
       <div className="flex flex-row justify-between mt-4 w-full">
-        <h3 className="font-bold text-lg ">MODULE: {topic}</h3>
-        <h3 className="font-bold text-lg align-end justify-end ">
+        <h3 className="font-bold text-lg text-neutral">MODULE: {topic}</h3>
+        <h3 className="font-bold text-lg align-end justify-end  text-neutral">
           {questionNum + 1} / {AllModules[topic].length}
         </h3>
       </div>
@@ -47,7 +78,7 @@ export default function Lesson({ searchParams }) {
         <div className="card-body flex flex-col ">
           <h2 className="card-title self-end ">
             <div className="chat chat-end ">
-              <div className="chat-bubble bg-secondary ">
+              <div className="chat-bubble bg-secondary  ">
                 {AllModules[topic][questionNum].arabic}
               </div>
             </div>
@@ -89,7 +120,10 @@ export default function Lesson({ searchParams }) {
 
       <div className="flex flex-row justify-between mt-4 w-full">
         <button
-          className="btn btn-active btn-secondary self-start "
+          className={`btn btn-active btn-secondary self-start ${
+            questionNum === 0 ? "invisible" : "visible"
+          }
+          `}
           onClick={handleClickPrevious}
         >
           <svg
@@ -139,6 +173,7 @@ export default function Lesson({ searchParams }) {
       <button className="btn btn-secondary">
         <Link href="/">Go Home</Link>
       </button>
+      <DisplayProfile />
     </main>
   );
 }
