@@ -73,7 +73,7 @@ const Body = [
   },
   {
     english: "Neck",
-    arabic: "رقبة ",
+    arabic: "عُنُق ",
     audio: "./audio/body/neck.mp3",
     image: "./images/body/neck.jpg",
   },
@@ -115,7 +115,7 @@ const Body = [
   },
   {
     english: "Leg",
-    arabic: "ساق ",
+    arabic: "رجل ",
     audio: "./audio/body/leg.mp3",
     image: "./images/body/leg.jpg",
   },

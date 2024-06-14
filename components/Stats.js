@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { DisplayProfile } from "./DisplayProfile";
+import { Profile } from "./Profile";
 
 import { useAuthContext } from "@/context/AuthContext";
 
 import { AllModules, totalWords } from "@/data/AllModules";
 
-export const DisplayStats = ({ reviewedModules }) => {
+export const Stats = ({ reviewedModules }) => {
   const { user } = useAuthContext();
   const [percentComplete, setPercentComplete] = useState(
     (reviewedModules.length / Object.keys(AllModules).length) * 100
@@ -19,11 +19,11 @@ export const DisplayStats = ({ reviewedModules }) => {
   }, [reviewedModules]);
 
   return (
-    <div className=" stats shadow mt-2 align-self-start justify-self-start opacity-80">
-      <div className="stat">
-        <div className="stat-figure text-primary">
+    <div className=" stats shadow mt-2 opacity-80 flex  min-[1000px]:flex-row w-3/4 m-auto max-[999px]:w-full overflow-hidden">
+      <div className="stat max-[999px]:max-h-2.5">
+        <div className="stat-figure text-primary ">
           <svg
-            className="inline-block w-8 h-8 stroke-current"
+            className="inline-block w-8 h-8 stroke-current "
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -39,11 +39,13 @@ export const DisplayStats = ({ reviewedModules }) => {
             />
           </svg>
         </div>
-        <div className="stat-title">Total Modules</div>
-        <div className="stat-value text-primary">
+        <div className="stat-title max-[999px]:text-sm">Total Modules</div>
+        <div className="stat-value text-primary max-[999px]:text-md">
           {Object.keys(AllModules).length}
         </div>
-        <div className="stat-desc">General Lesson Topics</div>
+        <div className="stat-desc max-[999px]:hidden">
+          General Lesson Topics
+        </div>
       </div>
 
       <div className="stat">
@@ -62,12 +64,16 @@ export const DisplayStats = ({ reviewedModules }) => {
             ></path>
           </svg>
         </div>
-        <div className="stat-title">Total Vocabulary</div>
-        <div className="stat-value text-secondary">{totalWords}</div>
-        <div className="stat-desc">Words, Phrases & Sentences</div>
+        <div className="stat-title max-[999px]:text-sm">Total Vocabulary</div>
+        <div className="stat-value text-secondary max-[999px]:text-md">
+          {totalWords}
+        </div>
+        <div className="stat-desc max-[999px]:hidden">
+          Words, Phrases & Sentences
+        </div>
       </div>
 
-      <div className="stat">
+      <div className="stat max-[999px]:hidden">
         <div className="stat-figure text-secondary">
           <svg
             className="w-8 h-8 text-gray-800 dark:text-white"
@@ -85,10 +91,10 @@ export const DisplayStats = ({ reviewedModules }) => {
             />
           </svg>
         </div>
-        <div className="stat-value text-secondary">
+        <div className="stat-value text-secondary max-[999px]:text-md">
           {user ? percentComplete : 0}%
         </div>
-        <div className="stat-title">Modules Completed</div>
+        <div className="stat-title max-[999px]:text-sm">Modules Completed</div>
         <div className="stat-desc text-secondary">
           {user ? (
             <button
@@ -97,7 +103,7 @@ export const DisplayStats = ({ reviewedModules }) => {
               }}
             >
               {" "}
-              <p className="text-sm text-secondary">
+              <p className="text-sm text-secondary max-[999px]:hidden">
                 Signed in as {user.email}
               </p>
             </button>
@@ -110,7 +116,7 @@ export const DisplayStats = ({ reviewedModules }) => {
               Sign in to track your progress
             </button>
           )}
-          <DisplayProfile />
+          <Profile />
         </div>
       </div>
     </div>

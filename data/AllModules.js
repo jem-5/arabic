@@ -6,7 +6,10 @@ import Numbers from "./Numbers";
 import Weather from "./Weather";
 import Body from "./Body";
 import House from "./House";
-
+import Foods from "./Foods";
+import Produce from "./Produce";
+import Drinks from "./Drinks";
+import Clothing from "./Clothing";
 export const AllModules = {
   Letters,
   Greetings,
@@ -16,20 +19,26 @@ export const AllModules = {
   Weather,
   Body,
   House,
-  // Foods,
-  // Clothing,
+  Foods,
+  Produce,
+  Drinks,
+  Clothing,
+
   // Vacation,
   // School,
   // Jobs,
-  // Restaurant,
-  // Coffee,
   // City,
   // Doctor,
-  // Makeup,
+  // Countries,
+
   // Verbs,
   // Prepositions,
   // Adjectives,
-  // Countries
+  // Courtesies,
+  // Prayers,
+  // Phonemes,
+  // Tenses,
+  // Cases
 };
 
 const moduleLengths = [];

@@ -1,20 +1,24 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import signUp from "@/firebase/auth/signup";
-import { useRouter } from "next/navigation";
+import { getErrorMsg } from "@/helpers/useCustomMessages";
+import MyButton from "./Button";
 
 function SignUpForm() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleForm = async (event) => {
     event.preventDefault();
-
+    setErrorMsg("");
+    if (email === "" || password === "")
+      return setErrorMsg("Email & password must be entered");
     const { result, error } = await signUp(email, password);
 
     if (error) {
-      return console.log(error);
+      setErrorMsg(getErrorMsg(error.code));
+      console.log(error.code);
     }
 
     // else successful
@@ -26,7 +30,7 @@ function SignUpForm() {
       <div className="form-wrapper">
         <form
           onSubmit={handleForm}
-          className="form flex flex-col gap-2 items-start"
+          className="form flex flex-col gap-4 items-start"
         >
           <label className="input input-bordered flex items-center gap-2">
             <svg
@@ -72,9 +76,31 @@ function SignUpForm() {
               placeholder="password"
             />
           </label>
-          <button type="submit" className="btn btn-secondary btn-active">
-            Create account
-          </button>
+
+          {errorMsg ? (
+            <div role="alert" className="alert alert-error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{errorMsg}</span>
+            </div>
+          ) : null}
+
+          <MyButton
+            text="Create account"
+            type="submit"
+            classRest={"bg-secondary text-neutral mb-2"}
+          />
         </form>
       </div>
     </div>

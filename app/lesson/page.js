@@ -13,28 +13,30 @@ import {
 import Link from "next/link";
 import { AllModules } from "@/data/AllModules";
 import { useAuthContext } from "@/context/AuthContext";
-import { DisplayProfile } from "@/components/DisplayProfile";
+import { Profile } from "@/components/Profile";
+import MyButton from "@/components/Button";
+import { useRouter } from "next/navigation";
 
 export default function Lesson({ searchParams }) {
   const topic = searchParams?.topic;
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
+  const router = useRouter();
 
   const saveProgress = async () => {
-    const usersRef = collection(db, "users");
-    const userDoc = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userDoc);
-
-    if (userSnap.exists()) {
-      console.log("updating..");
-      await updateDoc(userDoc, {
-        reviewedModules: arrayUnion(topic),
-      });
-    } else {
-      await setDoc(doc(usersRef, user.uid), {
-        reviewedModules: [topic],
-      });
-    }
+    // const usersRef = collection(db, "users");
+    // const userDoc = doc(db, "users", user.uid);
+    // const userSnap = await getDoc(userDoc);
+    // if (userSnap.exists()) {
+    //   console.log("updating..");
+    //   await updateDoc(userDoc, {
+    //     reviewedModules: arrayUnion(topic),
+    //   });
+    // } else {
+    //   await setDoc(doc(usersRef, user.uid), {
+    //     reviewedModules: [topic],
+    //   });
+    // }
   };
 
   const handleClickNext = (e) => {
@@ -66,15 +68,15 @@ export default function Lesson({ searchParams }) {
   };
 
   return (
-    <main className="flex-grow flex flex-col items-center ">
-      <div className="flex flex-row justify-between mt-4 w-full">
+    <main className="flex-grow flex flex-col items-center p-2 ">
+      <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
         <h3 className="font-bold text-lg text-neutral">MODULE: {topic}</h3>
         <h3 className="font-bold text-lg align-end justify-end  text-neutral">
           {questionNum + 1} / {AllModules[topic].length}
         </h3>
       </div>
       <div className="divider"></div>
-      <div className="card card-side bg-base-100 shadow-xl bg-neutral w-full">
+      <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full">
         <div className="card-body flex flex-col ">
           <h2 className="card-title self-end ">
             <div className="chat chat-end ">
@@ -118,62 +120,76 @@ export default function Lesson({ searchParams }) {
         </figure>
       </div>
 
-      <div className="flex flex-row justify-between mt-4 w-full">
-        <button
-          className={`btn btn-active btn-secondary self-start ${
-            questionNum === 0 ? "invisible" : "visible"
+      <div className="flex flex-row justify-between mt-1 w-full">
+        <MyButton
+          classRest={`${questionNum === 0 ? "invisible" : "visible"}`}
+          text={
+            <svg
+              className="w-5 h-5 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m15 19-7-7 7-7"
+              />
+            </svg>
           }
-          `}
-          onClick={handleClickPrevious}
-        >
-          <svg
-            className="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m15 19-7-7 7-7"
-            />
-          </svg>
-        </button>{" "}
-        <button
-          className="btn btn-active btn-secondary self-end "
-          onClick={handleClickNext}
-        >
-          <svg
-            className="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m9 5 7 7-7 7"
-            />
-          </svg>
-        </button>
+          func={handleClickPrevious}
+        />
+
+        <MyButton
+          text={
+            <svg
+              className="w-5 h-5 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m9 5 7 7-7 7"
+              />
+            </svg>
+          }
+          func={handleClickNext}
+        />
       </div>
+
       <div className="divider"></div>
 
-      <button className="btn btn-secondary mb-1">Start Quiz</button>
-      <button className="btn btn-secondary">
-        <Link href="/">Go Home</Link>
-      </button>
-      <DisplayProfile />
+      {/* <button
+        disabled
+        className="group relative  h-12 items-center justify-center overflow-hidden rounded-md bg-secondary px-6 font-medium text-neutral duration-500 btn-active inline-flex mb-4"
+      >
+        <div class="translate-y-0 transition group-hover:-translate-y-[150%] ">
+          <Link href="/">
+            <span className="inline-flex">Start Quiz</span>
+          </Link>
+        </div>
+        <div class="absolute translate-y-[150%] transition group-hover:translate-y-0">
+          <Link href="/">
+            <span className="inline-flex">Start Quiz</span>
+          </Link>
+        </div>
+      </button> */}
+
+      <MyButton text="Go Home" func={() => router.push("/")} classRest="h-12" />
+
+      <Profile />
     </main>
   );
 }

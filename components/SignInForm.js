@@ -1,32 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import signIn from "@/firebase/auth/signin";
-import { useRouter } from "next/navigation";
+import { getErrorMsg } from "@/helpers/useCustomMessages";
+import MyButton from "./Button";
 
 function SignInForm() {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const router = useRouter();
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
-  const handleForm = async (event) => {
+  const handleSubmitForm = async (event) => {
     event.preventDefault();
-
+    setErrorMsg(null);
+    if (!email || !password)
+      return setErrorMsg("Email & password must be entered");
     const { result, error } = await signIn(email, password);
-
     if (error) {
-      return console.log(error);
+      setErrorMsg(getErrorMsg(error.code));
+      console.log(error.code);
     }
-
-    // else successful
     console.log(result);
-    // return router.push("/profile");
   };
+
+  console.log(errorMsg);
   return (
     <div className="wrapper">
-      <div className="form-wrapper">
+      <div className="form-wrapper ">
         <form
-          onSubmit={handleForm}
-          className="form flex flex-col gap-2 items-start"
+          onSubmit={handleSubmitForm}
+          className="form flex flex-col gap-4 items-start"
         >
           <label className="input input-bordered flex items-center gap-2">
             <svg
@@ -72,9 +74,31 @@ function SignInForm() {
               placeholder="password"
             />
           </label>
-          <button type="submit" className="btn btn-secondary btn-active">
-            Sign in
-          </button>
+
+          {errorMsg ? (
+            <div role="alert" className="alert alert-error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{errorMsg}</span>
+            </div>
+          ) : null}
+
+          <MyButton
+            text="Sign in"
+            type="submit"
+            classRest={"bg-secondary text-neutral mb-2"}
+          />
         </form>
       </div>
     </div>

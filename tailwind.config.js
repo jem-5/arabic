@@ -10,7 +10,11 @@ module.exports = {
       primary: "#ff77e9",
       secondary: "#565584",
     },
-    extend: {},
+    extend: {
+      animation: {
+        "pulse-slow": "pulse 3s linear infinite",
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

@@ -6,15 +6,18 @@ import signout from "@/firebase/auth/signout";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 
-export const DisplayProfile = () => {
+export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
   const { user } = useAuthContext();
   const router = useRouter();
 
   return (
-    <dialog id="my_profile" className="modal">
-      <div className="modal-box">
-        <h3 className="font-bold text-2xl text-secondary">Profile</h3>
+    <dialog
+      id="my_profile"
+      className="modal absolute top-0 left-0 w-screen h-screen "
+    >
+      <div className="modal-box  ">
+        <h3 className="font-bold text-2xl text-secondary mb-2">Profile</h3>
 
         {user ? (
           <>
