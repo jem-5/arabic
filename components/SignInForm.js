@@ -22,7 +22,6 @@ function SignInForm() {
     console.log(result);
   };
 
-  console.log(errorMsg);
   return (
     <div className="wrapper">
       <div className="form-wrapper ">

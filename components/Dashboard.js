@@ -29,7 +29,6 @@ export const Dashboard = () => {
   const updateReviewedModules = async () => {
     const userDoc = doc(db, "users", user.uid);
     const userSnap = await getDoc(userDoc);
-    console.log(userSnap);
     setReviewedModules(
       userSnap._document.data.value.mapValue.fields.reviewedModules.arrayValue
         .values
@@ -103,14 +102,14 @@ export const Dashboard = () => {
     });
   };
 
-  // const startLesson = () => {
-  //   router.push({
-  //     pathname: "/lesson",
-  //     query: { topic: module },
-  //   });
+  const startLesson = () => {
+    // router.push({
+    //   pathname: "/lesson",
+    //   query: { topic: "Letters" },
+    // });
 
-  //   // router.push(`/lesson/?topic=${module}`);
-  // };
+    router.push(`/lesson/?topic=${module}`);
+  };
 
   return (
     <div className=" w-full flex flex-col  justify-start gap-0">
@@ -127,32 +126,30 @@ export const Dashboard = () => {
           </p>
           <div className="modal-action ">
             <form method="dialog">
-              <Link href={{ pathname: "/lesson", query: { topic: module } }}>
-                <MyButton
-                  text={
-                    "Begin Lesson"
-                    // <svg // eslint-disable-line
-                    //   className="w-6 h-6 text-gray-800 dark:text-white"
-                    //   aria-hidden="true"
-                    //   xmlns="http://www.w3.org/2000/svg"
-                    //   width="24"
-                    //   height="24"
-                    //   fill="none"
-                    //   viewBox="0 0 24 24"
-                    // >
-                    //   <path
-                    //     stroke="currentColor"
-                    //     strokeLinecap="round"
-                    //     strokeLinejoin="round"
-                    //     strokeWidth="2"
-                    //     d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"
-                    //   />
-                    // </svg>,
-                  }
-                  // func={startLesson}
-                  classRest={"bg-secondary text-neutral mb-2"}
-                />
-              </Link>
+              <MyButton
+                text={
+                  "Begin Lesson"
+                  // <svg // eslint-disable-line
+                  //   className="w-6 h-6 text-gray-800 dark:text-white"
+                  //   aria-hidden="true"
+                  //   xmlns="http://www.w3.org/2000/svg"
+                  //   width="24"
+                  //   height="24"
+                  //   fill="none"
+                  //   viewBox="0 0 24 24"
+                  // >
+                  //   <path
+                  //     stroke="currentColor"
+                  //     strokeLinecap="round"
+                  //     strokeLinejoin="round"
+                  //     strokeWidth="2"
+                  //     d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"
+                  //   />
+                  // </svg>,
+                }
+                func={startLesson}
+                classRest={"bg-secondary text-neutral mb-2"}
+              />
 
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                 ✕
