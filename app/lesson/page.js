@@ -58,6 +58,7 @@ export default function Lesson({ searchParams }) {
     let audio = new Audio(AllModules[topic][questionNum].audio);
     audio.play();
   };
+
   useEffect(() => {
     playAudio();
   }, [questionNum]);
