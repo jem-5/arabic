@@ -27,13 +27,13 @@ export const Dashboard = () => {
   const router = useRouter();
 
   const updateReviewedModules = async () => {
-    // const userDoc = doc(db, "users", user.uid);
-    // const userSnap = await getDoc(userDoc);
-    // console.log(userSnap);
-    // setReviewedModules(
-    //   userSnap._document.data.value.mapValue.fields.reviewedModules.arrayValue
-    //     .values
-    // );
+    const userDoc = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userDoc);
+    console.log(userSnap);
+    setReviewedModules(
+      userSnap._document.data.value.mapValue.fields.reviewedModules.arrayValue
+        .values
+    );
   };
 
   useEffect(() => {

@@ -24,19 +24,19 @@ export default function Lesson({ searchParams }) {
   const router = useRouter();
 
   const saveProgress = async () => {
-    // const usersRef = collection(db, "users");
-    // const userDoc = doc(db, "users", user.uid);
-    // const userSnap = await getDoc(userDoc);
-    // if (userSnap.exists()) {
-    //   console.log("updating..");
-    //   await updateDoc(userDoc, {
-    //     reviewedModules: arrayUnion(topic),
-    //   });
-    // } else {
-    //   await setDoc(doc(usersRef, user.uid), {
-    //     reviewedModules: [topic],
-    //   });
-    // }
+    const usersRef = collection(db, "users");
+    const userDoc = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userDoc);
+    if (userSnap.exists()) {
+      console.log("updating..");
+      await updateDoc(userDoc, {
+        reviewedModules: arrayUnion(topic),
+      });
+    } else {
+      await setDoc(doc(usersRef, user.uid), {
+        reviewedModules: [topic],
+      });
+    }
   };
 
   const handleClickNext = (e) => {
