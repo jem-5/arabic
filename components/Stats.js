@@ -14,7 +14,9 @@ export const Stats = ({ reviewedModules }) => {
 
   useEffect(() => {
     setPercentComplete(
-      (reviewedModules.length / Object.keys(AllModules).length) * 100
+      ((reviewedModules.length / Object.keys(AllModules).length) * 100).toFixed(
+        0
+      )
     );
   }, [reviewedModules]);
 
