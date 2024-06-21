@@ -9,7 +9,7 @@ import { AllModules, totalWords } from "@/data/AllModules";
 export const Stats = ({ reviewedModules }) => {
   const { user } = useAuthContext();
   const [percentComplete, setPercentComplete] = useState(
-    (reviewedModules.length / Object.keys(AllModules).length) * 100
+    ((reviewedModules.length / Object.keys(AllModules).length) * 100).toFixed(0)
   );
 
   useEffect(() => {

@@ -22,7 +22,8 @@ export default function Lesson({ searchParams }) {
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
-  console.log(AllModules[topic], topic);
+  console.log("page params", AllModules[topic], topic);
+
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
     const userDoc = doc(db, "users", user.uid);
