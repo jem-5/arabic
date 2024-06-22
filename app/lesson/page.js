@@ -15,14 +15,15 @@ import { AllModules } from "@/data/AllModules";
 import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Lesson({ searchParams }) {
-  const topic = searchParams?.topic;
+export default function Lesson() {
+  const searchParams = useSearchParams();
+  const topic = searchParams.get("topic");
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
-  console.log("page params", AllModules[topic], topic);
+  console.log("page params", topic, searchParams, AllModules, topic);
 
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
@@ -74,7 +75,8 @@ export default function Lesson({ searchParams }) {
       <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
         <h3 className="font-bold text-lg text-neutral">MODULE: {topic}</h3>
         <h3 className="font-bold text-lg align-end justify-end  text-neutral">
-          {questionNum + 1} / {AllModules[topic].length}
+          {questionNum + 1} /{" "}
+          {AllModules[topic] ? AllModules[topic].length : null}
         </h3>
       </div>
       <div className="divider"></div>
@@ -83,7 +85,9 @@ export default function Lesson({ searchParams }) {
           <h2 className="card-title self-end ">
             <div className="chat chat-end ">
               <div className="chat-bubble bg-secondary  ">
-                {AllModules[topic][questionNum].arabic}
+                {AllModules[topic]
+                  ? AllModules[topic][questionNum].arabic
+                  : null}
               </div>
             </div>
             <svg
@@ -106,16 +110,18 @@ export default function Lesson({ searchParams }) {
             </svg>
           </h2>
           <p className="text-2xl self-start">
-            {AllModules[topic][questionNum].english}
+            {AllModules[topic] ? AllModules[topic][questionNum].english : null}
           </p>
         </div>
         <figure>
           <img
             className="w-56"
             src={
-              AllModules[topic][questionNum].image
+              AllModules[topic]
                 ? AllModules[topic][questionNum].image
-                : chooseRandomMascot()
+                  ? AllModules[topic][questionNum].image
+                  : chooseRandomMascot()
+                : null
             }
             alt="arabic greeting"
           />
