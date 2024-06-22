@@ -23,7 +23,6 @@ export default function Lesson() {
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
-  console.log("page params", topic, searchParams, AllModules, topic);
 
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
@@ -130,7 +129,7 @@ export default function Lesson() {
 
       <div className="flex flex-row justify-between mt-1 w-full">
         <MyButton
-          classRest={`${questionNum === 0 ? "invisible" : "visible"}`}
+          classRest={questionNum === 0 ? "invisible" : "visible"}
           text={
             <svg
               className="w-5 h-5 text-gray-800 dark:text-white"
@@ -154,6 +153,7 @@ export default function Lesson() {
         />
 
         <MyButton
+          classRest="bg-neutral"
           text={
             <svg
               className="w-5 h-5 text-gray-800 dark:text-white"
@@ -177,25 +177,13 @@ export default function Lesson() {
         />
       </div>
 
-      <div className="divider"></div>
+      <div className="divider "></div>
 
-      {/* <button
-        disabled
-        className="group relative  h-12 items-center justify-center overflow-hidden rounded-md bg-secondary px-6 font-medium text-neutral duration-500 btn-active inline-flex mb-4"
-      >
-        <div class="translate-y-0 transition group-hover:-translate-y-[150%] ">
-          <Link href="/">
-            <span className="inline-flex">Start Quiz</span>
-          </Link>
-        </div>
-        <div class="absolute translate-y-[150%] transition group-hover:translate-y-0">
-          <Link href="/">
-            <span className="inline-flex">Start Quiz</span>
-          </Link>
-        </div>
-      </button> */}
-
-      <MyButton text="Go Home" func={() => router.push("/")} classRest="h-12" />
+      <MyButton
+        text="Go Home"
+        func={() => router.push("/")}
+        classRest="h-12 bg-neutral"
+      />
 
       <Profile />
     </main>
