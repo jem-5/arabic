@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import BgImg from "../public/bg.jpg";
 import BgMobileImg from "../public/bg-mobile.jpg";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata = {
   title: "Learn Arabic Today",
@@ -16,7 +16,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="w-screen h-full ">
-      <GoogleTagManager gtmId="G-Q9R3EYD27Y" />
+      {/* <GoogleTagManager gtmId /> */}
+      <GoogleAnalytics gaId="G-Q9R3EYD27Y" />
       <body className=" min-h-full flex flex-col justify-between items-center  min-w-screen   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover">
         <AuthContextProvider>
           <Navigation />
