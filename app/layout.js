@@ -1,12 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import "./globals.css";
-import theme from "./theme.js";
 import { AuthContextProvider } from "@/context/AuthContext";
 import Footer from "@/components/Footer";
-import Image from "next/image";
-import BgImg from "../public/bg.jpg";
-import BgMobileImg from "../public/bg-mobile.jpg";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+
 import Script from "next/script";
 
 export const metadata = {
@@ -33,8 +29,6 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
 
-      {/* <GoogleTagManager gtmId /> */}
-      {/* <GoogleAnalytics gaId="G-Q9R3EYD27Y" /> */}
       <body className=" min-h-full flex flex-col justify-between items-center  min-w-screen   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover">
         <AuthContextProvider>
           <Navigation />
