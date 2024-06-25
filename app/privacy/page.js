@@ -7,13 +7,14 @@ export default function Privacy() {
 
       <div className="divider "></div>
       <p>
-        Arabic Road ("we," "us," or "our") is committed to protecting your
-        privacy. This Privacy Policy explains how we collect, use, disclose, and
-        safeguard your information when you visit our website [your website URL]
-        (the "Site"), including our language learning platform where users can
-        learn Arabic. Please read this privacy policy carefolly. If you do not
-        agree with the terms of this privacy policy, please do not access the
-        Site.
+        {" "}
+        Arabic Road (&#34;we,&#34; &#34;us,&#34; or &#34;our&#34;) is committed
+        to protecting your privacy. This Privacy Policy explains how we collect,
+        use, disclose, and safeguard your information when you visit our website
+        [your website URL] (the &#34;Site&#34;), including our language learning
+        platform where users can learn Arabic. Please read this privacy policy
+        carefolly. If you do not agree with the terms of this privacy policy,
+        please do not access the Site.
       </p>
 
       <h4 className="font-bold">1. Information We Collect</h4>
@@ -121,7 +122,7 @@ export default function Privacy() {
           machine-readable format.
         </li>
       </ol>
-      <h4 className="font-bold">6. Children's Privacy</h4>
+      <h4 className="font-bold">6. Children&#39;s Privacy</h4>
       <p>
         Our services are not directed to individuals under the age of 13. We do
         not knowingly collect personal data from children under 13. If we become
