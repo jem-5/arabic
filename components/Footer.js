@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -6,7 +7,7 @@ const Footer = () => {
       <aside>
         <p>
           Copyright © 2024 - All rights reserved |{" "}
-          <a href="/privacy">Privacy Policy</a>
+          <Link href="/privacy">Privacy Policy</Link>
         </p>
       </aside>
     </footer>
