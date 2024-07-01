@@ -25,7 +25,7 @@ export const AllModules = {
   Drinks,
   Clothing,
 
-  Vacation,
+  // Vacation,
   // School,
   // Jobs,
   // City,
