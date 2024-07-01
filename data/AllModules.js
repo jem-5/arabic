@@ -10,6 +10,7 @@ import Foods from "./Foods";
 import Produce from "./Produce";
 import Drinks from "./Drinks";
 import Clothing from "./Clothing";
+
 export const AllModules = {
   Letters,
   Greetings,
@@ -24,19 +25,18 @@ export const AllModules = {
   Drinks,
   Clothing,
 
-  // Vacation,
+  Vacation,
   // School,
   // Jobs,
   // City,
   // Doctor,
   // Countries,
+  // Courtesies,
+  // Prayers,
 
   // Verbs,
   // Prepositions,
   // Adjectives,
-  // Courtesies,
-  // Prayers,
-  // Phonemes,
   // Tenses,
   // Cases
 };

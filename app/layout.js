@@ -35,6 +35,19 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </AuthContextProvider>
+
+        <script
+          async
+          defer
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+        ></script>
+        <noscript>
+          <img
+            src="https://queue.simpleanalyticscdn.com/noscript.gif"
+            alt=""
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+        </noscript>
       </body>
     </html>
   );
