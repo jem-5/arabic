@@ -45,7 +45,7 @@ export default function Lesson() {
     if (questionNum < AllModules[topic].length - 1)
       setQuestionNum((prev) => prev + 1);
     if (questionNum === AllModules[topic].length - 1) setQuestionNum(0);
-    if (questionNum === AllModules[topic].length - 2) {
+    if (questionNum === AllModules[topic].length - 2 && user) {
       saveProgress();
     }
   };

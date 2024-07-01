@@ -10,6 +10,7 @@ import Foods from "./Foods";
 import Produce from "./Produce";
 import Drinks from "./Drinks";
 import Clothing from "./Clothing";
+import Vacation from "./Vacation";
 
 export const AllModules = {
   Letters,
@@ -25,7 +26,7 @@ export const AllModules = {
   Drinks,
   Clothing,
 
-  // Vacation,
+  Vacation,
   // School,
   // Jobs,
   // City,

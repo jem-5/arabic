@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
             referrerpolicy="no-referrer-when-downgrade"
           />
         </noscript>
-
+        {/* 
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-Q9R3EYD27Y"
@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
       gtag('js', new Date());
       gtag('config', 'G-Q9R3EYD27Y');
   `}
-        </script>
+        </script> */}
       </body>
     </html>
   );

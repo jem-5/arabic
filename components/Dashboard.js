@@ -103,11 +103,6 @@ export const Dashboard = () => {
   };
 
   const startLesson = () => {
-    // router.push({
-    //   pathname: "/lesson",
-    //   query: { topic: "Letters" },
-    // });
-
     router.push(`/lesson/?topic=${module}`);
   };
 
