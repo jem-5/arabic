@@ -17,6 +17,7 @@ import Directions from "./Directions";
 import Doctor from "./Doctor";
 import Countries from "./Countries";
 import Prayers from "./Prayers";
+import Verbs from "./Verbs";
 
 export const AllModules = {
   Letters,
@@ -40,7 +41,7 @@ export const AllModules = {
   Countries,
   Prayers,
 
-  // Verbs,
+  Verbs,
   // Prepositions,
   // Adjectives,
   // Tenses,

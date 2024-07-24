@@ -85,7 +85,8 @@ export const Dashboard = () => {
   };
 
   const ShowRoads = () => {
-    const chunkSize = screenSize.width < 1000 ? 3 : 5;
+    const chunkSize =
+      screenSize.width < 500 ? 3 : screenSize.width < 1000 ? 5 : 8;
     const roads = [];
     for (let i = 0; i < Object.keys(AllModules).length; i += chunkSize) {
       const chunk = Object.keys(AllModules).slice(i, i + chunkSize);
