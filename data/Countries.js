@@ -1,0 +1,148 @@
+const Countries = [
+  {
+    english: "America",
+    arabic: "الأمريكية",
+    audio: "./audio/countries/america.mp3",
+    image: "",
+  },
+  {
+    english: "Canada",
+    arabic: "كندا ",
+    audio: "./audio/countries/canada.mp3",
+    image: "",
+  },
+  {
+    english: "United Kingdom",
+    arabic: "المملكة المتحدة",
+    audio: "./audio/countries/united-kingdom.mp3",
+    image: "",
+  },
+  {
+    english: "Australia",
+    arabic: "أستراليا ",
+    audio: "./audio/countries/australia.mp3",
+    image: "",
+  },
+  {
+    english: "Germany",
+    arabic: "ألمانيا ",
+    audio: "./audio/countries/germany.mp3",
+    image: "",
+  },
+  {
+    english: "France",
+    arabic: "فرنسا ",
+    audio: "./audio/countries/france.mp3",
+    image: "",
+  },
+  {
+    english: "Italy",
+    arabic: "إيطاليا ",
+    audio: "./audio/countries/italy.mp3",
+    image: "",
+  },
+  {
+    english: "Spain",
+    arabic: "إسبانيا ",
+    audio: "./audio/countries/spain.mp3",
+    image: "",
+  },
+  {
+    english: "China",
+    arabic: "الصين ",
+    audio: "./audio/countries/china.mp3",
+    image: "",
+  },
+  {
+    english: "Japan",
+    arabic: "اليابان ",
+    audio: "./audio/countries/japan.mp3",
+    image: "",
+  },
+  {
+    english: "India",
+    arabic: "الهند ",
+    audio: "./audio/countries/india.mp3",
+    image: "",
+  },
+  {
+    english: "Mexico",
+    arabic: "المكسيك ",
+    audio: "./audio/countries/mexico.mp3",
+    image: "",
+  },
+  {
+    english: "Argentina",
+    arabic: "الأرجنتين ",
+    audio: "./audio/countries/argentina.mp3",
+    image: "",
+  },
+  {
+    english: "Egypt",
+    arabic: "مصر ",
+    audio: "./audio/countries/egypt.mp3",
+    image: "",
+  },
+  {
+    english: "Turkey",
+    arabic: "تركيا ",
+    audio: "./audio/countries/turkey.mp3",
+    image: "",
+  },
+  {
+    english: "Jordan",
+    arabic: "الأردن ",
+    audio: "./audio/countries/jordan.mp3",
+    image: "",
+  },
+  {
+    english: "Lebanon",
+    arabic: "لبنان ",
+    audio: "./audio/countries/lebanon.mp3",
+    image: "",
+  },
+  {
+    english: "Syria",
+    arabic: "سوريا ",
+    audio: "./audio/countries/syria.mp3",
+    image: "",
+  },
+  {
+    english: "Iraq",
+    arabic: "العراق ",
+    audio: "./audio/countries/iraq.mp3",
+    image: "",
+  },
+  {
+    english: "Morocco",
+    arabic: "المغرب ",
+    audio: "./audio/countries/morocco.mp3",
+    image: "",
+  },
+  {
+    english: "Algeria",
+    arabic: "الجزائر ",
+    audio: "./audio/countries/algeria.mp3",
+    image: "",
+  },
+  {
+    english: "Tunisia",
+    arabic: "تونس ",
+    audio: "./audio/countries/tunisia.mp3",
+    image: "",
+  },
+  {
+    english: "Libya",
+    arabic: "ليبيا ",
+    audio: "./audio/countries/libya.mp3",
+    image: "",
+  },
+  {
+    english: "Kuwait",
+    arabic: "الكويت ",
+    audio: "./audio/countries/kuwait.mp3",
+    image: "",
+  },
+];
+
+export default Countries;

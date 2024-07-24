@@ -11,6 +11,12 @@ import Produce from "./Produce";
 import Drinks from "./Drinks";
 import Clothing from "./Clothing";
 import Vacation from "./Vacation";
+import School from "./School";
+import Jobs from "./Jobs";
+import Directions from "./Directions";
+import Doctor from "./Doctor";
+import Countries from "./Countries";
+import Prayers from "./Prayers";
 
 export const AllModules = {
   Letters,
@@ -27,13 +33,12 @@ export const AllModules = {
   Clothing,
 
   Vacation,
-  // School,
-  // Jobs,
-  // City,
-  // Doctor,
-  // Countries,
-  // Courtesies,
-  // Prayers,
+  School,
+  Jobs,
+  Directions,
+  Doctor,
+  Countries,
+  Prayers,
 
   // Verbs,
   // Prepositions,
