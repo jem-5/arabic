@@ -1,0 +1,148 @@
+const Transitions = [
+  {
+    english: "And",
+    arabic: "و ",
+    audio: "./audio/transitions/and.mp3",
+    image: "",
+  },
+  {
+    english: "Or",
+    arabic: "أو  ",
+    audio: "./audio/transitions/or.mp3",
+    image: "",
+  },
+  {
+    english: "Also",
+    arabic: "أيضًا ",
+    audio: "./audio/transitions/also.mp3",
+    image: "",
+  },
+  {
+    english: "In addition",
+    arabic: " بالإضافة ",
+    audio: "./audio/transitions/addition.mp3",
+    image: "",
+  },
+  {
+    english: "But",
+    arabic: "لكن ",
+    audio: "./audio/transitions/but.mp3",
+    image: "",
+  },
+  {
+    english: "However",
+    arabic: "ومع ذلك",
+    audio: "./audio/transitions/however.mp3",
+    image: "",
+  },
+  {
+    english: "Because",
+    arabic: "لأن ",
+    audio: "./audio/transitions/because.mp3",
+    image: "",
+  },
+  {
+    english: "Therefore",
+    arabic: "لذلك ",
+    audio: "./audio/transitions/therefore.mp3",
+    image: "",
+  },
+  {
+    english: "First",
+    arabic: "أولاً  ",
+    audio: "./audio/transitions/first.mp3",
+    image: "",
+  },
+  {
+    english: "Second",
+    arabic: "ثانياً ",
+    audio: "./audio/transitions/second.mp3",
+    image: "",
+  },
+  {
+    english: "Then",
+    arabic: "ثم ",
+    audio: "./audio/transitions/then.mp3",
+    image: "",
+  },
+  {
+    english: "Next",
+    arabic: "بعد ذلك",
+    audio: "./audio/transitions/next.mp3",
+    image: "",
+  },
+  {
+    english: "Finally",
+    arabic: "أخيراً",
+    audio: "./audio/transitions/finally.mp3",
+    image: "",
+  },
+  {
+    english: "Such as",
+    arabic: "مثل ",
+    audio: "./audio/transitions/such.mp3",
+    image: "",
+  },
+  {
+    english: "For example",
+    arabic: "على سبيل المثال",
+    audio: "./audio/transitions/example.mp3",
+    image: "",
+  },
+  {
+    english: "Certainly",
+    arabic: "بالتأكيد ",
+    audio: "./audio/transitions/certainly.mp3",
+    image: "",
+  },
+  {
+    english: "Similarly",
+    arabic: "بالمثل ",
+    audio: "./audio/transitions/similarly.mp3",
+    image: "",
+  },
+  {
+    english: "In the same way",
+    arabic: "بنفس الطريقة",
+    audio: "./audio/transitions/same.mp3",
+    image: "",
+  },
+  {
+    english: "To sum up",
+    arabic: "لخّص",
+    audio: "./audio/transitions/sum.mp3",
+    image: "",
+  },
+  {
+    english: "Since",
+    arabic: "منذ ",
+    audio: "./audio/transitions/since.mp3",
+    image: "",
+  },
+  {
+    english: "If",
+    arabic: "إذا",
+    audio: "./audio/transitions/if.mp3",
+    image: "",
+  },
+  {
+    english: "Until",
+    arabic: "حتى ",
+    audio: "./audio/transitions/until.mp3",
+    image: "",
+  },
+  {
+    english: "While",
+    arabic: "عندما ",
+    audio: "./audio/transitions/while.mp3",
+    image: "",
+  },
+  {
+    english: "As soon as",
+    arabic: "بمجرد أن ",
+    audio: "./audio/transitions/soon.mp3",
+    image: "",
+  },
+];
+
+export default Transitions;

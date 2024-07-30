@@ -18,6 +18,9 @@ import Doctor from "./Doctor";
 import Countries from "./Countries";
 import Prayers from "./Prayers";
 import Verbs from "./Verbs";
+import Prepositions from "./Prepositions";
+import Transitions from "./Transitions";
+import Adjectives from "./Adjectives";
 
 export const AllModules = {
   Letters,
@@ -32,7 +35,6 @@ export const AllModules = {
   Produce,
   Drinks,
   Clothing,
-
   Vacation,
   School,
   Jobs,
@@ -40,10 +42,13 @@ export const AllModules = {
   Doctor,
   Countries,
   Prayers,
-
   Verbs,
-  // Prepositions,
-  // Adjectives,
+  Prepositions,
+  Transitions,
+  Adjectives,
+  // Adverbs,
+  // Pronouns,
+
   // Tenses,
   // Cases
 };
