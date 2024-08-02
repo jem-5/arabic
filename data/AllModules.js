@@ -21,6 +21,8 @@ import Verbs from "./Verbs";
 import Prepositions from "./Prepositions";
 import Transitions from "./Transitions";
 import Adjectives from "./Adjectives";
+import Adverbs from "./Adverbs";
+import Pronouns from "./Pronouns";
 
 export const AllModules = {
   Letters,
@@ -46,8 +48,8 @@ export const AllModules = {
   Prepositions,
   Transitions,
   Adjectives,
-  // Adverbs,
-  // Pronouns,
+  Adverbs,
+  Pronouns,
 
   // Tenses,
   // Cases

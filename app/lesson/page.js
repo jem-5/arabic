@@ -79,38 +79,43 @@ export default function Lesson() {
         </h3>
       </div>
       <div className="divider"></div>
-      <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full">
-        <div className="card-body flex flex-col ">
-          <h2 className="card-title self-end ">
-            <div className="chat chat-end ">
-              <div className="chat-bubble bg-secondary  ">
+      <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
+        <div className="card-body flex flex-col justify-between  ">
+          <div className="text-2xl">
+            {AllModules[topic] ? AllModules[topic][questionNum].english : null}
+          </div>
+          <span className="">
+            <div className="chat chat-end text-2xl">
+              <div className="chat-bubble bg-secondary">
                 {AllModules[topic]
                   ? AllModules[topic][questionNum].arabic
                   : null}
               </div>
+              <svg
+                onClick={playAudio}
+                className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                />
+              </svg>
             </div>
-            <svg
-              onClick={playAudio}
-              className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-              />
-            </svg>
-          </h2>
-          <p className="text-2xl self-start">
-            {AllModules[topic] ? AllModules[topic][questionNum].english : null}
-          </p>
+          </span>
+          <div className="text-1xl text-right place-content-end">
+            {AllModules[topic]
+              ? AllModules[topic][questionNum].transliteration
+              : null}
+          </div>
         </div>
         <figure>
           <img
