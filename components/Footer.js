@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer footer-center p-2 bg-base-300 text-base-content">
       <aside>
         <p>
-          Copyright © 2024 - All rights reserved |{" "}
+          Copyright © 2024 ArabicRoad.com |{" "}
           <Link href="/privacy">Privacy Policy</Link>
         </p>
       </aside>

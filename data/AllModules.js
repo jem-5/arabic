@@ -50,9 +50,6 @@ export const AllModules = {
   Adjectives,
   Adverbs,
   Pronouns,
-
-  // Tenses,
-  // Cases
 };
 
 const moduleLengths = [];
