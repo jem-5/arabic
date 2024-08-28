@@ -86,7 +86,7 @@ export const Dashboard = () => {
 
   const ShowRoads = () => {
     const chunkSize =
-      screenSize.width < 500 ? 3 : screenSize.width < 1000 ? 5 : 8;
+      screenSize.width < 600 ? 5 : screenSize.width < 1100 ? 7 : 10;
     const roads = [];
     for (let i = 0; i < Object.keys(AllModules).length; i += chunkSize) {
       const chunk = Object.keys(AllModules).slice(i, i + chunkSize);
@@ -107,6 +107,10 @@ export const Dashboard = () => {
     router.push(`/lesson/?topic=${module}`);
   };
 
+  const startQuiz = () => {
+    router.push(`/quiz/?topic=${module}`);
+  };
+
   return (
     <div className=" w-full flex flex-col  justify-start gap-0">
       <Profile />
@@ -121,30 +125,19 @@ export const Dashboard = () => {
             Learn the essentials of the {module} module with this lesson.
           </p>
           <div className="modal-action ">
-            <form method="dialog">
+            <form method="dialog" className="flex flex-row gap-3">
               <a href={`/lesson/?topic=${module}`}>
                 <MyButton
-                  text={
-                    "Begin Lesson"
-                    // <svg // eslint-disable-line
-                    //   className="w-6 h-6 text-gray-800 dark:text-white"
-                    //   aria-hidden="true"
-                    //   xmlns="http://www.w3.org/2000/svg"
-                    //   width="24"
-                    //   height="24"
-                    //   fill="none"
-                    //   viewBox="0 0 24 24"
-                    // >
-                    //   <path
-                    //     stroke="currentColor"
-                    //     strokeLinecap="round"
-                    //     strokeLinejoin="round"
-                    //     strokeWidth="2"
-                    //     d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"
-                    //   />
-                    // </svg>,
-                  }
+                  text={"Begin Lesson"}
                   func={startLesson}
+                  classRest={"bg-secondary text-neutral mb-2"}
+                />
+              </a>
+
+              <a href={`/quiz/?topic=${module}`}>
+                <MyButton
+                  text={"Begin Quiz"}
+                  func={startQuiz}
                   classRest={"bg-secondary text-neutral mb-2"}
                 />
               </a>

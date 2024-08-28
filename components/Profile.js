@@ -1,15 +1,52 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import signout from "@/firebase/auth/signout";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
+import { db } from "@/firebase/config";
+
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  getDoc,
+} from "firebase/firestore";
+import { AllModules } from "@/data/AllModules";
+import { QuestionAlert } from "./QuestionAlert";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
   const { user } = useAuthContext();
   const router = useRouter();
+  const [wordsToReview, setWordsToReview] = useState([]);
+
+  const updateWordsToReview = async () => {
+    const userDoc = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userDoc);
+    if (userSnap.exists()) {
+      let userData = userSnap.data();
+      // console.log(userData);
+      let words = [];
+      for (const [key, value] of Object.entries(userData)) {
+        if (key !== "reviewedModules" && value.length !== 0) {
+          // console.log(key, value);
+          words.push(value);
+        }
+      }
+      let flatArr = words.flat(2);
+      setWordsToReview(flatArr);
+    }
+  };
+
+  useEffect(() => {
+    if (user) updateWordsToReview();
+  }, []);
+
+  console.log(wordsToReview);
 
   return (
     <dialog
@@ -32,6 +69,14 @@ export const Profile = () => {
             <p className="text-lg text-secondary">
               Last Login: {user.metadata.lastSignInTime.slice(0, 16)}
             </p>
+
+            <p className="text-lg text-secondary">Words to Review:</p>
+
+            {wordsToReview
+              ? wordsToReview.map((item, i) => (
+                  <QuestionAlert item={item} key={i} />
+                ))
+              : "There are no words to review in your profile."}
 
             <button className="btn btn-secondary btn-active" onClick={signout}>
               Sign Out
