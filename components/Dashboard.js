@@ -86,7 +86,7 @@ export const Dashboard = () => {
 
   const ShowRoads = () => {
     const chunkSize =
-      screenSize.width < 600 ? 5 : screenSize.width < 1100 ? 7 : 10;
+      screenSize.width < 600 ? 4 : screenSize.width < 1100 ? 6 : 10;
     const roads = [];
     for (let i = 0; i < Object.keys(AllModules).length; i += chunkSize) {
       const chunk = Object.keys(AllModules).slice(i, i + chunkSize);
@@ -125,7 +125,10 @@ export const Dashboard = () => {
             Learn the essentials of the {module} module with this lesson.
           </p>
           <div className="modal-action ">
-            <form method="dialog" className="flex flex-row gap-3">
+            <form
+              method="dialog"
+              className="flex flex-col sm:flex-row gap-3 items-end"
+            >
               <a href={`/lesson/?topic=${module}`}>
                 <MyButton
                   text={"Begin Lesson"}
