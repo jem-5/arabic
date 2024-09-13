@@ -19,6 +19,20 @@ export default function RootLayout({ children }) {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9287702370703879"
           crossorigin="anonymous"
         ></Script>
+
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q9R3EYD27Y"
+        />
+
+        <Script id="google-analytics">
+          {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q9R3EYD27Y');
+  `}
+        </Script>
       </head>
 
       <body className=" min-h-full flex flex-col justify-between items-center  min-w-screen   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover">
@@ -40,20 +54,6 @@ export default function RootLayout({ children }) {
             referrerpolicy="no-referrer-when-downgrade"
           />
         </noscript>
-        {/* 
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-Q9R3EYD27Y"
-        />
-
-        <script id="google-analytics">
-          {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Q9R3EYD27Y');
-  `}
-        </script> */}
       </body>
     </html>
   );
