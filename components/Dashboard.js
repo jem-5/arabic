@@ -130,7 +130,7 @@ export const Dashboard = () => {
               className="flex flex-col sm:flex-row gap-3 items-end"
             >
               <a href={`/lesson/?topic=${module}`}>
-                <MyButton
+                <MyButton 
                   text={"Begin Lesson"}
                   func={startLesson}
                   classRest={"bg-secondary text-neutral mb-2"}
