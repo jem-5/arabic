@@ -6,14 +6,25 @@ const Footer = () => {
     <footer className="footer footer-center p-2 bg-base-100 opacity-80 ">
       <div>
         <p className="flex p-0 gap-8">
-          <Link href="/">Home</Link>
+          <Link href="/" className="font-bold">
+            Home
+          </Link>
 
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/about" className="font-bold">
+            About
+          </Link>
+          <Link href="/contact" className="font-bold">
+            Contact
+          </Link>
+          <Link href="/privacy" className="font-bold">
+            Privacy Policy
+          </Link>
         </p>
         <p>
-          Copyright © 2024 <Link href="/">ArabicRoad</Link>
+          Copyright © 2024{" "}
+          <Link href="/" className="font-bold">
+            ArabicRoad
+          </Link>
         </p>
       </div>
     </footer>
