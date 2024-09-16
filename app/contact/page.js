@@ -5,10 +5,10 @@ export default function Contact() {
       <h3 className="font-bold text-xl  self-center ">Send a Message</h3>
       <div className="divider "></div>
       <p>
-        I'm here to help you on your journey to learning Arabic. Whether you
-        have questions, feedback or need assistance with our platform, feel free
-        to reach out. Your experience with ArabicRoad is important to me, and
-        I'm committed to providing the support you need.
+        I&apos;m here to help you on your journey to learning Arabic. Whether
+        you have questions, feedback or need assistance with our platform, feel
+        free to reach out. Your experience with ArabicRoad is important to me,
+        and I&apos;m committed to providing the support you need.
       </p>
       <p>
         You can contact me via email at jenniferengineers[at]gmail[dot]com. I

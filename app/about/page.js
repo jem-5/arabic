@@ -9,10 +9,10 @@ export default function About() {
       <p>
         My name is Jennifer. The Arabic language has always captivated me, not
         only for its linguistic complexity but also for its cultural richness.
-        Learning Arabic has been a lifelong dream of mine and I'm finally diving
-        into it. I developed ArabicRoad as an educational language learning
-        platform designed to facilitate my own learning journey and to assist
-        others who aspire to learn Arabic.
+        Learning Arabic has been a lifelong dream of mine and I&apos;m finally
+        diving into it. I developed ArabicRoad as an educational language
+        learning platform designed to facilitate my own learning journey and to
+        assist others who aspire to learn Arabic.
       </p>
       <p>
         Recognizing the challenges that many learners face when starting this
@@ -40,7 +40,9 @@ export default function About() {
         anyone can experience the joy of understanding and speaking Arabic.
         Thank you for joining me on this road to learning Arabic.
       </p>
-      <p>Let's explore the depth and beauty of the Arabic language together!</p>
+      <p>
+        Let&apos;s explore the depth and beauty of the Arabic language together!
+      </p>
     </main>
   );
 }
