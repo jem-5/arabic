@@ -50,6 +50,11 @@ export const AllModules = {
   Adjectives,
   Adverbs,
   Pronouns,
+
+  // Idioms,
+  // Nature,
+  // Curses,
+  // Onomatopeia,
 };
 
 const moduleLengths = [];

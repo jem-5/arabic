@@ -1,7 +1,7 @@
 import React from "react";
 export default function Privacy() {
   return (
-    <main className="flex-grow flex flex-col items-left p-2 text-neutral w-3/4 bg-[rgba(255,255,255,0.8)]">
+    <main className="flex-grow flex flex-col items-left p-3 text-neutral w-1/2 bg-[white] rounded-md mt-2 drop-shadow-xl border gap-3  max-[999px]:w-4/5">
       <h3 className="font-bold text-lg self-center ">Privacy Policy</h3>
       <p className="self-center ">Effective Date: June 25, 2024</p>
 

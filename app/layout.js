@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         ></Script>
       </head>
 
-      <body className=" min-h-full flex flex-col justify-between items-center  min-w-screen   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover">
+      <body className=" min-h-full flex flex-col justify-between items-center  min-w-screen   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover   ">
         <AuthContextProvider>
           <Navigation />
           {children}
