@@ -42,7 +42,7 @@ export const Stats = ({ reviewedModules }) => {
           </svg>
         </div>
         <div className="stat-title max-[999px]:text-sm">Total Modules</div>
-        <div className="stat-value text-primary max-[999px]:text-md">
+        <div className="stat-value text-secondary max-[999px]:text-md">
           {Object.keys(AllModules).length}
         </div>
         <div className="stat-desc max-[999px]:hidden">
