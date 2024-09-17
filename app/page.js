@@ -1,7 +1,4 @@
-import { Stats } from "@/components/Stats";
-import { Dashboard } from "@/components/Dashboard";
 import MyButton from "@/components/Button";
-import AllPosts from "./blog/page";
 import { getAllPosts } from "@/helpers/parseBlog";
 import Link from "next/link";
 
@@ -12,12 +9,6 @@ export default async function Home() {
     <main className="flex-grow flex flex-col items-center  mt-2 ">
       <div className="card lg:card-side p-2 bg-base-100 shadow-xl ">
         <figure className="flex flex-col h-full justify-center">
-          {/* <img
-            src="/featured.jpg"
-            className="w-48 lg:w-72 rounded"
-            alt="Arabic Road Language Learning App"
-          /> */}
-
           <div className="carousel w-96">
             <div id="item1" className="carousel-item w-full">
               <img src="/featured.jpg" className="w-full rounded" />
@@ -89,12 +80,12 @@ export default async function Home() {
           </ul>
 
           <div className="card-actions justify-end">
-            <a href="/dashboard">
+            <Link href="/dashboard" className="font-bold">
               <MyButton
                 text="Start learning"
                 classRest={"bg-secondary text-neutral mb-2"}
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

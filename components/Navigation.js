@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 export const Navigation = () => {
@@ -11,16 +12,16 @@ export const Navigation = () => {
           </a>
         </div>
         <div className="flex-none flex gap-2 ">
-          <a href="/dashboard">
+          <Link href="/dashboard" className="font-bold">
             <button className="btn  text-lg">Lessons</button>
-          </a>
+          </Link>
 
-          <a href="/blog">
+          <Link href="/blog" className="font-bold">
             <button className="btn    text-lg">Blog</button>
-          </a>
-          <a href="/about">
+          </Link>
+          <Link href="/about" className="font-bold">
             <button className="btn    text-lg">About</button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
