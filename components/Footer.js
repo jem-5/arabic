@@ -9,12 +9,17 @@ const Footer = () => {
           <Link href="/" className="font-bold">
             Home
           </Link>
-
           <Link href="/about" className="font-bold">
             About
           </Link>
           <Link href="/contact" className="font-bold">
             Contact
+          </Link>
+          <Link href="/blog" className="font-bold">
+            Blog
+          </Link>
+          <Link href="/dashboard" className="font-bold">
+            Lessons
           </Link>
           <Link href="/privacy" className="font-bold">
             Privacy Policy

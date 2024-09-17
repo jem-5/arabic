@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  ol {
+    @apply list-decimal
+  }
+
+  ul {
+    @apply list-disc
+  }
+
+  p {
+    @apply mt-1 mb-1
+  }
+}
