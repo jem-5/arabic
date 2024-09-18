@@ -6,8 +6,15 @@ import Footer from "@/components/Footer";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Learn Arabic Today",
-  description: "15 Minute Modules",
+  title:
+    "Arabic Road - Learn Arabic Online | Free Arabic Language Learning Platform",
+  description:
+    "Learn Arabic for free with ArabicRoad! Access vocabulary with relevant photos, Arabic voice narration, and English transliteration. No account needed. Start learning today!",
+  keywords:
+    "Learn Arabic, Arabic language, Arabic lessons, Free Arabic learning, Arabic vocabulary, Arabic pronunciation, Arabic voice narration, Arabic transliteration, Arabic for beginners, ArabicRoad",
+  robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1.0",
+  charset: "UTF-8",
 };
 
 export default function RootLayout({ children }) {
