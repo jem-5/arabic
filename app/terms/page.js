@@ -74,6 +74,13 @@ export default function Terms() {
         settings; however, disabling cookies may affect the functionality and
         features of the platform.
       </p>
+      <p>
+        For example, Google uses cookies to serve ads on partner websites,
+        including websites that display Google ads or participate in Google
+        certified ad networks. AdSense sends a cookie to the user's browser
+        after any activity that results in a call to Google's servers, such as
+        an impression or click.
+      </p>
 
       <h4 className="font-bold">6. Changes to the Terms</h4>
       <p>
