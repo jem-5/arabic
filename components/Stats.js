@@ -22,7 +22,7 @@ export const Stats = ({ reviewedModules }) => {
 
   return (
     <div className=" stats shadow mt-2 opacity-80 flex  min-[1000px]:flex-row w-3/4 m-auto max-[999px]:w-full overflow-hidden">
-      <div className="stat max-[999px]:max-h-2.5">
+      <div className="stat   max-[999px]:hidden">
         <div className="stat-figure text-primary ">
           <svg
             className="inline-block w-8 h-8 stroke-current "
@@ -75,7 +75,7 @@ export const Stats = ({ reviewedModules }) => {
         </div>
       </div>
 
-      <div className="stat max-[999px]:hidden">
+      <div className="stat ">
         <div className="stat-figure text-secondary">
           <svg
             className="w-8 h-8 text-gray-800 dark:text-white"
@@ -105,7 +105,7 @@ export const Stats = ({ reviewedModules }) => {
               }}
             >
               {" "}
-              <p className="text-sm text-secondary max-[999px]:hidden">
+              <p className="text-sm text-secondary ">
                 Signed in as {user.email}
               </p>
             </button>
