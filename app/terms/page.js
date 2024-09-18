@@ -41,10 +41,11 @@ export default function Terms() {
 
       <ol className="list-disc list-inside">
         <li>
-          "As-Is" Basis: ArabicRoad is provided on an "as-is" and "as-available"
-          basis. We make no warranties or representations of any kind regarding
-          the accuracy, completeness, reliability, or suitability of the content
-          provided on the platform.
+          &quot;As-Is&quot; Basis: ArabicRoad is provided on an
+          &quot;as-is&quot; and &quot;as-available&quot; basis. We make no
+          warranties or representations of any kind regarding the accuracy,
+          completeness, reliability, or suitability of the content provided on
+          the platform.
         </li>
         <li>
           No Guarantee of Results: While we strive to offer high-quality
