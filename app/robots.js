@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: "/private",
     },
-    sitemap: "",
+    sitemap: "https://arabicroad.com/sitemap.xml",
   };
 }
