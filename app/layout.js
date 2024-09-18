@@ -20,13 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="w-screen h-full ">
-      <head>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9287702370703879"
-          crossorigin="anonymous"
-        ></Script>
-      </head>
+      <head></head>
 
       <body className=" min-h-full flex flex-col justify-between items-center  min-w-screen   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover   ">
         <AuthContextProvider>
@@ -34,6 +28,12 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </AuthContextProvider>
+
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9287702370703879"
+          crossorigin="anonymous"
+        ></Script>
 
         <Script
           async
