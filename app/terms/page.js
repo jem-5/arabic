@@ -7,10 +7,10 @@ export default function Terms() {
 
       <div className="divider "></div>
       <p>
-        Welcome to ArabicRoad! These Terms of Use ("Terms") govern your access
-        to and use of the ArabicRoad website and its services. By accessing or
-        using our platform, you agree to comply with these Terms. Please read
-        them carefully.
+        Welcome to ArabicRoad! These Terms of Use (&quot;Terms&quot;) govern
+        your access to and use of the ArabicRoad website and its services. By
+        accessing or using our platform, you agree to comply with these Terms.
+        Please read them carefully.
       </p>
 
       <h4 className="font-bold">1. Acceptance of Terms</h4>
@@ -78,9 +78,9 @@ export default function Terms() {
       <p>
         For example, Google uses cookies to serve ads on partner websites,
         including websites that display Google ads or participate in Google
-        certified ad networks. AdSense sends a cookie to the user's browser
-        after any activity that results in a call to Google's servers, such as
-        an impression or click.
+        certified ad networks. AdSense sends a cookie to the user&apos;s browser
+        after any activity that results in a call to Google&apos;s servers, such
+        as an impression or click.
       </p>
 
       <h4 className="font-bold">6. Changes to the Terms</h4>
