@@ -22,7 +22,7 @@ import { QuestionAlert } from "@/components/QuestionAlert";
 
 export default function Quiz() {
   const searchParams = useSearchParams();
-  const topic = searchParams.get("topic");
+  const topic = searchParams.get("topic") || "Greetings";
 
   const [questionNum, setQuestionNum] = useState(0);
   const [answers, setAnswers] = useState([]);
@@ -320,14 +320,14 @@ export default function Quiz() {
         />
       ) : status === "wrong" ? (
         <img
-          src="xmark.png"
+          src="/xmark.png"
           alt="x"
           width={statusWidth}
           height={statusHeight}
         />
       ) : (
         <img
-          src="clear.png"
+          src="/clear.png"
           alt="x"
           width={statusWidth}
           height={statusHeight}
