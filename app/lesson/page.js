@@ -20,6 +20,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function Lesson() {
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "Greetings";
+  console.log(topic);
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
@@ -185,8 +186,8 @@ export default function Lesson() {
       <div className="divider "></div>
 
       <MyButton
-        text="Go Home"
-        func={() => router.push("/")}
+        text="Go Back"
+        func={() => router.push("/dashboard")}
         classRest="h-12 bg-neutral"
       />
 

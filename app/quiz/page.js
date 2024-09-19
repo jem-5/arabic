@@ -337,8 +337,8 @@ export default function Quiz() {
       <div className="divider  "></div>
 
       <MyButton
-        text="Return Home"
-        func={() => router.push("/")}
+        text="Go Back"
+        func={() => router.push("/dashboard")}
         classRest="h-12 bg-neutral"
       />
       <Profile />
