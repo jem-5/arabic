@@ -1,11 +1,11 @@
 // app/sitemap.js
-
-import { getSortedPostsData } from "../_posts";
-
-const URL = "https://arabicroad.com";
+import { getAllPosts } from "@/helpers/parseBlog";
 
 export default async function sitemap() {
-  const posts = getSortedPostsData.map(({ id, date }) => ({
+  const URL = "https://arabicroad.com";
+  const posts = await getAllPosts();
+
+  const postRoutes = posts.map(({ id, date }) => ({
     url: `${URL}/blog/${id}`,
     lastModified: date,
   }));
@@ -25,7 +25,7 @@ export default async function sitemap() {
     lastModified: new Date().toISOString(),
   }));
 
-  return [...routes, ...posts];
+  return [...postRoutes, ...routes];
 }
 
 // export default function sitemap() {
