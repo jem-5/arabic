@@ -313,7 +313,7 @@ export default function Quiz() {
 
       {status === "correct" ? (
         <img
-          src="checkmark.png"
+          src="/checkmark.png"
           alt="check"
           width={statusWidth}
           height={statusHeight}
