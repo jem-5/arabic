@@ -129,15 +129,15 @@ export const Dashboard = () => {
               method="dialog"
               className="flex flex-col sm:flex-row gap-3 items-end"
             >
-              <a href={`/lesson/?topic=${module}`}>
-                <MyButton 
+              <a href={`/lesson?topic=${module}`}>
+                <MyButton
                   text={"Begin Lesson"}
                   func={startLesson}
                   classRest={"bg-secondary text-neutral mb-2"}
                 />
               </a>
 
-              <a href={`/quiz/?topic=${module}`}>
+              <a href={`/quiz?topic=${module}`}>
                 <MyButton
                   text={"Begin Quiz"}
                   func={startQuiz}

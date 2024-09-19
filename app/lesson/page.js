@@ -19,7 +19,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Lesson() {
   const searchParams = useSearchParams();
-  const topic = searchParams.get("topic");
+  const topic = searchParams.get("topic") || "Greetings";
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
