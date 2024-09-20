@@ -46,10 +46,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
     openGraph: {
       title: `${post.title} | Arabic Road`,
       type: "article",
-      url: `https://arabicroad.com/blog/${post.id}`,
+      url: `https://arabicroad.com/blog/${id}`,
     },
     alternates: {
-      canonical: `https://arabicroad.com/blog/${post.id}`,
+      canonical: `https://arabicroad.com/blog/${id}`,
     },
   };
 }
