@@ -8,7 +8,7 @@ Arabic is not just a language of words and grammar; it's a window into the rich 
 1.  **As-salamu alaykum (السلام عليكم)**
 
 - **Meaning:** "Peace be upon you."
-- **Cultural Insight:** This is the standard Arabic greeting and is often used among Muslims around the world. It’s more than a simple "hello"—it’s a blessing and a way of expressing goodwill. The appropriate response is "Wa alaykum as-salam" (وعليكم السلام), which means "And peace be upon you, too." This phrase reflects the importance of peace, respect, and community in Middle Eastern cultures.
+- **Cultural Insight:** This is the standard [Arabic](https://en.wikipedia.org/wiki/Arabic) greeting and is often used among Muslims around the world. It’s more than a simple "hello"—it’s a blessing and a way of expressing goodwill. The appropriate response is "Wa alaykum as-salam" (وعليكم السلام), which means "And peace be upon you, too." This phrase reflects the importance of peace, respect, and community in Middle Eastern cultures.
 
 2. **Insha'Allah (إن شاء الله)**
 

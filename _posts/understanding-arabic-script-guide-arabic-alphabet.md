@@ -3,7 +3,7 @@ title: Understanding Arabic Script | A Guide to the Arabic Alphabet
 date: 2024-09-03
 ---
 
-One of the first steps in learning Arabic is familiarizing yourself with its script. The Arabic alphabet, known for its flowing, cursive style, may seem complex to beginners, but with the right approach, it becomes more manageable and even enjoyable to learn. This guide will help you understand the structure of the Arabic alphabet and provide tips to master reading and writing Arabic.
+One of the first steps in [learning Arabic](https://www.busuu.com/en/course/learn-arabic-online) is familiarizing yourself with its script. The Arabic alphabet, known for its flowing, cursive style, may seem complex to beginners, but with the right approach, it becomes more manageable and even enjoyable to learn. This guide will help you understand the structure of the Arabic alphabet and provide tips to master reading and writing Arabic.
 
 1.  **Overview of the Arabic Alphabet**
 

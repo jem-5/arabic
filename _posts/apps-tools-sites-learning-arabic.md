@@ -5,22 +5,22 @@ date: 2024-09-05
 
 Learning Arabic can be an exciting journey, but it often requires the right resources to help you along the way. While traditional classes and textbooks are valuable, incorporating digital tools can enhance your learning experience and make it more interactive. Here’s a roundup of some of the best apps and tools for learning Arabic, each offering unique features to complement your language journey.
 
-1.  **Duolingo**
+1.  [**Duolingo**](https://www.duolingo.com/)
     Duolingo is one of the most popular language-learning apps, and it offers a fun, gamified approach to learning Arabic. The app focuses on building vocabulary and basic sentence structures through interactive exercises. With short, daily lessons, Duolingo is perfect for beginners who want to gradually build their skills. The app also provides audio recordings to help with pronunciation, making it an all-around useful tool for new learners.
 
 _Best For:_ Beginners looking for a structured and engaging introduction to Arabic.
 
-2.  **Memrise**
+2.  [**Memrise**](https://www.memrise.com/en-us/)
     Memrise uses spaced repetition and mnemonic techniques to help you remember Arabic words and phrases more effectively. The app offers courses for both Modern Standard Arabic (MSA) and various dialects, allowing you to choose a learning path that suits your needs. With native speaker videos and interactive exercises, Memrise helps improve both vocabulary and listening comprehension.
 
 _Best For:_ Learners who want to expand their vocabulary and improve their listening skills.
 
-3.  **Rosetta Stone**
+3.  [**Rosetta Stone**](https://www.rosettastone.com/)
     Rosetta Stone is a well-known language-learning platform that offers an immersive approach to learning Arabic. It emphasizes learning through context by using images, audio, and text to help you understand and use the language naturally. The app focuses on developing all four language skills—speaking, listening, reading, and writing—without relying on translation.
 
 _Best For:_ Learners who prefer an immersive, context-based learning method.
 
-4.  **HelloTalk**
+4.  [**HelloTalk**](https://www.hellotalk.com/)
     HelloTalk is a language exchange app that connects you with native Arabic speakers around the world. It allows you to practice conversational Arabic through text, voice messages, and even video calls. You can also receive corrections and feedback from native speakers, helping you improve your language skills in a real-world context.
 
 _Best For:_ Learners who want to practice speaking and connect with native Arabic speakers.

@@ -31,11 +31,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
   const id = params.id;
-  console.log(id);
 
   // fetch data
   const post = await getPostById(id);
-  console.log(post.title);
   // const product = await fetch(`/blog/${id}`).then((res) => res.json());
 
   // optionally access and extend (rather than replace) parent metadata

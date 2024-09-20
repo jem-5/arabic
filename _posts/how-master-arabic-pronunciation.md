@@ -7,7 +7,7 @@ Mastering Arabic pronunciation can be one of the most challenging aspects for be
 
 1.  **Learn the Arabic Alphabet Sounds**
 
-Arabic has 28 letters, each with a unique sound. Some of these sounds, like "ع" (Ayn) and "غ" (Ghayn), may be entirely new to you. Begin by learning how each letter is pronounced in isolation. Use resources like audio recordings, language apps, or online videos to hear native speakers articulate these sounds. Practice repeating them until you feel comfortable.
+[Arabic](https://en.wikipedia.org/wiki/Arab_world) has 28 letters, each with a unique sound. Some of these sounds, like "ع" (Ayn) and "غ" (Ghayn), may be entirely new to you. Begin by learning how each letter is pronounced in isolation. Use resources like audio recordings, language apps, or online videos to hear native speakers articulate these sounds. Practice repeating them until you feel comfortable.
 
 2.  **Focus on Difficult Consonants**
 
