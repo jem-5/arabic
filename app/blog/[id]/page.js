@@ -1,7 +1,26 @@
 import { getAllPosts, getPostById } from "@/helpers/parseBlog";
+import Link from "next/link";
 
 export default async function Post({ params: { id } }) {
   const { html, title, date } = await getPostById(id);
+  const posts = await getAllPosts();
+
+  const shuffled = posts.sort(() => 0.5 - Math.random());
+  const shuffledUnique = shuffled.filter((item) => item.id !== id);
+  let selected = shuffledUnique.slice(0, 3);
+
+  const DisplayPosts = () => {
+    return selected.map((item) => {
+      return (
+        <Link href={`/blog/${item.id}`}>
+          <h2 className="text-md font-bold">
+            {item.title} - Published on {item.date}
+          </h2>
+        </Link>
+      );
+    });
+  };
+
   return (
     <main className="flex-grow flex flex-col items-left p-3 text-neutral w-1/2 bg-[white] rounded-md mt-2 drop-shadow-xl border gap-3 max-[999px]:w-4/5">
       <article className="p-4">
@@ -9,6 +28,9 @@ export default async function Post({ params: { id } }) {
         <h4>{date}</h4>
         <div className="mt-4  " dangerouslySetInnerHTML={{ __html: html }} />
       </article>
+      <hr />
+      <h2 className="  text-xl  ">Wait, check out these posts too!</h2>
+      <DisplayPosts />
     </main>
   );
 }
@@ -21,23 +43,10 @@ export async function generateStaticParams() {
   }));
 }
 
-// export async function generateMetadata({ params: { id } }) {
-//   const { title } = await getPostById(id);
-//   return {
-//     title,
-//   };
-// }
-
 export async function generateMetadata({ params, searchParams }, parent) {
-  // read route params
   const id = params.id;
 
-  // fetch data
   const post = await getPostById(id);
-  // const product = await fetch(`/blog/${id}`).then((res) => res.json());
-
-  // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || [];
 
   return {
     title: `${post.title} | Arabic Road`,
@@ -51,5 +60,3 @@ export async function generateMetadata({ params, searchParams }, parent) {
     },
   };
 }
-
-// export default function Page({ params, searchParams }) {}
