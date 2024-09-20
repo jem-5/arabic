@@ -10,9 +10,9 @@ export default async function Post({ params: { id } }) {
   let selected = shuffledUnique.slice(0, 3);
 
   const DisplayPosts = () => {
-    return selected.map((item) => {
+    return selected.map((item, i) => {
       return (
-        <Link href={`/blog/${item.id}`}>
+        <Link href={`/blog/${item.id}`} key={i}>
           <h2 className="text-md font-bold">
             {item.title} - Published on {item.date}
           </h2>
