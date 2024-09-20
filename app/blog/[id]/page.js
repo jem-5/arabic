@@ -31,20 +31,18 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
   const id = params.id;
+  console.log(id);
 
   // fetch data
-  const product = await fetch(`https://arabicroad/blog/${id}`).then((res) =>
-    res.json()
-  );
+  const post = await getPostById(id);
+  console.log(post.title);
+  // const product = await fetch(`/blog/${id}`).then((res) => res.json());
 
   // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
+  // const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: product.title,
-    openGraph: {
-      images: [...previousImages],
-    },
+    title: post.title,
   };
 }
 
