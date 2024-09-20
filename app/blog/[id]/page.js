@@ -21,9 +21,31 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params: { id } }) {
-  const { title } = await getPostById(id);
+// export async function generateMetadata({ params: { id } }) {
+//   const { title } = await getPostById(id);
+//   return {
+//     title,
+//   };
+// }
+
+export async function generateMetadata({ params, searchParams }, parent) {
+  // read route params
+  const id = params.id;
+
+  // fetch data
+  const product = await fetch(`https://arabicroad/blog/${id}`).then((res) =>
+    res.json()
+  );
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
   return {
-    title,
+    title: product.title,
+    openGraph: {
+      images: [...previousImages],
+    },
   };
 }
+
+// export default function Page({ params, searchParams }) {}
