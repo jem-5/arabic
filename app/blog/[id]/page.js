@@ -42,7 +42,15 @@ export async function generateMetadata({ params, searchParams }, parent) {
   // const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: post.title,
+    title: `${post.title} | Arabic Road`,
+    openGraph: {
+      title: `${post.title} | Arabic Road`,
+      type: "article",
+      url: `https://arabicroad.com/blog/${post.id}`,
+    },
+    alternates: {
+      canonical: `https://arabicroad.com/blog/${post.id}`,
+    },
   };
 }
 
