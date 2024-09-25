@@ -6,20 +6,20 @@ export default async function sitemap() {
   const posts = await getAllPosts();
 
   const postRoutes = posts.map(({ id, date }) => ({
-    url: `${URL}/blog/${id}`,
+    url: `${URL}/blog/${id}/`,
     lastModified: date,
   }));
 
   const routes = [
-    "",
-    "/dashboard",
-    "/lesson",
-    "/quiz",
-    "/blog",
-    "/about",
-    "/contact",
-    "/privacy",
-    "/terms",
+    "/",
+    "/dashboard/",
+    "/lesson/",
+    "/quiz/",
+    "/blog/",
+    "/about/",
+    "/contact/",
+    "/privacy/",
+    "/terms/",
   ].map((route) => ({
     url: `${URL}${route}`,
     lastModified: new Date().toISOString(),
