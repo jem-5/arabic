@@ -40,7 +40,7 @@ export default async function Home() {
         </figure>
         <div className="card-body">
           <h1 className=" text-3xl text-[rgb(105,184,141)] font-bold ">
-            ArabicRoad: Learn Arabic Online
+            ArabicRoad: Learn Arabic Online Free
           </h1>
 
           <ul className="rounded   list-outside ">

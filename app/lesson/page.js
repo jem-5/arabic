@@ -20,7 +20,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function Lesson() {
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "Greetings";
-  console.log(topic);
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
@@ -30,7 +29,6 @@ export default function Lesson() {
     const userDoc = doc(db, "users", user.uid);
     const userSnap = await getDoc(userDoc);
     if (userSnap.exists()) {
-      console.log("updating..");
       await updateDoc(userDoc, {
         reviewedModules: arrayUnion(topic),
       });
@@ -67,7 +65,7 @@ export default function Lesson() {
 
   const chooseRandomMascot = () => {
     const randomSelection = Math.floor(Math.random() * 13);
-    return `./images/mascots/${randomSelection}.jpg`;
+    return `/images/mascots/${randomSelection}.jpg`;
   };
 
   return (
@@ -113,7 +111,7 @@ export default function Lesson() {
             </div>
           </span>
           <div className="text-1xl text-right place-content-end">
-            {AllModules[topic]
+            {AllModules[topic][questionNum].transliteration
               ? AllModules[topic][questionNum].transliteration
               : null}
           </div>
