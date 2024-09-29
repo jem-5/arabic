@@ -21,7 +21,7 @@ export const QuestionAlert = ({ item }) => {
       <span>{item.arabic}</span>
       <span>
         <svg
-          onClick={() => new Audio(item.audio).play()}
+          onClick={() => new Audio(`.${item.audio}`).play()}
           className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"

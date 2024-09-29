@@ -52,10 +52,12 @@ export default function Quiz() {
       console.log("updating..", questionsWrong);
       await updateDoc(userDoc, {
         [topic]: questionsWrong,
+        completedModules: arrayUnion(topic),
       });
     } else {
       await setDoc(doc(usersRef, user.uid), {
         [topic]: questionsWrong,
+        completedModules: [topic],
       });
     }
   };
@@ -75,7 +77,6 @@ export default function Quiz() {
   }, []);
 
   useEffect(() => {
-    console.log(questionsWrong);
     if (questionNum === AllModules[topic].length - 1) saveProgress();
   }, [questionsWrong, questionNum]);
 
@@ -362,7 +363,7 @@ export default function Quiz() {
             <form method="dialog" className="flex flex-row gap-3">
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                onClick={() => router.push("/")}
+                onClick={() => router.push("/dashboard/")}
               >
                 ✕
               </button>

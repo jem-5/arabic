@@ -29,11 +29,13 @@ export const Profile = () => {
     const userSnap = await getDoc(userDoc);
     if (userSnap.exists()) {
       let userData = userSnap.data();
-      // console.log(userData);
       let words = [];
       for (const [key, value] of Object.entries(userData)) {
-        if (key !== "reviewedModules" && value.length !== 0) {
-          // console.log(key, value);
+        if (
+          key !== "reviewedModules" &&
+          key !== "completedModules" &&
+          value.length !== 0
+        ) {
           words.push(value);
         }
       }
@@ -45,8 +47,6 @@ export const Profile = () => {
   useEffect(() => {
     if (user) updateWordsToReview();
   }, []);
-
-  console.log(wordsToReview);
 
   return (
     <dialog
