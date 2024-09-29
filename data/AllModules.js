@@ -25,7 +25,6 @@ import Adverbs from "./Adverbs";
 import Pronouns from "./Pronouns";
 
 export const AllModules = {
-  Letters,
   Greetings,
   Colors,
   Numbers,
@@ -44,6 +43,7 @@ export const AllModules = {
   Doctor,
   Countries,
   Prayers,
+  Letters,
   Verbs,
   Prepositions,
   Transitions,
