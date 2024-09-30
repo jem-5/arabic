@@ -7,7 +7,7 @@ export const Navigation = () => {
     <div className="navbar bg-base-100 opacity-80 h-18 flex flex-row   ">
       <div className="w-3/4 m-auto max-[999px]:w-full">
         <div className="flex-1  ">
-          <a className="btn btn-ghost text-xl text-black h-22" href="/">
+          <a className="btn btn-ghost text-xl text-black h-full" href="/">
             <img alt="Arabic Road Logo" src="/logo.png" className="h-18" />
           </a>
         </div>

@@ -22,7 +22,7 @@ export const Stats = ({ reviewedModules, completedModules }) => {
   }, [completedModules]);
 
   return (
-    <div className=" stats shadow mt-2 opacity-80 flex  min-[1000px]:flex-row w-3/4 m-auto max-[999px]:w-full overflow-hidden  ">
+    <div className=" stats shadow mt-2 opacity-80 flex  min-[1000px]:flex-row w-3/4 m-auto max-[999px]:w-11/12 overflow-hidden  ">
       <div className="stat   max-[999px]:hidden">
         <div className="stat-figure text-primary ">
           <svg

@@ -19,6 +19,7 @@ import { Profile } from "./Profile";
 import MyButton from "./Button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { HowItWorks } from "./HowItWorks";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
@@ -125,6 +126,7 @@ export const Dashboard = () => {
         reviewedModules={reviewedModules}
         completedModules={completedModules}
       />
+      <HowItWorks />
       <ShowRoads className="justify-self-start" />
 
       <dialog id="my_lesson_summary" className="modal">
