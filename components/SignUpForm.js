@@ -22,7 +22,7 @@ function SignUpForm() {
     }
 
     // else successful
-    console.log(result);
+    // console.log(result);
     // return router.push("/profile");
   };
   return (

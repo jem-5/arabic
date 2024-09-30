@@ -6,7 +6,7 @@ import { useAuthContext } from "@/context/AuthContext";
 
 import { AllModules, totalWords } from "@/data/AllModules";
 
-export const Stats = ({ reviewedModules }) => {
+export const Stats = ({ reviewedModules, completedModules }) => {
   const { user } = useAuthContext();
   const [percentComplete, setPercentComplete] = useState(
     ((reviewedModules.length / Object.keys(AllModules).length) * 100).toFixed(0)
@@ -14,14 +14,15 @@ export const Stats = ({ reviewedModules }) => {
 
   useEffect(() => {
     setPercentComplete(
-      ((reviewedModules.length / Object.keys(AllModules).length) * 100).toFixed(
-        0
-      )
+      (
+        (completedModules.length / Object.keys(AllModules).length) *
+        100
+      ).toFixed(0)
     );
-  }, [reviewedModules]);
+  }, [completedModules]);
 
   return (
-    <div className=" stats shadow mt-2 opacity-80 flex  min-[1000px]:flex-row w-3/4 m-auto max-[999px]:w-full overflow-hidden">
+    <div className=" stats shadow mt-2 opacity-80 flex  min-[1000px]:flex-row w-3/4 m-auto max-[999px]:w-full overflow-hidden  ">
       <div className="stat   max-[999px]:hidden">
         <div className="stat-figure text-primary ">
           <svg
@@ -50,7 +51,7 @@ export const Stats = ({ reviewedModules }) => {
         </div>
       </div>
 
-      <div className="stat">
+      <div className="stat max-[999px]:hidden">
         <div className="stat-figure text-secondary">
           <svg
             xmlns="http://www.w3.org/2000/svg"

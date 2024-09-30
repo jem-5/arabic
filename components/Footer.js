@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer footer-center p-2 bg-base-100 opacity-80 ">
       <div>
-        <p className="flex p-0 gap-8 max-[999px]:text-sm max-[999px]:gap-4">
+        <p className="flex p-0 gap-8 max-[999px]:text-sm max-[999px]:gap-2">
           <Link href="/" className="font-bold">
             Home
           </Link>

@@ -19,7 +19,7 @@ function SignInForm() {
       setErrorMsg(getErrorMsg(error.code));
       console.log(error.code);
     }
-    console.log(result);
+    // console.log(result);
   };
 
   return (

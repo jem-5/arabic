@@ -41,7 +41,7 @@ export default function Quiz() {
     const userDoc = doc(db, "users", user.uid);
     const userSnap = await getDoc(userDoc);
     if (questionsWrong.length === 0) {
-      console.log("delete this");
+      // console.log("delete this");
       // Remove the 'capital' field from the document
       await updateDoc(userDoc, {
         [topic]: deleteField(),
@@ -49,7 +49,7 @@ export default function Quiz() {
     }
 
     if (userSnap.exists()) {
-      console.log("updating..", questionsWrong);
+      // console.log("updating..", questionsWrong);
       await updateDoc(userDoc, {
         [topic]: questionsWrong,
         completedModules: arrayUnion(topic),

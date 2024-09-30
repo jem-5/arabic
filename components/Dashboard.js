@@ -121,7 +121,10 @@ export const Dashboard = () => {
   return (
     <div className=" w-full flex flex-col  justify-start gap-0">
       <Profile />
-      <Stats reviewedModules={reviewedModules} />
+      <Stats
+        reviewedModules={reviewedModules}
+        completedModules={completedModules}
+      />
       <ShowRoads className="justify-self-start" />
 
       <dialog id="my_lesson_summary" className="modal">
