@@ -42,7 +42,7 @@ export const metadata = {
   },
   applicationName:
     "Arabic Road - Learn Arabic Online | Free Arabic Language Learning Platform",
-  appleWebApp: {
+  mobileWebApp: {
     title:
       "Arabic Road - Learn Arabic Online | Free Arabic Language Learning Platform",
     statusBarStyle: "default",
@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9287702370703879"
-          crossorigin="anonymous"
+          // crossorigin="anonymous"
         ></Script>
 
         <Script
@@ -93,18 +93,18 @@ export default function RootLayout({ children }) {
   `}
         </Script>
 
-        <script
+        <Script
           async
-          defer
+          // defer
           src="https://scripts.simpleanalyticscdn.com/latest.js"
-        ></script>
-        <noscript>
+        ></Script>
+        {/* <noscript>
           <img
             src="https://queue.simpleanalyticscdn.com/noscript.gif"
             alt=""
             referrerpolicy="no-referrer-when-downgrade"
           />
-        </noscript>
+        </noscript> */}
       </body>
     </html>
   );
