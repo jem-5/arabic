@@ -1,6 +1,12 @@
 import { getAllPosts } from "@/helpers/parseBlog";
 import Link from "next/link";
 
+export const metadata = {
+  alternates: {
+    canonical: "https://arabicroad.com/blog/",
+  },
+};
+
 export default async function AllPosts() {
   const posts = await getAllPosts();
 

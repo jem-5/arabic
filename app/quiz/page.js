@@ -19,6 +19,13 @@ import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { QuestionAlert } from "@/components/QuestionAlert";
+import Head from "next/head";
+
+// export const metadata = {
+//   alternates: {
+//     canonical: "https://arabicroad.com/quiz/",
+//   },
+// };
 
 export default function Quiz() {
   const searchParams = useSearchParams();
@@ -32,6 +39,15 @@ export default function Quiz() {
   const [questionsWrong, setQuestionsWrong] = useState([]);
   const { user } = useAuthContext();
   const router = useRouter();
+  const [canonicalUrl, setCanonicalUrl] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCanonicalUrl(window.location.href);
+    }
+  }, []);
+
+  console.log(canonicalUrl);
 
   let statusWidth = 75;
   let statusHeight = 75;
@@ -157,220 +173,226 @@ export default function Quiz() {
   };
 
   return (
-    <main className="flex-grow flex flex-col items-center p-2 min-w-80 ">
-      <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between  ">
-        <h3 className="font-bold text-lg text-neutral">QUIZ: {topic}</h3>
+    <>
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
+
+      <main className="flex-grow flex flex-col items-center p-2 min-w-80 ">
+        <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between  ">
+          <h3 className="font-bold text-lg text-neutral">QUIZ: {topic}</h3>
+          <h3 className="font-bold text-lg align-end justify-end  text-neutral">
+            {questionNum + 1} /{" "}
+            {AllModules[topic] ? AllModules[topic].length : null}
+          </h3>
+        </div>
+        <div className="divider"></div>
+
         <h3 className="font-bold text-lg align-end justify-end  text-neutral">
-          {questionNum + 1} /{" "}
-          {AllModules[topic] ? AllModules[topic].length : null}
+          Total Correct: {score}
         </h3>
-      </div>
-      <div className="divider"></div>
 
-      <h3 className="font-bold text-lg align-end justify-end  text-neutral">
-        Total Correct: {score}
-      </h3>
+        <div className="card bg-neutral w-full shadow-xl flex flex-col justify-center items-center">
+          <div className="card-body flex flex-col justify-center items-center">
+            <h2 className="card-title ">
+              {AllModules[topic][questionNum][questionLang]}
+              {questionLang === "arabic" ? (
+                <svg
+                  onClick={playAudio}
+                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                  />
+                </svg>
+              ) : null}
+            </h2>
 
-      <div className="card bg-neutral w-full shadow-xl flex flex-col justify-center items-center">
-        <div className="card-body flex flex-col justify-center items-center">
-          <h2 className="card-title ">
-            {AllModules[topic][questionNum][questionLang]}
-            {questionLang === "arabic" ? (
-              <svg
-                onClick={playAudio}
-                className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+            <div className="card-actions flex flex-col items-center w-full   ">
+              <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                <MyButton
+                  classRest="bg-secondary  "
+                  func={checkAnswer}
+                  text={answers[0]}
                 />
-              </svg>
+                {questionLang === "english" ? (
+                  <svg
+                    onClick={() => playAnswerAudio(answers[0])}
+                    className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer   "
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                    />
+                  </svg>
+                ) : null}
+              </div>
+
+              <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                <MyButton
+                  text={answers[1]}
+                  classRest="bg-secondary  "
+                  func={checkAnswer}
+                />
+                {questionLang === "english" ? (
+                  <svg
+                    onClick={() => playAnswerAudio(answers[1])}
+                    className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer  "
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                    />
+                  </svg>
+                ) : null}
+              </div>
+
+              <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                <MyButton
+                  text={answers[2]}
+                  classRest="bg-secondary  "
+                  func={checkAnswer}
+                />
+                {questionLang === "english" ? (
+                  <svg
+                    onClick={() => playAnswerAudio(answers[2])}
+                    className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer   "
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                    />
+                  </svg>
+                ) : null}
+              </div>
+              <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                <MyButton
+                  text={answers[3]}
+                  classRest="bg-secondary"
+                  func={checkAnswer}
+                />
+                {questionLang === "english" ? (
+                  <svg
+                    onClick={() => playAnswerAudio(answers[3])}
+                    className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer "
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                    />
+                  </svg>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {status === "correct" ? (
+          <img
+            src="/checkmark.png"
+            alt="check"
+            width={statusWidth}
+            height={statusHeight}
+          />
+        ) : status === "wrong" ? (
+          <img
+            src="/xmark.png"
+            alt="x"
+            width={statusWidth}
+            height={statusHeight}
+          />
+        ) : (
+          <img
+            src="/clear.png"
+            alt="x"
+            width={statusWidth}
+            height={statusHeight}
+          />
+        )}
+
+        <div className="divider  "></div>
+
+        <MyButton
+          text="Go Back"
+          func={() => router.push("/dashboard")}
+          classRest="h-12 bg-neutral"
+        />
+        <Profile />
+
+        <dialog id="quiz_summary" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg py-2">Quiz Summary: {topic}</h3>
+
+            <p className="py-2">Total Correct: {score}</p>
+            <p className="py-2">Total Incorrect: {questionsWrong.length}</p>
+            {questionsWrong.length > 0 ? (
+              <p className="py-2">
+                Words to Review: These will be added to your profile page.{" "}
+              </p>
             ) : null}
-          </h2>
 
-          <div className="card-actions flex flex-col items-center w-full   ">
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                classRest="bg-secondary  "
-                func={checkAnswer}
-                text={answers[0]}
-              />
-              {questionLang === "english" ? (
-                <svg
-                  onClick={() => playAnswerAudio(answers[0])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer   "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
+            {questionsWrong.map((item, i) => (
+              <QuestionAlert item={item} key={i} />
+            ))}
+            <div className="modal-action ">
+              <form method="dialog" className="flex flex-row gap-3">
+                <button
+                  className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                  onClick={() => router.push("/dashboard/")}
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
-              ) : null}
-            </div>
-
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                text={answers[1]}
-                classRest="bg-secondary  "
-                func={checkAnswer}
-              />
-              {questionLang === "english" ? (
-                <svg
-                  onClick={() => playAnswerAudio(answers[1])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer  "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
-              ) : null}
-            </div>
-
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                text={answers[2]}
-                classRest="bg-secondary  "
-                func={checkAnswer}
-              />
-              {questionLang === "english" ? (
-                <svg
-                  onClick={() => playAnswerAudio(answers[2])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer   "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
-              ) : null}
-            </div>
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                text={answers[3]}
-                classRest="bg-secondary"
-                func={checkAnswer}
-              />
-              {questionLang === "english" ? (
-                <svg
-                  onClick={() => playAnswerAudio(answers[3])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
-              ) : null}
+                  ✕
+                </button>
+              </form>
             </div>
           </div>
-        </div>
-      </div>
-
-      {status === "correct" ? (
-        <img
-          src="/checkmark.png"
-          alt="check"
-          width={statusWidth}
-          height={statusHeight}
-        />
-      ) : status === "wrong" ? (
-        <img
-          src="/xmark.png"
-          alt="x"
-          width={statusWidth}
-          height={statusHeight}
-        />
-      ) : (
-        <img
-          src="/clear.png"
-          alt="x"
-          width={statusWidth}
-          height={statusHeight}
-        />
-      )}
-
-      <div className="divider  "></div>
-
-      <MyButton
-        text="Go Back"
-        func={() => router.push("/dashboard")}
-        classRest="h-12 bg-neutral"
-      />
-      <Profile />
-
-      <dialog id="quiz_summary" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg py-2">Quiz Summary: {topic}</h3>
-
-          <p className="py-2">Total Correct: {score}</p>
-          <p className="py-2">Total Incorrect: {questionsWrong.length}</p>
-          {questionsWrong.length > 0 ? (
-            <p className="py-2">
-              Words to Review: These will be added to your profile page.{" "}
-            </p>
-          ) : null}
-
-          {questionsWrong.map((item, i) => (
-            <QuestionAlert item={item} key={i} />
-          ))}
-          <div className="modal-action ">
-            <form method="dialog" className="flex flex-row gap-3">
-              <button
-                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                onClick={() => router.push("/dashboard/")}
-              >
-                ✕
-              </button>
-            </form>
-          </div>
-        </div>
-      </dialog>
-    </main>
+        </dialog>
+      </main>
+    </>
   );
 }

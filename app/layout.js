@@ -56,9 +56,9 @@ export const metadata = {
       },
     ],
   },
-  alternates: {
-    canonical: "https://arabicroad.com/",
-  },
+  // alternates: {
+  //   canonical: "https://arabicroad.com/",
+  // },
 };
 
 export default function RootLayout({ children }) {

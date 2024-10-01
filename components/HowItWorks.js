@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+
 export const HowItWorks = () => {
   return (
     <div className=" stats shadow mt-2 opacity-80 flex  w-1/6 m-auto max-[999px]:w-fit overflow-hidden hover:cursor-pointer  ">

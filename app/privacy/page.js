@@ -1,4 +1,11 @@
 import React from "react";
+
+export const metadata = {
+  alternates: {
+    canonical: "https://arabicroad.com/privacy/",
+  },
+};
+
 export default function Privacy() {
   return (
     <main className="flex-grow flex flex-col items-left p-3 text-neutral w-1/2 bg-[white] rounded-md mt-2 drop-shadow-xl border gap-3  max-[999px]:w-4/5">

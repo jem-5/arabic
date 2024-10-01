@@ -2,6 +2,12 @@ import MyButton from "@/components/Button";
 import { getAllPosts } from "@/helpers/parseBlog";
 import Link from "next/link";
 
+export const metadata = {
+  alternates: {
+    canonical: "https://arabicroad.com/",
+  },
+};
+
 export default async function Home() {
   const posts = await getAllPosts();
 
