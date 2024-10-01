@@ -7,18 +7,20 @@ export const HowItWorks = () => {
   return (
     <div className=" stats shadow mt-2 opacity-80 flex  w-1/6 m-auto max-[999px]:w-fit overflow-hidden hover:cursor-pointer  ">
       <div
-        className="stat"
+        className="stat flex flew-row items-center"
         onClick={() => document.getElementById("how_it_works").showModal()}
       >
         <div className="stat-figure text-primary ">
           <img
             src="/info.png"
             alt="how to learn arabic online"
-            width="14px"
-            height="20px"
+            width="24px"
+            height="24px"
           />
         </div>
-        <div className="stat-title max-[999px]:text-sm ">How It Works</div>
+        <div className="stat-title   text-sm text-secondary  ">
+          How It Works
+        </div>
       </div>
 
       <dialog id="how_it_works" className="modal ">

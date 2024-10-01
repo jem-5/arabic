@@ -12,6 +12,10 @@ export const Navigation = () => {
           </a>
         </div>
         <div className="flex-none flex gap-2 ">
+          <Link href="/" className="font-bold">
+            <button className="btn  text-lg">Home</button>
+          </Link>
+
           <Link href="/dashboard" className="font-bold">
             <button className="btn  text-lg">Lessons</button>
           </Link>
