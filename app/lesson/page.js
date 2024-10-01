@@ -16,7 +16,6 @@ import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import Head from "next/head";
 
 export default function Lesson() {
   const searchParams = useSearchParams();
@@ -24,15 +23,37 @@ export default function Lesson() {
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
-  const [canonicalUrl, setCanonicalUrl] = useState("");
+  // const [canonicalUrl, setCanonicalUrl] = useState("");
+
+  const pathname = usePathname();
+  const baseUrl = "https://arabicroad.com";
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCanonicalUrl(window.location.href);
-    }
-  }, []);
+    const canonicalUrl = `${baseUrl}${pathname}`;
 
-  console.log(canonicalUrl);
+    // Check if a canonical link tag already exists
+    let link = document.querySelector("link[rel='canonical']");
+
+    if (link) {
+      // Update the existing canonical URL
+      link.setAttribute("href", canonicalUrl);
+    } else {
+      // Create a new canonical link tag if one doesn't exist
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      link.setAttribute("href", canonicalUrl);
+      console.log(link);
+      document.head.appendChild(link);
+    }
+  }, [pathname]);
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     setCanonicalUrl(`https://arabicroad.com/lesson/?topic=${topic}`);
+  //   }
+  // }, []);
+
+  // console.log(canonicalUrl);
 
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
@@ -80,9 +101,6 @@ export default function Lesson() {
 
   return (
     <>
-      <Head>
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
       <main className="flex-grow flex flex-col items-center p-2 ">
         <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
           <h3 className="font-bold text-lg text-neutral">MODULE: {topic}</h3>
