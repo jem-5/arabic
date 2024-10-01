@@ -5,12 +5,12 @@ import React, { useEffect, useState } from "react";
 
 export const HowItWorks = () => {
   return (
-    <div className=" stats shadow mt-2 opacity-80 flex  w-1/6 m-auto max-[999px]:w-fit overflow-hidden hover:cursor-pointer  ">
+    <div className=" stats shadow mt-2 opacity-80 flex m-auto w-fit overflow-hidden hover:cursor-pointer">
       <div
-        className="stat flex flew-row items-center"
+        className="stat flex flew-row items-center justify-center"
         onClick={() => document.getElementById("how_it_works").showModal()}
       >
-        <div className="stat-figure text-primary ">
+        <div className="stat-figure text-primary">
           <img
             src="/info.png"
             alt="how to learn arabic online"
@@ -18,9 +18,7 @@ export const HowItWorks = () => {
             height="24px"
           />
         </div>
-        <div className="stat-title   text-sm text-secondary  ">
-          How It Works
-        </div>
+        <div className="stat-title text-sm text-secondary">How It Works</div>
       </div>
 
       <dialog id="how_it_works" className="modal ">

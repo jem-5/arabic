@@ -11,20 +11,20 @@ export const Navigation = () => {
             <img alt="Arabic Road Logo" src="/logo.png" className="h-18" />
           </a>
         </div>
-        <div className="flex-none flex gap-2 ">
+        <div className="flex-row flex gap-1 md:gap-4">
           <Link href="/" className="font-bold">
-            <button className="btn  text-lg">Home</button>
+            <button className="btn   text-sm md:text-lg ">Home</button>
           </Link>
 
           <Link href="/dashboard" className="font-bold">
-            <button className="btn  text-lg">Lessons</button>
+            <button className="btn   text-sm md:text-lg ">Lessons</button>
           </Link>
 
           <Link href="/blog" className="font-bold">
-            <button className="btn    text-lg">Blog</button>
+            <button className="btn    text-sm md:text-lg ">Blog</button>
           </Link>
           <Link href="/about" className="font-bold">
-            <button className="btn    text-lg">About</button>
+            <button className="btn    text-sm md:text-lg ">About</button>
           </Link>
         </div>
       </div>
