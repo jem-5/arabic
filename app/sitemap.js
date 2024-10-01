@@ -1,4 +1,5 @@
 // app/sitemap.js
+import { AllModules } from "@/data/AllModules";
 import { getAllPosts } from "@/helpers/parseBlog";
 
 export default async function sitemap() {
@@ -25,5 +26,15 @@ export default async function sitemap() {
     lastModified: new Date().toISOString(),
   }));
 
-  return [...routes, ...postRoutes];
+  const lessonRoutes = Object.keys(AllModules).map((topic) => ({
+    url: `${URL}/lesson/?topic=${topic}`,
+    lastModified: new Date().toISOString(),
+  }));
+
+  const quizRoutes = Object.keys(AllModules).map((topic) => ({
+    url: `${URL}/quiz/?topic=${topic}`,
+    lastModified: new Date().toISOString(),
+  }));
+
+  return [...routes, ...postRoutes, ...lessonRoutes, ...quizRoutes];
 }
