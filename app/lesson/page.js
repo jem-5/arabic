@@ -23,37 +23,24 @@ export default function Lesson() {
   const [questionNum, setQuestionNum] = useState(0);
   const { user } = useAuthContext();
   const router = useRouter();
-  // const [canonicalUrl, setCanonicalUrl] = useState("");
 
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
 
   useEffect(() => {
-    const canonicalUrl = `${baseUrl}${pathname}`;
-
-    // Check if a canonical link tag already exists
+    const canonicalUrl = `${baseUrl}${pathname}?topic=${topic}`;
     let link = document.querySelector("link[rel='canonical']");
 
     if (link) {
-      // Update the existing canonical URL
       link.setAttribute("href", canonicalUrl);
     } else {
-      // Create a new canonical link tag if one doesn't exist
       link = document.createElement("link");
       link.setAttribute("rel", "canonical");
       link.setAttribute("href", canonicalUrl);
-      console.log(link);
       document.head.appendChild(link);
+      console.log(canonicalUrl);
     }
-  }, [pathname]);
-
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     setCanonicalUrl(`https://arabicroad.com/lesson/?topic=${topic}`);
-  //   }
-  // }, []);
-
-  // console.log(canonicalUrl);
+  }, [pathname, topic]);
 
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
@@ -100,131 +87,127 @@ export default function Lesson() {
   };
 
   return (
-    <>
-      <main className="flex-grow flex flex-col items-center p-2 ">
-        <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
-          <h3 className="font-bold text-lg text-neutral">MODULE: {topic}</h3>
-          <h3 className="font-bold text-lg align-end justify-end  text-neutral">
-            {questionNum + 1} /{" "}
-            {AllModules[topic] ? AllModules[topic].length : null}
-          </h3>
-        </div>
-        <div className="divider"></div>
-        <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
-          <div className="card-body flex flex-col justify-between  ">
-            <div className="text-2xl">
-              {AllModules[topic]
-                ? AllModules[topic][questionNum].english
-                : null}
-            </div>
-            <span className="">
-              <div className="chat chat-end text-2xl">
-                <div className="chat-bubble bg-secondary">
-                  {AllModules[topic]
-                    ? AllModules[topic][questionNum].arabic
-                    : null}
-                </div>
-                <svg
-                  onClick={playAudio}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
-              </div>
-            </span>
-            <div className="text-1xl text-right place-content-end">
-              {AllModules[topic][questionNum].transliteration
-                ? AllModules[topic][questionNum].transliteration
-                : null}
-            </div>
+    <main className="flex-grow flex flex-col items-center p-2 ">
+      <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
+        <h3 className="font-bold text-lg text-neutral">MODULE: {topic}</h3>
+        <h3 className="font-bold text-lg align-end justify-end  text-neutral">
+          {questionNum + 1} /{" "}
+          {AllModules[topic] ? AllModules[topic].length : null}
+        </h3>
+      </div>
+      <div className="divider"></div>
+      <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
+        <div className="card-body flex flex-col justify-between  ">
+          <div className="text-2xl">
+            {AllModules[topic] ? AllModules[topic][questionNum].english : null}
           </div>
-          <figure>
-            <img
-              className="w-56"
-              src={
-                AllModules[topic]
+          <span className="">
+            <div className="chat chat-end text-2xl">
+              <div className="chat-bubble bg-secondary">
+                {AllModules[topic]
+                  ? AllModules[topic][questionNum].arabic
+                  : null}
+              </div>
+              <svg
+                onClick={playAudio}
+                className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                />
+              </svg>
+            </div>
+          </span>
+          <div className="text-1xl text-right place-content-end">
+            {AllModules[topic][questionNum].transliteration
+              ? AllModules[topic][questionNum].transliteration
+              : null}
+          </div>
+        </div>
+        <figure>
+          <img
+            className="w-56"
+            src={
+              AllModules[topic]
+                ? AllModules[topic][questionNum].image
                   ? AllModules[topic][questionNum].image
-                    ? AllModules[topic][questionNum].image
-                    : chooseRandomMascot()
-                  : null
-              }
-              alt="arabic greeting"
-            />
-          </figure>
-        </div>
-
-        <div className="flex flex-row justify-between mt-1 w-full">
-          <MyButton
-            classRest={questionNum === 0 ? "invisible" : "visible"}
-            text={
-              <svg
-                className="w-5 h-5 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m15 19-7-7 7-7"
-                />
-              </svg>
+                  : chooseRandomMascot()
+                : null
             }
-            func={handleClickPrevious}
+            alt="arabic greeting"
           />
+        </figure>
+      </div>
 
-          <MyButton
-            classRest="bg-neutral"
-            text={
-              <svg
-                className="w-5 h-5 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m9 5 7 7-7 7"
-                />
-              </svg>
-            }
-            func={handleClickNext}
-          />
-        </div>
-
-        <div className="divider "></div>
-
+      <div className="flex flex-row justify-between mt-1 w-full">
         <MyButton
-          text="Go Back"
-          func={() => router.push("/dashboard")}
-          classRest="h-12 bg-neutral"
+          classRest={questionNum === 0 ? "invisible" : "visible"}
+          text={
+            <svg
+              className="w-5 h-5 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m15 19-7-7 7-7"
+              />
+            </svg>
+          }
+          func={handleClickPrevious}
         />
 
-        <Profile />
-      </main>
-    </>
+        <MyButton
+          classRest="bg-neutral"
+          text={
+            <svg
+              className="w-5 h-5 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m9 5 7 7-7 7"
+              />
+            </svg>
+          }
+          func={handleClickNext}
+        />
+      </div>
+
+      <div className="divider "></div>
+
+      <MyButton
+        text="Go Back"
+        func={() => router.push("/dashboard")}
+        classRest="h-12 bg-neutral"
+      />
+
+      <Profile />
+    </main>
   );
 }
