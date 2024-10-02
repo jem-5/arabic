@@ -71,7 +71,7 @@ export default async function Home() {
 
           <img
             src="/quiz.jpg"
-            className=" rounded  w-3/4 md:w-full max-w-96 self-center "
+            className=" rounded  w-3/4 max-[999px]:w-full  self-center "
           />
 
           <div className="card-actions justify-end">
