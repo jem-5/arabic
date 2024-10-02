@@ -23,37 +23,10 @@ export default async function Home() {
   };
 
   return (
-    <main className="flex-grow flex flex-col items-center  mt-2 ">
-      <div className="card lg:card-side p-2 bg-base-100 shadow-xl ">
-        <figure className="flex flex-col h-full justify-center">
-          <div className="carousel w-96">
-            <div id="item1" className="carousel-item w-full">
-              <img src="/featured.jpg" className="w-full rounded" />
-            </div>
-            <div id="item2" className="carousel-item w-full">
-              <img src="/featured2.jpg" className="w-full rounded" />
-            </div>
-            <div id="item3" className="carousel-item w-full">
-              <img src="/featured3.jpg" className="w-full rounded" />
-            </div>
-            <div id="item4" className="carousel-item w-full">
-              <img src="/featured4.jpg" className="w-full rounded" />
-            </div>
-          </div>
-          <div className="flex   justify-center gap-2 py-2">
-            <a href="#item1" className="btn btn-xs bg-[white] text-[black]">
-              1
-            </a>
-            <a href="#item2" className="btn btn-xs bg-[white] text-[black]">
-              2
-            </a>
-            <a href="#item3" className="btn btn-xs bg-[white] text-[black]">
-              3
-            </a>
-            <a href="#item4" className="btn btn-xs bg-[white] text-[black]">
-              4
-            </a>
-          </div>
+    <main className="  flex flex-col items-center  mt-2 ">
+      <div className="card lg:card-side p-2 bg-base-100 shadow-xl w-full md:w-2/3 ">
+        <figure className="  md:h-fit max-[999px]:max-h-96">
+          <img src="/featured.jpg" className=" rounded w-5/6 md:w-full  " />
         </figure>
         <div className="card-body">
           <h1 className=" text-3xl text-[rgb(105,184,141)] font-bold ">
@@ -63,7 +36,7 @@ export default async function Home() {
           <ul className="rounded   list-outside ">
             <li>
               <span className="text-xl">
-                700+ Interactive Vocabulary Lessons
+                700+ Interactive Vocabulary Flashcards
               </span>
               <p>
                 + Comprehensive lessons include a relevant photo, Arabic voice
@@ -75,7 +48,7 @@ export default async function Home() {
               </p>
             </li>
             <li>
-              <span className="text-xl">20+ Individual Modules</span>
+              <span className="text-xl">25+ Individual Modules</span>
               <p>
                 + Curriculum organized into logical segments based on topic &
                 level
@@ -91,10 +64,15 @@ export default async function Home() {
               <p>+ Access the full curriculum immediately without an account</p>
               <p>
                 + With a free account, you can track your progress through the
-                lessons and review missed words
+                lessons & quizzes and review missed words
               </p>
             </li>
           </ul>
+
+          <img
+            src="/quiz.jpg"
+            className=" rounded  w-3/4 md:w-full max-w-96 self-center "
+          />
 
           <div className="card-actions justify-end">
             <Link href="/dashboard" className="font-bold">
