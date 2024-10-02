@@ -11,6 +11,17 @@ export const metadata = {
 export default async function Home() {
   const posts = await getAllPosts();
 
+  const featuredPost = posts.slice(0, 1)[0];
+  const spotlightPosts = posts.slice(1, 3);
+  const remainderPosts = posts.slice(3, -1);
+
+  const getFirstWords = (string) => {
+    string.replace(/<[^>]*>/g, "");
+    const n = 50;
+    const output = string.split(" ").slice(0, n).join(" ");
+    return output + "...";
+  };
+
   return (
     <main className="flex-grow flex flex-col items-center  mt-2 ">
       <div className="card lg:card-side p-2 bg-base-100 shadow-xl ">
@@ -96,12 +107,71 @@ export default async function Home() {
         </div>
       </div>
 
-      <section className="flex-grow flex flex-col items-left p-3 text-neutral w-full  bg-[#ffffff60] rounded-md mt-2 drop-shadow-xl border gap-3 ">
+      <section className=" max-w-full flex flex-col items-left p-3 m-3 text-neutral  bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-3 w-5/6 lg:w-2/3">
         <h3 className="font-bold text-xl  self-start text-neutral">
           Latest From the Blog:
         </h3>
         <ul className="menu menu-lg  rounded-box w-full ">
-          {posts.map((post) => {
+          <li className="mt-2 ">
+            <Link
+              href={`/blog/${featuredPost.id}`}
+              className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
+            >
+              <p className="text-2xl font-bold self-start">
+                {featuredPost.title}
+              </p>
+              <p
+                className="text-md "
+                dangerouslySetInnerHTML={{
+                  __html: getFirstWords(featuredPost.html),
+                }}
+              ></p>
+
+              <p className="text-sm  self-start">
+                Published on {featuredPost.date}
+              </p>
+            </Link>
+          </li>
+
+          <li className="mt-2 ">
+            <Link
+              href={`/blog/${spotlightPosts[0].id}`}
+              className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
+            >
+              <p className="text-xl  self-start">{spotlightPosts[0].title}</p>
+              <p
+                className="text-md "
+                dangerouslySetInnerHTML={{
+                  __html: getFirstWords(spotlightPosts[0].html),
+                }}
+              ></p>
+
+              <p className="text-sm  self-start">
+                Published on {spotlightPosts[0].date}
+              </p>
+            </Link>
+          </li>
+
+          <li className="mt-2 ">
+            <Link
+              href={`/blog/${spotlightPosts[1].id}`}
+              className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
+            >
+              <p className="text-xl   self-start">{spotlightPosts[1].title}</p>
+              <p
+                className="text-md "
+                dangerouslySetInnerHTML={{
+                  __html: getFirstWords(spotlightPosts[1].html),
+                }}
+              ></p>
+
+              <p className="text-sm  self-start">
+                Published on {spotlightPosts[1].date}
+              </p>
+            </Link>
+          </li>
+
+          {remainderPosts.map((post) => {
             const { id, date, title } = post;
             return (
               <li key={id} className="mt-2">
