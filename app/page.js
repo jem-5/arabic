@@ -69,11 +69,6 @@ export default async function Home() {
             </li>
           </ul>
 
-          <img
-            src="/quiz.jpg"
-            className=" rounded  w-3/4 max-[999px]:w-full  self-center "
-          />
-
           <div className="card-actions justify-end">
             <Link href="/dashboard" className="font-bold">
               <MyButton

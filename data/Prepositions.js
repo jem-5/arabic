@@ -188,5 +188,12 @@ const Prepositions = [
     image: "",
     transliteration: "Taht",
   },
+  {
+    english: "Since early on",
+    arabic: "من بدري ",
+    audio: "/audio/prepositions/early-on.mp3",
+    image: "",
+    transliteration: "Min badri",
+  },
 ];
 export default Prepositions;
