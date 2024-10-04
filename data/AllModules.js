@@ -23,6 +23,8 @@ import Transitions from "./Transitions";
 import Adjectives from "./Adjectives";
 import Adverbs from "./Adverbs";
 import Pronouns from "./Pronouns";
+import Commands from "./Commands";
+import Restaurant from "./Restaurant";
 
 export const AllModules = {
   Greetings,
@@ -50,11 +52,23 @@ export const AllModules = {
   Adjectives,
   Adverbs,
   Pronouns,
+  Commands,
 
-  // Idioms,
+  Restaurant,
+
+  // Idioms / Proverbs,
   // Nature,
   // Curses,
   // Onomatopeia,
+  // Questions,
+  // Wedding,
+  // Phone,
+  // Calendar inc yester, today,tmrw,
+  // Store ,
+  // Meals of day ,
+  // More Adjectives ,
+  // More Verbs,
+  // City Structures ,
 };
 
 const moduleLengths = [];

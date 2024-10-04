@@ -1,5 +1,12 @@
 const Prayers = [
   {
+    english: "Prayers",
+    arabic: "صلوات",
+    audio: "/audio/prayers/prayers.mp3",
+    image: "",
+    transliteration: "Salawat",
+  },
+  {
     english: "God willing",
     arabic: "إن شاء الله",
     audio: "/audio/prayers/god-willing.mp3",

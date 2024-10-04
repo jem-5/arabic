@@ -186,14 +186,14 @@ const Foods = [
     arabic: "خل",
     audio: "/audio/foods/vinegar.mp3",
     image: "/images/foods/oil-vinegar.jpg",
-    transliteration: "Khal)",
+    transliteration: "Khal",
   },
   {
     english: "Beans",
     arabic: "فاصوليا ",
     audio: "/audio/foods/beans.mp3",
     image: "/images/foods/beans.jpg",
-    transliteration: "Fasulia",
+    transliteration: "Fasolia",
   },
   {
     english: "What's for dinner?",

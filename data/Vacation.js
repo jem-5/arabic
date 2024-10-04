@@ -377,6 +377,27 @@ const Vacation = [
     image: "",
     transliteration: "Ma hiya afdal tareeqa lil wusool ila hunak?",
   },
+  {
+    english: "Desserts",
+    arabic: "الحلويات",
+    audio: "/audio/vacation/desserts.mp3",
+    image: "",
+    transliteration: "Alhalwayat",
+  },
+  {
+    english: "Vacation",
+    arabic: "أجازة",
+    audio: "/audio/vacation/vacation.mp3",
+    image: "",
+    transliteration: "'Ijaza",
+  },
+  {
+    english: "Traffic",
+    arabic: "مرور",
+    audio: "/audio/vacation/traffic.mp3",
+    image: "",
+    transliteration: "Murur",
+  },
 ];
 
 export default Vacation;

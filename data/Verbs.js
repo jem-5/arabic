@@ -293,6 +293,48 @@ const Verbs = [
     image: "",
     transliteration: "Ya'khudh",
   },
+  {
+    english: "I mean",
+    arabic: "أعني",
+    audio: "/audio/verbs/mean.mp3",
+    image: "",
+    transliteration: "ya'ni",
+  },
+  {
+    english: "To cook",
+    arabic: "يطبخ",
+    audio: "/audio/verbs/cook.mp3",
+    image: "",
+    transliteration: "Yatbukh",
+  },
+  {
+    english: "To increase",
+    arabic: " يزيد",
+    audio: "/audio/verbs/increase.mp3",
+    image: "",
+    transliteration: "Yazid",
+  },
+  {
+    english: "To start",
+    arabic: "يبدأ ",
+    audio: "/audio/verbs/start.mp3",
+    image: "",
+    transliteration: "Yabda",
+  },
+  {
+    english: "To be afraid",
+    arabic: "يخاف",
+    audio: "/audio/verbs/afraid.mp3",
+    image: "",
+    transliteration: "Yakhaf",
+  },
+  {
+    english: "To describe",
+    arabic: " يصف",
+    audio: "/audio/verbs/describe.mp3",
+    image: "",
+    transliteration: "Yasif",
+  },
 ];
 
 export default Verbs;

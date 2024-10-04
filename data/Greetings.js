@@ -81,14 +81,14 @@ const Greetings = [
     arabic: "اسمي رانيا",
     audio: "/audio/greetings/name-rania.mp3",
     image: "/images/mascots/4.jpg",
-    transliteration: "",
+    transliteration: "Ismi Rania",
   },
   {
     english: "What is your name?",
     arabic: " ما اسمك؟",
     audio: "/audio/greetings/what-name.mp3",
     image: "",
-    transliteration: "Ismi Rania",
+    transliteration: "Ma Ismuk?",
   },
   {
     english: "Where are you from?",
@@ -124,6 +124,13 @@ const Greetings = [
     audio: "/audio/greetings/maybe.mp3",
     image: "",
     transliteration: "Rubbama",
+  },
+  {
+    english: "Cool / OK",
+    arabic: "ماشي",
+    audio: "/audio/greetings/cool.mp3",
+    image: "",
+    transliteration: "Mashi",
   },
   {
     english: "Of course",

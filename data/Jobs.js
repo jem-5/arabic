@@ -132,6 +132,13 @@ const Jobs = [
     image: "",
     transliteration: "Ra'id A'mal",
   },
+  {
+    english: "Actor",
+    arabic: "ممثل",
+    audio: "/audio/jobs/actor.mp3",
+    image: "",
+    transliteration: "Mumathil",
+  },
 ];
 
 export default Jobs;
