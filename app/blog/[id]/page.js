@@ -19,6 +19,7 @@ export default async function Post({ params: { id } }) {
         </Link>
       );
     });
+    6;
   };
 
   return (

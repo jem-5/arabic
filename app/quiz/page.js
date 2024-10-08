@@ -11,6 +11,7 @@ import {
   getDoc,
   deleteDoc,
   deleteField,
+  arrayRemove,
 } from "firebase/firestore";
 import Link from "next/link";
 import { AllModules } from "@/data/AllModules";
@@ -47,7 +48,6 @@ export default function Quiz() {
       link.setAttribute("rel", "canonical");
       link.setAttribute("href", canonicalUrl);
       document.head.appendChild(link);
-      console.log(canonicalUrl);
     }
   }, [pathname, topic]);
 
@@ -59,24 +59,27 @@ export default function Quiz() {
     const userDoc = doc(db, "users", user.uid);
     const userSnap = await getDoc(userDoc);
     if (questionsWrong.length === 0) {
-      // console.log("delete this");
-      // Remove the 'capital' field from the document
-      await updateDoc(userDoc, {
-        [topic]: deleteField(),
-      });
-    }
-
-    if (userSnap.exists()) {
-      // console.log("updating..", questionsWrong);
-      await updateDoc(userDoc, {
-        [topic]: questionsWrong,
-        completedModules: arrayUnion(topic),
-      });
+      if (userSnap.exists()) {
+        await updateDoc(userDoc, {
+          [topic]: deleteField(),
+          completedModules: arrayUnion(topic),
+        });
+      } else {
+        await setDoc(doc(usersRef, user.uid), {
+          completedModules: [topic],
+        });
+      }
     } else {
-      await setDoc(doc(usersRef, user.uid), {
-        [topic]: questionsWrong,
-        completedModules: [topic],
-      });
+      if (userSnap.exists()) {
+        await updateDoc(userDoc, {
+          [topic]: questionsWrong,
+          completedModules: arrayRemove(topic),
+        });
+      } else {
+        await setDoc(doc(usersRef, user.uid), {
+          [topic]: questionsWrong,
+        });
+      }
     }
   };
 

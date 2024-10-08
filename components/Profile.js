@@ -24,6 +24,7 @@ export const Profile = () => {
   const router = useRouter();
   const [wordsToReview, setWordsToReview] = useState([]);
 
+  console.log(wordsToReview);
   const updateWordsToReview = async () => {
     const userDoc = doc(db, "users", user.uid);
     const userSnap = await getDoc(userDoc);
