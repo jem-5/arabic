@@ -4,7 +4,10 @@ import React, { useEffect, useState } from "react";
 export const QuestionAlert = ({ item }) => {
   // console.log(item.audio);
   return (
-    <div role="alert" className="alert alert-warning my-1">
+    <div
+      role="alert"
+      className="alert alert-warning my-1 flex flex-row justify-between"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

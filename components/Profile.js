@@ -70,8 +70,12 @@ export const Profile = () => {
             <p className="text-lg text-secondary">
               Last Login: {user.metadata.lastSignInTime.slice(0, 16)}
             </p>
+            <button className="btn btn-secondary btn-active" onClick={signout}>
+              Sign Out
+            </button>
 
-            <p className="text-lg text-secondary">Words to Review:</p>
+            <hr className="my-3" />
+            <p className="text-xl text-[#white] ">Words to Review:</p>
 
             {wordsToReview
               ? wordsToReview.map((item, i) => (
@@ -79,9 +83,6 @@ export const Profile = () => {
                 ))
               : "There are no words to review in your profile."}
 
-            <button className="btn btn-secondary btn-active" onClick={signout}>
-              Sign Out
-            </button>
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
