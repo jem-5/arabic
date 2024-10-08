@@ -207,7 +207,7 @@ const Vacation = [
     arabic: "تذكرة ",
     audio: "/audio/vacation/ticket.mp3",
     image: "",
-    transliteration: "Tathkira",
+    transliteration: "Tadhkira",
   },
   {
     english: "Departure",
@@ -361,7 +361,7 @@ const Vacation = [
     arabic: "أنا ضائع",
     audio: "/audio/vacation/lost.mp3",
     image: "",
-    transliteration: "Ana da'i'",
+    transliteration: "Ana da'ia'",
   },
   {
     english: "Can you recommend a good restaurant?",

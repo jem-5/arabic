@@ -39,7 +39,7 @@ const Clothing = [
     arabic: "بلوزة ",
     audio: "/audio/clothing/blouse.mp3",
     image: "/images/clothing/blouse.jpg",
-    transliteration: "Blooza",
+    transliteration: "Belooza",
   },
   {
     english: "Jacket",
@@ -53,14 +53,14 @@ const Clothing = [
     arabic: "معطف ",
     audio: "/audio/clothing/coat.mp3",
     image: "/images/clothing/coat.jpg",
-    transliteration: "Mi'taf",
+    transliteration: "Mi'ataf",
   },
   {
     english: "Scarf",
     arabic: "وشاح ",
     audio: "/audio/clothing/scarf.mp3",
     image: "/images/clothing/scarf.jpg",
-    transliteration: "Wishah",
+    transliteration: "Washah",
   },
   {
     english: "Gloves",
@@ -116,7 +116,7 @@ const Clothing = [
     arabic: "نظارات شمسية  ",
     audio: "/audio/clothing/sunglasses.mp3",
     image: "/images/clothing/sunglasses.jpg",
-    transliteration: "Natharat Shamsiya",
+    transliteration: "Natharat shamsiya",
   },
   {
     english: "Jewelry",
@@ -142,14 +142,14 @@ const Clothing = [
   {
     english: "Ring",
     arabic: "خاتم ",
-    audio: "/audio/clothing/.mp3",
+    audio: "/audio/clothing/ring.mp3",
     image: "/images/clothing/ring.jpg",
     transliteration: "Khatim",
   },
   {
     english: "Earrings",
     arabic: "أقراط ",
-    audio: "/audio/clothing/ring.mp3",
+    audio: "/audio/clothing/earrings.mp3",
     image: "/images/clothing/necklace.jpg",
     transliteration: "Aqrat",
   },
@@ -179,14 +179,14 @@ const Clothing = [
     arabic: "للنساء",
     audio: "/audio/clothing/for-women.mp3",
     image: "",
-    transliteration: "lilnisa'",
+    transliteration: "Lilnisa'",
   },
   {
     english: "How much is this?",
     arabic: "بكم هذا؟	",
     audio: "/audio/clothing/how-much-this.mp3",
     image: "",
-    transliteration: "Bikam haadha?",
+    transliteration: "Bikam hadha?",
   },
   {
     english: "I need new clothes",

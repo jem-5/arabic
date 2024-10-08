@@ -22,10 +22,10 @@ const House = [
   },
   {
     english: "Living Room",
-    arabic: "غرفة المعيشة",
+    arabic: "صالون",
     audio: "/audio/house/living-room.mp3",
     image: "/images/house/room.jpg",
-    transliteration: "Ghurfat al-ma'isha",
+    transliteration: "Saloon",
   },
   {
     english: "Bathroom",
@@ -158,7 +158,7 @@ const House = [
     arabic: "شباك",
     audio: "/audio/house/window.mp3",
     image: "/images/house/window.jpg",
-    transliteration: "Shabak",
+    transliteration: "Shibak",
   },
   {
     english: "Wall",
@@ -179,7 +179,7 @@ const House = [
     arabic: "صحن ",
     audio: "/audio/house/plate.mp3",
     image: "/images/house/plate.jpg",
-    transliteration: "SahenKub",
+    transliteration: "Sahen",
   },
   {
     english: "Cup",
@@ -241,7 +241,7 @@ const House = [
     english: "Where is the bathroom?",
     arabic: "أين الحمام؟ ",
     audio: "/audio/house/where-bathroom.mp3",
-    transliteration: "Ayna al-hammam?",
+    transliteration: "Ayn al-hammam?",
     image: "/images/house/bathroom.jpg",
   },
   {
@@ -249,7 +249,7 @@ const House = [
     arabic: "هذه غرفة المعيشة",
     audio: "/audio/house/this-living-room.mp3",
     image: "/images/house/room.jpg",
-    transliteration: "Hadihi ghurfat al-ma'isha",
+    transliteration: "Hadhi ghurfat al-ma'isha",
   },
   {
     english: "The kitchen is on the left",
@@ -268,7 +268,7 @@ const House = [
   {
     english: "I like your home",
     arabic: "أحب منزلك",
-    audio: "/audio/house/sofa.mp3",
+    audio: "/audio/house/like-home.mp3",
     image: "/images/house/sofa.jpg",
     transliteration: "Uhibbu manzilik",
   },

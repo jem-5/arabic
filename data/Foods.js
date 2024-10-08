@@ -11,7 +11,7 @@ const Foods = [
     arabic: "زبدة ",
     audio: "/audio/foods/butter.mp3",
     image: "/images/foods/butter.jpg",
-    transliteration: "Zubda",
+    transliteration: "Zebda",
   },
   {
     english: "Cheese",
@@ -143,7 +143,7 @@ const Foods = [
     english: "Popcorn",
     arabic: "فشار ",
     audio: "/audio/foods/popcorn.mp3",
-    transliteration: "Fushar",
+    transliteration: "Feshar",
     image: "/images/foods/popcorn.jpg",
   },
   {
@@ -200,7 +200,7 @@ const Foods = [
     arabic: "ماذا على العشاء؟",
     audio: "/audio/foods/what-dinner.mp3",
     image: "/images/foods/sandwich.jpg",
-    transliteration: "Mada ala al-asha?",
+    transliteration: "Madha ala al-asha?",
   },
   {
     english: "I like spicy food",
@@ -214,7 +214,7 @@ const Foods = [
     arabic: " هذا طعمه لذيذ",
     audio: "/audio/foods/this-delicious.mp3",
     image: "/images/foods/fish.jpg",
-    transliteration: "Hatha ta'muhu latheeth",
+    transliteration: "Hadha ta'muhu latheeth",
   },
   {
     english: "What's your favorite dish",

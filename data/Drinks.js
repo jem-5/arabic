@@ -53,7 +53,7 @@ const Drinks = [
     arabic: "شاي مثلج",
     audio: "/audio/drinks/iced-tea.mp3",
     image: "/images/drinks/iced-tea.jpg",
-    transliteration: "Shay Mutalij",
+    transliteration: "Shay Muthalij",
   },
   {
     english: "Cappuccino",
@@ -67,7 +67,7 @@ const Drinks = [
     arabic: "شوكولاتة ساخنة",
     audio: "/audio/drinks/hot-chocolate.mp3",
     image: "/images/drinks/hot-chocolate.jpg",
-    transliteration: "Shukolata Sakhina",
+    transliteration: "Shukolata sakhina",
   },
   {
     english: "Espresso",
@@ -109,7 +109,7 @@ const Drinks = [
     arabic: " قهوة بدون كافيين",
     audio: "/audio/drinks/decaf-coffee.mp3",
     image: "",
-    transliteration: "Qahwa Bidun Kafeyin",
+    transliteration: "Qahwa bidun kafeyin",
   },
   {
     english: "I want coffee",

@@ -11,7 +11,7 @@ const Animals = [
     arabic: "كلب ",
     audio: "/audio/animals/dog.mp3",
     image: "/images/animals/dog.jpg",
-    transliteration: "Kalb",
+    transliteration: "Kelb",
   },
   {
     english: "Bird",
@@ -25,7 +25,7 @@ const Animals = [
     arabic: "سمك",
     audio: "/audio/animals/fish.mp3",
     image: "/images/animals/fish.jpg",
-    transliteration: "Samaka",
+    transliteration: "Samak",
   },
   {
     english: "Horse",
@@ -88,7 +88,7 @@ const Animals = [
     arabic: "دب ",
     audio: "/audio/animals/bear.mp3",
     image: "/images/animals/bear.jpg",
-    transliteration: "Dubb",
+    transliteration: "Dub",
   },
   {
     english: "Giraffe",
@@ -137,14 +137,14 @@ const Animals = [
     arabic: "حوت ",
     audio: "/audio/animals/whale.mp3",
     image: "/images/animals/whale.jpg",
-    transliteration: "Hout",
+    transliteration: "Hoot",
   },
   {
     english: "Turtle",
     arabic: "سلحفاة",
     audio: "/audio/animals/turtle.mp3",
     image: "/images/animals/turtle.jpg",
-    transliteration: "Sulhafat",
+    transliteration: "Sulhafa",
   },
   {
     english: "Bee",

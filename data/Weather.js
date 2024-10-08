@@ -4,21 +4,21 @@ const Weather = [
     arabic: "الطقس  ",
     audio: "/audio/weather/weather.mp3",
     image: "/images/weather/weather.jpg",
-    transliteration: "Al-Taqs",
+    transliteration: "Al taqs",
   },
   {
     english: "Temperature",
     arabic: "درجة الحرارة ",
     audio: "/audio/weather/temperature.mp3",
     image: "/images/weather/temperature.jpg",
-    transliteration: "Darajat al-Harara",
+    transliteration: "Darajat al-harara",
   },
   {
     english: "Sunny",
     arabic: "مشمس  ",
     audio: "/audio/weather/sunny.mp3",
     image: "/images/weather/sun.jpg",
-    transliteration: "Shams",
+    transliteration: "Mushmis",
   },
   {
     english: "Cloudy",
@@ -46,7 +46,7 @@ const Weather = [
     arabic: "مثلج  ",
     audio: "/audio/weather/snowy.mp3",
     image: "/images/weather/snowy.jpg",
-    transliteration: "Muthlij",
+    transliteration: "Muthelij",
   },
   {
     english: "Thunder",
@@ -102,7 +102,7 @@ const Weather = [
     arabic: "كيف الطقس؟ ",
     audio: "/audio/weather/hows-weather.mp3",
     image: "/images/weather/weather.jpg",
-    transliteration: "Kayfa hal al-taqs?",
+    transliteration: "Kayfa al-taqs?",
   },
   {
     english: "It's sunny",
@@ -165,14 +165,14 @@ const Weather = [
     arabic: "هناك ضباب",
     audio: "/audio/weather/there-fog.mp3",
     image: "/images/weather/fog.jpg",
-    transliteration: "Hunaka dabab",
+    transliteration: "Hunak dabab",
   },
   {
     english: "There is a storm",
     arabic: "هناك عاصفة",
     audio: "/audio/weather/there-storm.mp3",
     image: "/images/weather/rain.jpg",
-    transliteration: "Hunaka aasifa",
+    transliteration: "Hunak aasifa",
   },
 ];
 

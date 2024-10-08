@@ -11,7 +11,7 @@ const Body = [
     arabic: "وجه ",
     audio: "/audio/body/face.mp3",
     image: "/images/body/face.jpg",
-    transliteration: "Wajh",
+    transliteration: "Waja",
   },
   {
     english: "Hair",
@@ -85,7 +85,7 @@ const Body = [
   },
   {
     english: "Neck",
-    arabic: "عُنُق ",
+    arabic: "رقبة ",
     audio: "/audio/body/neck.mp3",
     image: "/images/body/neck.jpg",
     transliteration: "Raqaba",
@@ -158,14 +158,14 @@ const Body = [
     arabic: "قلب ",
     audio: "/audio/body/heart.mp3",
     image: "/images/body/heart.jpg",
-    transliteration: "Qadam",
+    transliteration: "Qelb",
   },
   {
     english: "Liver",
     arabic: "كبد ",
     audio: "/audio/body/liver.mp3",
     image: "/images/body/liver.jpg",
-    transliteration: "Qadam",
+    transliteration: "Kibda",
   },
   {
     english: "Lungs",
@@ -200,7 +200,7 @@ const Body = [
     arabic: "جلد ",
     audio: "/audio/body/skin.mp3",
     image: "",
-    transliteration: "Jild",
+    transliteration: "Jilid",
   },
   {
     english: "Bone",

@@ -25,7 +25,7 @@ const Greetings = [
     arabic: "مساء الخير",
     audio: "/audio/greetings/afternoon.mp3",
     image: "/images/greetings/afternoon.jpg",
-    transliteration: "Masa' al-khair",
+    transliteration: "Mesa' al-khair",
   },
   {
     english: "Good night",
@@ -46,7 +46,7 @@ const Greetings = [
     arabic: "كيف حالك؟",
     audio: "/audio/greetings/how-are-you.mp3",
     image: "",
-    transliteration: "Kayfa halak?",
+    transliteration: "Kayf halak?",
   },
   {
     english: "I'm fine, thanks.",
@@ -95,7 +95,7 @@ const Greetings = [
     arabic: "من أين أنت؟",
     audio: "/audio/greetings/where-from.mp3",
     image: "",
-    transliteration: "Min ayna anta?",
+    transliteration: "Min ayn ent?",
   },
   {
     english: "I'm from America",
@@ -116,7 +116,7 @@ const Greetings = [
     arabic: "لا",
     audio: "/audio/greetings/no.mp3",
     image: "",
-    transliteration: "La",
+    transliteration: "La'",
   },
   {
     english: "Maybe",

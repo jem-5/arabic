@@ -85,10 +85,10 @@ const Produce = [
   },
   {
     english: "Carrot",
-    arabic: "جزر ",
+    arabic: "جزرة ",
     audio: "/audio/produce/carrot.mp3",
     image: "/images/produce/carrot.jpg",
-    transliteration: "Jazar",
+    transliteration: "Jazra",
   },
   {
     english: "Onion",

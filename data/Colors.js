@@ -81,7 +81,7 @@ const Colors = [
     arabic: "أزرق فاتح",
     audio: "/audio/colors/lblue.mp3",
     image: "/images/colors/lblue.png",
-    transliteration: "Azraq FatiH",
+    transliteration: "Azraq Fatih",
   },
   {
     english: "Dark Green",
@@ -116,7 +116,7 @@ const Colors = [
     arabic: "نحاسي ",
     audio: "/audio/colors/copper.mp3",
     image: "/images/colors/copper.png",
-    transliteration: "NuHasi",
+    transliteration: "Nuhasi",
   },
 ];
 
