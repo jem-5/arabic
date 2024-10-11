@@ -53,14 +53,14 @@ const Jobs = [
     arabic: "شرطة",
     audio: "/audio/jobs/police.mp3",
     image: "",
-    transliteration: "Dabit Shurta",
+    transliteration: "Shurta",
   },
   {
     english: "Waiter",
     arabic: "نادلة ",
     audio: "/audio/jobs/waiter.mp3",
     image: "",
-    transliteration: "Nadil",
+    transliteration: "Nadila",
   },
   {
     english: "Manager",
@@ -88,7 +88,7 @@ const Jobs = [
     arabic: "كهربائي ",
     audio: "/audio/jobs/electrician.mp3",
     image: "",
-    transliteration: "Kahrabai",
+    transliteration: "Kahraba'i",
   },
   {
     english: "Dentist",
@@ -102,7 +102,7 @@ const Jobs = [
     arabic: "عالم ",
     audio: "/audio/jobs/scientist.mp3",
     image: "",
-    transliteration: "Alim",
+    transliteration: "Ealim",
   },
   {
     english: "Researcher",

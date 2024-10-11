@@ -1,7 +1,7 @@
 const Countries = [
   {
     english: "America",
-    arabic: "الأمريكية",
+    arabic: "أمريكا",
     audio: "/audio/countries/america.mp3",
     image: "",
     transliteration: "Amreeka",
@@ -39,7 +39,7 @@ const Countries = [
     arabic: "فرنسا ",
     audio: "/audio/countries/france.mp3",
     image: "",
-    transliteration: "Fransa",
+    transliteration: "Faransa",
   },
   {
     english: "Italy",

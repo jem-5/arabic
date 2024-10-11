@@ -46,7 +46,7 @@ const Verbs = [
     arabic: "ينظر ",
     audio: "/audio/verbs/look.mp3",
     image: "",
-    transliteration: "Yanzur",
+    transliteration: "Yandhur",
   },
   {
     english: "To eat",
@@ -102,14 +102,14 @@ const Verbs = [
     arabic: "يستمع",
     audio: "/audio/verbs/listen.mp3",
     image: "",
-    transliteration: "Yastami",
+    transliteration: "Yastamiaa",
   },
   {
     english: "To hear",
     arabic: "يسمع ",
     audio: "/audio/verbs/hear.mp3",
     image: "",
-    transliteration: "Yasma",
+    transliteration: "Yismaa",
   },
   {
     english: "To know",
@@ -144,14 +144,14 @@ const Verbs = [
     arabic: "يبيع ",
     audio: "/audio/verbs/sell.mp3",
     image: "",
-    transliteration: "Yabee'",
+    transliteration: "Yabea'",
   },
   {
     english: "To love",
     arabic: "يحب ",
     audio: "/audio/verbs/love.mp3",
     image: "",
-    transliteration: "Yuhibb",
+    transliteration: "Yuhib",
   },
   {
     english: "To need",
@@ -284,7 +284,7 @@ const Verbs = [
     arabic: "يعطي ",
     audio: "/audio/verbs/give.mp3",
     image: "",
-    transliteration: "Yu'ti",
+    transliteration: "Yua'ti",
   },
   {
     english: "To take",
@@ -298,7 +298,7 @@ const Verbs = [
     arabic: "أعني",
     audio: "/audio/verbs/mean.mp3",
     image: "",
-    transliteration: "ya'ni",
+    transliteration: "Ya'ni",
   },
   {
     english: "To cook",
@@ -312,7 +312,7 @@ const Verbs = [
     arabic: " يزيد",
     audio: "/audio/verbs/increase.mp3",
     image: "",
-    transliteration: "Yazid",
+    transliteration: "Yazeed",
   },
   {
     english: "To start",

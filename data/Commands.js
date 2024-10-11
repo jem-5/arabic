@@ -1,10 +1,10 @@
 const Commands = [
   {
     english: "Take this / Come here",
-    arabic: "تفَضَّل",
+    arabic: "تفضل",
     audio: "/audio/commands/take-this.mp3",
     image: "",
-    transliteration: "TafaDDal",
+    transliteration: "TafaDDal ",
   },
   {
     english: "Give me",
@@ -57,7 +57,7 @@ const Commands = [
   },
   {
     english: "Wait",
-    arabic: "إستـَنّى ",
+    arabic: "استنى ",
     audio: "/audio/commands/wait.mp3",
     image: "",
     transliteration: "Istanna",
@@ -67,7 +67,7 @@ const Commands = [
     arabic: "استمع ",
     audio: "/audio/commands/listen.mp3",
     image: "",
-    transliteration: "Istami'",
+    transliteration: "Istamia'",
   },
   {
     english: "Speak",
@@ -116,7 +116,7 @@ const Commands = [
     arabic: "أسرع ",
     audio: "/audio/commands/hurry.mp3",
     image: "",
-    transliteration: "Asra'",
+    transliteration: "Asraa'",
   },
   {
     english: "Calm down",

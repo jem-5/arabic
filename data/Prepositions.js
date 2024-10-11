@@ -67,7 +67,7 @@ const Prepositions = [
     arabic: "قريب من ",
     audio: "/audio/prepositions/near.mp3",
     image: "",
-    transliteration: "Bilqurb min",
+    transliteration: "Qareeb min",
   },
   {
     english: "Far from",

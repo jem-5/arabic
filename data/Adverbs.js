@@ -11,7 +11,7 @@ const Adverbs = [
     arabic: "ببطء ",
     audio: "/audio/adverbs/slowly.mp3",
     image: "",
-    transliteration: "Bibuṭ'",
+    transliteration: "Bibut'",
   },
   {
     english: "Happily",
@@ -25,14 +25,14 @@ const Adverbs = [
     arabic: "للأسف ",
     audio: "/audio/adverbs/sadly.mp3",
     image: "",
-    transliteration: "Biḥuzn",
+    transliteration: "Lilasif",
   },
   {
     english: "Carefully",
     arabic: "بحذر ",
     audio: "/audio/adverbs/carefully.mp3",
     image: "",
-    transliteration: "Biḥadhir",
+    transliteration: "Bihadhir",
   },
   {
     english: "Carelessly",
@@ -67,7 +67,7 @@ const Adverbs = [
     arabic: "أحياناً ",
     audio: "/audio/adverbs/sometimes.mp3",
     image: "",
-    transliteration: "Aḥyanan",
+    transliteration: "Ahyanan",
   },
   {
     english: "Rarely",
@@ -151,7 +151,7 @@ const Adverbs = [
     arabic: "بعد ",
     audio: "/audio/adverbs/after.mp3",
     image: "",
-    transliteration: "Ba'd",
+    transliteration: "Baa'd",
   },
   {
     english: "Together",
@@ -179,7 +179,7 @@ const Adverbs = [
     arabic: "جداً ",
     audio: "/audio/adverbs/very.mp3",
     image: "",
-    transliteration: "Jiddan",
+    transliteration: "Jidan",
   },
   {
     english: "Almost",
@@ -193,21 +193,21 @@ const Adverbs = [
     arabic: "على الأرجح",
     audio: "/audio/adverbs/probably.mp3",
     image: "",
-    transliteration: "Ala al-arjaḥ",
+    transliteration: "Ala al-arjah",
   },
   {
     english: "Certainly",
     arabic: "بالتأكيد ",
     audio: "/audio/adverbs/certainly.mp3",
     image: "",
-    transliteration: "Bil-ta'kid",
+    transliteration: "Bilta'keed",
   },
   {
     english: "Luckily",
     arabic: "لحسن الحظ",
     audio: "/audio/adverbs/luckily.mp3",
     image: "",
-    transliteration: "Liḥusn al-ḥaẓẓ",
+    transliteration: "Lihusn alHadh",
   },
 ];
 

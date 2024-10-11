@@ -88,7 +88,7 @@ const School = [
     arabic: "قلم ",
     audio: "/audio/school/pen.mp3",
     image: "",
-    transliteration: "QalamQalam rasas",
+    transliteration: "Qalam",
   },
   {
     english: "Pencil",
@@ -143,8 +143,9 @@ const School = [
     english: "Science",
     arabic: "علوم ",
     audio: "/audio/school/science.mp3",
+    image: "",
+
     transliteration: "Ulum ",
-    image: "Ulum",
   },
   {
     english: "Biology",

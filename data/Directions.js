@@ -11,7 +11,7 @@ const Directions = [
     arabic: "تقاطع ",
     audio: "/audio/directions/intersection.mp3",
     image: "",
-    transliteration: "Taqatu'",
+    transliteration: "TaqaTa",
   },
   {
     english: "Bridge",
@@ -25,7 +25,7 @@ const Directions = [
     arabic: "شارع ",
     audio: "/audio/directions/street.mp3",
     image: "",
-    transliteration: "Shari'",
+    transliteration: "Sharia'",
   },
   {
     english: "Directions",
@@ -88,7 +88,7 @@ const Directions = [
     arabic: "ارجع",
     audio: "/audio/directions/back.mp3",
     image: "",
-    transliteration: "Irji'",
+    transliteration: "Irjia'",
   },
   {
     english: "Next to",

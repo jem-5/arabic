@@ -60,7 +60,7 @@ const Letters = [
     image: "",
   },
   {
-    english: "zay",
+    english: "zayn",
     arabic: "ز",
     audio: "/audio/letters/zay.mp3",
     image: "",
@@ -102,7 +102,7 @@ const Letters = [
     image: "",
   },
   {
-    english: "hain",
+    english: "ain",
     arabic: "ع",
     audio: "/audio/letters/hain.mp3",
     image: "",

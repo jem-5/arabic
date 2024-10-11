@@ -35,18 +35,11 @@ const Transitions = [
     transliteration: "Lakin",
   },
   {
-    english: "However",
-    arabic: "ومع ذلك",
-    audio: "/audio/transitions/however.mp3",
-    image: "",
-    transliteration: "Wa ma' dhalik",
-  },
-  {
     english: "Because",
     arabic: "لأن ",
     audio: "/audio/transitions/because.mp3",
     image: "",
-    transliteration: "Li'anna",
+    transliteration: "Li'an",
   },
   {
     english: "Because",
@@ -60,7 +53,7 @@ const Transitions = [
     arabic: "لذلك ",
     audio: "/audio/transitions/therefore.mp3",
     image: "",
-    transliteration: "Lidhālik",
+    transliteration: "Lidhalik",
   },
   {
     english: "First",
@@ -82,13 +75,6 @@ const Transitions = [
     audio: "/audio/transitions/then.mp3",
     image: "",
     transliteration: "Thumma",
-  },
-  {
-    english: "Next",
-    arabic: "بعد ذلك",
-    audio: "/audio/transitions/next.mp3",
-    image: "",
-    transliteration: "Ba'da dhalik",
   },
   {
     english: "Finally",
@@ -116,28 +102,28 @@ const Transitions = [
     arabic: "بالتأكيد ",
     audio: "/audio/transitions/certainly.mp3",
     image: "",
-    transliteration: "Bil-ta'kid",
+    transliteration: "Bialtaakid",
   },
   {
     english: "Similarly",
     arabic: "بالمثل ",
     audio: "/audio/transitions/similarly.mp3",
     image: "",
-    transliteration: "Bil-mithl",
+    transliteration: "Bilmithl",
   },
   {
     english: "In the same way",
     arabic: "بنفس الطريقة",
     audio: "/audio/transitions/same.mp3",
     image: "",
-    transliteration: "Bi-nafs al-tariqa",
+    transliteration: "Binafs altariqa",
   },
   {
     english: "To sum up",
     arabic: "لخّص",
     audio: "/audio/transitions/sum.mp3",
     image: "",
-    transliteration: "Lakh-khas",
+    transliteration: "Lakhas",
   },
   {
     english: "Since",
@@ -165,7 +151,7 @@ const Transitions = [
     arabic: "عندما ",
     audio: "/audio/transitions/while.mp3",
     image: "",
-    transliteration: "Baynama",
+    transliteration: "Eindama",
   },
   {
     english: "As soon as",
@@ -210,13 +196,6 @@ const Transitions = [
     transliteration: "Maalesh",
   },
   {
-    english: "Firstly",
-    arabic: " أَولاً",
-    audio: "/audio/transitions/firstly.mp3",
-    image: "",
-    transliteration: "Awalin",
-  },
-  {
     english: "Once",
     arabic: "مرة",
     audio: "/audio/transitions/once.mp3",
@@ -256,7 +235,7 @@ const Transitions = [
     arabic: "في المستقبل",
     audio: "/audio/transitions/future.mp3",
     image: "",
-    transliteration: "Fi'lmustaqbal",
+    transliteration: "Filmustaqbal",
   },
   {
     english: "I swear to God",
