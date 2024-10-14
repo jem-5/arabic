@@ -15,7 +15,7 @@ export default function Contact() {
 
       <div className="card lg:card-side bg-base-100 shadow-xl bg-transparent">
         <figure>
-          <img src="/laptop.JPG" alt="Laptop" className="max-w-1/2" />
+          <img src="/laptop.jpg" alt="Laptop" className="max-w-1/2" />
         </figure>
         <div className="card-body ">
           <p className="my-0">
@@ -26,7 +26,7 @@ export default function Contact() {
             Contact me via email at
             <br />
             <Link href="mailto:jenniferengineers@gmail.com">
-              <span className="text-xl font-bold">
+              <span className="text-sm md:text-xl font-bold">
                 jenniferengineers[at]gmail[dot]com{" "}
               </span>
             </Link>
