@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export const metadata = {
@@ -9,47 +10,93 @@ export const metadata = {
 export default function About() {
   return (
     <main className="flex-grow flex flex-col items-left p-3 text-neutral w-1/2 bg-[white] rounded-md mt-2 drop-shadow-xl border gap-3  max-[999px]:w-4/5">
-      <h3 className="font-bold text-xl  self-center ">
-        Welcome to Arabic Road!
+      <h3 className="font-bold text-2xl  self-center text-primary ">
+        Welcome!
       </h3>
       <div className="divider "></div>
-      <p>
-        My name is Jennifer. The Arabic language has always captivated me, not
-        only for its linguistic complexity but also for its cultural richness.
-        Learning Arabic has been a lifelong dream of mine and I&apos;m finally
-        diving into it. I developed ArabicRoad as an educational language
-        learning platform designed to facilitate my own learning journey and to
-        assist others who aspire to learn Arabic.
-      </p>
-      <p>
-        Recognizing the challenges that many learners face when starting this
-        journey, I developed this platform to provide structured, accessible,
-        and engaging resources for individuals at all stages of their Arabic
-        learning experience. Here, you will find a comprehensive range of tools
-        and materials tailored to guide you from the basics to more advanced
-        levels of proficiency.
-      </p>
-      <p>
-        Each lesson features a dedicated relevant image to enhance comprehension
-        and includes audio narration of the Arabic words to ensure accurate
-        pronunciation. Additionally, English transliterations are provided to
-        help you confidently pronounce each word correctly. Each of the modules
-        offer review lessons, as well as quizzes to test your knowledge. You can
-        access the full curriculum without creating an account. However, with an
-        account, you can easily keep track of which lessons have been completed,
-        as well as the words/phrases that have been answered incorrectly so you
-        can conveniently review them in one place.
-      </p>
-      <p>
-        My hope is that ArabicRoad becomes a helpful and educational resource
-        for you. Learning a new language can be challenging, but it is also
-        incredibly rewarding. With patience, practice, and the right guidance,
-        anyone can experience the joy of understanding and speaking Arabic.
-        Thank you for joining me on this road to learning Arabic.
-      </p>
-      <p>
-        Let&apos;s explore the depth and beauty of the Arabic language together!
-      </p>
+
+      <div className="card lg:card-side bg-base-100 shadow-xl bg-transparent">
+        <figure>
+          <img src="/jenn.jpg" alt="Jennifer" className="max-w-1/2" />
+        </figure>
+        <div className="card-body ">
+          <h2 className="card-title">Who am I?</h2>
+          <p>
+            Hey there! Thanks for visiting Arabic Road. My name is Jennifer and
+            I built this site to help myself (and others) learn Arabic. As
+            someone with Egyptian roots, the Arabic language has always
+            captivated me, not only for its linguistic complexity but also for
+            its cultural richness.
+          </p>
+        </div>
+      </div>
+
+      <h4 className="text-4xl mx-5  my-4 text-primary">
+        <q>
+          Learning Arabic has been a lifelong dream of mine and I&apos;m finally
+          diving into it. Join me!
+        </q>
+      </h4>
+
+      <div className="card lg:card-side bg-base-100 shadow-xl bg-transparent">
+        <div className="card-body ">
+          <h2 className="card-title">Why this site?</h2>
+          <p>
+            The platform is designed to address the common challenges faced by
+            Arabic learners at all stages. Features of ArabicRoad include:
+            <ul>
+              <li>
+                Comprehensive Learning Tools: Lessons range from basic to
+                advanced levels of Arabic proficiency
+              </li>
+              <li>
+                Interactive Content: Each lesson includes a relevant image to
+                enhance understanding, audio narration for proper pronunciation
+                of Arabic words and English transliterations
+              </li>
+              <li>
+                Progress Tracking: Users can track completed lessons and review
+                incorrect answers with a free account
+              </li>
+            </ul>
+          </p>
+        </div>
+        <figure>
+          <img
+            src="/computer.png"
+            alt="Arabic Road on computer"
+            className="max-w-1/2"
+          />
+        </figure>
+      </div>
+
+      <h4 className="text-4xl mx-5  my-4 text-primary">
+        <q>
+          Let us explore the depth and beauty of the Arabic language together!
+        </q>
+      </h4>
+
+      <div className="card lg:card-side bg-base-100 shadow-xl bg-transparent">
+        <figure>
+          <img src="/welcome.png" alt="Girl welcoming" />
+        </figure>
+        <div className="card-body ">
+          <h2 className="card-title">What next?</h2>
+          <p>
+            My hope is that ArabicRoad becomes a valuable resource for your
+            Arabic learning journey. Learning a new language is challenging but
+            incredibly rewarding. With patience, practice, and the right
+            guidance, anyone can learn to understand and speak Arabic.
+            <p className="my-2 text-xl font-bold text-primary">
+              What are you waiting for? Visit your{" "}
+              <Link href="/dashboard" className="underline">
+                Dashboard
+              </Link>{" "}
+              to start learning Arabic!
+            </p>
+          </p>
+        </div>
+      </div>
     </main>
   );
 }
