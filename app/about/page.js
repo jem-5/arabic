@@ -17,7 +17,7 @@ export default function About() {
 
       <div className="card lg:card-side bg-base-100 shadow-xl bg-transparent">
         <figure>
-          <img src="/jenn.jpg" alt="Jennifer" className="max-w-1/2" />
+          <img src="/jenn.JPG" alt="Jennifer" className="max-w-1/2" />
         </figure>
         <div className="card-body ">
           <h2 className="card-title">Who am I?</h2>
