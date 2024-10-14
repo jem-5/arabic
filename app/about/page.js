@@ -10,9 +10,7 @@ export const metadata = {
 export default function About() {
   return (
     <main className="flex-grow flex flex-col items-left p-3 text-neutral w-1/2 bg-[white] rounded-md mt-2 drop-shadow-xl border gap-3  max-[999px]:w-4/5">
-      <h3 className="font-bold text-2xl  self-center text-primary ">
-        Welcome!
-      </h3>
+      <h3 className="font-bold text-xl  self-center ">Welcome!</h3>
       <div className="divider "></div>
 
       <div className="card lg:card-side bg-base-100 shadow-xl bg-transparent">

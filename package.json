@@ -16,6 +16,7 @@
     "@leafac/rehype-shiki": "^2.2.1",
     "@next/env": "^14.2.3",
     "@next/third-parties": "^14.2.3",
+    "emailjs-com": "^3.2.0",
     "firebase": "^10.11.1",
     "gray-matter": "^4.0.3",
     "next": "^14.2.3",
