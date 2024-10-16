@@ -79,7 +79,7 @@ export default function About() {
           <img src="/welcome.png" alt="Girl welcoming" />
         </figure>
         <div className="card-body ">
-          <h2 className="card-title">What next?</h2>
+          <h2 className="card-title">What&apos;s next?</h2>
           <p>
             My hope is that ArabicRoad becomes a valuable resource for your
             Arabic learning journey. Learning a new language is challenging but
