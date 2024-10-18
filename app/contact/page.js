@@ -21,7 +21,7 @@ export default function Contact() {
           <p className="my-0">
             Whether you have questions, feedback or need assistance with the
             platform, feel free to reach out. I respond to all inquiries within
-            24-48 hours.
+            24 hours.
             <br />
             Contact me via email at
             <br />
