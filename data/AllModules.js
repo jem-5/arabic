@@ -37,6 +37,8 @@ export const AllModules = {
   Foods,
   Produce,
   Drinks,
+  Restaurant,
+
   Clothing,
   Vacation,
   School,
@@ -53,8 +55,6 @@ export const AllModules = {
   Adverbs,
   Pronouns,
   Commands,
-
-  Restaurant,
 
   // Idioms / Proverbs,
   // Nature,
