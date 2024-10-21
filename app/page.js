@@ -24,6 +24,28 @@ export default async function Home() {
 
   return (
     <main className="  flex flex-col items-center  mt-2 ">
+      <div
+        role="alert"
+        className="alert bg-secondary text-neutral  w-full md:w-2/3"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="h-6 w-6 shrink-0 stroke-current"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <Link href="/dashboard">
+          <span>New modules added recently! Check the dashboard.</span>
+        </Link>
+      </div>
+
       <div className="card lg:card-side p-2 bg-base-100 shadow-xl w-full md:w-2/3 ">
         <figure className="  md:h-fit max-[999px]:max-h-96">
           <img src="/featured.jpg" className=" rounded w-5/6 md:w-full  " />

@@ -25,6 +25,7 @@ import Adverbs from "./Adverbs";
 import Pronouns from "./Pronouns";
 import Commands from "./Commands";
 import Restaurant from "./Restaurant";
+import Love from "./Love";
 
 export const AllModules = {
   Greetings,
@@ -43,6 +44,7 @@ export const AllModules = {
   Vacation,
   School,
   Jobs,
+  Love,
   Directions,
   Doctor,
   Countries,
@@ -61,14 +63,17 @@ export const AllModules = {
   // Curses,
   // Onomatopeia,
   // Questions,
-  // Wedding,
+  // Wedding, Moment, Decision, Answer, Question, Decide, Partner, Marriage, Story,
   // Phone,
   // Calendar inc yester, today,tmrw,
   // Store ,
   // Meals of day ,
   // More Adjectives ,
   // More Verbs,
-  // City Structures ,
+  // City Structures , Building, Bridge, Museum,
+  // Terms of Endearment,
+  // Conflict,
+  // Relatives,
 };
 
 const moduleLengths = [];
