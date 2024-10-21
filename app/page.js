@@ -26,7 +26,7 @@ export default async function Home() {
     <main className="  flex flex-col items-center  mt-2 ">
       <div
         role="alert"
-        className="alert bg-secondary text-neutral  w-full md:w-2/3"
+        className="alert bg-secondary text-neutral  w-full md:w-2/3 flex flex-row"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export default async function Home() {
           ></path>
         </svg>
         <Link href="/dashboard">
-          <span>New modules added recently! Check the dashboard.</span>
+          <span>New modules added! Check dashboard.</span>
         </Link>
       </div>
 
