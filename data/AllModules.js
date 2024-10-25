@@ -27,6 +27,7 @@ import Commands from "./Commands";
 import Restaurant from "./Restaurant";
 import Love from "./Love";
 import Nature from "./Nature";
+import Calendar from "./Calendar";
 
 export const AllModules = {
   Greetings,
@@ -51,6 +52,7 @@ export const AllModules = {
   Countries,
   Nature,
   Prayers,
+  Calendar,
 
   Letters,
   Verbs,
@@ -62,21 +64,19 @@ export const AllModules = {
   Commands,
 
   // Idioms / Proverbs,
-  // Nature,
   // Curses,
   // Onomatopeia,
   // Questions,
   // Calendar inc yester, today,tmrw, months,
   // Store ,
   // Meals of day ,
-  // More Adjectives ,
-  // More Verbs,
-  // City Structures , Building, Bridge, Museum, Downtown, Crowded, To Travel,
-  // More Verbs,
+  // City Structures, Building, Bridge, Museum, Downtown, Crowded, To Travel,
   // Terms of Endearment,
   // Conflict,
   // Relatives,
   // Independent Work,,
+  // More Adjectives ,
+  // More Verbs,
 };
 
 const moduleLengths = [];
