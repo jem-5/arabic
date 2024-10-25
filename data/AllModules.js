@@ -63,17 +63,17 @@ export const AllModules = {
   // Curses,
   // Onomatopeia,
   // Questions,
-  // Wedding, Moment, Decision, Answer, Question, Decide, Partner, Marriage, Story,
-  // Phone,
-  // Calendar inc yester, today,tmrw,
+  // Calendar inc yester, today,tmrw, months,
   // Store ,
   // Meals of day ,
   // More Adjectives ,
   // More Verbs,
-  // City Structures , Building, Bridge, Museum,
+  // City Structures , Building, Bridge, Museum, Downtown, Crowded, To Travel,
+  // More Verbs,
   // Terms of Endearment,
   // Conflict,
   // Relatives,
+  // Independent Work,,
 };
 
 const moduleLengths = [];

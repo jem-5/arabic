@@ -13,7 +13,7 @@ export default async function Home() {
 
   const featuredPost = posts.slice(0, 1)[0];
   const spotlightPosts = posts.slice(1, 3);
-  const remainderPosts = posts.slice(3, -1);
+  const remainderPosts = posts.slice(3, 8);
 
   const getFirstWords = (string) => {
     string.replace(/<[^>]*>/g, "");
@@ -104,7 +104,7 @@ export default async function Home() {
 
       <section className=" max-w-full flex flex-col items-left p-3 m-3 text-neutral  bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-3 w-5/6 lg:w-2/3">
         <h3 className="font-bold text-xl  self-start text-neutral">
-          Latest From the Blog:
+          Latest From the Blog
         </h3>
         <ul className="menu menu-lg  rounded-box w-full ">
           <li className="mt-2 ">
@@ -182,6 +182,12 @@ export default async function Home() {
             );
           })}
         </ul>
+        <h3 className="font-bold text-xl  self-end text-neutral">
+          <Link href="/blog/">
+            More blog posts
+            <kbd className="kbd bg-transparent">▶︎</kbd>
+          </Link>
+        </h3>
       </section>
     </main>
   );
