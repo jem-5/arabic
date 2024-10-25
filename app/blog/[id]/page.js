@@ -12,7 +12,7 @@ export default async function Post({ params: { id } }) {
   const DisplayPosts = () => {
     return selected.map((item, i) => {
       return (
-        <Link href={`/blog/${item.id}`} key={i}>
+        <Link href={`/blog/${item.id}/`} key={i}>
           <h2 className="text-md font-bold">
             {item.title} - Published on {item.date}
           </h2>

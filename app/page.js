@@ -41,7 +41,7 @@ export default async function Home() {
             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
           ></path>
         </svg>
-        <Link href="/dashboard">
+        <Link href="/dashboard/">
           <span>New modules added! Check dashboard.</span>
         </Link>
       </div>
@@ -92,7 +92,7 @@ export default async function Home() {
           </ul>
 
           <div className="card-actions justify-end">
-            <Link href="/dashboard" className="font-bold">
+            <Link href="/dashboard/" className="font-bold">
               <MyButton
                 text="Start learning"
                 classRest={"bg-secondary text-neutral mb-2"}
@@ -109,7 +109,7 @@ export default async function Home() {
         <ul className="menu menu-lg  rounded-box w-full ">
           <li className="mt-2 ">
             <Link
-              href={`/blog/${featuredPost.id}`}
+              href={`/blog/${featuredPost.id}/`}
               className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
             >
               <p className="text-2xl font-bold self-start">
@@ -130,7 +130,7 @@ export default async function Home() {
 
           <li className="mt-2 ">
             <Link
-              href={`/blog/${spotlightPosts[0].id}`}
+              href={`/blog/${spotlightPosts[0].id}/`}
               className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
             >
               <p className="text-xl  self-start">{spotlightPosts[0].title}</p>
@@ -149,7 +149,7 @@ export default async function Home() {
 
           <li className="mt-2 ">
             <Link
-              href={`/blog/${spotlightPosts[1].id}`}
+              href={`/blog/${spotlightPosts[1].id}/`}
               className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
             >
               <p className="text-xl   self-start">{spotlightPosts[1].title}</p>
@@ -171,7 +171,7 @@ export default async function Home() {
             return (
               <li key={id} className="mt-2">
                 <Link
-                  href={`/blog/${id}`}
+                  href={`/blog/${id}/`}
                   className="flex flex-col items-start bg-base-100 text-[white] hover:bg-primary"
                 >
                   <p className="text-xl">{title}</p>

@@ -87,7 +87,7 @@ export default function About() {
             guidance, anyone can learn to understand and speak Arabic.
             <p className="my-2 text-xl font-bold text-primary">
               What are you waiting for? Visit your{" "}
-              <Link href="/dashboard" className="underline">
+              <Link href="/dashboard/" className="underline">
                 Dashboard
               </Link>{" "}
               to start learning Arabic!

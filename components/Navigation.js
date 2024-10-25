@@ -16,14 +16,14 @@ export const Navigation = () => {
             <button className="btn   text-sm md:text-lg ">Home</button>
           </Link>
 
-          <Link href="/dashboard" className="font-bold">
+          <Link href="/dashboard/" className="font-bold">
             <button className="btn   text-sm md:text-lg ">Lessons</button>
           </Link>
 
-          <Link href="/blog" className="font-bold">
+          <Link href="/blog/" className="font-bold">
             <button className="btn    text-sm md:text-lg ">Blog</button>
           </Link>
-          <Link href="/about" className="font-bold">
+          <Link href="/about/" className="font-bold">
             <button className="btn    text-sm md:text-lg ">About</button>
           </Link>
         </div>

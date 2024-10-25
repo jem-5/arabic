@@ -27,7 +27,7 @@ export default async function AllPosts() {
       <ul className="menu menu-lg  rounded-box w-full ">
         <li className="mt-2 ">
           <Link
-            href={`/blog/${featuredPost.id}`}
+            href={`/blog/${featuredPost.id}/`}
             className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
           >
             <p className="text-2xl font-bold self-start">
@@ -48,7 +48,7 @@ export default async function AllPosts() {
 
         <li className="mt-2 ">
           <Link
-            href={`/blog/${spotlightPosts[0].id}`}
+            href={`/blog/${spotlightPosts[0].id}/`}
             className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
           >
             <p className="text-xl  self-start">{spotlightPosts[0].title}</p>
@@ -67,7 +67,7 @@ export default async function AllPosts() {
 
         <li className="mt-2 ">
           <Link
-            href={`/blog/${spotlightPosts[1].id}`}
+            href={`/blog/${spotlightPosts[1].id}/`}
             className=" bg-base-100 text-[white] hover:bg-primary flex flex-col"
           >
             <p className="text-xl   self-start">{spotlightPosts[1].title}</p>
@@ -89,7 +89,7 @@ export default async function AllPosts() {
           return (
             <li key={id} className="mt-2">
               <Link
-                href={`/blog/${id}`}
+                href={`/blog/${id}/`}
                 className="flex flex-col items-start bg-base-100 text-[white] hover:bg-primary"
               >
                 <p className="text-xl">{title}</p>
