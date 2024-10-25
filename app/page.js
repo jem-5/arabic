@@ -26,7 +26,7 @@ export default async function Home() {
     <main className="  flex flex-col items-center  mt-2 ">
       <div
         role="alert"
-        className="alert bg-secondary text-neutral  w-full md:w-2/3 flex flex-row"
+        className="alert bg-secondary text-neutral  w-5/6 lg:w-2/3 flex flex-row mb-1"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ export default async function Home() {
         </Link>
       </div>
 
-      <div className="card lg:card-side p-2 bg-base-100 shadow-xl w-full md:w-2/3 ">
+      <div className="card lg:card-side p-2 bg-base-100 shadow-xl w-5/6 lg:w-2/3 ">
         <figure className="  md:h-fit max-[999px]:max-h-96">
           <img src="/featured.jpg" className=" rounded w-5/6 md:w-full  " />
         </figure>
