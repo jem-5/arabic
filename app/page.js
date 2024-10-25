@@ -189,6 +189,13 @@ export default async function Home() {
           </Link>
         </h3>
       </section>
+      <section className=" max-w-full flex flex-col items-left p-3 m-3 text-neutral  bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-0 w-5/6 lg:w-2/3 font-bold">
+        <h3 className="font-bold text-xl  self-start text-neutral">
+          Recent News
+        </h3>
+        <p>2024-10-25 | Added new module: Nature</p>
+        <p>2024-10-20 | Added new module: Love</p>
+      </section>
     </main>
   );
 }

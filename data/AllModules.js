@@ -26,6 +26,7 @@ import Pronouns from "./Pronouns";
 import Commands from "./Commands";
 import Restaurant from "./Restaurant";
 import Love from "./Love";
+import Nature from "./Nature";
 
 export const AllModules = {
   Greetings,
@@ -48,7 +49,9 @@ export const AllModules = {
   Directions,
   Doctor,
   Countries,
+  Nature,
   Prayers,
+
   Letters,
   Verbs,
   Prepositions,
