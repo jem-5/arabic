@@ -139,6 +139,20 @@ const Jobs = [
     image: "",
     transliteration: "Mumathil",
   },
+  {
+    english: "Independent",
+    arabic: "مستقل",
+    audio: "/audio/jobs/independent.mp3",
+    image: "",
+    transliteration: "Mustaqilun",
+  },
+  {
+    english: "Company",
+    arabic: "شركة",
+    audio: "/audio/jobs/company.mp3",
+    image: "",
+    transliteration: "Sharika",
+  },
 ];
 
 export default Jobs;
