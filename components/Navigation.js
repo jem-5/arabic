@@ -23,6 +23,9 @@ export const Navigation = () => {
           <Link href="/blog/" className="font-bold">
             <button className="btn    text-sm md:text-lg ">Blog</button>
           </Link>
+          <Link href="/games/" className="font-bold">
+            <button className="btn    text-sm md:text-lg ">Games</button>
+          </Link>
           <Link href="/about/" className="font-bold">
             <button className="btn    text-sm md:text-lg ">About</button>
           </Link>
