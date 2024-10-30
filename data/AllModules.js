@@ -28,6 +28,8 @@ import Restaurant from "./Restaurant";
 import Love from "./Love";
 import Nature from "./Nature";
 import Calendar from "./Calendar";
+import Onomatopoeia from "./Onomatopoeia";
+import Insults from "./Insults";
 
 export const AllModules = {
   Greetings,
@@ -61,21 +63,20 @@ export const AllModules = {
   Adjectives,
   Adverbs,
   Pronouns,
+  Insults,
+  Onomatopoeia,
   Commands,
 
   // Idioms / Proverbs,
   // Curses,
-  // Onomatopeia,
   // Questions,
-  // Calendar inc yester, today,tmrw, months,
   // Store ,
-  // Meals of day ,
   // City Structures, Building, Bridge, Museum, Downtown, Crowded, To Travel,
   // Terms of Endearment,
   // Conflict,
   // Relatives,
-  // Independent Work,,
-  // More Adjectives ,
+  // Independent Work,
+  // More Adjectives,
   // More Verbs,
 };
 

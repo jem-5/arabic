@@ -38,12 +38,10 @@ const Game = () => {
   }, []);
 
   function ensureTargetColor(balloons) {
-    // Check if any balloon has the target color
     const hasTargetColor = balloons.some(
       (balloon) => balloon.color === targetColor.color
     );
 
-    // If none have the target color, add a new balloon with that color
     if (!hasTargetColor) {
       setBalloons((prev) => [
         ...prev,
@@ -58,20 +56,6 @@ const Game = () => {
   }
 
   ensureTargetColor(balloons);
-
-  // useEffect(() => {
-  //   if (balloons.every((obj) => obj.color !== targetColor)) {
-  //     setBalloons((prev) => [
-  //       ...prev,
-  //       {
-  //         id: Math.random(),
-  //         color: targetColor.color,
-  //         bottom: 100,
-  //         left: `${Math.floor(Math.random() * 80)}vw`,
-  //       },
-  //     ]);
-  //   }
-  // }, [targetColor]);
 
   const startGame = () => {
     setTargetColor(colors[Math.floor(Math.random() * colors.length)]);
