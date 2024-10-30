@@ -15,7 +15,10 @@ const colors = [
 ];
 
 const Game = () => {
-  const [targetColor, setTargetColor] = useState({});
+  const [targetColor, setTargetColor] = useState({
+    color: "purple",
+    arabic: "بنفسجي",
+  });
   const [score, setScore] = useState(0);
   const [balloons, setBalloons] = useState([]);
   const [timer, setTimer] = useState(30);
@@ -27,11 +30,26 @@ const Game = () => {
     const timerInterval = setInterval(() => {
       setTimer((prev) => prev - 1);
     }, 1000);
+
     return () => {
       clearInterval(interval);
       clearInterval(timerInterval);
     };
   }, []);
+
+  useEffect(() => {
+    if (balloons.every((obj) => obj.color !== targetColor)) {
+      setBalloons((prev) => [
+        ...prev,
+        {
+          id: Math.random(),
+          color: targetColor.color,
+          bottom: 100,
+          left: `${Math.floor(Math.random() * 80)}vw`,
+        },
+      ]);
+    }
+  }, [targetColor]);
 
   const startGame = () => {
     setTargetColor(colors[Math.floor(Math.random() * colors.length)]);
