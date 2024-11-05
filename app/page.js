@@ -58,7 +58,7 @@ export default async function Home() {
           <ul className="rounded   list-outside ">
             <li>
               <span className="text-xl">
-                800+ Interactive Vocabulary Flashcards
+                900+ Interactive Vocabulary Flashcards
               </span>
               <p>
                 + Comprehensive lessons include a relevant photo, Arabic voice
@@ -70,7 +70,7 @@ export default async function Home() {
               </p>
             </li>
             <li>
-              <span className="text-xl">25+ Individual Modules</span>
+              <span className="text-xl">30+ Individual Modules</span>
               <p>
                 + Curriculum organized into logical segments based on topic &
                 level

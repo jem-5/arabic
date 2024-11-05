@@ -68,14 +68,11 @@ export const AllModules = {
   Commands,
 
   // Idioms / Proverbs,
-  // Curses,
   // Questions,
-  // Store ,
-  // City Structures, Building, Bridge, Museum, Downtown, Crowded, To Travel,
+  // City Structures, Building, Bridge, Museum, Downtown, Crowded, To Travel, Store, Store Elements
   // Terms of Endearment,
   // Conflict,
   // Relatives,
-  // Independent Work,
   // More Adjectives,
   // More Verbs,
 };
