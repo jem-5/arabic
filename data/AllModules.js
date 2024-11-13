@@ -30,6 +30,7 @@ import Nature from "./Nature";
 import Calendar from "./Calendar";
 import Onomatopoeia from "./Onomatopoeia";
 import Insults from "./Insults";
+import Proverbs from "./Proverbs";
 
 export const AllModules = {
   Greetings,
@@ -66,6 +67,7 @@ export const AllModules = {
   Insults,
   Onomatopoeia,
   Commands,
+  Proverbs,
 
   // Idioms / Proverbs,
   // Questions,
