@@ -31,6 +31,7 @@ import Calendar from "./Calendar";
 import Onomatopoeia from "./Onomatopoeia";
 import Insults from "./Insults";
 import Proverbs from "./Proverbs";
+import City from "./City";
 
 export const AllModules = {
   Greetings,
@@ -50,6 +51,7 @@ export const AllModules = {
   School,
   Jobs,
   Love,
+  City,
   Directions,
   Doctor,
   Countries,
@@ -69,9 +71,7 @@ export const AllModules = {
   Commands,
   Proverbs,
 
-  // Idioms / Proverbs,
-  // Questions,
-  // City Structures, Building, Bridge, Museum, Downtown, Crowded, To Travel, Store, Store Elements
+  // Question,
   // Terms of Endearment,
   // Conflict,
   // Relatives,
