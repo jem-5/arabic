@@ -230,6 +230,8 @@ export default async function Home() {
         <h3 className="font-bold text-xl  self-start text-neutral">
           Recent News
         </h3>
+        <p>2024-11-27 | Added new modules: Relatives, Endearment & Conflict</p>
+
         <p>2024-11-20 | Added new module: City</p>
 
         <p>2024-11-13 | Added new module: Proverbs</p>

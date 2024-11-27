@@ -32,6 +32,9 @@ import Onomatopoeia from "./Onomatopoeia";
 import Insults from "./Insults";
 import Proverbs from "./Proverbs";
 import City from "./City";
+import Endearment from "./Endearment";
+import Relatives from "./Relatives";
+import Conflict from "./Conflict";
 
 export const AllModules = {
   Greetings,
@@ -44,6 +47,7 @@ export const AllModules = {
   Foods,
   Produce,
   Drinks,
+  Relatives,
   Restaurant,
 
   Clothing,
@@ -58,6 +62,7 @@ export const AllModules = {
   Nature,
   Prayers,
   Calendar,
+  Conflict,
 
   Letters,
   Verbs,
@@ -66,17 +71,11 @@ export const AllModules = {
   Adjectives,
   Adverbs,
   Pronouns,
+  Endearment,
   Insults,
   Onomatopoeia,
   Commands,
   Proverbs,
-
-  // Question,
-  // Terms of Endearment,
-  // Conflict,
-  // Relatives,
-  // More Adjectives,
-  // More Verbs,
 };
 
 const moduleLengths = [];
