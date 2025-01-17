@@ -21,6 +21,9 @@ const Footer = () => {
           <Link href="/dashboard/" className="font-bold">
             Lessons
           </Link>
+          <Link href="/verbs/" className="font-bold">
+            Conjugator
+          </Link>
           <Link href="/privacy/" className="font-bold">
             Privacy
           </Link>

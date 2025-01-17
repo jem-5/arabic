@@ -20,6 +20,10 @@ export const Navigation = () => {
             <button className="btn   text-sm md:text-lg ">Lessons</button>
           </Link>
 
+          <Link href="/verbs/" className="font-bold">
+            <button className="btn   text-sm md:text-lg ">Conjugator</button>
+          </Link>
+
           <Link href="/blog/" className="font-bold">
             <button className="btn    text-sm md:text-lg ">Blog</button>
           </Link>
