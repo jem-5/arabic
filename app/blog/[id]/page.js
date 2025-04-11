@@ -1,5 +1,6 @@
 import { getAllPosts, getPostById } from "@/helpers/parseBlog";
 import Link from "next/link";
+import styles from "./styles.css";
 
 export default async function Post({ params: { id } }) {
   const { html, title, date } = await getPostById(id);
@@ -19,16 +20,24 @@ export default async function Post({ params: { id } }) {
         </Link>
       );
     });
-    6;
   };
-
   return (
     <main className="flex-grow flex flex-col items-left p-3 text-neutral w-1/2 bg-[white] rounded-md mt-2 drop-shadow-xl border gap-3 max-[999px]:w-4/5">
       <article className="p-4">
         <h1 className="font-bold text-xl  self-center ">{title}</h1>
         <h4>{date}</h4>
-        <div className="mt-4  " dangerouslySetInnerHTML={{ __html: html }} />
+        <Link href="/dashboard/">
+          <img src="/blog-link-lessons.png" alt="Lessons Advertisement" />
+        </Link>
+        <div
+          className="blog"
+          style={styles.blog}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       </article>
+      <Link href="/verbs/">
+        <img src="/blog-link-verbs.png" alt="Verbs Advertisement" />
+      </Link>
       <hr />
       <h2 className="  text-xl  ">Wait, check out these posts too!</h2>
       <DisplayPosts />

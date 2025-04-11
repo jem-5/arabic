@@ -21,7 +21,7 @@ export const Navigation = () => {
           </Link>
 
           <Link href="/verbs/" className="font-bold">
-            <button className="btn   text-sm md:text-lg ">Conjugator</button>
+            <button className="btn   text-sm md:text-lg ">Verbs</button>
           </Link>
 
           <Link href="/blog/" className="font-bold">

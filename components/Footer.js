@@ -22,7 +22,7 @@ const Footer = () => {
             Lessons
           </Link>
           <Link href="/verbs/" className="font-bold">
-            Conjugator
+            Verbs
           </Link>
           <Link href="/privacy/" className="font-bold">
             Privacy

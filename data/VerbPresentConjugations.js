@@ -3731,4 +3731,8 @@ const VerbPresentConjugations = [
   },
 ];
 
+VerbPresentConjugations.sort((a, b) => {
+  return a.english.localeCompare(b.english);
+});
+
 export default VerbPresentConjugations;

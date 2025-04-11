@@ -32,8 +32,7 @@ export default function Verb() {
     }
   }, [pathname]);
 
-  console.log(tense);
-  console.log(currVerb[tense]["I"]["arabic"]);
+  console.log(VerbPresentConjugations[0]);
 
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
