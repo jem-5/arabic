@@ -1,10 +1,12 @@
 import { getAllPosts, getPostById } from "@/helpers/parseBlog";
 import Link from "next/link";
 import styles from "./styles.css";
+import calculateReadingTime from "@/helpers/readingTime";
 
 export default async function Post({ params: { id } }) {
   const { html, title, date } = await getPostById(id);
   const posts = await getAllPosts();
+  const readingTime = calculateReadingTime(html);
 
   const shuffled = posts.sort(() => 0.5 - Math.random());
   const shuffledUnique = shuffled.filter((item) => item.id !== id);
@@ -26,6 +28,7 @@ export default async function Post({ params: { id } }) {
       <article className="p-4">
         <h1 className="font-bold text-xl  self-center ">{title}</h1>
         <h4>{date}</h4>
+        <h5>Estimated reading time: {readingTime}</h5>
         <Link href="/dashboard/">
           <img src="/blog-link-lessons.png" alt="Lessons Advertisement" />
         </Link>
