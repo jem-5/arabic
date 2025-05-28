@@ -32,7 +32,7 @@ const Footer = () => {
           </Link>
         </p>
         <p>
-          Copyright © 2024{" "}
+          Copyright © 2025{" "}
           <Link href="/" className="font-bold">
             ArabicRoad
           </Link>

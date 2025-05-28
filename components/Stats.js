@@ -105,9 +105,8 @@ export const Stats = ({ reviewedModules, completedModules }) => {
                 document.getElementById("my_profile").showModal();
               }}
             >
-              {" "}
               <p className="text-sm text-secondary ">
-                Signed in as {user.email}
+                Signed in as {user.email}. Click here to view your profile.
               </p>
             </button>
           ) : (

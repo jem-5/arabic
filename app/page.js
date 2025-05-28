@@ -60,7 +60,7 @@ export default async function Home() {
         </figure>
         <div className="card-body">
           <h1 className=" text-3xl text-[rgb(105,184,141)] font-bold ">
-            ArabicRoad: Learn Arabic Online Free
+            Arabic Road: Learn Arabic Online
           </h1>
 
           <ul className="rounded   list-outside ">
@@ -109,6 +109,22 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      <section className=" max-w-full flex flex-col items-left p-3 m-3  text-neutral bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-3 w-5/6 lg:w-2/3">
+        <p className=" text-xl ">
+          To support our mission to provide a low-cost Arabic education, please
+          consider{" "}
+          <span className="font-bold">
+            <Link
+              target="_blank"
+              href="https://www.paypal.com/ncp/payment/UBHZHCPT35XR4"
+            >
+              leaving a tip
+            </Link>
+          </span>
+          .
+        </p>
+      </section>
 
       <section className=" max-w-full flex flex-col items-left p-3 m-3 text-neutral  bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-3 w-5/6 lg:w-2/3">
         <h3 className="font-bold text-xl  self-start text-neutral">

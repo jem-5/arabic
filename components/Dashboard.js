@@ -120,7 +120,7 @@ export const Dashboard = () => {
   };
 
   return (
-    <div className=" w-full flex flex-col  justify-start gap-0">
+    <div className=" w-full flex flex-col  justify-start gap-0  max-w-full overflow-x-hidden">
       <Profile />
       <Stats
         reviewedModules={reviewedModules}
@@ -129,8 +129,8 @@ export const Dashboard = () => {
       <HowItWorks />
       <ShowRoads className="justify-self-start" />
 
-      <dialog id="my_lesson_summary" className="modal">
-        <div className="modal-box">
+      <dialog id="my_lesson_summary" className="modal ">
+        <div className="modal-box w-3/4 overflow-x-hidden md:overflow-x-auto md:w-auto ">
           <h3 className="font-bold text-lg">Module: {module}</h3>
 
           <p className="py-4">
