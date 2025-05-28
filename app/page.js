@@ -78,7 +78,7 @@ export default async function Home() {
               </p>
             </li>
             <li>
-              <span className="text-xl">35+ Individual Modules</span>
+              <span className="text-xl">37 Individual Modules</span>
               <p>
                 + Curriculum organized into logical segments based on topic &
                 level
