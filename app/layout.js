@@ -73,11 +73,11 @@ export default function RootLayout({ children }) {
           <Footer />
         </AuthContextProvider>
 
-        <Script
+        {/* <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9287702370703879"
           // crossorigin="anonymous"
-        ></Script>
+        ></Script> */}
 
         <Script
           async

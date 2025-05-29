@@ -11,6 +11,25 @@ const Games = () => {
 
       <div className="card  image-full w-96 shadow-xl">
         <figure>
+          <img src="/echo-game.png" alt="Echo Match Game" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">Echo Match Game</h2>
+          <p>
+            Can you find the correct English translation for the Arabic word?
+            This quiz presents 30 questions chosen randomly from the full
+            vocabulary of the curriculum.
+          </p>
+          <div className="card-actions justify-end">
+            <Link href="/games/echo-match/">
+              <MyButton text="Play Now" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="card  image-full w-96 shadow-xl">
+        <figure>
           <img src="/balloon-game.jpg" alt="Balloon Color Game" />
         </figure>
         <div className="card-body">

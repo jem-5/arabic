@@ -106,7 +106,7 @@ export const Stats = ({ reviewedModules, completedModules }) => {
               }}
             >
               <p className="text-sm text-secondary ">
-                Signed in as {user.email}. Click here to view your profile.
+                Signed in as {user.email}
               </p>
             </button>
           ) : (
