@@ -78,6 +78,8 @@ export const AllModules = {
   Proverbs,
 };
 
+const freeModules = [];
+
 const moduleLengths = [];
 
 Object.values(AllModules).forEach((item) => {

@@ -217,6 +217,8 @@ export default async function Home() {
         <h3 className="font-bold text-xl  self-start text-neutral">
           Recent News
         </h3>
+
+        <p>2025-05-29 | Added new game: Echo Match</p>
         <p>2025-01-17 | Added new feature: Verb Conjugator</p>
         <p>2024-11-27 | Added new modules: Relatives, Endearment & Conflict</p>
 
