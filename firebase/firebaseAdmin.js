@@ -1,7 +1,7 @@
 import admin from "firebase-admin";
 import { readFileSync } from "fs";
 import { join } from "path";
-import serviceAccount from "/etc/secrets/serviceAccountKey.json";
+import serviceAccount from "@/serviceAccountKey.json";
 // const serviceAccount = JSON.parse(
 //   readFileSync(join(process.cwd(), "serviceAccountKey.json"), "utf8")
 // );
