@@ -4,7 +4,7 @@ import MyButton from "@/components/Button";
 
 const Games = () => {
   return (
-    <div className="h-screen w-screen flex flex-col items-center  relative overflow-hidden flex flex-col gap-2 mb-2">
+    <div className="h-fit w-screen flex flex-col items-center  relative overflow-hidden flex flex-col gap-2 mb-2">
       <h1 className="text-2xl font-bold text-neutral z-10">
         Arabic Learning Games
       </h1>
@@ -17,8 +17,8 @@ const Games = () => {
           <h2 className="card-title">Echo Match Game</h2>
           <p>
             Can you find the correct English translation for the Arabic word?
-            This quiz presents 30 questions chosen randomly from the full
-            vocabulary of the curriculum.
+            This quiz presents 30 questions chosen randomly from the full 1000+
+            word vocabulary of the curriculum.
           </p>
           <div className="card-actions justify-end">
             <Link href="/games/echo-match/">

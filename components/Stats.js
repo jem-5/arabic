@@ -105,9 +105,7 @@ export const Stats = ({ reviewedModules, completedModules }) => {
                 document.getElementById("my_profile").showModal();
               }}
             >
-              <p className="text-sm text-secondary ">
-                Signed in as {user.email}
-              </p>
+              <p className="text-sm text-secondary ">You are signed in.</p>
             </button>
           ) : (
             <button
@@ -115,7 +113,7 @@ export const Stats = ({ reviewedModules, completedModules }) => {
                 document.getElementById("my_profile").showModal();
               }}
             >
-              Sign in to track your progress
+              Sign in to track your progress.
             </button>
           )}
           <Profile />

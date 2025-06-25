@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import Link from "next/link";
 import { AllModules } from "@/data/AllModules";
+import { freeModules } from "@/data/AllModules";
 import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
@@ -21,7 +22,7 @@ export default function Lesson() {
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "Greetings";
   const [questionNum, setQuestionNum] = useState(0);
-  const { user } = useAuthContext();
+  const { user, isPaidMember } = useAuthContext();
   const router = useRouter();
 
   const pathname = usePathname();
@@ -96,109 +97,139 @@ export default function Lesson() {
         </h3>
       </div>
       <div className="divider"></div>
-      <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
-        <div className="card-body flex flex-col justify-between  ">
-          <div className="text-2xl">
-            {AllModules[topic] ? AllModules[topic][questionNum].english : null}
-          </div>
-          <span className="">
-            <div className="chat chat-end text-2xl">
-              <div className="chat-bubble bg-secondary">
-                {AllModules[topic]
-                  ? AllModules[topic][questionNum].arabic
-                  : null}
-              </div>
-              <svg
-                onClick={playAudio}
-                className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                />
-              </svg>
-            </div>
-          </span>
-          <div className="text-1xl text-right place-content-end">
-            {AllModules[topic][questionNum].transliteration
-              ? AllModules[topic][questionNum].transliteration
-              : null}
+
+      {!isPaidMember && !Object.keys(freeModules).includes(topic) ? (
+        <div className="alert alert-warning shadow-lg w-full">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current flex-shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>
+              This module is only available to paid members.{" "}
+              <Link href="/pricing" className="underline">
+                Upgrade now
+              </Link>
+            </span>
           </div>
         </div>
-        <figure>
-          <img
-            className="w-56"
-            src={
-              AllModules[topic]
-                ? AllModules[topic][questionNum].image
-                  ? AllModules[topic][questionNum].image
-                  : chooseRandomMascot()
-                : null
-            }
-            alt="arabic greeting"
-          />
-        </figure>
-      </div>
-
-      <div className="flex flex-row justify-between mt-1 w-full">
-        <MyButton
-          classRest={questionNum === 0 ? "invisible" : "visible"}
-          text={
-            <svg
-              className="w-5 h-5 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m15 19-7-7 7-7"
+      ) : (
+        <>
+          <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
+            <div className="card-body flex flex-col justify-between  ">
+              <div className="text-2xl">
+                {AllModules[topic]
+                  ? AllModules[topic][questionNum].english
+                  : null}
+              </div>
+              <span className="">
+                <div className="chat chat-end text-2xl">
+                  <div className="chat-bubble bg-secondary">
+                    {AllModules[topic]
+                      ? AllModules[topic][questionNum].arabic
+                      : null}
+                  </div>
+                  <svg
+                    onClick={playAudio}
+                    className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+                    />
+                  </svg>
+                </div>
+              </span>
+              <div className="text-1xl text-right place-content-end">
+                {AllModules[topic][questionNum].transliteration
+                  ? AllModules[topic][questionNum].transliteration
+                  : null}
+              </div>
+            </div>
+            <figure>
+              <img
+                className="w-56"
+                src={
+                  AllModules[topic]
+                    ? AllModules[topic][questionNum].image
+                      ? AllModules[topic][questionNum].image
+                      : chooseRandomMascot()
+                    : null
+                }
+                alt="arabic greeting"
               />
-            </svg>
-          }
-          func={handleClickPrevious}
-        />
+            </figure>
+          </div>
 
-        <MyButton
-          classRest="bg-neutral"
-          text={
-            <svg
-              className="w-5 h-5 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m9 5 7 7-7 7"
-              />
-            </svg>
-          }
-          func={handleClickNext}
-        />
-      </div>
+          <div className="flex flex-row justify-between mt-1 w-full">
+            <MyButton
+              classRest={questionNum === 0 ? "invisible" : "visible"}
+              text={
+                <svg
+                  className="w-5 h-5 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m15 19-7-7 7-7"
+                  />
+                </svg>
+              }
+              func={handleClickPrevious}
+            />
 
+            <MyButton
+              classRest="bg-neutral"
+              text={
+                <svg
+                  className="w-5 h-5 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m9 5 7 7-7 7"
+                  />
+                </svg>
+              }
+              func={handleClickNext}
+            />
+          </div>
+        </>
+      )}
       <div className="divider "></div>
 
       <MyButton

@@ -4,11 +4,11 @@ import { getAuth, signOut } from "firebase/auth";
 const auth = getAuth(firebase_app);
 
 export default async function signout() {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-    })
-    .catch((error) => {
-      // An error happened.
-    });
+  try {
+    await signOut(auth);
+    // Sign-out successful.
+  } catch (error) {
+    // Handle error if needed
+    console.error("Sign out error:", error);
+  }
 }

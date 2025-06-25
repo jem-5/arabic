@@ -78,7 +78,19 @@ export const AllModules = {
   Proverbs,
 };
 
-const freeModules = [];
+export const freeModules = {
+  Greetings,
+  Colors,
+  Numbers,
+  Animals,
+  Weather,
+  Body,
+  House,
+  Foods,
+  Produce,
+  Drinks,
+  Relatives,
+};
 
 const moduleLengths = [];
 

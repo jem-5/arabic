@@ -6,15 +6,9 @@ import signout from "@/firebase/auth/signout";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 import { db } from "@/firebase/config";
+import { getAuth } from "firebase/auth";
 
-import {
-  doc,
-  updateDoc,
-  arrayUnion,
-  collection,
-  setDoc,
-  getDoc,
-} from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { AllModules } from "@/data/AllModules";
 import { QuestionAlert } from "./QuestionAlert";
 
@@ -23,8 +17,8 @@ export const Profile = () => {
   const { user } = useAuthContext();
   const router = useRouter();
   const [wordsToReview, setWordsToReview] = useState([]);
+  const authUser = typeof window !== "undefined" ? getAuth().currentUser : null;
 
-  console.log(wordsToReview);
   const updateWordsToReview = async () => {
     const userDoc = doc(db, "users", user.uid);
     const userSnap = await getDoc(userDoc);
@@ -35,6 +29,7 @@ export const Profile = () => {
         if (
           key !== "reviewedModules" &&
           key !== "completedModules" &&
+          key !== "isPaidMember" &&
           value.length !== 0
         ) {
           words.push(value);
@@ -46,8 +41,8 @@ export const Profile = () => {
   };
 
   useEffect(() => {
-    if (user) updateWordsToReview();
-  }, []);
+    if (user?.uid) updateWordsToReview();
+  }, [user]);
 
   return (
     <dialog
@@ -63,17 +58,25 @@ export const Profile = () => {
               You are currently signed in.
             </p>
 
-            <p className="text-lg text-secondary">Email: {user.email}</p>
-            <p className="text-lg text-secondary">
-              Member Since: {user.metadata.creationTime.slice(0, 16)}
-            </p>
-            <p className="text-lg text-secondary">
-              Last Login: {user.metadata.lastSignInTime.slice(0, 16)}
-            </p>
-            <button className="btn btn-secondary btn-active" onClick={signout}>
-              Sign Out
-            </button>
-
+            {authUser && (
+              <>
+                <p className="text-lg text-secondary">
+                  Email: {authUser.email}
+                </p>
+                <p className="text-lg text-secondary">
+                  Member Since: {authUser.metadata.creationTime.slice(0, 16)}
+                </p>
+                <p className="text-lg text-secondary">
+                  Last Login: {authUser.metadata.lastSignInTime.slice(0, 16)}
+                </p>
+                <button
+                  className="btn btn-secondary btn-active"
+                  onClick={signout}
+                >
+                  Sign Out
+                </button>
+              </>
+            )}
             <hr className="my-3" />
             <p className="text-xl text-[#white] ">Words to Review:</p>
 

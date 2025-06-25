@@ -12,10 +12,6 @@ export const Navigation = () => {
           </a>
         </div>
         <div className="flex-row flex gap-1 md:gap-4">
-          <Link href="/" className="font-bold">
-            <button className="btn   text-sm md:text-lg ">Home</button>
-          </Link>
-
           <Link href="/dashboard/" className="font-bold">
             <button className="btn   text-sm md:text-lg ">Lessons</button>
           </Link>
@@ -24,14 +20,16 @@ export const Navigation = () => {
             <button className="btn   text-sm md:text-lg ">Verbs</button>
           </Link>
 
-          <Link href="/blog/" className="font-bold">
-            <button className="btn    text-sm md:text-lg ">Blog</button>
-          </Link>
           <Link href="/games/" className="font-bold">
             <button className="btn    text-sm md:text-lg ">Games</button>
           </Link>
-          <Link href="/about/" className="font-bold">
-            <button className="btn    text-sm md:text-lg ">About</button>
+
+          <Link href="/pricing/" className="font-bold">
+            <button className="btn    text-sm md:text-lg ">Pricing</button>
+          </Link>
+
+          <Link href="/profile/" className="font-bold">
+            <button className="btn    text-sm md:text-lg ">Account</button>
           </Link>
         </div>
       </div>
