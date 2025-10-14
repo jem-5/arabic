@@ -11,9 +11,9 @@ export const VocabofDay = ({ wordOfTheDay }) => {
   };
 
   return (
-    <div className=" stats shadow mt-2 opacity-80 flex m-auto w-fit overflow-hidden hover:cursor-pointer">
+    <div className=" stats shadow mt-2 opacity-80 flex m-auto w-fit overflow-hidden ">
       <div
-        className="stat flex flew-row items-center justify-center"
+        className="stat flex flew-row items-center justify-center hover:cursor-pointer"
         onClick={() => document.getElementById("vocabofday").showModal()}
       >
         <div className="stat-figure text-primary">
@@ -24,44 +24,49 @@ export const VocabofDay = ({ wordOfTheDay }) => {
         </div>
       </div>
 
-      <dialog id="vocabofday" className="modal ">
-        <div className="modal-box bg-secondary text-neutral">
+      <dialog
+        id="vocabofday"
+        className="modal  fixed inset-0 z-40 bg-black/50 backdrop-blur-sm flex justify-center items-center transition-opacity duration-300  "
+        onClick={() => document.getElementById("vocabofday").close()}
+      >
+        <div
+          className="modal-box   bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
+            rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50 text-neutral "
+          onClick={(e) => e.stopPropagation()}
+        >
           <h3 className="font-bold text-lg">Arabic Word/Phrase of the Day</h3>
           <h4>{new Date().toLocaleDateString()}</h4>
-          <hr className="mt-2" />
 
-          <div className=" ">
-            <p className="text-2xl font-semibold text-neutral">
-              {wordOfTheDay.arabic}
-            </p>
-            <p className="text-md text-neutral">
-              {wordOfTheDay.english} —{" "}
-              <span className="italic text-neutral">
-                {wordOfTheDay.transliteration}
-              </span>
-            </p>
-            <p className="text-sm text-neutral italic opacity-85 ">
-              Module Name: {wordOfTheDay.module}
-            </p>
+          <div className="card card-border border-2 border-accent w-96 mt-2 ml-3 p-2">
+            <div>
+              <p className="text-xl font-semibold text-neutral">
+                {wordOfTheDay.arabic}
+              </p>
+              <p className="text-sm text-neutral">
+                {wordOfTheDay.english} —{" "}
+                <span className="italic text-neutral">
+                  {wordOfTheDay.transliteration}
+                </span>
+              </p>
+              <p className="text-sm text-neutral italic opacity-85 ">
+                Module Name: {wordOfTheDay.module}
+              </p>
+            </div>
             <button
               onClick={() => playAudio(wordOfTheDay.audio)}
-              className="bg-[white] hover:bg-yellow-600 text-accent rounded-full p-2 shadow-md transition"
+              className="bg-yellow-500  text-neutral rounded-full p-2 shadow-md transition self-end "
             >
               🔊
             </button>
           </div>
 
-          <hr className="mt-2" />
-
           <p className="py-2">
-            For more, check out the{" "}
+            For more vocabulary similar to this one, check out the{" "}
             <a href={`/lesson?topic=${wordOfTheDay.module}`}>
-              {wordOfTheDay.module} module
+              <span className="underline">{wordOfTheDay.module} module.</span>{" "}
+              Check back tomorrow for a new word!
             </a>
-            .
           </p>
-
-          <p className="py-2">And check back tomorrow for a new word!</p>
 
           <div className="modal-action ">
             <form

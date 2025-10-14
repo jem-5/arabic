@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 
 export const HowItWorks = () => {
   return (
-    <div className=" stats shadow mt-2 opacity-80 flex m-auto w-fit overflow-hidden hover:cursor-pointer">
+    <div className=" stats shadow mt-2 opacity-80 flex m-auto w-fit overflow-hidden">
       <div
-        className="stat flex flew-row items-center justify-center"
+        className="stat flex flew-row items-center justify-center  hover:cursor-pointer"
         onClick={() => document.getElementById("how_it_works").showModal()}
       >
         <div className="stat-figure text-primary">
@@ -21,8 +21,16 @@ export const HowItWorks = () => {
         <div className="stat-title text-sm text-secondary">How It Works</div>
       </div>
 
-      <dialog id="how_it_works" className="modal ">
-        <div className="modal-box p-10">
+      <dialog
+        id="how_it_works"
+        className="modal fixed inset-0 z-40 bg-black/50 backdrop-blur-sm flex justify-center items-center transition-opacity duration-300  "
+        onClick={() => document.getElementById("how_it_works").close()}
+      >
+        <div
+          className="modal-box    bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
+            rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50 text-neutral"
+          onClick={(e) => e.stopPropagation()}
+        >
           <h3 className="font-bold text-lg">Arabic Road: How It Works</h3>
 
           <p className="py-2">
@@ -36,7 +44,7 @@ export const HowItWorks = () => {
             For each module, you can choose the Lesson or the Quiz:
           </p>
 
-          <ul>
+          <ul className="ml-5">
             <li>
               The Lesson presents flashcards of the relevant vocabulary words /
               phrases / sentences, along with images & audio pronunciation.
@@ -52,8 +60,8 @@ export const HowItWorks = () => {
             From the dashboard, you can see your progress through the curriculum
             at a glance:
           </p>
-          <ul>
-            <li className="mb-1">
+          <ul className="ml-3">
+            <li className="mb-1 list-none">
               <span className="flex flex-row gap-2 items-center">
                 <img
                   src="/reviewed1.png"
@@ -64,7 +72,7 @@ export const HowItWorks = () => {
                 indicates you&apos;ve reviewed all flashcards in a given module.
               </span>
             </li>
-            <li>
+            <li className="mb-1 list-none">
               <span className="flex flex-row gap-2 items-center">
                 <img
                   src="/completed.png"

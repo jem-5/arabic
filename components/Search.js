@@ -81,7 +81,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
         >
           {/* Modal Content */}
           <div
-            className="bg-gradient-to-br from-[#fff8e7] to-[#fff2d5] border-2 border-yellow-500 
+            className="bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  border-yellow-500 
             rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50"
             onClick={(e) => e.stopPropagation()}
           >
@@ -117,7 +117,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
                             {item.transliteration}
                           </span>
                         </p>
-                        <p className="text-sm text-neutral italic opacity-85">
+                        <p className="text-sm text-neutral italic opacity-85 ">
                           Module Name: {item.module}
                         </p>
                       </div>
