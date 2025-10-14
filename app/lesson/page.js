@@ -75,6 +75,14 @@ export default function Lesson() {
 
   const playAudio = () => {
     let audio = new Audio(AllModules[topic][questionNum].audio);
+
+    audio.playbackRate = 1;
+    audio.play();
+  };
+
+  const playSlowAudio = () => {
+    let audio = new Audio(AllModules[topic][questionNum].audio);
+    audio.playbackRate = 0.5;
     audio.play();
   };
 
@@ -139,7 +147,7 @@ export default function Lesson() {
                       : null}
                   </div>
                   <svg
-                    onClick={playAudio}
+                    onClick={playSlowAudio}
                     className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"

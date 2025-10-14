@@ -78,6 +78,10 @@ export const AllModules = {
   Proverbs,
 };
 
+export const searchableModules = Object.entries(AllModules).flatMap(
+  ([name, data]) => data.map((item) => ({ ...item, module: name }))
+);
+
 export const freeModules = {
   Greetings,
   Colors,
@@ -93,7 +97,6 @@ export const freeModules = {
 };
 
 const moduleLengths = [];
-
 Object.values(AllModules).forEach((item) => {
   moduleLengths.push(item.length);
 });

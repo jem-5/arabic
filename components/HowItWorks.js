@@ -22,7 +22,7 @@ export const HowItWorks = () => {
       </div>
 
       <dialog id="how_it_works" className="modal ">
-        <div className="modal-box ">
+        <div className="modal-box p-10">
           <h3 className="font-bold text-lg">Arabic Road: How It Works</h3>
 
           <p className="py-2">

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { AllModules } from "@/data/AllModules";
+import { AllModules, searchableModules } from "@/data/AllModules";
 import { freeModules } from "@/data/AllModules";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase/config";
@@ -13,13 +13,16 @@ import { Profile } from "./Profile";
 import MyButton from "./Button";
 import { useRouter } from "next/navigation";
 import { HowItWorks } from "./HowItWorks";
+import SearchFloatingButton from "./Search";
+import { VocabofDay } from "./VocabofDay";
+import { LastModule } from "./LastModule";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
   const { user, isPaidMember, refetchUser } = useAuthContext();
   const [reviewedModules, setReviewedModules] = useState([]);
   const [completedModules, setCompletedModules] = useState([]);
-
+  const [lastModule, setLastModule] = useState(null);
   const screenSize = useScreenSize();
   const router = useRouter();
 
@@ -31,8 +34,9 @@ export const Dashboard = () => {
 
       if (userSnap.exists()) {
         const data = userSnap.data();
-        setReviewedModules(data.reviewedModules);
-        setCompletedModules(data.completedModules);
+        console.log(data.reviewedModules);
+        setReviewedModules(data.reviewedModules || []);
+        setCompletedModules(data.completedModules || []);
       }
     } catch (error) {
       // Optionally log or handle the error
@@ -42,18 +46,12 @@ export const Dashboard = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     updateModules();
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (user?.uid) {
       updateModules(); // fetches reviewed/completed modules from Firestore
-    } else {
-      setReviewedModules([]);
-      setCompletedModules([]);
+      // } else {
+      // setReviewedModules([]);
+      // setCompletedModules([]);
     }
   }, [user]);
 
@@ -130,12 +128,34 @@ export const Dashboard = () => {
   };
 
   const startLesson = () => {
+    console.log(module);
+    saveProgress(module);
     router.push(`/lesson/?topic=${module}`);
+    console.log(module);
   };
 
   const startQuiz = () => {
     router.push(`/quiz/?topic=${module}`);
   };
+
+  function saveProgress(module) {
+    localStorage.setItem("lastModule", module);
+  }
+
+  useEffect(() => {
+    // This runs only on client after hydration
+    const savedModule = localStorage.getItem("lastModule");
+    console.log(reviewedModules);
+    if (savedModule && !reviewedModules.includes(savedModule)) {
+      setLastModule(savedModule);
+      console.log(savedModule);
+    } else {
+      setLastModule(null);
+    }
+  }, [reviewedModules]);
+
+  const todayIndex = new Date().getDate() % searchableModules.length;
+  const wordOfTheDay = searchableModules[todayIndex];
 
   return (
     <div className=" w-full flex flex-col  justify-start gap-0  max-w-full overflow-x-hidden">
@@ -144,7 +164,15 @@ export const Dashboard = () => {
         reviewedModules={reviewedModules}
         completedModules={completedModules}
       />
-      <HowItWorks />
+
+      <div className="flex flex-col gap-1 md:flex-row w-fit justify-center md:gap-2 m-auto">
+        <HowItWorks />
+
+        <VocabofDay wordOfTheDay={wordOfTheDay} />
+
+        <LastModule lastModule={lastModule} />
+      </div>
+
       <ShowRoads className="justify-self-start" />
 
       <dialog id="my_lesson_summary" className="modal ">
@@ -212,6 +240,9 @@ export const Dashboard = () => {
           )}
         </div>
       </dialog>
+      <div className="relative">
+        <SearchFloatingButton searchableModules={searchableModules} />
+      </div>
     </div>
   );
 };
