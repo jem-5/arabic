@@ -17,7 +17,7 @@ export const Navigation = () => {
             <img alt="Arabic Road Logo" src="/logo.png" className="h-18" />
           </a>
         </div>
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex  md:gap-2">
           <Link href="/dashboard/" className="font-bold">
             <button className="btn   text-sm md:text-lg ">Lessons</button>
           </Link>

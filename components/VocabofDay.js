@@ -31,13 +31,13 @@ export const VocabofDay = ({ wordOfTheDay }) => {
       >
         <div
           className="modal-box   bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
-            rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50 text-neutral "
+            rounded-2xl shadow-2xl max-w-full p-6 relative z-50 text-neutral "
           onClick={(e) => e.stopPropagation()}
         >
           <h3 className="font-bold text-lg">Arabic Word/Phrase of the Day</h3>
           <h4>{new Date().toLocaleDateString()}</h4>
 
-          <div className="card card-border border-2 border-accent w-96 mt-2 ml-3 p-2">
+          <div className="card card-border border-2 border-accent max-w-full mt-2 ml-3 p-2">
             <div>
               <p className="text-xl font-semibold text-neutral">
                 {wordOfTheDay.arabic}
