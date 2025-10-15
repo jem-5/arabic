@@ -67,7 +67,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
       </button>
 
       {/* Shortcut Hint */}
-      <p className="fixed bottom-20 right-5 text-xs text-gray-400 bg-white/60 backdrop-blur-md px-2 py-1 rounded-lg">
+      <p className="fixed bottom-20 right-5 text-xs text-gray-400 bg-white/60 backdrop-blur-md px-2 py-1 rounded-lg hidden md:block">
         Press <kbd className="bg-gray-200 px-1 rounded">⌘K</kbd> or{" "}
         <kbd className="bg-gray-200 px-1 rounded">/</kbd>
       </p>
@@ -81,7 +81,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
         >
           {/* Modal Content */}
           <div
-            className="bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  border-yellow-500 
+            className="bg-gradient-to-br from-[#fff8e7] to-[#fff2d5] border-2 border-yellow-500 
             rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50"
             onClick={(e) => e.stopPropagation()}
           >

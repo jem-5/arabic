@@ -23,12 +23,12 @@ export const HowItWorks = () => {
 
       <dialog
         id="how_it_works"
-        className="modal fixed inset-0 z-40 bg-black/50 backdrop-blur-sm flex justify-center items-center transition-opacity duration-300  "
+        className="modal fixed inset-0 z-40 bg-black/50 backdrop-blur-sm flex justify-center items-center transition-opacity duration-300 w-full max-w-x overflow-y-auto"
         onClick={() => document.getElementById("how_it_works").close()}
       >
         <div
           className="modal-box    bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
-            rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50 text-neutral"
+            rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50 text-neutral  w-full max-w-x overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
           <h3 className="font-bold text-lg">Arabic Road: How It Works</h3>

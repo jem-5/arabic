@@ -63,21 +63,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="w-screen h-full ">
+    <html lang="en" className="w-full h-full ">
       <head></head>
 
-      <body className=" min-h-full flex flex-col justify-between items-center  min-w-screen   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover   ">
+      <body className=" min-h-full flex flex-col justify-between items-center  w-full   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover ">
         <AuthContextProvider>
           <Navigation />
           {children}
           <Footer />
         </AuthContextProvider>
 
-        {/* <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9287702370703879"
-          // crossorigin="anonymous"
-        ></Script> */}
 
         <Script
           async

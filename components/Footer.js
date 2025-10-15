@@ -3,9 +3,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-2 bg-base-100 opacity-80 ">
-      <div>
-        <p className="flex p-0 gap-8 max-[999px]:text-sm max-[999px]:gap-2">
+    <footer className="footer footer-center p-2 bg-base-100 opacity-80 max-w-3/4">
+        <p className="flex   max-[999px]:text-sm flex-col md:flex-row gap-1 md:gap-5">
           <Link href="/" className="font-bold">
             Home
           </Link>
@@ -37,7 +36,6 @@ const Footer = () => {
             ArabicRoad
           </Link>
         </p>
-      </div>
     </footer>
   );
 };

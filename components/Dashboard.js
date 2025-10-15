@@ -158,20 +158,21 @@ export const Dashboard = () => {
   const wordOfTheDay = searchableModules[todayIndex];
 
   return (
-    <div className=" w-full flex flex-col  justify-start gap-0  max-w-full overflow-x-hidden">
+    <div className=" w-full flex flex-col  justify-start gap-0  ">
       <Profile />
       <Stats
         reviewedModules={reviewedModules}
         completedModules={completedModules}
       />
 
-      <div className="flex flex-col gap-1 md:flex-row w-fit justify-center md:gap-2 m-auto">
+      <div className="flex flex-row gap-1 w-fit justify-center md:gap-2 m-auto">
         <HowItWorks />
 
         <VocabofDay wordOfTheDay={wordOfTheDay} />
 
-        <LastModule lastModule={lastModule} />
       </div>
+        <LastModule lastModule={lastModule} />
+
 
       <ShowRoads className="justify-self-start" />
 
