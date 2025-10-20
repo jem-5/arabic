@@ -13,6 +13,7 @@ import { QuestionAlert } from "./QuestionAlert";
 import BadgeGrid from "./Badges";
 import MyButton from "./Button";
 import { badges } from "./Badges";
+import useStreak from "./Streak";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
@@ -24,6 +25,8 @@ export const Profile = () => {
   const [userProfile, setUserProfile] = useState({});
   const [userBadges, setUserBadges] = useState(badges);
   const [removingIndex, setRemovingIndex] = useState(null);
+  const StreakBadge = useStreak().StreakBadge;
+  const streak = useStreak().streak;
 
   const playAudio = (src) => {
     if (!src) return;
@@ -191,14 +194,22 @@ export const Profile = () => {
               <MyButton func={signout} text={"Sign Out"} />
             </>
           )}
+
+          {streak && streak.currentStreak > 0 && (
+            <>
+              <hr className="my-3" />
+              <p className="font-bold text-2xl   mb-2 ">Your Streaks </p>
+              <StreakBadge type="current" size="med" />
+              <StreakBadge type="longest" size="med" />
+            </>
+          )}
+
           <hr className="my-3" />
           <BadgeGrid badges={userBadges} />
           <hr className="my-3" />
-
           <p className="font-bold text-2xl   mb-2 ">
             Words to Review: {wordsToReview.length}
           </p>
-
           {wordsToReview ? (
             <ul className="space-y-2">
               {wordsToReview.map((item, index) => (
@@ -239,7 +250,6 @@ export const Profile = () => {
           ) : (
             "There are no words to review in your profile."
           )}
-
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button

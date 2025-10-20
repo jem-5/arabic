@@ -363,7 +363,6 @@ export default function Quiz() {
         func={() => router.push("/dashboard")}
         classRest="h-12 bg-neutral"
       />
-      <Profile />
 
       <dialog id="quiz_summary" className="modal">
         <div className="modal-box">

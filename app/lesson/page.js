@@ -245,8 +245,6 @@ export default function Lesson() {
         func={() => router.push("/dashboard")}
         classRest="h-12 bg-neutral"
       />
-
-      <Profile />
     </main>
   );
 }

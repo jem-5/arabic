@@ -17,6 +17,7 @@ import SearchFloatingButton from "./Search";
 import { VocabofDay } from "./VocabofDay";
 import { LastModule } from "./LastModule";
 import BadgeGrid from "./Badges";
+import useStreak from "./Streak";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
@@ -26,6 +27,8 @@ export const Dashboard = () => {
   const [lastModule, setLastModule] = useState(null);
   const screenSize = useScreenSize();
   const router = useRouter();
+
+  const { streak, updateStreak, StreakBadge } = useStreak();
 
   const updateModules = async () => {
     // if (!user?.uid) return;
@@ -49,10 +52,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     if (user?.uid) {
-      updateModules(); // fetches reviewed/completed modules from Firestore
-      // } else {
-      // setReviewedModules([]);
-      // setCompletedModules([]);
+      updateModules();
     }
   }, [user]);
 
@@ -129,13 +129,14 @@ export const Dashboard = () => {
   };
 
   const startLesson = () => {
-    console.log(module);
     saveProgress(module);
+    updateStreak(true);
     router.push(`/lesson/?topic=${module}`);
-    console.log(module);
   };
 
   const startQuiz = () => {
+    updateStreak(true);
+
     router.push(`/quiz/?topic=${module}`);
   };
 
@@ -146,10 +147,8 @@ export const Dashboard = () => {
   useEffect(() => {
     // This runs only on client after hydration
     const savedModule = localStorage.getItem("lastModule");
-    console.log(reviewedModules);
-    if (savedModule && !reviewedModules.includes(savedModule)) {
+    if (savedModule) {
       setLastModule(savedModule);
-      console.log(savedModule);
     } else {
       setLastModule(null);
     }
@@ -170,7 +169,11 @@ export const Dashboard = () => {
 
         <VocabofDay wordOfTheDay={wordOfTheDay} />
       </div>
-      <LastModule lastModule={lastModule} />
+
+      <div className="flex flex-row gap-1 w-fit justify-center md:gap-2 m-auto">
+        <LastModule lastModule={lastModule} />
+        {streak && streak.currentStreak > 0 && <StreakBadge size={"sm"} />}
+      </div>
 
       <ShowRoads className="justify-self-start" />
 
