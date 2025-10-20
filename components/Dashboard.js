@@ -16,6 +16,7 @@ import { HowItWorks } from "./HowItWorks";
 import SearchFloatingButton from "./Search";
 import { VocabofDay } from "./VocabofDay";
 import { LastModule } from "./LastModule";
+import BadgeGrid from "./Badges";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
@@ -159,7 +160,6 @@ export const Dashboard = () => {
 
   return (
     <div className=" w-full flex flex-col  justify-start gap-0  ">
-      <Profile />
       <Stats
         reviewedModules={reviewedModules}
         completedModules={completedModules}
@@ -169,10 +169,8 @@ export const Dashboard = () => {
         <HowItWorks />
 
         <VocabofDay wordOfTheDay={wordOfTheDay} />
-
       </div>
-        <LastModule lastModule={lastModule} />
-
+      <LastModule lastModule={lastModule} />
 
       <ShowRoads className="justify-self-start" />
 

@@ -95,11 +95,7 @@ function SignInForm() {
             </div>
           ) : null}
 
-          <MyButton
-            text="Sign in"
-            type="submit"
-            classRest={"bg-secondary text-neutral mb-2"}
-          />
+          <MyButton text="Sign in" type="submit" />
         </form>
       </div>
     </div>

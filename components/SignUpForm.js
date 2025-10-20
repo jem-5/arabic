@@ -97,11 +97,7 @@ function SignUpForm() {
             </div>
           ) : null}
 
-          <MyButton
-            text="Create account"
-            type="submit"
-            classRest={"bg-secondary text-neutral mb-2"}
-          />
+          <MyButton text="Create account" type="submit" />
         </form>
       </div>
     </div>

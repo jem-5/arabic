@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Profile } from "./Profile";
+// import { Profile } from "./Profile";
 
 import { useAuthContext } from "@/context/AuthContext";
 
 import { AllModules, totalWords } from "@/data/AllModules";
+import { Profile } from "@/components/Profile";
 
 export const Stats = ({ reviewedModules, completedModules }) => {
   const { user } = useAuthContext();
@@ -116,9 +117,18 @@ export const Stats = ({ reviewedModules, completedModules }) => {
               Sign in to track your progress.
             </button>
           )}
-          <Profile />
         </div>
       </div>
+
+      <dialog
+        id="my_profile"
+        className="modal absolute top-0 left-0 w-screen h-screen"
+        onClick={() => document.getElementById("my_profile").close()}
+      >
+        <div className="modal-box  p-0  " onClick={(e) => e.stopPropagation()}>
+          <Profile />
+        </div>
+      </dialog>
     </div>
   );
 };
