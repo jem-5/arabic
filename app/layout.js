@@ -73,7 +73,6 @@ export default function RootLayout({ children }) {
           <Footer />
         </AuthContextProvider>
 
-
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-Q9R3EYD27Y"
@@ -100,6 +99,8 @@ export default function RootLayout({ children }) {
             referrerpolicy="no-referrer-when-downgrade"
           />
         </noscript> */}
+
+        <Script src="./assets/vendor/canvas-confetti/dist/confetti.browser.js"></Script>
       </body>
     </html>
   );

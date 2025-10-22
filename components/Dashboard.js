@@ -164,13 +164,13 @@ export const Dashboard = () => {
         completedModules={completedModules}
       />
 
-      <div className="flex flex-row gap-1 w-fit justify-center md:gap-2 m-auto">
+      <div className="md:flex md:flex-row gap-1 w-fit justify-center md:gap-2 m-auto hidden ">
         <HowItWorks />
 
         <VocabofDay wordOfTheDay={wordOfTheDay} />
       </div>
 
-      <div className="flex flex-row gap-1 w-fit justify-center md:gap-2 m-auto">
+      <div className="flex flex-col md:flex-row  justify-center md:gap-1 m-auto">
         <LastModule lastModule={lastModule} />
         {streak && streak.currentStreak > 0 && <StreakBadge size={"sm"} />}
       </div>

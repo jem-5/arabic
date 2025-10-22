@@ -20,6 +20,7 @@ import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { QuestionAlert } from "@/components/QuestionAlert";
+import confetti from "canvas-confetti";
 
 export default function Quiz() {
   const searchParams = useSearchParams();
@@ -53,6 +54,16 @@ export default function Quiz() {
 
   let statusWidth = 75;
   let statusHeight = 75;
+
+  const celebrate = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: {
+        y: 0.6,
+      },
+    });
+  };
 
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
@@ -161,6 +172,7 @@ export default function Quiz() {
 
   const endQuiz = () => {
     document.getElementById("quiz_summary").showModal();
+    celebrate();
   };
 
   const playAudio = () => {

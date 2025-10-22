@@ -17,6 +17,7 @@ import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import confetti from "canvas-confetti";
 
 export default function Lesson() {
   const searchParams = useSearchParams();
@@ -58,13 +59,24 @@ export default function Lesson() {
     }
   };
 
+  const celebrate = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: {
+        y: 0.6,
+      },
+    });
+  };
+
   const handleClickNext = (e) => {
     e.preventDefault();
     if (questionNum < AllModules[topic].length - 1)
       setQuestionNum((prev) => prev + 1);
-    if (questionNum === AllModules[topic].length - 1) setQuestionNum(0);
-    if (questionNum === AllModules[topic].length - 2 && user) {
-      saveProgress();
+    if (questionNum === AllModules[topic].length - 1) {
+      user ? saveProgress() : null;
+      celebrate();
+      router.push("/dashboard");
     }
   };
 

@@ -11,7 +11,7 @@ export const LastModule = ({ lastModule }) => {
           <div className="stat-figure text-primary">🚩</div>
           <a href={`/lesson?topic=${lastModule}`}>
             <div className="stat-title text-sm text-secondary">
-              Continue your last module: {lastModule}
+              Continue: {lastModule}
             </div>
           </a>
         </div>
