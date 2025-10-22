@@ -14,6 +14,7 @@ import BadgeGrid from "./Badges";
 import MyButton from "./Button";
 import { badges } from "./Badges";
 import useStreak from "./Streak";
+import ReviewMissedWords from "./ReviewMissedWords";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
@@ -27,6 +28,7 @@ export const Profile = () => {
   const [removingIndex, setRemovingIndex] = useState(null);
   const StreakBadge = useStreak().StreakBadge;
   const streak = useStreak().streak;
+  const [showReview, setShowReview] = useState(false);
 
   const playAudio = (src) => {
     if (!src) return;
@@ -199,8 +201,10 @@ export const Profile = () => {
             <>
               <hr className="my-3" />
               <p className="font-bold text-2xl   mb-2 ">Your Streaks </p>
-              <StreakBadge type="current" size="med" />
-              <StreakBadge type="longest" size="med" />
+              <div className="flex justify-start">
+                <StreakBadge type="current" size="med" className="text-left" />
+                <StreakBadge type="longest" size="med" className="text-left" />
+              </div>
             </>
           )}
 
@@ -259,6 +263,18 @@ export const Profile = () => {
               ✕
             </button>
           </form>
+          {showReview && (
+            <ReviewMissedWords
+              wordsToReview={wordsToReview}
+              onClose={() => setShowReview(false)}
+            />
+          )}
+
+          <MyButton
+            func={() => setShowReview(true)}
+            classRest="bg-amber-700 text-white px-4 py-2 rounded-lg"
+            text="Review Missed Words"
+          />
         </>
       ) : signInMode ? (
         <>

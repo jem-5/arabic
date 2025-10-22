@@ -38,11 +38,11 @@ function useStreak() {
   };
 
   const StreakBadge = ({ size = "sm", type = "current" }) => {
-    const sizeClasses = size === "sm" ? "text-sm" : "text-lg";
+    const sizeClasses = size === "sm" ? "text-sm" : "text-md";
     return (
-      <div className=" stats shadow mt-2 opacity-80 flex m-auto w-fit overflow-hidden  ">
-        <div className="stat flex flew-row items-center justify-center ">
-          <div className="stat-figure text-primary ">🔥</div>
+      <div className=" stats shadow mt-2 opacity-80 flex m-auto overflow-hidden   ">
+        <div className="stat flex flew-row items-center justify-center gap-1 ">
+          <div className="stat-figure ">🔥</div>
           {type === "longest" ? (
             <div className={`stat-title  text-secondary ${sizeClasses} `}>
               Longest Streak: {streak.longestStreak} days
