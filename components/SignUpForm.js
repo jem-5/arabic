@@ -8,7 +8,9 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
+  console.log(showPassword);
   const handleForm = async (event) => {
     event.preventDefault();
     setErrorMsg("");
@@ -30,22 +32,23 @@ function SignUpForm() {
       <div className="form-wrapper">
         <form
           onSubmit={handleForm}
-          className="form flex flex-col gap-4 items-start"
+          className="form flex flex-col gap-4 items-start w-full max-w-md"
         >
-          <label className="input input-bordered flex items-center gap-2">
+          <label className="input input-bordered flex items-center gap-2 w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="white"
-              className="w-4 h-4 opacity-70"
+              className="w-4 h-4 opacity-70 flex-none"
             >
               <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
               <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
             </svg>
             <input
-              className="grow text-[white] bg-neutral"
+              className="flex-1 w-full text-[white] bg-neutral"
               style={{ color: "white" }}
               onChange={(e) => setEmail(e.target.value)}
+              value={email}
               required
               type="email"
               name="email"
@@ -54,12 +57,12 @@ function SignUpForm() {
             />
           </label>
 
-          <label className="input input-bordered flex items-center gap-2">
+          <label className="input input-bordered flex items-center gap-2 w-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="white"
-              className="w-4 h-4 opacity-70"
+              className="w-4 h-4 opacity-70 flex-none"
             >
               <path
                 fillRule="evenodd"
@@ -67,15 +70,36 @@ function SignUpForm() {
                 clipRule="evenodd"
               />
             </svg>
+
             <input
-              type="password"
-              className="grow text-[white]"
+              type={showPassword ? "text" : "password"}
+              className="flex-1 w-full text-[white]"
               onChange={(e) => setPassword(e.target.value)}
+              value={password}
               required
               name="password"
               id="password"
               placeholder="password"
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword((s) => !s)}
+              className="cursor-pointer p-1 flex-none"
+              aria-pressed={showPassword}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              <svg
+                width="16px"
+                height="16px"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                className="bi bi-eye"
+              >
+                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+              </svg>
+            </button>
           </label>
 
           {errorMsg ? (
