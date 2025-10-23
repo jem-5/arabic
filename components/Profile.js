@@ -181,7 +181,7 @@ export const Profile = () => {
         <>
           {user && (
             <>
-              <p className="text-2xl ">{user.email}</p>
+              <p className="text-lg ">{user.email}</p>
               <div className="grid grid-cols-2 gap-2 my-2">
                 <p className="text-lg ">Member Since</p>
                 <p className="text-lg ">
@@ -201,7 +201,7 @@ export const Profile = () => {
             <>
               <hr className="my-3" />
               <p className="font-bold text-2xl   mb-2 ">Your Streaks </p>
-              <div className="flex justify-start">
+              <div className="flex flex-col md:flex-row justify-start">
                 <StreakBadge type="current" size="med" className="text-left" />
                 <StreakBadge type="longest" size="med" className="text-left" />
               </div>

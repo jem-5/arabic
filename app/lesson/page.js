@@ -18,6 +18,7 @@ import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import confetti from "canvas-confetti";
+import Image from "next/image";
 
 export default function Lesson() {
   const searchParams = useSearchParams();
@@ -146,10 +147,11 @@ export default function Lesson() {
         <>
           <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
             <div className="card-body flex flex-col justify-between  ">
-              <div className="text-2xl">
+              <div className="text-2xl flex justify-between">
                 {AllModules[topic]
                   ? AllModules[topic][questionNum].english
                   : null}
+                <Image src="/save.png" alt="save icon" width={15} height={16} />
               </div>
               <span className="">
                 <div className="chat chat-end text-2xl">
