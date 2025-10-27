@@ -7,14 +7,14 @@ import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import VerbPresentConjugations from "@/data/VerbPresentConjugations";
+import VerbConjugations from "@/data/VerbConjugations";
 
 export default function Verb() {
   const { user } = useAuthContext();
   const router = useRouter();
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
-  const [currVerb, setCurrVerb] = useState(VerbPresentConjugations[0]);
+  const [currVerb, setCurrVerb] = useState(VerbConjugations[0]);
   const [tense, setTense] = useState("presentTense");
 
   useEffect(() => {
@@ -31,8 +31,6 @@ export default function Verb() {
       console.log(canonicalUrl);
     }
   }, [pathname]);
-
-  console.log(VerbPresentConjugations[0]);
 
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
@@ -58,7 +56,7 @@ export default function Verb() {
               className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow  "
             >
               <div className="overflow-y-auto max-h-96">
-                {VerbPresentConjugations.map((item, i) => {
+                {VerbConjugations.map((item, i) => {
                   return (
                     <li
                       key={i}
@@ -172,8 +170,6 @@ export default function Verb() {
       </div>
 
       <div className="divider "></div>
-
-      <Profile />
     </main>
   );
 }

@@ -15,6 +15,8 @@ import MyButton from "./Button";
 import { badges } from "./Badges";
 import useStreak from "./Streak";
 import ReviewMissedWords from "./ReviewMissedWords";
+import Image from "next/image";
+import WordList from "./WordList";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
@@ -29,12 +31,43 @@ export const Profile = () => {
   const StreakBadge = useStreak().StreakBadge;
   const streak = useStreak().streak;
   const [showReview, setShowReview] = useState(false);
+  const [savedWords, setSavedWords] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("savedWords") || "[]");
+    } catch (e) {
+      return [];
+    }
+  });
 
   const playAudio = (src) => {
     if (!src) return;
     const audio = new Audio(src);
     audio.play().catch((err) => console.warn("Audio playback failed:", err));
   };
+
+  const checkBadges = useCallback((user, badges) => {
+    return badges.map((badge) => {
+      const { requirement } = badge;
+      let unlocked = false;
+
+      if (
+        requirement.completedModules &&
+        safeCount(user.completedModules) >= requirement.completedModules
+      )
+        unlocked = true;
+
+      if (
+        requirement.reviewedModules &&
+        safeCount(user.reviewedModules) >= requirement.reviewedModules
+      )
+        unlocked = true;
+
+      // if (requirement.streakDays && user.streakDays >= requirement.streakDays)
+      //   unlocked = true;
+
+      return { ...badge, unlocked };
+    });
+  }, []);
 
   const updateWordsToReview = useCallback(async () => {
     const userDoc = doc(db, "users", user.uid);
@@ -61,13 +94,43 @@ export const Profile = () => {
       let flatArr = words.flat(2);
       setWordsToReview(flatArr);
     }
-  }, [user]);
+  }, [user, checkBadges]);
+
+  // Keep savedWords in sync with localStorage
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem("savedWords") || "[]");
+      setSavedWords(stored);
+    } catch (e) {
+      setSavedWords([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("savedWords", JSON.stringify(savedWords || []));
+    } catch (e) {
+      // ignore storage errors
+    }
+  }, [savedWords]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("savedWords", JSON.stringify(savedWords));
+  // }, [savedWords]);
+
+  const handleRemoveSavedWord = (item) => {
+    const filteredWords = (savedWords || []).filter(
+      (word) => word.english !== item.english
+    );
+    // update state; effect will sync localStorage
+    setSavedWords(filteredWords);
+  };
 
   // remove a word from the user's review list and update Firestore
-  const removeWord = async (word, index) => {
+  const removeWord = async (word) => {
     if (!user?.uid) return;
     try {
-      setRemovingIndex(index);
+      // setRemovingIndex(index);
       const userRef = doc(db, "users", user.uid);
       const userSnap = await getDoc(userRef);
       if (!userSnap.exists()) return;
@@ -146,30 +209,6 @@ export const Profile = () => {
     });
   };
 
-  const checkBadges = useCallback((user, badges) => {
-    return badges.map((badge) => {
-      const { requirement } = badge;
-      let unlocked = false;
-
-      if (
-        requirement.completedModules &&
-        safeCount(user.completedModules) >= requirement.completedModules
-      )
-        unlocked = true;
-
-      if (
-        requirement.reviewedModules &&
-        safeCount(user.reviewedModules) >= requirement.reviewedModules
-      )
-        unlocked = true;
-
-      // if (requirement.streakDays && user.streakDays >= requirement.streakDays)
-      //   unlocked = true;
-
-      return { ...badge, unlocked };
-    });
-  }, []);
-
   return (
     <div
       className=" bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
@@ -212,57 +251,14 @@ export const Profile = () => {
           <BadgeGrid badges={userBadges} />
           <hr className="my-3" />
           <p className="font-bold text-2xl   mb-2 ">
-            Words to Review: {wordsToReview.length}
+            Words You&apos;ve Missed: {wordsToReview.length}
           </p>
-          {wordsToReview ? (
-            <ul className="space-y-2">
-              {wordsToReview.map((item, index) => (
-                <li
-                  key={index}
-                  className="flex items-center justify-between bg-yellow-50 hover:bg-yellow-100 
-                      border border-yellow-300 p-3 rounded-lg transition"
-                >
-                  <div>
-                    <p className="text-xl font-semibold text-neutral">
-                      {item.arabic}
-                    </p>
-                    <p className="text-sm text-neutral">
-                      {item.english} —{" "}
-                      <span className="italic text-neutral">
-                        {item.transliteration}
-                      </span>
-                    </p>
-                    <button
-                      onClick={() => playAudio(item.audio)}
-                      className="bg-yellow-500 hover:bg-yellow-600 text-accent rounded-full p-2 shadow-md transition "
-                    >
-                      🔊
-                    </button>
-                  </div>
+          <WordList
+            words={wordsToReview}
+            playAudio={playAudio}
+            removeWord={removeWord}
+          />
 
-                  <button
-                    onClick={() => removeWord(item, index)}
-                    disabled={removingIndex === index}
-                    className="ml-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-md transition disabled:opacity-50"
-                    title="Remove from review"
-                  >
-                    🗑
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            "There are no words to review in your profile."
-          )}
-          <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
-            <button
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 close2"
-              id="closebtn"
-            >
-              ✕
-            </button>
-          </form>
           {showReview && (
             <ReviewMissedWords
               wordsToReview={wordsToReview}
@@ -275,6 +271,26 @@ export const Profile = () => {
             classRest="bg-amber-700 text-white px-4 py-2 rounded-lg"
             text="Review Missed Words"
           />
+
+          <hr className="my-3" />
+          <p className="font-bold text-2xl   mb-2 ">
+            Words You&apos;ve Saved: {savedWords ? savedWords.length : null}
+          </p>
+          <WordList
+            words={savedWords}
+            playAudio={playAudio}
+            removeWord={handleRemoveSavedWord}
+          />
+
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 close2"
+              id="closebtn"
+            >
+              ✕
+            </button>
+          </form>
         </>
       ) : signInMode ? (
         <>
