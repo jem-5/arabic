@@ -170,6 +170,12 @@ export default function Verb() {
       </div>
 
       <div className="divider "></div>
+      <a href="/verbs-quiz">
+        <MyButton
+          text="Take a Quiz on Verb Conjugations"
+          onClick={() => router.push("/verbs-quiz")}
+        />
+      </a>
     </main>
   );
 }
