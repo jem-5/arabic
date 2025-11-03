@@ -18,6 +18,7 @@ import { VocabofDay } from "./VocabofDay";
 import { LastModule } from "./LastModule";
 import BadgeGrid from "./Badges";
 import useStreak from "./Streak";
+import NightSky from "./NightSky";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
@@ -27,8 +28,8 @@ export const Dashboard = () => {
   const [lastModule, setLastModule] = useState(null);
   const screenSize = useScreenSize();
   const router = useRouter();
-
   const { streak, updateStreak, StreakBadge } = useStreak();
+  const [nightMode, setNightMode] = useState(false);
 
   const updateModules = async () => {
     // if (!user?.uid) return;
@@ -61,9 +62,9 @@ export const Dashboard = () => {
       // console.log("item:", item);
       return (
         <li key={i} className="">
-          <hr className="bg-neutral" />
+          <hr className={nightMode ? `bg-[white]` : `bg-neutral`} />
 
-          <div className="timeline-middle m-0">
+          <div className="timeline-middle m-0 ">
             {completedModules.map((item) => item).includes(item) ? (
               <img
                 src="/completed.png"
@@ -79,9 +80,9 @@ export const Dashboard = () => {
                 height="30px"
               />
             ) : Object.keys(freeModules).includes(item) ? (
-              <span className="loading loading-ring loading-md bg-neutral"></span>
+              <span className="loading loading-ring loading-md bg-[white]  "></span>
             ) : isPaidMember ? (
-              <span className="loading loading-ring loading-md bg-neutral"></span>
+              <span className="loading loading-ring loading-md bg-[white]  "></span>
             ) : (
               <img
                 src="/lock.png"
@@ -103,7 +104,7 @@ export const Dashboard = () => {
             />
           </div>
 
-          <hr className="bg-neutral" />
+          <hr className={nightMode ? `bg-[white]` : `bg-neutral`} />
         </li>
       );
     });
@@ -157,8 +158,13 @@ export const Dashboard = () => {
   const todayIndex = new Date().getDate() % searchableModules.length;
   const wordOfTheDay = searchableModules[todayIndex];
 
+  const checkNightStatus = () => {
+    setNightMode(!nightMode);
+  };
+
   return (
     <div className=" w-full flex flex-col  justify-start gap-0  ">
+      {nightMode && <NightSky />}
       <Stats
         reviewedModules={reviewedModules}
         completedModules={completedModules}
@@ -173,6 +179,18 @@ export const Dashboard = () => {
       <div className="flex flex-col md:flex-row  justify-center md:gap-1 m-auto">
         <LastModule lastModule={lastModule} />
         {streak && streak.currentStreak > 0 && <StreakBadge size={"sm"} />}
+
+        <div className=" stats shadow mt-2 opacity-80 flex m-auto overflow-hidden   ">
+          <div className="stat flex flew-row items-center justify-center gap-1 ">
+            ☀️
+            <input
+              type="checkbox"
+              className="toggle toggle-primary z-20 toggle-sm"
+              onClick={checkNightStatus}
+            />
+            🌙
+          </div>
+        </div>
       </div>
 
       <ShowRoads className="justify-self-start" />

@@ -1,4 +1,4 @@
-const VerbPresentConjugations = [
+const VerbConjugations = [
   {
     english: "to drink",
     verb: "يشرب",
@@ -4328,8 +4328,8 @@ const VerbPresentConjugations = [
   },
 ];
 
-VerbPresentConjugations.sort((a, b) => {
+VerbConjugations.sort((a, b) => {
   return a.english.localeCompare(b.english);
 });
 
-export default VerbPresentConjugations;
+export default VerbConjugations;
