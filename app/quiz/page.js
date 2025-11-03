@@ -209,25 +209,31 @@ export default function Quiz() {
           <h2 className="card-title ">
             {AllModules[topic][questionNum][questionLang]}
             {questionLang === "arabic" ? (
-              <svg
+              <button
+                className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
                 onClick={playAudio}
-                className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                />
-              </svg>
-            ) : null}
+                🔊
+              </button>
+            ) : // <svg
+            //   onClick={playAudio}
+            //   className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
+            //   aria-hidden="true"
+            //   xmlns="http://www.w3.org/2000/svg"
+            //   width="24"
+            //   height="24"
+            //   fill="none"
+            //   viewBox="0 0 24 24"
+            // >
+            //   <path
+            //     stroke="currentColor"
+            //     strokeLinecap="round"
+            //     strokeLinejoin="round"
+            //     strokeWidth="2"
+            //     d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
+            //   />
+            // </svg>
+            null}
           </h2>
 
           <div className="card-actions flex flex-col items-center w-full   ">
@@ -238,24 +244,12 @@ export default function Quiz() {
                 text={answers[0]}
               />
               {questionLang === "english" ? (
-                <svg
+                <button
+                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => playAnswerAudio(answers[0])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer   "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
+                  🔊
+                </button>
               ) : null}
             </div>
 
@@ -266,24 +260,12 @@ export default function Quiz() {
                 func={checkAnswer}
               />
               {questionLang === "english" ? (
-                <svg
+                <button
+                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => playAnswerAudio(answers[1])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer  "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
+                  🔊
+                </button>
               ) : null}
             </div>
 
@@ -294,24 +276,12 @@ export default function Quiz() {
                 func={checkAnswer}
               />
               {questionLang === "english" ? (
-                <svg
+                <button
+                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => playAnswerAudio(answers[2])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer   "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
+                  🔊
+                </button>
               ) : null}
             </div>
             <div className="flex flex-row items-center justify-center gap-3 w-full  ">
@@ -321,24 +291,12 @@ export default function Quiz() {
                 func={checkAnswer}
               />
               {questionLang === "english" ? (
-                <svg
+                <button
+                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
                   onClick={() => playAnswerAudio(answers[3])}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg>
+                  🔊
+                </button>
               ) : null}
             </div>
           </div>

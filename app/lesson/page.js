@@ -19,6 +19,7 @@ import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import confetti from "canvas-confetti";
 import Image from "next/image";
+import CulturalNotes from "@/data/CulturalNotes";
 
 export default function Lesson() {
   const searchParams = useSearchParams();
@@ -26,6 +27,7 @@ export default function Lesson() {
   const [questionNum, setQuestionNum] = useState(0);
   const { user, isPaidMember } = useAuthContext();
   const router = useRouter();
+  const [tip, setTip] = useState(null);
 
   const [savedWords, setSavedWords] = useState(
     JSON.parse(localStorage.getItem("savedWords") || "[]")
@@ -64,6 +66,12 @@ export default function Lesson() {
       });
     }
   };
+
+  useEffect(() => {
+    const englishWord = AllModules[topic][questionNum].english;
+    const currentTip = CulturalNotes[englishWord] || null;
+    setTip(currentTip);
+  }, [questionNum]);
 
   useEffect(() => {
     if (!savedWords) return;
@@ -169,7 +177,7 @@ export default function Lesson() {
           {AllModules[topic] ? AllModules[topic].length : null}
         </h3>
       </div>
-      <div className="divider"></div>
+      <div className="divider m-0 p-0"></div>
 
       {!isPaidMember && !Object.keys(freeModules).includes(topic) ? (
         <div className="alert alert-warning shadow-lg w-full">
@@ -196,9 +204,9 @@ export default function Lesson() {
           </div>
         </div>
       ) : (
-        <>
-          <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
-            <div className="card-body flex flex-col justify-between   ">
+        <div className="card p-2 max-w-96 md:max-w-xl   ">
+          <div className="card md:card-side    w-full shadow-xl bg-neutral  ">
+            <div className="card-body flex flex-col justify-between  w-full  ">
               <div className="text-2xl flex justify-between items-baseline gap-2">
                 {AllModules[topic]
                   ? AllModules[topic][questionNum].english
@@ -212,33 +220,30 @@ export default function Lesson() {
                   onClick={handleToggleSave}
                 />
               </div>
-              <span className="">
-                <div className="chat chat-end text-2xl">
-                  <div className="chat-bubble bg-secondary">
+              <div className="flex items-center justify-end">
+                <div className="chat chat-start ">
+                  <div className="chat-bubble bg-secondary text-xl">
                     {AllModules[topic]
                       ? AllModules[topic][questionNum].arabic
                       : null}
                   </div>
-                  <svg
-                    onClick={playSlowAudio}
-                    className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                    />
-                  </svg>
                 </div>
-              </span>
+              </div>
+
+              <div className="flex items-start justify-end gap-2">
+                <button
+                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                  onClick={playAudio}
+                >
+                  1x🔊
+                </button>
+                <button
+                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                  onClick={playSlowAudio}
+                >
+                  0.5x🔊
+                </button>
+              </div>
               <div className="text-1xl text-right place-content-end">
                 {AllModules[topic][questionNum].transliteration
                   ? AllModules[topic][questionNum].transliteration
@@ -246,10 +251,12 @@ export default function Lesson() {
               </div>
             </div>
             <figure>
-              <img className="w-56" src={mascotSrc} alt="arabic greeting" />
+              <img className="" src={mascotSrc} alt="arabic greeting" />
             </figure>
           </div>
-
+          {tip && (
+            <div className="bg-neutral p-2 mt-1 card m-auto ">💡{tip}</div>
+          )}
           <div className="flex flex-row justify-between mt-1 w-full">
             <MyButton
               classRest={questionNum === 0 ? "invisible" : "visible"}
@@ -299,7 +306,7 @@ export default function Lesson() {
               func={handleClickNext}
             />
           </div>
-        </>
+        </div>
       )}
       <div className="divider "></div>
 
