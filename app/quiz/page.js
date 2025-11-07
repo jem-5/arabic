@@ -32,7 +32,7 @@ export default function Quiz() {
   const [status, setStatus] = useState("");
   const [score, setScore] = useState(0);
   const [questionsWrong, setQuestionsWrong] = useState([]);
-  const { user } = useAuthContext();
+  const { user, userProfile, refetchUser } = useAuthContext();
   const router = useRouter();
 
   const pathname = usePathname();
@@ -68,9 +68,9 @@ export default function Quiz() {
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
     const userDoc = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userDoc);
+    const profileExists = !!userProfile;
     if (questionsWrong.length === 0) {
-      if (userSnap.exists()) {
+      if (profileExists) {
         await updateDoc(userDoc, {
           [topic]: deleteField(),
           completedModules: arrayUnion(topic),
@@ -81,7 +81,7 @@ export default function Quiz() {
         });
       }
     } else {
-      if (userSnap.exists()) {
+      if (profileExists) {
         await updateDoc(userDoc, {
           [topic]: questionsWrong,
           completedModules: arrayRemove(topic),
@@ -92,6 +92,8 @@ export default function Quiz() {
         });
       }
     }
+    // refresh context profile after writes
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
   };
 
   function shuffleArray(array) {

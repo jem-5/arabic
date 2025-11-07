@@ -56,7 +56,7 @@ export default function NightSky() {
           </div>
         ))}
       </div>
-      <div className="absolute top-48 right-16 animate-moonGlow">
+      <div className="absolute top-48 right-1 animate-moonGlow">
         <svg width="90" height="90" viewBox="0 0 100 100">
           <defs>
             <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">

@@ -25,7 +25,7 @@ export default function Lesson() {
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "Greetings";
   const [questionNum, setQuestionNum] = useState(0);
-  const { user, isPaidMember } = useAuthContext();
+  const { user, isPaidMember, userProfile, refetchUser } = useAuthContext();
   const router = useRouter();
   const [tip, setTip] = useState(null);
 
@@ -55,8 +55,8 @@ export default function Lesson() {
   const saveProgress = async () => {
     const usersRef = collection(db, "users");
     const userDoc = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userDoc);
-    if (userSnap.exists()) {
+    const profileExists = !!userProfile;
+    if (profileExists) {
       await updateDoc(userDoc, {
         reviewedModules: arrayUnion(topic),
       });
@@ -65,6 +65,8 @@ export default function Lesson() {
         reviewedModules: [topic],
       });
     }
+    // refresh context profile after writes
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
   };
 
   useEffect(() => {

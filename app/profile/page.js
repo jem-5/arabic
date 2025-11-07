@@ -13,15 +13,14 @@ import { Profile } from "@/components/Profile";
 export default function ProfilePage() {
   const [signInMode, setSignInMode] = useState(true);
 
-  const { user, isPaidMember } = useAuthContext();
+  const { user, isPaidMember, userProfile, refetchUser } = useAuthContext();
   const authUser = typeof window !== "undefined" ? getAuth().currentUser : null;
   const [wordsToReview, setWordsToReview] = useState([]);
 
   const updateWordsToReview = async () => {
-    const userDoc = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userDoc);
-    if (userSnap.exists()) {
-      let userData = userSnap.data();
+    let userData = userProfile;
+    if (!userData && user?.uid) userData = await refetchUser(user.uid);
+    if (userData) {
       let words = [];
       for (const [key, value] of Object.entries(userData)) {
         if (

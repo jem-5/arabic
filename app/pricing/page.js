@@ -11,11 +11,7 @@ export default function Pricing() {
 
   const { user, isPaidMember, refetchUser } = useAuthContext();
 
-  useEffect(() => {
-    if (user?.uid) {
-      refetchUser(user.uid);
-    }
-  }, [user]);
+  // No automatic refetch here — AuthContext fetches profile on sign-in.
 
   return (
     <PayPalScriptProvider

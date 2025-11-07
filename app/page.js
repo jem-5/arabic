@@ -217,6 +217,8 @@ export default async function Home() {
         <h3 className="font-bold text-xl  self-start text-neutral">
           Recent News
         </h3>
+        <p>2025-11-03 | Added new feature: Cultural Immersion Notes</p>
+
         <p>2025-10-27 | Added new feature: Verb Conjugation Quiz</p>
 
         <p>2025-10-07 | Added new feature: Vocabulary Search</p>

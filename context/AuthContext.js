@@ -15,6 +15,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [isPaidMember, setIsPaidMember] = React.useState(false);
+  const [userProfile, setUserProfile] = React.useState(null);
 
   React.useEffect(() => {
     let isMounted = true;
@@ -39,35 +40,50 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, [user]);
 
-  // Refetch Firestore user data (for manual refresh)
-  const refetchUser = async (uid) => {
-    if (!uid) return;
+  // Fetch and/or refetch the Firestore user profile document
+  const refetchUser = React.useCallback(async (uid) => {
+    if (!uid) return null;
     try {
       const userDoc = await getDoc(doc(db, "users", uid));
-      if (userDoc.exists()) {
-        setUser((prev) => ({ ...prev, ...userDoc.data() }));
-        setIsPaidMember(userDoc.data()?.isPaidMember === true);
-      }
+      const fetched = userDoc.exists() ? userDoc.data() || {} : null;
+      // Update paid flag and profile state only when it meaningfully changes
+      if (fetched) setIsPaidMember(fetched?.isPaidMember === true);
+      setUserProfile((prev) => {
+        try {
+          const prevJson = JSON.stringify(prev || {});
+          const fetchedJson = JSON.stringify(fetched || {});
+          if (prevJson === fetchedJson) return prev;
+          return fetched;
+        } catch (e) {
+          return fetched;
+        }
+      });
+      return fetched;
     } catch (err) {
-      // Optionally handle error
+      return null;
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        // Fetch the Firestore profile for this user once on sign-in
+        refetchUser(user.uid).catch(() => {});
       } else {
         setUser(null);
+        setUserProfile(null);
       }
       setLoading(false);
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [refetchUser]);
 
   return (
-    <AuthContext.Provider value={{ user, isPaidMember, refetchUser }}>
+    <AuthContext.Provider
+      value={{ user, isPaidMember, userProfile, refetchUser }}
+    >
       {loading ? <div>Loading...</div> : children}
     </AuthContext.Provider>
   );

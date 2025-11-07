@@ -22,7 +22,7 @@ import NightSky from "./NightSky";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
-  const { user, isPaidMember, refetchUser } = useAuthContext();
+  const { user, isPaidMember, userProfile, refetchUser } = useAuthContext();
   const [reviewedModules, setReviewedModules] = useState([]);
   const [completedModules, setCompletedModules] = useState([]);
   const [lastModule, setLastModule] = useState(null);
@@ -32,19 +32,19 @@ export const Dashboard = () => {
   const [nightMode, setNightMode] = useState(false);
 
   const updateModules = async () => {
-    // if (!user?.uid) return;
     try {
-      const userDoc = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userDoc);
-
-      if (userSnap.exists()) {
-        const data = userSnap.data();
-        console.log(data.reviewedModules);
+      let data = userProfile;
+      if (!data && user?.uid) {
+        data = await refetchUser(user.uid);
+      }
+      if (data) {
         setReviewedModules(data.reviewedModules || []);
         setCompletedModules(data.completedModules || []);
+      } else {
+        setReviewedModules([]);
+        setCompletedModules([]);
       }
     } catch (error) {
-      // Optionally log or handle the error
       console.error("Error updating modules:", error);
       setReviewedModules([]);
       setCompletedModules([]);
@@ -178,7 +178,9 @@ export const Dashboard = () => {
 
       <div className="flex flex-col md:flex-row  justify-center md:gap-1 m-auto">
         <LastModule lastModule={lastModule} />
-        {streak && streak.currentStreak > 0 && <StreakBadge size={"sm"} />}
+        <div className="hidden md:block ">
+          {streak && streak.currentStreak > 0 && <StreakBadge size={"sm"} />}
+        </div>
 
         <div className=" stats shadow mt-2 opacity-80 flex m-auto overflow-hidden   ">
           <div className="stat flex flew-row items-center justify-center gap-1 ">

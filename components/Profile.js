@@ -20,7 +20,7 @@ import WordList from "./WordList";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
-  const { user } = useAuthContext();
+  const { user, userProfile: authUserProfile, refetchUser } = useAuthContext();
   const router = useRouter();
   const [wordsToReview, setWordsToReview] = useState([]);
 
@@ -70,12 +70,14 @@ export const Profile = () => {
   }, []);
 
   const updateWordsToReview = useCallback(async () => {
-    const userDoc = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userDoc);
-    if (userSnap.exists()) {
-      let userData = userSnap.data();
+    let userData = authUserProfile;
+    if (!userData && user?.uid) {
+      // fetch via context helper if we don't have it yet
+      userData = await refetchUser(user.uid);
+    }
+    if (userData) {
       // update local profile state
-      userData ? setUserProfile(userData) : setUserProfile({});
+      setUserProfile(userData);
       // compute badges from the freshly fetched data (not stale state)
       const personalBadges = checkBadges(userData, badges);
       setUserBadges(personalBadges);
@@ -94,7 +96,7 @@ export const Profile = () => {
       let flatArr = words.flat(2);
       setWordsToReview(flatArr);
     }
-  }, [user, checkBadges]);
+  }, [user, checkBadges, authUserProfile, refetchUser]);
 
   // Keep savedWords in sync with localStorage
   useEffect(() => {
