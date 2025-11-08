@@ -149,6 +149,10 @@ export default function Quiz() {
   };
 
   const checkAnswer = (e) => {
+    // remove focus from the clicked button so its :focus styles don't persist
+    try {
+      if (e && e.currentTarget && e.currentTarget.blur) e.currentTarget.blur();
+    } catch (err) {}
     let answerLang = questionLang === "english" ? "arabic" : "english";
     let correctAnswer = AllModules[topic][questionNum][answerLang];
     if (e.target.innerText.trim() === correctAnswer.trim()) {
@@ -163,6 +167,11 @@ export default function Quiz() {
 
   const advanceQuestion = () => {
     setStatus("");
+    // ensure no button remains focused between questions
+    try {
+      if (document.activeElement && document.activeElement.blur)
+        document.activeElement.blur();
+    } catch (err) {}
     if (questionNum === AllModules[topic].length - 1) {
       endQuiz();
       return;
