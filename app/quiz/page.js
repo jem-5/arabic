@@ -32,6 +32,7 @@ export default function Quiz() {
   const [status, setStatus] = useState("");
   const [score, setScore] = useState(0);
   const [questionsWrong, setQuestionsWrong] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const { user, userProfile, refetchUser } = useAuthContext();
   const router = useRouter();
 
@@ -148,14 +149,17 @@ export default function Quiz() {
     setAnswers(answerArr);
   };
 
-  const checkAnswer = (e) => {
-    // remove focus from the clicked button so its :focus styles don't persist
+  const checkAnswer = (index) => {
+    // clear focus (defensive) and set selected index for styling
     try {
-      if (e && e.currentTarget && e.currentTarget.blur) e.currentTarget.blur();
+      if (document.activeElement && document.activeElement.blur)
+        document.activeElement.blur();
     } catch (err) {}
+    setSelectedIndex(index);
     let answerLang = questionLang === "english" ? "arabic" : "english";
     let correctAnswer = AllModules[topic][questionNum][answerLang];
-    if (e.target.innerText.trim() === correctAnswer.trim()) {
+    const given = (answers[index] || "").toString().trim();
+    if (given === correctAnswer.trim()) {
       setScore((prev) => prev + 1);
       setStatus("correct");
     } else {
@@ -167,11 +171,12 @@ export default function Quiz() {
 
   const advanceQuestion = () => {
     setStatus("");
-    // ensure no button remains focused between questions
+    // ensure no button remains focused between questions and clear selection
     try {
       if (document.activeElement && document.activeElement.blur)
         document.activeElement.blur();
     } catch (err) {}
+    setSelectedIndex(null);
     if (questionNum === AllModules[topic].length - 1) {
       endQuiz();
       return;
@@ -250,8 +255,11 @@ export default function Quiz() {
           <div className="card-actions flex flex-col items-center w-full   ">
             <div className="flex flex-row items-center justify-center gap-3 w-full  ">
               <MyButton
-                classRest="bg-secondary  "
-                func={checkAnswer}
+                classRest={`bg-secondary ${
+                  selectedIndex === 0 ? "ring-2 ring-primary" : ""
+                }`}
+                func={() => checkAnswer(0)}
+                key={`q${questionNum}-opt-0`}
                 text={answers[0]}
               />
               {questionLang === "english" ? (
@@ -267,8 +275,11 @@ export default function Quiz() {
             <div className="flex flex-row items-center justify-center gap-3 w-full  ">
               <MyButton
                 text={answers[1]}
-                classRest="bg-secondary  "
-                func={checkAnswer}
+                classRest={`bg-secondary ${
+                  selectedIndex === 1 ? "ring-2 ring-primary" : ""
+                }`}
+                func={() => checkAnswer(1)}
+                key={`q${questionNum}-opt-1`}
               />
               {questionLang === "english" ? (
                 <button
@@ -283,8 +294,11 @@ export default function Quiz() {
             <div className="flex flex-row items-center justify-center gap-3 w-full  ">
               <MyButton
                 text={answers[2]}
-                classRest="bg-secondary  "
-                func={checkAnswer}
+                classRest={`bg-secondary ${
+                  selectedIndex === 2 ? "ring-2 ring-primary" : ""
+                }`}
+                func={() => checkAnswer(2)}
+                key={`q${questionNum}-opt-2`}
               />
               {questionLang === "english" ? (
                 <button
@@ -298,8 +312,11 @@ export default function Quiz() {
             <div className="flex flex-row items-center justify-center gap-3 w-full  ">
               <MyButton
                 text={answers[3]}
-                classRest="bg-secondary"
-                func={checkAnswer}
+                classRest={`bg-secondary ${
+                  selectedIndex === 3 ? "ring-2 ring-primary" : ""
+                }`}
+                func={() => checkAnswer(3)}
+                key={`q${questionNum}-opt-3`}
               />
               {questionLang === "english" ? (
                 <button
