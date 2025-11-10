@@ -209,7 +209,7 @@ export default function Lesson() {
         <div className="card p-2 max-w-96 md:max-w-xl   ">
           <div className="card md:card-side    w-full shadow-xl bg-neutral  ">
             <div className="card-body flex flex-col justify-between  w-full  ">
-              <div className="text-2xl flex justify-between items-baseline gap-2">
+              <div className="text-4xl flex justify-between items-baseline gap-2">
                 {AllModules[topic]
                   ? AllModules[topic][questionNum].english
                   : null}
@@ -224,7 +224,7 @@ export default function Lesson() {
               </div>
               <div className="flex items-center justify-end">
                 <div className="chat chat-start ">
-                  <div className="chat-bubble bg-secondary text-xl">
+                  <div className="chat-bubble bg-secondary text-3xl">
                     {AllModules[topic]
                       ? AllModules[topic][questionNum].arabic
                       : null}
@@ -234,26 +234,31 @@ export default function Lesson() {
 
               <div className="flex items-start justify-end gap-2">
                 <button
-                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                  className="text-lg hover:cursor-pointer hover:scale-110 transition-transform"
                   onClick={playAudio}
                 >
                   1x🔊
                 </button>
+                |
                 <button
-                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                  className="text-lg hover:cursor-pointer hover:scale-110 transition-transform"
                   onClick={playSlowAudio}
                 >
                   0.5x🔊
                 </button>
               </div>
-              <div className="text-1xl text-right place-content-end">
+              <div className="text-2xl text-right place-content-end">
                 {AllModules[topic][questionNum].transliteration
                   ? AllModules[topic][questionNum].transliteration
                   : null}
               </div>
             </div>
             <figure>
-              <img className="" src={mascotSrc} alt="arabic greeting" />
+              <img
+                className="w-1/2 sm:w-full"
+                src={mascotSrc}
+                alt="arabic greeting"
+              />
             </figure>
           </div>
           {tip && (
