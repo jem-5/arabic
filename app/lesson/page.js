@@ -388,10 +388,9 @@ export default function Lesson() {
                 >
                   🎤
                 </button>
-                {audioURL && (
-                  <audio controls src={audioURL} className=""></audio>
-                )}
               </div>
+
+              {audioURL && <audio controls src={audioURL} className=""></audio>}
               <div className="text-sm italic text-right">
                 Note: User-recorded audio is not saved or shared.
               </div>
