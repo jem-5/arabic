@@ -55,46 +55,51 @@ export default async function Home() {
   return (
     <main className="  flex flex-col items-center  mt-2 ">
       <div className="card lg:card-side p-2 bg-base-100 shadow-xl w-5/6 lg:w-2/3 ">
-        <figure className="  md:h-fit max-[999px]:max-h-96">
-          <img src="/featured.jpg" className=" rounded w-5/6 md:w-full  " />
+        <figure className="lg:w-3/4 ">
+          <img src="/featured.jpg" className="rounded   lg:hidden" />
+          <img
+            src="/featured-lg.jpg"
+            className="rounded hidden lg:block h-full  "
+          />
         </figure>
-        <div className="card-body">
+        <div className="card-body lg:w-3/4 ">
           <h1 className=" text-3xl text-[rgb(105,184,141)] font-bold ">
-            Arabic Road: Learn Arabic Online
+            Learn Egyptian Arabic Online
           </h1>
 
-          <ul className="rounded   list-outside ">
+          <ul className="rounded list-outside ">
             <li>
               <span className="text-xl">
                 1000+ Interactive Vocabulary Flashcards
               </span>
               <p>
-                + Comprehensive lessons include a relevant photo, Arabic voice
-                narration and English transliteration
+                + Vocabulary lessons include Arabic text, Egyptian Arabic voice
+                narration, English transliteration & a relevant photo to improve
+                memory retention
               </p>
               <p>
-                + Enhances your learning experience and improves memory
-                retention
+                + Record your own pronunciation & compare to a native speaker
               </p>
             </li>
             <li>
               <span className="text-xl">37 Individual Modules</span>
               <p>
-                + Curriculum organized into logical segments based on topic &
-                level
+                + Comprehensive curriculum organized into logical sections based
+                on topic & level
               </p>
               <p>
-                + Explore the relevant vocabulary for a trip to the coffee shop,
-                doctor, hotel, etc.
+                + Explore the relevant vocabulary & phrases for a trip to the
+                coffee shop, doctor, hotel, etc.
               </p>
             </li>
 
             <li>
               <span className="text-xl">Track Your Progress</span>{" "}
-              <p>+ Access the full curriculum immediately without an account</p>
+              <p>+ Get started immediately without an account</p>
               <p>
-                + With a free account, you can track your progress through the
-                lessons & quizzes and review missed words
+                + With an account, you can access all modules and track your
+                progress through the lessons, review missed words, earn badges &
+                more
               </p>
             </li>
           </ul>
