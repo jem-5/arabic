@@ -22,6 +22,7 @@ import Image from "next/image";
 import CulturalNotes from "@/data/CulturalNotes";
 import Meyda from "meyda";
 import MirrorPronounce from "@/components/MirrorPronounce";
+import { useSwipeable } from "react-swipeable";
 
 export default function Lesson() {
   const searchParams = useSearchParams();
@@ -49,6 +50,17 @@ export default function Lesson() {
     new (window.AudioContext || window.webkitAudioContext)()
   );
   const nativeFeaturesRef = useRef(null);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleClickNext(),
+    onSwipedRight: () => handleClickPrevious(),
+
+    // important
+    delta: 50, // minimum px before counting it as swipe
+    preventScrollOnSwipe: false, // allow vertical scroll
+    trackTouch: true,
+    trackMouse: false, // mobile only to avoid weird desktop behavior
+  });
 
   const analyzeNativeAudio = async () => {
     const url = AllModules[topic][questionNum].audio;
@@ -248,19 +260,24 @@ export default function Lesson() {
   };
 
   const handleClickNext = (e) => {
-    e.preventDefault();
-    if (questionNum < AllModules[topic].length - 1)
+    // e may be undefined when called programmatically (swipe handlers or
+    // imperative calls). Guard against that before calling preventDefault.
+    if (e && typeof e.preventDefault === "function") e.preventDefault();
+    if (questionNum < AllModules[topic].length - 1) {
       setQuestionNum((prev) => prev + 1);
+      return;
+    }
 
+    // If we're already at the last question, save/celebrate and navigate.
     if (questionNum === AllModules[topic].length - 1) {
-      user ? saveProgress() : null;
+      if (user) saveProgress();
       celebrate();
       router.push("/dashboard");
     }
   };
 
   const handleClickPrevious = (e) => {
-    e.preventDefault();
+    if (e && typeof e.preventDefault === "function") e.preventDefault();
     if (questionNum > 0) setQuestionNum((prev) => prev - 1);
   };
 
@@ -327,74 +344,88 @@ export default function Lesson() {
         </div>
       ) : (
         <div className="card p-2 md:max-w-3xl   ">
-          <div className="card md:card-side    w-full shadow-xl bg-neutral  ">
-            <div className="card-body flex flex-col justify-between  w-full  ">
-              <div className="text-4xl flex justify-between items-baseline gap-2">
-                {AllModules[topic]
-                  ? AllModules[topic][questionNum].english
-                  : null}
-                <Image
-                  src={isWordSaved ? "/save-filled.png" : "/save.png"}
-                  alt="save icon"
-                  width={16}
-                  height={20}
-                  className="inline-block object-contain hover:scale-110 hover:cursor-pointer"
-                  onClick={handleToggleSave}
-                />
+          <div {...handlers}>
+            {questionNum < 3 && (
+              <div className="text-center text-[black] text-sm animate-pulse">
+                Swipe to proceed →
               </div>
-              <div className="flex items-center justify-end">
-                <div className="chat chat-end  ">
-                  <div className="chat-bubble  bg-secondary text-4xl ">
-                    {AllModules[topic]
-                      ? AllModules[topic][questionNum].arabic
-                      : null}
+            )}
+            <div className="card md:card-side    w-full shadow-xl bg-neutral  ">
+              <div className="card-body flex flex-col justify-between  w-full  ">
+                <div className="text-4xl flex justify-between items-baseline gap-2">
+                  {AllModules[topic]
+                    ? AllModules[topic][questionNum].english
+                    : null}
+                  <Image
+                    src={isWordSaved ? "/save-filled.png" : "/save.png"}
+                    alt="save icon"
+                    width={16}
+                    height={20}
+                    className="inline-block object-contain hover:scale-110 hover:cursor-pointer"
+                    onClick={handleToggleSave}
+                  />
+                </div>
+                <div className="flex items-center justify-end">
+                  <div className="chat chat-end  ">
+                    <div className="chat-bubble  bg-secondary text-4xl ">
+                      {AllModules[topic]
+                        ? AllModules[topic][questionNum].arabic
+                        : null}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="text-2xl text-right place-content-end italic">
-                {AllModules[topic][questionNum].transliteration
-                  ? AllModules[topic][questionNum].transliteration
-                  : null}
-              </div>
-              <hr />
-              <div className="flex items-center justify-end gap-2">
-                Listen:
-                <button
-                  className="text-2xl  bg-[black]    p-2 rounded-full hover:cursor-pointer hover:scale-110 transition-transform"
-                  onClick={playAudio}
-                >
-                  1x🔊
-                </button>
-                <button
-                  className="text-2xl hover:cursor-pointer bg-[black]    p-2 rounded-full hover:scale-110 transition-transform"
-                  onClick={playSlowAudio}
-                >
-                  0.5x🔊
-                </button>
-              </div>
+                <div className="text-2xl text-right place-content-end italic">
+                  {AllModules[topic][questionNum].transliteration
+                    ? AllModules[topic][questionNum].transliteration
+                    : null}
+                </div>
 
-              {/* <MirrorPronounce
+                <hr />
+                <div className="flex items-center justify-end gap-2">
+                  Listen:
+                  <button
+                    className="text-2xl  bg-[black]    p-2 rounded-full hover:cursor-pointer hover:scale-110 transition-transform"
+                    onClick={playAudio}
+                  >
+                    1x🔊
+                  </button>
+                  <button
+                    className="text-2xl hover:cursor-pointer bg-[black]    p-2 rounded-full hover:scale-110 transition-transform"
+                    onClick={playSlowAudio}
+                  >
+                    0.5x🔊
+                  </button>
+                </div>
+
+                {/* <MirrorPronounce
                 referenceUrl={AllModules[topic][questionNum].audio}
               /> */}
 
-              <div className="flex items-center justify-end gap-2">
-                Record:
-                <button
-                  onClick={recording ? stopRecording : startRecording}
-                  className={` w-fit bg-[black]     hover:scale-110 transition-transform p-2 rounded-full   text-2xl text-right ${
-                    recording ? "bg-[red]" : "bg-[black] "
-                  } text-white`}
-                >
-                  🎤
-                </button>
-              </div>
+                <div className="flex items-center justify-end gap-2">
+                  Record:
+                  <button
+                    onClick={recording ? stopRecording : startRecording}
+                    className={` w-fit bg-[black]     hover:scale-110 transition-transform p-2 rounded-full   text-2xl text-right ${
+                      recording ? "bg-[red]" : "bg-[black] "
+                    } text-white`}
+                  >
+                    🎤
+                  </button>
+                </div>
 
-              {audioURL && <audio controls src={audioURL} className=""></audio>}
-              <div className="text-sm italic text-right">
-                Note: User-recorded audio is not saved or shared.
-              </div>
-              {/* {score !== null && (
+                {audioURL && (
+                  <div className="flex justify-end ">
+                    <audio controls src={audioURL}></audio>
+                  </div>
+                )}
+                {questionNum < 3 && (
+                  <div className="text-sm italic text-right">
+                    Note: User-recorded audio is not saved or shared.
+                  </div>
+                )}
+
+                {/* {score !== null && (
                 <div className="mt-3">
                   <div className="text-2xl font-bold text-amber-700">
                     Match: {score}%
@@ -408,14 +439,15 @@ export default function Lesson() {
                   </div>
                 </div>
               )} */}
+              </div>
+              <figure>
+                <img
+                  className="w-1/2 sm:w-2/3 md:w-full "
+                  src={mascotSrc}
+                  alt="arabic greeting"
+                />
+              </figure>
             </div>
-            <figure>
-              <img
-                className="w-1/2 sm:w-2/3 md:w-full "
-                src={mascotSrc}
-                alt="arabic greeting"
-              />
-            </figure>
           </div>
           {tip && (
             <div className="bg-neutral p-2 mt-1 card m-auto ">💡{tip}</div>
