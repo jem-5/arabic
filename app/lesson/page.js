@@ -50,6 +50,9 @@ export default function Lesson() {
     new (window.AudioContext || window.webkitAudioContext)()
   );
   const nativeFeaturesRef = useRef(null);
+  const [swipeDirection, setSwipeDirection] = useState(null);
+
+  const [animateIn, setAnimateIn] = useState(false);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => handleClickNext(),
@@ -260,6 +263,13 @@ export default function Lesson() {
   };
 
   const handleClickNext = (e) => {
+    setSwipeDirection("left");
+    setTimeout(() => {
+      setSwipeDirection(null);
+    }, 200);
+    // setAnimateIn(true);
+    setTimeout(() => setAnimateIn(true), 200);
+    setTimeout(() => setAnimateIn(false), 400);
     // e may be undefined when called programmatically (swipe handlers or
     // imperative calls). Guard against that before calling preventDefault.
     if (e && typeof e.preventDefault === "function") e.preventDefault();
@@ -277,6 +287,14 @@ export default function Lesson() {
   };
 
   const handleClickPrevious = (e) => {
+    setSwipeDirection("right");
+    setTimeout(() => {
+      setSwipeDirection(null);
+    }, 200);
+    // setAnimateIn(true);
+    setTimeout(() => setAnimateIn(true), 200);
+    setTimeout(() => setAnimateIn(false), 400);
+
     if (e && typeof e.preventDefault === "function") e.preventDefault();
     if (questionNum > 0) setQuestionNum((prev) => prev - 1);
   };
@@ -344,7 +362,17 @@ export default function Lesson() {
         </div>
       ) : (
         <div className="card p-2 md:max-w-3xl   ">
-          <div {...handlers}>
+          <div
+            {...handlers}
+            className={`
+    w-full 
+    transition-all duration-300 ease-out
+    ${swipeDirection === "left" ? "-translate-x-10 opacity-50" : ""}
+    ${swipeDirection === "right" ? "translate-x-10 opacity-50" : ""}
+        ${animateIn ? "animate-scaleIn" : ""}
+
+        `}
+          >
             {questionNum < 3 && (
               <div className="text-center text-[black] text-sm animate-pulse">
                 Swipe to proceed →

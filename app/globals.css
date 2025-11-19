@@ -16,3 +16,19 @@
   }
 
 }
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.2 ease-in-out;
+}

@@ -15,35 +15,25 @@ export const Navigation = () => {
               <img alt="Arabic Road Logo" src="/logo.png" className="h-18" />
             </a>
           </div>
-          <div className="hidden md:flex  md:gap-2">
-            <Link href="/dashboard/" className="font-bold">
-              <button className="btn   text-sm md:text-lg bg-transparent border-none ">
-                🏺Lessons
-              </button>
+          <div className="hidden md:flex p-1 md:gap-2 lg:gap-4">
+            <Link href="/dashboard/" className="font-bold text-sm md:text-lg ">
+              🏺Lessons
             </Link>
 
-            <Link href="/verbs/" className="font-bold">
-              <button className="btn   text-sm md:text-lg bg-transparent border-none">
-                🌙Verbs
-              </button>
+            <Link href="/verbs/" className="font-bold text-sm md:text-lg ">
+              🌙Verbs
             </Link>
 
-            <Link href="/games/" className="font-bold">
-              <button className="btn    text-sm md:text-lg  bg-transparent border-none">
-                🐫Games
-              </button>
+            <Link href="/games/" className="font-bold text-sm md:text-lg ">
+              🐫Games
             </Link>
 
-            <Link href="/pricing/" className="font-bold">
-              <button className="btn    text-sm md:text-lg bg-transparent border-none ">
-                🪙Pricing
-              </button>
+            <Link href="/pricing/" className="font-bold text-sm md:text-lg ">
+              🪙Pricing
             </Link>
 
-            <Link href="/profile/" className="font-bold">
-              <button className="btn    text-sm md:text-lg bg-transparent border-none">
-                🏠Account
-              </button>
+            <Link href="/profile/" className="font-bold text-sm md:text-lg ">
+              🏠Account
             </Link>
           </div>
 
@@ -97,7 +87,7 @@ export const Navigation = () => {
             }`}
           >
             <div
-              className=" gap-2  flex flex-col"
+              className=" gap-2  flex flex-col text-xl"
               onClick={() => setIsOpen(false)}
             >
               <Link href="/dashboard/" className="font-bold ">
