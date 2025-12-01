@@ -17,14 +17,19 @@ import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import confetti from "canvas-confetti";
+
 import Image from "next/image";
 import CulturalNotes from "@/data/CulturalNotes";
 import Meyda from "meyda";
 import MirrorPronounce from "@/components/MirrorPronounce";
 import { useSwipeable } from "react-swipeable";
+import confetti from "canvas-confetti";
+import Recorder from "@/components/Recorder";
+// import PronunciationScorer from "@/components/PronunciationScorer";
 
 export default function Lesson() {
+  const [recognizedWord, setRecognizedWord] = useState("");
+
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "Greetings";
   const [questionNum, setQuestionNum] = useState(0);
@@ -37,19 +42,19 @@ export default function Lesson() {
   const [isWordSaved, setIsWordSaved] = useState(false);
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
-
-  const [recording, setRecording] = useState(false);
-  const [audioURL, setAudioURL] = useState(null);
+  const confettiRef = useRef(null);
+  // const [recording, setRecording] = useState(false);
+  // const [audioURL, setAudioURL] = useState(null);
   // Keep recorder/stream/chunks in refs so they persist across renders
   const mediaRecorderRef = useRef(null);
   const mediaStreamRef = useRef(null);
   const chunksRef = useRef([]);
-  const [score, setScore] = useState(null);
-  const [feedback, setFeedback] = useState("");
-  const audioContextRef = useRef(
-    new (window.AudioContext || window.webkitAudioContext)()
-  );
-  const nativeFeaturesRef = useRef(null);
+  // const [score, setScore] = useState(null);
+  // const [feedback, setFeedback] = useState("");
+  // const audioContextRef = useRef(
+  //   new (window.AudioContext || window.webkitAudioContext)()
+  // );
+  // const nativeFeaturesRef = useRef(null);
   const [swipeDirection, setSwipeDirection] = useState(null);
 
   const [animateIn, setAnimateIn] = useState(false);
@@ -92,91 +97,6 @@ export default function Lesson() {
     if (!nativeFeaturesRef.current) await analyzeNativeAudio();
   };
 
-  const startRecording = async () => {
-    // If already recording, ignore or stop previous first
-    if (
-      mediaRecorderRef.current &&
-      mediaRecorderRef.current.state === "recording"
-    ) {
-      return;
-    }
-
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    mediaStreamRef.current = stream;
-    chunksRef.current = [];
-
-    const recorder = new MediaRecorder(stream);
-    recorder.ondataavailable = (e) => chunksRef.current.push(e.data);
-    recorder.onstop = () => {
-      (async () => {
-        const blob = new Blob(chunksRef.current, { type: "audio/webm" });
-        const blobUrl = URL.createObjectURL(blob);
-        setAudioURL(blobUrl);
-
-        // compute features for native and user audio and compare
-        try {
-          const userMfcc = await getMfccFromArrayBuffer(
-            await blob.arrayBuffer()
-          );
-          const nativeUrl = AllModules[topic][questionNum].audio;
-          const nativeMfcc = await getMfccFromUrl(nativeUrl);
-
-          // compute cosine similarity and apply aggressive scaling
-          let similarity = cosineSimilarity(nativeMfcc, userMfcc);
-          // clamp to [0,1]
-          const simClamped = Math.max(0, Math.min(1, similarity || 0));
-          // tuning constants: bias and exponent (power >1 makes scoring harsher)
-          const SIM_BIAS = 0.06; // subtract small bias to penalize slight mismatches
-          const SIM_POWER = 1.0; // higher -> more aggressive (3 is quite strict)
-          const adj = Math.max(0, simClamped - SIM_BIAS);
-          const percent = Math.round(
-            Math.max(0, Math.min(100, Math.pow(adj, SIM_POWER) * 100))
-          );
-
-          let fb;
-          if (percent > 88) fb = "🌟 Excellent pronunciation!";
-          else if (percent > 70) fb = "👍 Pretty close!";
-          else fb = "🗣️ Try again and focus on the tone.";
-
-          setScore(percent);
-          setFeedback(fb);
-        } catch (err) {
-          console.warn("feature extraction/compare failed:", err);
-          setScore(0);
-          setFeedback("Could not compute match. Try again.");
-        }
-
-        chunksRef.current = [];
-        // stop and release the media stream tracks
-        try {
-          if (mediaStreamRef.current) {
-            mediaStreamRef.current.getTracks().forEach((t) => t.stop());
-            mediaStreamRef.current = null;
-          }
-        } catch (err) {
-          // ignore
-        }
-
-        mediaRecorderRef.current = null;
-      })();
-    };
-
-    mediaRecorderRef.current = recorder;
-    recorder.start();
-    setRecording(true);
-  };
-
-  const stopRecording = () => {
-    const recorder = mediaRecorderRef.current;
-    if (!recorder) return;
-    try {
-      if (recorder.state === "recording") recorder.stop();
-    } catch (err) {
-      // ignore
-    }
-    setRecording(false);
-  };
-
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}?topic=${topic}`;
     let link = document.querySelector("link[rel='canonical']");
@@ -212,9 +132,10 @@ export default function Lesson() {
     const englishWord = AllModules[topic][questionNum].english;
     const currentTip = CulturalNotes[englishWord] || null;
     setTip(currentTip);
-    setAudioURL(null);
-    setScore(null);
-    setFeedback("");
+    setRecognizedWord("");
+    // setAudioURL(null);
+    // setScore(null);
+    // setFeedback("");
   }, [questionNum]);
 
   useEffect(() => {
@@ -282,6 +203,7 @@ export default function Lesson() {
     if (questionNum === AllModules[topic].length - 1) {
       if (user) saveProgress();
       celebrate();
+
       router.push("/dashboard");
     }
   };
@@ -327,14 +249,13 @@ export default function Lesson() {
 
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
-      <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
+      <div className="flex flex-row mt-2 w-full px-3 justify-between ">
         <h3 className="font-bold text-lg text-[white]">MODULE: {topic}</h3>
         <h3 className="font-bold text-lg align-end justify-end text-[white]">
           {questionNum + 1} /{" "}
           {AllModules[topic] ? AllModules[topic].length : null}
         </h3>
       </div>
-      <div className="divider m-0 p-0"></div>
 
       {!isPaidMember && !Object.keys(freeModules).includes(topic) ? (
         <div className="alert alert-warning shadow-lg w-full">
@@ -387,9 +308,9 @@ export default function Lesson() {
                   <Image
                     src={isWordSaved ? "/save-filled.png" : "/save.png"}
                     alt="save icon"
-                    width={16}
-                    height={20}
-                    className="inline-block object-contain hover:scale-110 hover:cursor-pointer"
+                    width={20}
+                    height={30}
+                    className="inline-block  hover:scale-110 hover:cursor-pointer  "
                     onClick={handleToggleSave}
                   />
                 </div>
@@ -409,7 +330,6 @@ export default function Lesson() {
                     : null}
                 </div>
 
-                <hr />
                 <div className="flex items-center justify-end gap-2">
                   Listen:
                   <button
@@ -426,47 +346,18 @@ export default function Lesson() {
                   </button>
                 </div>
 
-                {/* <MirrorPronounce
-                referenceUrl={AllModules[topic][questionNum].audio}
-              /> */}
-
-                <div className="flex items-center justify-end gap-2">
-                  Record:
-                  <button
-                    onClick={recording ? stopRecording : startRecording}
-                    className={` w-fit bg-[black]     hover:scale-110 transition-transform p-2 rounded-full   text-2xl text-right ${
-                      recording ? "bg-[red]" : "bg-[black] "
-                    } text-white`}
-                  >
-                    🎤
-                  </button>
-                </div>
-
-                {audioURL && (
-                  <div className="flex justify-end ">
-                    <audio controls src={audioURL}></audio>
-                  </div>
-                )}
+                <hr />
                 {questionNum < 3 && (
                   <div className="text-sm italic text-right">
                     Note: User-recorded audio is not saved or shared.
                   </div>
                 )}
-
-                {/* {score !== null && (
-                <div className="mt-3">
-                  <div className="text-2xl font-bold text-amber-700">
-                    Match: {score}%
-                  </div>
-                  <div className="text-lg mt-2 text-amber-800">{feedback}</div>
-                  <div className="mt-3 w-full bg-amber-200 h-3 rounded-full overflow-hidden">
-                    <div
-                      className="bg-amber-600 h-full transition-all duration-700"
-                      style={{ width: `${score}%` }}
-                    ></div>
-                  </div>
+                <div className="p-1">
+                  <Recorder
+                    onRecognized={(word) => setRecognizedWord(word)}
+                    currentWord={AllModules[topic][questionNum].arabic}
+                  />
                 </div>
-              )} */}
               </div>
               <figure>
                 <img
