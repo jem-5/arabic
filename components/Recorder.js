@@ -169,6 +169,7 @@ export default function Recorder({ onRecognized, currentWord }) {
     };
 
     recognition.onresult = (event) => {
+      console.log("Speech Recognition Result event:", event);
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const res = event.results[i];
         setInterimHeard(res[0].transcript);
@@ -218,6 +219,7 @@ export default function Recorder({ onRecognized, currentWord }) {
 
     // 🔥 CRITICAL FIX: prevents "recognized → idle" bug
     recognition.onend = () => {
+      console.log("Recognition ended");
       const gotFinal = finalResultReceivedRef.current;
       const gotRecognition = recognizedRef.current;
       streamRef.current?.getTracks().forEach((track) => track.stop());
