@@ -142,14 +142,24 @@ export default function Recorder({ onRecognized, currentWord }) {
     recognizedRef.current = false;
 
     setStatus("listening");
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     const recognition = new SpeechRecognition();
     recognitionRef.current = recognition;
 
     recognition.lang = "ar-EG";
-    recognition.continuous = true;
-    recognition.interimResults = true;
+    // recognition.continuous = true;
+    // recognition.interimResults = true;
     recognition.maxAlternatives = 1;
+    if (isMobile) {
+      recognition.continuous = false;
+      recognition.interimResults = false;
+    } else {
+      recognition.continuous = true;
+      recognition.interimResults = true;
+    }
+    console.log("test");
+    console.log("SpeechRecognition mode:", isMobile ? "MOBILE" : "DESKTOP");
 
     isRecordingRef.current = true;
 
@@ -199,7 +209,7 @@ export default function Recorder({ onRecognized, currentWord }) {
       }
     };
 
-    recognition.onerror = () => {
+    recognition.onerror = (e) => {
       isRecordingRef.current = false;
       console.log("❌ Speech Recognition Error:", e.error);
 
@@ -226,7 +236,20 @@ export default function Recorder({ onRecognized, currentWord }) {
       isRecordingRef.current = false;
     };
 
-    recognition.start();
+    console.log("isMobile:", isMobile);
+    console.log("Initializing recognition with settings:", {
+      continuous: recognition.continuous,
+      interimResults: recognition.interimResults,
+    });
+
+    try {
+      recognition.start();
+      console.log("Recognition started successfully");
+    } catch (err) {
+      console.log("Recognition START error:", err);
+    }
+
+    // recognition.start();
   };
 
   const stopRecording = () => {
