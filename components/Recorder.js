@@ -22,6 +22,12 @@ export default function Recorder({ onRecognized, currentWord }) {
   const audioChunksRef = useRef([]);
   const streamRef = useRef(null);
 
+  useEffect(() => {
+    console.log("navigator.mediaDevices:", navigator.mediaDevices);
+    console.log("Secure context:", window.isSecureContext);
+    console.log("User agent:", navigator.userAgent);
+  }, []);
+
   function levenshtein(a, b) {
     const matrix = [];
 
@@ -67,6 +73,22 @@ export default function Recorder({ onRecognized, currentWord }) {
   useEffect(() => {
     resetAll();
   }, [currentWord]);
+
+  useEffect(() => {
+    console.log("navigator.mediaDevices:", navigator.mediaDevices);
+    console.log("Secure context:", window.isSecureContext);
+    console.log("User agent:", navigator.userAgent);
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      alert(
+        "Your browser does not support microphone access. Please open this site in Chrome with HTTPS."
+      );
+      console.log("MediaDevices missing:", navigator.mediaDevices);
+      return;
+    }
+
+    console.log("Secure context:", window.isSecureContext);
+    console.log("navigator.mediaDevices:", navigator.mediaDevices);
+  }, []);
 
   const resetAll = () => {
     setStatus("idle");
