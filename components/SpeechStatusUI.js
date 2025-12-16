@@ -1,5 +1,6 @@
 // SpeechStatusUI.js
 export default function SpeechStatusUI({ status }) {
+  console.log(status);
   return (
     <div className="flex    justify-end mt-2">
       {status === "listening" && (
@@ -34,7 +35,7 @@ export default function SpeechStatusUI({ status }) {
         <div className="flex items-center gap-2">
           <div className="text-3xl">⚠️</div>
           <div className="font-semibold text-orange-600">
-            We did not catch anything close that time!
+            Hmm, we did not catch almost anything that time!
           </div>
         </div>
       )}

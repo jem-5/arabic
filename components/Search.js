@@ -60,7 +60,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
       {/* Floating Search Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 bg-amber-500 text-white p-4 rounded-full shadow-lg hover:bg-amber-600 transition-all z-50"
+        className="fixed bottom-6 right-6 bg-white/60 text-white p-4 rounded-full shadow-lg hover:bg-white/20 transition-all z-50"
         aria-label="Search"
       >
         <Search size={24} />
@@ -81,7 +81,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
         >
           {/* Modal Content */}
           <div
-            className="bg-gradient-to-br from-[#fff8e7] to-[#fff2d5] border-2 border-yellow-500 
+            className="bg-gradient-to-br from-[#fff8e7] to-[#fff2d5] border-2 border-neutral
             rounded-2xl shadow-2xl w-[90%] max-w-lg p-6 relative z-50"
             onClick={(e) => e.stopPropagation()}
           >
@@ -94,8 +94,8 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
               value={query}
               onChange={handleSearch}
               placeholder="Type in Arabic, English, or transliteration..."
-              className="w-full p-3 border border-yellow-600 bg-white/90 rounded-lg mb-4 
-              text-[white] placeholder-[white] focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full p-3 border border-neutral bg-white/90 rounded-lg mb-4 
+              text-neutral placeholder-[white] focus:outline-none  "
             />
 
             <div className="max-h-64 overflow-y-auto">
@@ -105,7 +105,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
                     <li
                       key={index}
                       className="flex items-center justify-between bg-yellow-50 hover:bg-yellow-100 
-                      border border-yellow-300 p-3 rounded-lg transition"
+                      border border-neutral p-3 rounded-lg transition"
                     >
                       <div>
                         <p className="text-xl font-semibold text-neutral">
@@ -123,7 +123,7 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
                       </div>
                       <button
                         onClick={() => playAudio(item.audio)}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-accent rounded-full p-2 shadow-md transition"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-neutral rounded-full p-2 shadow-md transition"
                       >
                         🔊
                       </button>
@@ -131,11 +131,11 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
                   ))}
                 </ul>
               ) : query ? (
-                <p className="text-accent text-center font-medium">
+                <p className="text-neutral text-center font-medium">
                   No results found.
                 </p>
               ) : (
-                <p className="text-accent text-center">
+                <p className="text-neutral text-center">
                   Start typing to search...
                 </p>
               )}

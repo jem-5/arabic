@@ -21,14 +21,13 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Image from "next/image";
 import CulturalNotes from "@/data/CulturalNotes";
 import Meyda from "meyda";
-import MirrorPronounce from "@/components/MirrorPronounce";
 import { useSwipeable } from "react-swipeable";
 import confetti from "canvas-confetti";
 import Recorder from "@/components/Recorder";
-// import PronunciationScorer from "@/components/PronunciationScorer";
 
 export default function Lesson() {
   const [recognizedWord, setRecognizedWord] = useState("");
+  const [whisperBlob, setWhisperBlob] = useState(null);
 
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "Greetings";
@@ -69,33 +68,6 @@ export default function Lesson() {
     trackTouch: true,
     trackMouse: false, // mobile only to avoid weird desktop behavior
   });
-
-  const analyzeNativeAudio = async () => {
-    const url = AllModules[topic][questionNum].audio;
-    try {
-      const res = await fetch(url);
-      const buffer = await res.arrayBuffer();
-      const audioBuffer = await audioContextRef.current.decodeAudioData(buffer);
-      const data = audioBuffer.getChannelData(0);
-      const features = Meyda.extract(["mfcc"], data, {
-        bufferSize: 512,
-        sampleRate: audioBuffer.sampleRate,
-      });
-      // store the raw mfcc array (features may be an object with .mfcc)
-      nativeFeaturesRef.current = features?.mfcc || features || null;
-    } catch (err) {
-      console.warn("analyzeNativeAudio failed:", err);
-      nativeFeaturesRef.current = null;
-    }
-  };
-
-  // 🔹 Step 2: Play native audio
-  const playNative = async () => {
-    let nativeAudio = new Audio(AllModules[topic][questionNum].audio);
-    const audio = new Audio(nativeAudio);
-    audio.play();
-    if (!nativeFeaturesRef.current) await analyzeNativeAudio();
-  };
 
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}?topic=${topic}`;
@@ -316,7 +288,7 @@ export default function Lesson() {
                 </div>
                 <div className="flex items-center justify-end">
                   <div className="chat chat-end  ">
-                    <div className="chat-bubble  bg-secondary text-4xl ">
+                    <div className="chat-bubble  bg-secondary text-4xl text-[white] ">
                       {AllModules[topic]
                         ? AllModules[topic][questionNum].arabic
                         : null}
@@ -355,8 +327,19 @@ export default function Lesson() {
                 <div className="p-1">
                   <Recorder
                     onRecognized={(word) => setRecognizedWord(word)}
+                    onBlobReady={(blob) => setWhisperBlob(blob)}
                     currentWord={AllModules[topic][questionNum].arabic}
                   />
+                </div>
+                <div className="p-1">
+                  {/* Only render Whisper transcriber when we have a blob to transcribe */}
+                  {/* <WhisperTranscriberClient
+                    inputBlob={whisperBlob}
+                    onTranscribed={(txt) => {
+                      setRecognizedWord(txt);
+                      setWhisperBlob(null);
+                    }}
+                  /> */}
                 </div>
               </div>
               <figure>
@@ -376,7 +359,7 @@ export default function Lesson() {
               classRest={questionNum === 0 ? "invisible" : "visible"}
               text={
                 <svg
-                  className="w-5 h-5 text-gray-800 dark:text-white"
+                  className="w-5 h-5 "
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -400,7 +383,7 @@ export default function Lesson() {
               classRest="bg-neutral"
               text={
                 <svg
-                  className="w-5 h-5 text-gray-800 dark:text-white"
+                  className="w-5 h-5"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

@@ -1,280 +1,95 @@
+"use client";
 import { useState, useRef, useEffect } from "react";
 import SpeechStatusUI from "./SpeechStatusUI";
-import { reset } from "canvas-confetti";
 import { DifferentLetters } from "./DifferentLetter";
 import PronunciationGuide from "@/data/PronunciationGuide";
+import {
+  normalizeArabic,
+  similarityScore,
+} from "@/helpers/pronunciationFunctions";
 
-export default function Recorder({ onRecognized, currentWord }) {
+export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
   const [status, setStatus] = useState("idle");
   const [heardWord, setHeardWord] = useState("");
   const [score, setScore] = useState(null);
-  const [interimHeard, setInterimHeard] = useState("");
   const detailsRef = useRef(null);
-
   const recognitionRef = useRef(null);
+  const recognitionStartTimerRef = useRef(null);
   const isRecordingRef = useRef(false);
-  const finalResultReceivedRef = useRef(false);
-  const recognizedRef = useRef(false);
+  const [isRecording, setIsRecording] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
   const [audioBlob, setAudioBlob] = useState(null);
   const mediaRecorderRef = useRef(null);
-  const audioChunksRef = useRef([]);
   const streamRef = useRef(null);
-
-  useEffect(() => {
-    console.log("navigator.mediaDevices:", navigator.mediaDevices);
-    console.log("Secure context:", window.isSecureContext);
-    console.log("User agent:", navigator.userAgent);
-  }, []);
-
-  function levenshtein(a, b) {
-    const matrix = [];
-
-    // increment along the first column of each row
-    for (let i = 0; i <= b.length; i++) {
-      matrix[i] = [i];
-    }
-
-    // increment each column in the first row
-    for (let j = 0; j <= a.length; j++) {
-      matrix[0][j] = j;
-    }
-
-    // fill in the rest
-    for (let i = 1; i <= b.length; i++) {
-      for (let j = 1; j <= a.length; j++) {
-        if (b.charAt(i - 1) === a.charAt(j - 1)) {
-          matrix[i][j] = matrix[i - 1][j - 1];
-        } else {
-          matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1, // substitution
-            matrix[i][j - 1] + 1, // insertion
-            matrix[i - 1][j] + 1 // deletion
-          );
-        }
-      }
-    }
-
-    return matrix[b.length][a.length];
-  }
-
-  function similarityScore(heard, expected) {
-    if (!heard || !expected) return 0;
-
-    const dist = levenshtein(heard, expected);
-    const maxLen = Math.max(heard.length, expected.length);
-
-    // Score = 100% if identical. 0% if completely different.
-    const score = ((maxLen - dist) / maxLen) * 100;
-    return Math.max(0, Math.min(100, Math.round(score)));
-  }
 
   useEffect(() => {
     resetAll();
   }, [currentWord]);
 
-  useEffect(() => {
-    console.log("navigator.mediaDevices:", navigator.mediaDevices);
-    console.log("Secure context:", window.isSecureContext);
-    console.log("User agent:", navigator.userAgent);
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      alert(
-        "Your browser does not support microphone access. Please open this site in Chrome with HTTPS."
-      );
-      console.log("MediaDevices missing:", navigator.mediaDevices);
-      return;
-    }
-
-    console.log("Secure context:", window.isSecureContext);
-    console.log("navigator.mediaDevices:", navigator.mediaDevices);
-  }, []);
-
   const resetAll = () => {
     setStatus("idle");
     setHeardWord("");
     setScore(null);
-    setInterimHeard("");
     setAudioBlob(null);
     isRecordingRef.current = false;
-    finalResultReceivedRef.current = false;
-    recognizedRef.current = false;
+    setIsRecording(false);
   };
 
-  function normalizeArabic(str) {
-    if (!str) return "";
+  const updateStatus = (score) => {
+    if (score >= 70) {
+      setStatus("recognized");
+    } else if (score > 0 && score < 70) {
+      setStatus("incorrect");
+    } else {
+      setStatus("no_speech");
+    }
+  };
 
-    let normalized = str
-      .normalize("NFKD")
-      .replace(/[\u064B-\u065F\u0610-\u061A\u06D6-\u06ED]/g, "")
-      .replace(/[\u200B-\u200F]/g, "")
-      .replace(/[^\p{Letter}\p{Number}]+/gu, "")
-      .trim()
-      .replace(/ة/g, "ه")
-      .replace(/[أإآ]/g, "ا")
-      .replace(/ى/g, "ي")
-      .replace(/ؤ/g, "و")
-      .replace(/ئ/g, "ي");
-
-    // Remove double letters caused by shadda
-    normalized = normalized.replace(/(.)\1/g, "$1");
-
-    return normalized;
-  }
-
-  const startRecording = async () => {
-    if (isRecordingRef.current) return;
+  async function beginSpeechRecognition() {
     resetAll();
-
-    // Request microphone access for audio capture
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    streamRef.current = stream; // ← YOU MUST ADD THIS
-
-    mediaRecorderRef.current = new MediaRecorder(stream);
-    audioChunksRef.current = [];
-
-    mediaRecorderRef.current.ondataavailable = (event) => {
-      audioChunksRef.current.push(event.data);
-    };
-
-    mediaRecorderRef.current.onstop = () => {
-      if (audioChunksRef.current.length === 0) return; // nothing recorded
-
-      const blob = new Blob(audioChunksRef.current, {
-        type: "audio/webm; codecs=opus",
-      });
-      console.log(blob);
-      setAudioBlob(blob); // store recording for playback
-      streamRef.current?.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
-    };
-
-    mediaRecorderRef.current.start();
-
     const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
+      window.SpeechRecognition || window.webkitSpeechRecognition || null;
     if (!SpeechRecognition) {
-      alert("Speech Recognition not supported");
+      setStatus("SpeechRecognition not available in this browser.");
       return;
     }
-
-    // reset state flags
-    finalResultReceivedRef.current = false;
-    recognizedRef.current = false;
-
-    setStatus("listening");
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    const recognition = new SpeechRecognition();
-    recognitionRef.current = recognition;
-
-    recognition.lang = "ar-EG";
-    // recognition.continuous = true;
-    // recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
-    if (isMobile) {
-      recognition.continuous = false;
-      recognition.interimResults = false;
-    } else {
-      recognition.continuous = true;
-      recognition.interimResults = true;
-    }
-    console.log("test");
-    console.log("SpeechRecognition mode:", isMobile ? "MOBILE" : "DESKTOP");
-
-    isRecordingRef.current = true;
-
-    recognition.onstart = () => {
-      setScore(null);
-      setStatus("listening");
-    };
-
-    recognition.onresult = (event) => {
-      console.log("Speech Recognition Result event:", event);
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const res = event.results[i];
-        setInterimHeard(res[0].transcript);
-
-        if (res.isFinal) {
-          finalResultReceivedRef.current = true;
-
-          const word = res[0].transcript.trim();
-          const normalizedHeard = normalizeArabic(word);
-          const normalizedExpected = normalizeArabic(currentWord);
-
-          setHeardWord(normalizedHeard);
-
-          const score = similarityScore(normalizedHeard, normalizedExpected);
-          console.log("Score:", score);
-          setScore(score); // inside onresult final
-
-          const match = normalizedHeard === normalizedExpected;
-
-          if (score >= 80) {
-            recognizedRef.current = true;
-            setStatus("recognized");
-            onRecognized?.(word);
-          } else if (
-            (normalizedHeard.length > 0 && score > 0) ||
-            (heardWord.length > 0 && score > 0)
-          ) {
-            setStatus("incorrect");
-          } else {
-            setStatus("no_speech");
-            setHeardWord(normalizedHeard);
-          }
-          isRecordingRef.current = false;
-
-          recognition.stop();
-          return;
-        }
-      }
-    };
-
-    recognition.onerror = (e) => {
-      isRecordingRef.current = false;
-      console.log("❌ Speech Recognition Error:", e.error);
-
-      setStatus("idle");
-    };
-
-    // 🔥 CRITICAL FIX: prevents "recognized → idle" bug
-    recognition.onend = () => {
-      console.log("Recognition ended");
-      const gotFinal = finalResultReceivedRef.current;
-      const gotRecognition = recognizedRef.current;
-      streamRef.current?.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
-
-      if (!gotFinal && !gotRecognition) {
-        setStatus("try_again");
-        setHeardWord("");
-      }
-      if (
-        mediaRecorderRef.current &&
-        mediaRecorderRef.current.state !== "inactive"
-      ) {
-        mediaRecorderRef.current.stop();
-      }
-      isRecordingRef.current = false;
-    };
-
-    console.log("isMobile:", isMobile);
-    console.log("Initializing recognition with settings:", {
-      continuous: recognition.continuous,
-      interimResults: recognition.interimResults,
-    });
-
     try {
-      recognition.start();
-      console.log("Recognition started successfully");
-    } catch (err) {
-      console.log("Recognition START error:", err);
-    }
+      const r = new SpeechRecognition();
+      r.lang = "ar-EG";
+      r.maxAlternatives = 1;
+      r.continuous = true;
+      r.interimResults = false;
 
-    // recognition.start();
-  };
+      r.onstart = () => {
+        setStatus("listening");
+        setIsRecording(true);
+      };
+
+      r.onresult = (e) => {
+        let word = e.results[0][0].transcript;
+        setStatus("processing");
+        const normalizedHeard = normalizeArabic(word);
+        const normalizedExpected = normalizeArabic(currentWord);
+        setHeardWord(normalizedHeard);
+        const score = similarityScore(normalizedHeard, normalizedExpected);
+        setScore(score); // inside onresult final
+        updateStatus(score);
+      };
+      r.onerror = (e) => setStatus("Error: " + e.error || e.message);
+      r.onend = () => {
+        // setStatus((prev) => (prev ? prev + " (ended)" : "Ended"));
+        setIsRecording(false);
+      };
+      r.start();
+      setTimeout(() => {
+        try {
+          r.stop();
+        } catch (err) {}
+      }, 4000);
+    } catch (e) {
+      setStatus("Failed to start recognition: " + (e.message || e));
+    }
+  }
 
   const stopRecording = () => {
     if (!isRecordingRef.current) return;
@@ -285,24 +100,33 @@ export default function Recorder({ onRecognized, currentWord }) {
 
     setStatus("processing");
     isRecordingRef.current = false;
+    setIsRecording(false);
+    updateStatus(score);
+    try {
+      recognitionRef.current?.stop();
+    } catch (e) {
+      try {
+        recognitionRef.current?.abort?.();
+      } catch (err) {}
+    }
+    recognitionRef.current = null;
 
-    recognitionRef.current?.stop();
+    if (recognitionStartTimerRef.current) {
+      clearTimeout(recognitionStartTimerRef.current);
+      recognitionStartTimerRef.current = null;
+    }
   };
 
-  const isRecording = isRecordingRef.current;
   const normalizedCurrent = normalizeArabic(currentWord);
   const showShortWordWarning = normalizedCurrent.length <= 3;
-
-  const normalizedExpected = normalizeArabic(currentWord);
-
   return (
     <div>
       <div className="flex  items-center justify-end gap-2">
         <div className="flex items-center justify-end  ">Record:</div>
         {!isRecording && (
           <button
-            onClick={startRecording}
-            className=" rounded-full text-2xl hover:cursor-pointer bg-[black]    p-2 rounded-full   hover:scale-110 transition-transform"
+            onClick={beginSpeechRecognition}
+            className="rounded-full text-2xl hover:cursor-pointer bg-[black] p-2 hover:scale-110 transition-transform"
           >
             🎤
           </button>
@@ -311,25 +135,13 @@ export default function Recorder({ onRecognized, currentWord }) {
         {isRecording && (
           <button
             onClick={stopRecording}
-            className=" rounded-full text-2xl hover:cursor-pointer bg-[red]     p-2  hover:scale-110 transition-transform"
+            className="rounded-full text-2xl hover:cursor-pointer bg-[red] p-2 hover:scale-110 transition-transform"
           >
             ◼
           </button>
         )}
       </div>
-      {audioBlob && (
-        <audio
-          key={audioBlob ? audioBlob.size : 0} // forces React to recreate audio element
-          controls
-          className="  w-full  mt-1 "
-        >
-          <source
-            src={URL.createObjectURL(audioBlob)}
-            type="audio/webm; codecs=opus"
-          />
-          Your browser does not support audio playback.
-        </audio>
-      )}
+
       <SpeechStatusUI status={status} />
       {heardWord !== "" && (
         <div className="text-lg mt-2">
@@ -354,7 +166,7 @@ export default function Recorder({ onRecognized, currentWord }) {
         </div>
       ) : null}
 
-      {(heardWord || interimHeard) && (
+      {heardWord && (
         <div
           ref={detailsRef}
           tabIndex={0}
@@ -393,13 +205,10 @@ export default function Recorder({ onRecognized, currentWord }) {
             </span>
           </div>
           <div className="collapse-content text-sm animate-fadeIn">
-            <DifferentLetters
-              heard={heardWord || interimHeard}
-              expected={currentWord}
-            />
+            <DifferentLetters heard={heardWord} expected={currentWord} />
             <div className=" mr-2 text-lg  ">Letters You Missed:</div>
             {(() => {
-              const heard = normalizeArabic(heardWord || interimHeard || "");
+              const heard = normalizeArabic(heardWord || "");
               const expected = normalizeArabic(currentWord || "");
               if (!expected) return <div className="text-sm">—</div>;
 
@@ -443,31 +252,12 @@ export default function Recorder({ onRecognized, currentWord }) {
         </div>
       )}
 
-      <div className="mt-2 text-md text-gray-500">
-        {interimHeard && !heardWord && (
-          <>
-            Heard so far: <span>{interimHeard}</span>
-          </>
-        )}
-      </div>
-
-      {(showShortWordWarning &&
-        score >= 0 &&
-        score <= 50 &&
-        status === "idle") ||
-        (showShortWordWarning &&
-          score >= 0 &&
-          score <= 50 &&
-          status === "incorrect") ||
-        (showShortWordWarning &&
-          score >= 0 &&
-          score <= 50 &&
-          status === "no_speech" && (
-            <div className="bg-warning rounded p-2 text-[black] ">
-              🚩 Note: Short words can be difficult to capture. Try slightly
-              prolonging your pronunciation.
-            </div>
-          ))}
+      {showShortWordWarning && score !== null && score >= 0 && score <= 50 && (
+        <div className="bg-warning rounded p-2 text-[black] mt-2">
+          🚩 Note: Short words can be difficult to capture. Try slightly
+          prolonging or exaggerating your pronunciation.
+        </div>
+      )}
     </div>
   );
 }

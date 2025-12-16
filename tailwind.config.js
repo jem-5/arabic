@@ -6,11 +6,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      primary: "#ff77e9",
-      secondary: "#565584",
-    },
     extend: {
+      colors: {
+        primary: "#1eb854",
+        secondary: "#1db88e",
+        accent: "#54c7b7",
+        neutral: "#19362d",
+      },
       keyframes: {
         fadeIn: {
           "0%": { opacity: 0, transform: "translateY(10px)" },
