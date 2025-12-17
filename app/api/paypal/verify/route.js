@@ -48,7 +48,10 @@ export async function POST(req) {
       // 2. Update your database to mark the user as paid
       // Example with Firestore:
       // await updateDoc(doc(db, "users", uid), { isPaidMember: true });
-      await adminDb.collection("users").doc(uid).update({ isPaidMember: true });
+      await adminDb
+        .collection("users")
+        .doc(uid)
+        .set({ isPaidMember: true }, { merge: true });
       // Respond with success
       return NextResponse.json({ success: true });
     } else {

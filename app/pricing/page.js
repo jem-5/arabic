@@ -4,7 +4,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useAuthContext } from "@/context/AuthContext"; // Import your auth context
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Pricing() {
   const router = useRouter();
@@ -100,7 +99,7 @@ export default function Pricing() {
                       return actions.order.create({
                         purchase_units: [
                           {
-                            amount: { value: "49.99", currency_code: "USD" },
+                            amount: { value: "19.99", currency_code: "USD" },
                             description: "Arabic Road Lifetime Membership",
                           },
                         ],
@@ -120,19 +119,11 @@ export default function Pricing() {
                       });
                       const result = await res.json();
                       if (result.success) {
-                        // alert(
-                        //   "Payment successful! Your membership is now active."
-                        // );
                         toast.success(
                           "Payment successful! Your membership is now active."
                         );
                         router.push("/dashboard");
-
-                        // Optionally update your UI/context here
                       } else {
-                        // alert(
-                        //   "Payment verification failed. Please contact support."
-                        // );
                         toast.error(
                           "Payment verification failed. Please contact support."
                         );
@@ -148,8 +139,3 @@ export default function Pricing() {
     </PayPalScriptProvider>
   );
 }
-
-// Make sure user is logged in before showing button
-// Add Profile Account Button to header
-// Add backend code
-// Test the flow
