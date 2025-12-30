@@ -48,26 +48,41 @@ export default function Lesson() {
   const [lessonData, setLessonData] = useState(null);
 
   useEffect(() => {
-    if (!user) return;
-    const loadLesson = async () => {
-      const token = await user.getIdToken();
-      const res = await fetch(`/api/approve?topic=${topic}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+    if (!user) {
+      // User not logged in → no approval check needed
+      setApproved(false);
+      setLessonData([]);
+      setCheckingApproval(false);
+      return;
+    }
 
-      if (!res.ok) {
+    const loadLesson = async () => {
+      try {
+        const token = await user.getIdToken();
+        const res = await fetch(`/api/approve?topic=${topic}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if (!res.ok) {
+          setApproved(false);
+          setLessonData([]);
+          setCheckingApproval(false);
+          return;
+        }
+
+        const data = await res.json();
+        setApproved(true);
+        setLessonData(data.lesson);
+        setCheckingApproval(false);
+      } catch (error) {
         setApproved(false);
         setLessonData([]);
         setCheckingApproval(false);
-        return;
+        console.log("error:", error);
+      } finally {
+        setCheckingApproval(false);
       }
-
-      const data = await res.json();
-      setApproved(true);
-      setLessonData(data.lesson);
-      setCheckingApproval(false);
     };
-
     loadLesson();
   }, [user, topic]);
 
