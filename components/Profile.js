@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "@/context/AuthContext";
+
 import { useRouter } from "next/navigation";
 import signout from "@/firebase/auth/signout";
 import SignInForm from "./SignInForm";
@@ -8,24 +9,21 @@ import SignUpForm from "./SignUpForm";
 import { db } from "@/firebase/config";
 
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { AllModules } from "@/data/AllModules";
-import { QuestionAlert } from "./QuestionAlert";
+
 import BadgeGrid from "./Badges";
 import MyButton from "./Button";
 import { badges } from "./Badges";
 import useStreak from "./Streak";
 import ReviewMissedWords from "./ReviewMissedWords";
-import Image from "next/image";
 import WordList from "./WordList";
+import { getAuth } from "firebase/auth";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
-  const { user, userProfile: authUserProfile, refetchUser } = useAuthContext();
+  const { user, userProfile, refetchUser, isPaidMember } = useAuthContext();
   const router = useRouter();
   const [wordsToReview, setWordsToReview] = useState([]);
 
-  const [isPaidMember, setIsPaidMember] = useState(false);
-  const [userProfile, setUserProfile] = useState({});
   const [userBadges, setUserBadges] = useState(badges);
   const [removingIndex, setRemovingIndex] = useState(null);
   const StreakBadge = useStreak().StreakBadge;
@@ -38,6 +36,8 @@ export const Profile = () => {
       return [];
     }
   });
+
+  console.log("authUser", user, userProfile);
 
   const playAudio = (src) => {
     if (!src) return;
@@ -62,51 +62,46 @@ export const Profile = () => {
       )
         unlocked = true;
 
-      // if (requirement.streakDays && user.streakDays >= requirement.streakDays)
-      //   unlocked = true;
-
       return { ...badge, unlocked };
     });
   }, []);
 
   const updateWordsToReview = useCallback(async () => {
-    let userData = authUserProfile;
-    if (!userData && user?.uid) {
-      // fetch via context helper if we don't have it yet
-      userData = await refetchUser(user.uid);
-    }
-    if (userData) {
-      // update local profile state
-      setUserProfile(userData);
-      // compute badges from the freshly fetched data (not stale state)
-      const personalBadges = checkBadges(userData, badges);
-      setUserBadges(personalBadges);
-      userData.isPaidMember ? setIsPaidMember(true) : setIsPaidMember(false);
-      let words = [];
-      for (const [key, value] of Object.entries(userData)) {
-        if (
-          key !== "reviewedModules" &&
-          key !== "completedModules" &&
-          key !== "isPaidMember" &&
-          value.length !== 0
-        ) {
-          words.push(value);
-        }
-      }
-      let flatArr = words.flat(2);
-      setWordsToReview(flatArr);
-    }
-  }, [user, checkBadges, authUserProfile, refetchUser]);
+    if (!user?.uid) return;
+
+    const userData = await refetchUser(user.uid);
+    if (!userData) return;
+
+    // badges
+    setUserBadges(checkBadges(userData, badges));
+
+    // words to review
+    setWordsToReview(userData.missedWords || []);
+    // const words = Object.entries(userData)
+    //   .filter(
+    //     ([key, val]) =>
+    //       Array.isArray(val) &&
+    //       !["completedModules", "reviewedModules"].includes(key)
+    //   )
+    //   .flatMap(([, val]) => val);
+
+    // setWordsToReview(words);
+  }, [user?.uid, refetchUser, checkBadges]);
 
   // Keep savedWords in sync with localStorage
   useEffect(() => {
     try {
+      async function updateToken() {
+        if (!user) return;
+        await user.getIdToken(true);
+      }
+      updateToken();
       const stored = JSON.parse(localStorage.getItem("savedWords") || "[]");
       setSavedWords(stored);
     } catch (e) {
       setSavedWords([]);
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     try {
@@ -115,10 +110,6 @@ export const Profile = () => {
       // ignore storage errors
     }
   }, [savedWords]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("savedWords", JSON.stringify(savedWords));
-  // }, [savedWords]);
 
   const handleRemoveSavedWord = (item) => {
     const filteredWords = (savedWords || []).filter(
@@ -138,47 +129,61 @@ export const Profile = () => {
       if (!userSnap.exists()) return;
       const userData = userSnap.data();
 
-      // find which key contains this word (match by english+arabic as identifier)
-      let foundKey = null;
-      for (const [key, val] of Object.entries(userData)) {
-        if (Array.isArray(val)) {
-          const match = val.find(
-            (w) =>
-              w &&
-              w.english === word.english &&
-              w.arabic === word.arabic &&
-              w.transliteration === word.transliteration
-          );
-          if (match) {
-            foundKey = key;
-            break;
-          }
-        }
-      }
+      const missedWords = userData.missedWords || [];
 
-      if (!foundKey) {
-        // nothing to remove
-        setRemovingIndex(null);
-        return;
-      }
-
-      const newArr = (
-        Array.isArray(userData[foundKey]) ? userData[foundKey] : []
-      ).filter(
+      const filtered = missedWords.filter(
         (w) =>
           !(
-            w &&
             w.english === word.english &&
             w.arabic === word.arabic &&
             w.transliteration === word.transliteration
           )
       );
 
-      // update Firestore with the new array for that module/key
-      await updateDoc(userRef, { [foundKey]: newArr });
-
-      // refresh local state from server to ensure consistency (also recomputes badges)
+      await updateDoc(userRef, { missedWords: filtered });
       await updateWordsToReview();
+      // find which key contains this word (match by english+arabic as identifier)
+      // let foundKey = null;
+
+      // for (const [key, val] of Object.entries(userData)) {
+      //   if (Array.isArray(val)) {
+      //     const match = val.find(
+      //       (w) =>
+      //         w &&
+      //         w.english === word.english &&
+      //         w.arabic === word.arabic &&
+      //         w.transliteration === word.transliteration
+      //     );
+      //     if (match) {
+      //       foundKey = key;
+      //       break;
+      //     }
+      //   }
+      // }
+
+      // if (!foundKey) {
+      //   // nothing to remove
+      //   setRemovingIndex(null);
+      //   return;
+      // }
+
+      // const newArr = (
+      //   Array.isArray(userData[foundKey]) ? userData[foundKey] : []
+      // ).filter(
+      //   (w) =>
+      //     !(
+      //       w &&
+      //       w.english === word.english &&
+      //       w.arabic === word.arabic &&
+      //       w.transliteration === word.transliteration
+      //     )
+      // );
+
+      // // update Firestore with the new array for that module/key
+      // await updateDoc(userRef, { [foundKey]: newArr });
+
+      // // refresh local state from server to ensure consistency (also recomputes badges)
+      // await updateWordsToReview();
     } catch (err) {
       console.error("Failed to remove word:", err);
     } finally {
@@ -211,6 +216,7 @@ export const Profile = () => {
     });
   };
 
+  console.log(wordsToReview);
   return (
     <div
       className=" bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
@@ -233,7 +239,6 @@ export const Profile = () => {
                   {isPaidMember ? "Paid Member" : "Free Member"}
                 </p>
               </div>
-
               <MyButton func={signout} text={"Sign Out"} />
             </>
           )}
@@ -268,11 +273,13 @@ export const Profile = () => {
             />
           )}
 
-          <MyButton
-            func={() => setShowReview(true)}
-            classRest="bg-amber-700 text-white px-4 py-2 rounded-lg"
-            text="Review Missed Words"
-          />
+          {wordsToReview.length > 0 && (
+            <MyButton
+              func={() => setShowReview(true)}
+              classRest="bg-amber-700 text-white px-4 py-2 rounded-lg"
+              text="Review Missed Words"
+            />
+          )}
 
           <hr className="my-3" />
           <p className="font-bold text-2xl   mb-2 ">

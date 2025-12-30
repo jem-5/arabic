@@ -8,31 +8,27 @@ import {
   arrayUnion,
   collection,
   setDoc,
-  getDoc,
 } from "firebase/firestore";
 import Link from "next/link";
-import { AllModules } from "@/data/AllModules";
+
 import { freeModules } from "@/data/AllModules";
 import { useAuthContext } from "@/context/AuthContext";
-import { Profile } from "@/components/Profile";
+
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 import Image from "next/image";
 import CulturalNotes from "@/data/CulturalNotes";
-import Meyda from "meyda";
 import { useSwipeable } from "react-swipeable";
 import confetti from "canvas-confetti";
 import Recorder from "@/components/Recorder";
+import { usePronunciationLimits } from "@/helpers/usePronunciationLimits";
 
 export default function Lesson() {
-  const [recognizedWord, setRecognizedWord] = useState("");
-  const [whisperBlob, setWhisperBlob] = useState(null);
-
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "Greetings";
   const [questionNum, setQuestionNum] = useState(0);
-  const { user, isPaidMember, userProfile, refetchUser } = useAuthContext();
+  const { user, isPaidMember, userProfile } = useAuthContext();
   const router = useRouter();
   const [tip, setTip] = useState(null);
   const [savedWords, setSavedWords] = useState(
@@ -41,22 +37,48 @@ export default function Lesson() {
   const [isWordSaved, setIsWordSaved] = useState(false);
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
-  const confettiRef = useRef(null);
-  // const [recording, setRecording] = useState(false);
-  // const [audioURL, setAudioURL] = useState(null);
-  // Keep recorder/stream/chunks in refs so they persist across renders
-  const mediaRecorderRef = useRef(null);
-  const mediaStreamRef = useRef(null);
-  const chunksRef = useRef([]);
-  // const [score, setScore] = useState(null);
-  // const [feedback, setFeedback] = useState("");
-  // const audioContextRef = useRef(
-  //   new (window.AudioContext || window.webkitAudioContext)()
-  // );
-  // const nativeFeaturesRef = useRef(null);
   const [swipeDirection, setSwipeDirection] = useState(null);
-
   const [animateIn, setAnimateIn] = useState(false);
+  const { remaining, limitReached, increment } = usePronunciationLimits({
+    user,
+    isPaidMember,
+  });
+  const [approved, setApproved] = useState(false);
+  const [checkingApproval, setCheckingApproval] = useState(true);
+  const [lessonData, setLessonData] = useState(null);
+
+  useEffect(() => {
+    if (!user) return;
+    const loadLesson = async () => {
+      const token = await user.getIdToken();
+      const res = await fetch(`/api/approve?topic=${topic}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!res.ok) {
+        setApproved(false);
+        setLessonData([]);
+        setCheckingApproval(false);
+        return;
+      }
+
+      const data = await res.json();
+      setApproved(true);
+      setLessonData(data.lesson);
+      setCheckingApproval(false);
+    };
+
+    loadLesson();
+  }, [user, topic]);
+
+  const downloadPdf = async () => {
+    const token = await user.getIdToken();
+
+    window.open(
+      `/api/pdf?name=${encodeURIComponent(topic)}&token=${token}`,
+      "_blank"
+    );
+  };
 
   const handlers = useSwipeable({
     onSwipedLeft: () => handleClickNext(),
@@ -96,28 +118,23 @@ export default function Lesson() {
         reviewedModules: [topic],
       });
     }
-    // refresh context profile after writes
-    if (refetchUser && user?.uid) await refetchUser(user.uid);
   };
 
   useEffect(() => {
-    const englishWord = AllModules[topic][questionNum].english;
+    if (!lessonData) return;
+    const englishWord = lessonData[questionNum]?.english;
     const currentTip = CulturalNotes[englishWord] || null;
     setTip(currentTip);
-    setRecognizedWord("");
-    // setAudioURL(null);
-    // setScore(null);
-    // setFeedback("");
-  }, [questionNum]);
+  }, [questionNum, lessonData]);
 
   useEffect(() => {
-    if (!savedWords) return;
+    if (!savedWords || !lessonData) return;
     setIsWordSaved(
       savedWords.some(
-        (word) => word.english === AllModules[topic][questionNum].english
+        (word) => word.english === lessonData?.[questionNum]?.english
       )
     );
-  }, [questionNum]);
+  }, [questionNum, lessonData]);
 
   useEffect(() => {
     localStorage.setItem("savedWords", JSON.stringify(savedWords));
@@ -132,14 +149,14 @@ export default function Lesson() {
   const handleToggleSave = () => {
     if (isWordSaved) {
       const filteredWords = savedWords.filter(
-        (word) => word.english !== AllModules[topic][questionNum].english
+        (word) => word.english !== lessonData?.[questionNum]?.english
       );
       setSavedWords(filteredWords);
       setIsWordSaved(false);
       return;
     } else {
       setSavedWords((prev) =>
-        Array.from(new Set([...prev, AllModules[topic][questionNum]]))
+        Array.from(new Set([...prev, lessonData?.[questionNum]]))
       );
       setIsWordSaved(true);
     }
@@ -160,19 +177,16 @@ export default function Lesson() {
     setTimeout(() => {
       setSwipeDirection(null);
     }, 200);
-    // setAnimateIn(true);
     setTimeout(() => setAnimateIn(true), 200);
     setTimeout(() => setAnimateIn(false), 400);
-    // e may be undefined when called programmatically (swipe handlers or
-    // imperative calls). Guard against that before calling preventDefault.
+
     if (e && typeof e.preventDefault === "function") e.preventDefault();
-    if (questionNum < AllModules[topic].length - 1) {
+    if (questionNum < lessonData.length - 1) {
       setQuestionNum((prev) => prev + 1);
       return;
     }
 
-    // If we're already at the last question, save/celebrate and navigate.
-    if (questionNum === AllModules[topic].length - 1) {
+    if (questionNum === lessonData.length - 1) {
       if (user) saveProgress();
       celebrate();
 
@@ -194,14 +208,16 @@ export default function Lesson() {
   };
 
   const playAudio = () => {
-    let audio = new Audio(AllModules[topic][questionNum].audio);
+    let audio = new Audio(lessonData?.[questionNum]?.audio);
+    if (!audio) return;
 
     audio.playbackRate = 1;
-    audio.play();
+    audio.play().catch(() => {});
   };
 
   const playSlowAudio = () => {
-    let audio = new Audio(AllModules[topic][questionNum].audio);
+    let audio = new Audio(lessonData?.[questionNum]?.audio);
+    if (!audio) return;
     audio.playbackRate = 0.5;
     audio.play();
   };
@@ -211,25 +227,37 @@ export default function Lesson() {
   }, [questionNum]);
 
   const mascotSrc = useMemo(() => {
-    const moduleItem = AllModules[topic]
-      ? AllModules[topic][questionNum]
-      : null;
+    const moduleItem = lessonData ? lessonData[questionNum] : null;
     if (moduleItem && moduleItem.image) return moduleItem.image;
     const randomSelection = Math.floor(Math.random() * 13);
     return `/images/mascots/${randomSelection}.jpg`;
   }, [topic, questionNum]);
 
+  if (checkingApproval) {
+    return (
+      <main className="flex items-center justify-center h-screen">
+        Checking access…
+      </main>
+    );
+  }
+
+  if (!lessonData) {
+    return (
+      <main className="flex items-center justify-center h-screen">
+        Loading lesson…
+      </main>
+    );
+  }
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
       <div className="flex flex-row mt-2 w-full px-3 justify-between ">
         <h3 className="font-bold text-lg text-[white]">MODULE: {topic}</h3>
         <h3 className="font-bold text-lg align-end justify-end text-[white]">
-          {questionNum + 1} /{" "}
-          {AllModules[topic] ? AllModules[topic].length : null}
+          {questionNum + 1} / {lessonData ? lessonData.length : null}
         </h3>
       </div>
 
-      {!isPaidMember && !Object.keys(freeModules).includes(topic) ? (
+      {!approved && !Object.keys(freeModules).includes(topic) ? (
         <div className="alert alert-warning shadow-lg w-full">
           <div>
             <svg
@@ -274,9 +302,7 @@ export default function Lesson() {
             <div className="card md:card-side    w-full shadow-xl bg-neutral  ">
               <div className="card-body flex flex-col justify-between  w-full  ">
                 <div className="text-4xl flex justify-between items-baseline gap-2">
-                  {AllModules[topic]
-                    ? AllModules[topic][questionNum].english
-                    : null}
+                  {lessonData ? lessonData[questionNum].english : null}
                   <Image
                     src={isWordSaved ? "/save-filled.png" : "/save.png"}
                     alt="save icon"
@@ -289,17 +315,13 @@ export default function Lesson() {
                 <div className="flex items-center justify-end">
                   <div className="chat chat-end  ">
                     <div className="chat-bubble  bg-secondary text-4xl text-[white] ">
-                      {AllModules[topic]
-                        ? AllModules[topic][questionNum].arabic
-                        : null}
+                      {lessonData ? lessonData[questionNum].arabic : null}
                     </div>
                   </div>
                 </div>
 
                 <div className="text-2xl text-right place-content-end italic">
-                  {AllModules[topic][questionNum].transliteration
-                    ? AllModules[topic][questionNum].transliteration
-                    : null}
+                  {lessonData?.[questionNum]?.transliteration ?? null}
                 </div>
 
                 <div className="flex items-center justify-end gap-2">
@@ -324,23 +346,25 @@ export default function Lesson() {
                     Note: User-recorded audio is not saved or shared.
                   </div>
                 )}
+
+                {!user ? (
+                  <div className="text-right">
+                    Sign in to record audio & receive a pronunciation score.
+                  </div>
+                ) : !isPaidMember ? (
+                  <div className="text-right">
+                    {remaining} pronunciation scores left today.
+                  </div>
+                ) : null}
+
                 <div className="p-1">
                   <Recorder
-                    onRecognized={(word) => setRecognizedWord(word)}
-                    onBlobReady={(blob) => setWhisperBlob(blob)}
-                    currentWord={AllModules[topic][questionNum].arabic}
+                    currentWord={lessonData[questionNum].arabic}
+                    enabled={!limitReached && user}
+                    onScore={() => increment()}
                   />
                 </div>
-                <div className="p-1">
-                  {/* Only render Whisper transcriber when we have a blob to transcribe */}
-                  {/* <WhisperTranscriberClient
-                    inputBlob={whisperBlob}
-                    onTranscribed={(txt) => {
-                      setRecognizedWord(txt);
-                      setWhisperBlob(null);
-                    }}
-                  /> */}
-                </div>
+                <div className="p-1"></div>
               </div>
               <figure>
                 <img
@@ -406,9 +430,11 @@ export default function Lesson() {
         </div>
       )}
       <div className="divider "></div>
-
+      {isPaidMember && (
+        <MyButton func={() => downloadPdf()} text={`Download ${topic} PDF`} />
+      )}
       <MyButton
-        text="Go Back"
+        text="Back to Dashboard"
         func={() => router.push("/dashboard")}
         classRest="h-12 bg-neutral"
       />

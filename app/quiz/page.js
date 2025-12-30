@@ -8,19 +8,16 @@ import {
   arrayUnion,
   collection,
   setDoc,
-  getDoc,
-  deleteDoc,
   deleteField,
   arrayRemove,
 } from "firebase/firestore";
-import Link from "next/link";
-import { AllModules } from "@/data/AllModules";
+import { freeModules } from "@/data/AllModules";
 import { useAuthContext } from "@/context/AuthContext";
-import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { QuestionAlert } from "@/components/QuestionAlert";
 import confetti from "canvas-confetti";
+import Link from "next/link";
 
 export default function Quiz() {
   const searchParams = useSearchParams();
@@ -33,11 +30,35 @@ export default function Quiz() {
   const [score, setScore] = useState(0);
   const [questionsWrong, setQuestionsWrong] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const { user, userProfile, refetchUser } = useAuthContext();
+  const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
   const router = useRouter();
+  const [approved, setApproved] = useState(false);
+  const [checkingApproval, setCheckingApproval] = useState(true);
+  const [lessonData, setLessonData] = useState(null);
 
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
+
+  useEffect(() => {
+    if (!user) return;
+    const loadLesson = async () => {
+      const token = await user.getIdToken();
+      const res = await fetch(`/api/approve?topic=${topic}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) {
+        setApproved(false);
+        setLessonData([]);
+        setCheckingApproval(false);
+        return;
+      }
+      const data = await res.json();
+      setApproved(true);
+      setLessonData(data.lesson);
+      setCheckingApproval(false);
+    };
+    loadLesson();
+  }, [user, topic]);
 
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}?topic=${topic}`;
@@ -84,12 +105,13 @@ export default function Quiz() {
     } else {
       if (profileExists) {
         await updateDoc(userDoc, {
-          [topic]: questionsWrong,
+          missedWords: arrayUnion(...questionsWrong),
+
           completedModules: arrayRemove(topic),
         });
       } else {
         await setDoc(doc(usersRef, user.uid), {
-          [topic]: questionsWrong,
+          missedWords: questionsWrong,
         });
       }
     }
@@ -98,6 +120,7 @@ export default function Quiz() {
   };
 
   function shuffleArray(array) {
+    if (!array) return;
     for (var i = array.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
       var temp = array[i];
@@ -107,12 +130,13 @@ export default function Quiz() {
   }
 
   useEffect(() => {
-    shuffleArray(AllModules[topic]);
+    if (!lessonData) return;
+    shuffleArray(lessonData);
     getRandomLang();
-  }, []);
+  }, [lessonData]);
 
   useEffect(() => {
-    if (questionNum === AllModules[topic].length - 1) saveProgress();
+    if (questionNum === lessonData?.length - 1) saveProgress();
   }, [questionsWrong, questionNum]);
 
   const getRandomLang = () => {
@@ -123,15 +147,15 @@ export default function Quiz() {
   };
 
   const generateRandomAnswer = () => {
-    let randomIndex = Math.floor(Math.random() * AllModules[topic].length);
-    const randomAnswer = AllModules[topic][randomIndex];
+    let randomIndex = Math.floor(Math.random() * lessonData?.length);
+    const randomAnswer = lessonData?.[randomIndex];
     return randomAnswer;
   };
 
   const populateAnswers = (lang, questionNum) => {
     const randomSpot = Math.floor(Math.random() * 4);
     let answerLang = lang === "english" ? "arabic" : "english";
-    let correctAnswer = AllModules[topic][questionNum][answerLang];
+    let correctAnswer = lessonData?.[questionNum]?.[answerLang];
     let answerArr = [0, 0, 0, 0];
     answerArr[randomSpot] = correctAnswer;
 
@@ -139,7 +163,7 @@ export default function Quiz() {
       if (i !== randomSpot) {
         let randomAnswer = generateRandomAnswer();
 
-        while (answerArr.includes(randomAnswer[answerLang])) {
+        while (answerArr.includes(randomAnswer?.[answerLang])) {
           randomAnswer = generateRandomAnswer();
         }
         answerArr[i] = randomAnswer[answerLang];
@@ -157,13 +181,13 @@ export default function Quiz() {
     } catch (err) {}
     setSelectedIndex(index);
     let answerLang = questionLang === "english" ? "arabic" : "english";
-    let correctAnswer = AllModules[topic][questionNum][answerLang];
+    let correctAnswer = lessonData?.[questionNum][answerLang];
     const given = (answers[index] || "").toString().trim();
     if (given === correctAnswer.trim()) {
       setScore((prev) => prev + 1);
       setStatus("correct");
     } else {
-      setQuestionsWrong((prev) => prev.concat(AllModules[topic][questionNum]));
+      setQuestionsWrong((prev) => prev.concat(lessonData[questionNum]));
       setStatus("wrong");
     }
     setTimeout(() => advanceQuestion(), 500);
@@ -177,7 +201,7 @@ export default function Quiz() {
         document.activeElement.blur();
     } catch (err) {}
     setSelectedIndex(null);
-    if (questionNum === AllModules[topic].length - 1) {
+    if (questionNum === lessonData?.length - 1) {
       endQuiz();
       return;
     }
@@ -192,126 +216,169 @@ export default function Quiz() {
   };
 
   const playAudio = () => {
-    let audio = new Audio(AllModules[topic][questionNum].audio);
+    let audio = new Audio(lessonData?.[questionNum].audio);
     audio.play();
   };
 
   const playAnswerAudio = (word) => {
     const matchWord = (item) => item.arabic === word;
-    const idx = AllModules[topic].findIndex(matchWord);
+    const idx = lessonData?.findIndex(matchWord);
     if (idx > -1) {
-      let audio = new Audio(AllModules[topic][idx].audio);
+      let audio = new Audio(lessonData?.[idx].audio);
       audio.play();
     }
   };
 
+  if (checkingApproval) {
+    return (
+      <main className="flex items-center justify-center h-screen">
+        Checking access…
+      </main>
+    );
+  }
+
+  if (!lessonData) {
+    return (
+      <main className="flex items-center justify-center h-screen">
+        Loading lesson…
+      </main>
+    );
+  }
+
   return (
     <main className="flex-grow flex flex-col items-center p-2 min-w-80 ">
-      <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between  ">
-        <h3 className="font-bold text-lg text-neutral">QUIZ: {topic}</h3>
-        <h3 className="font-bold text-lg align-end justify-end  text-neutral">
-          {questionNum + 1} /{" "}
-          {AllModules[topic] ? AllModules[topic].length : null}
-        </h3>
-      </div>
-      <div className="divider"></div>
-
-      <h3 className="font-bold text-lg align-end justify-end  text-neutral">
-        Total Correct: {score}
-      </h3>
-
-      <div className="card bg-neutral w-full shadow-xl flex flex-col justify-center items-center">
-        <div className="card-body flex flex-col justify-center items-center">
-          <h2 className="card-title ">
-            {AllModules[topic][questionNum][questionLang]}
-            {questionLang === "arabic" ? (
-              <button
-                className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
-                onClick={playAudio}
-              >
-                🔊
-              </button>
-            ) : null}
-          </h2>
-
-          <div className="card-actions flex flex-col items-center w-full   ">
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                classRest={`bg-secondary ${
-                  selectedIndex === 0 ? "ring-2 ring-primary" : ""
-                }`}
-                func={() => checkAnswer(0)}
-                key={`q${questionNum}-opt-0`}
-                text={answers[0]}
+      {!approved ? (
+        <div className="alert alert-warning shadow-lg w-full">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current flex-shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
-              {questionLang === "english" ? (
-                <button
-                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
-                  onClick={() => playAnswerAudio(answers[0])}
-                >
-                  🔊
-                </button>
-              ) : null}
-            </div>
-
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                text={answers[1]}
-                classRest={`bg-secondary ${
-                  selectedIndex === 1 ? "ring-2 ring-primary" : ""
-                }`}
-                func={() => checkAnswer(1)}
-                key={`q${questionNum}-opt-1`}
-              />
-              {questionLang === "english" ? (
-                <button
-                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
-                  onClick={() => playAnswerAudio(answers[1])}
-                >
-                  🔊
-                </button>
-              ) : null}
-            </div>
-
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                text={answers[2]}
-                classRest={`bg-secondary ${
-                  selectedIndex === 2 ? "ring-2 ring-primary" : ""
-                }`}
-                func={() => checkAnswer(2)}
-                key={`q${questionNum}-opt-2`}
-              />
-              {questionLang === "english" ? (
-                <button
-                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
-                  onClick={() => playAnswerAudio(answers[2])}
-                >
-                  🔊
-                </button>
-              ) : null}
-            </div>
-            <div className="flex flex-row items-center justify-center gap-3 w-full  ">
-              <MyButton
-                text={answers[3]}
-                classRest={`bg-secondary ${
-                  selectedIndex === 3 ? "ring-2 ring-primary" : ""
-                }`}
-                func={() => checkAnswer(3)}
-                key={`q${questionNum}-opt-3`}
-              />
-              {questionLang === "english" ? (
-                <button
-                  className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
-                  onClick={() => playAnswerAudio(answers[3])}
-                >
-                  🔊
-                </button>
-              ) : null}
-            </div>
+            </svg>
+            <span>
+              This module is only available to paid members.{" "}
+              <Link href="/pricing" className="underline">
+                Upgrade now
+              </Link>
+            </span>
           </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between  ">
+            <h3 className="font-bold text-lg text-neutral">QUIZ: {topic}</h3>
+            <h3 className="font-bold text-lg align-end justify-end  text-neutral">
+              {questionNum + 1} / {lessonData ? lessonData.length : null}
+            </h3>
+          </div>
+          <div className="divider"></div>
+
+          <h3 className="font-bold text-lg align-end justify-end  text-neutral">
+            Total Correct: {score}
+          </h3>
+
+          <div className="card bg-neutral w-full shadow-xl flex flex-col justify-center items-center">
+            <div className="card-body flex flex-col justify-center items-center">
+              <h2 className="card-title ">
+                {lessonData?.[questionNum]?.[questionLang]}
+                {questionLang === "arabic" ? (
+                  <button
+                    className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                    onClick={playAudio}
+                  >
+                    🔊
+                  </button>
+                ) : null}
+              </h2>
+
+              <div className="card-actions flex flex-col items-center w-full   ">
+                <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                  <MyButton
+                    classRest={`bg-secondary ${
+                      selectedIndex === 0 ? "ring-2 ring-primary" : ""
+                    }`}
+                    func={() => checkAnswer(0)}
+                    key={`q${questionNum}-opt-0`}
+                    text={answers[0]}
+                  />
+                  {questionLang === "english" ? (
+                    <button
+                      className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                      onClick={() => playAnswerAudio(answers[0])}
+                    >
+                      🔊
+                    </button>
+                  ) : null}
+                </div>
+
+                <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                  <MyButton
+                    text={answers[1]}
+                    classRest={`bg-secondary ${
+                      selectedIndex === 1 ? "ring-2 ring-primary" : ""
+                    }`}
+                    func={() => checkAnswer(1)}
+                    key={`q${questionNum}-opt-1`}
+                  />
+                  {questionLang === "english" ? (
+                    <button
+                      className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                      onClick={() => playAnswerAudio(answers[1])}
+                    >
+                      🔊
+                    </button>
+                  ) : null}
+                </div>
+
+                <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                  <MyButton
+                    text={answers[2]}
+                    classRest={`bg-secondary ${
+                      selectedIndex === 2 ? "ring-2 ring-primary" : ""
+                    }`}
+                    func={() => checkAnswer(2)}
+                    key={`q${questionNum}-opt-2`}
+                  />
+                  {questionLang === "english" ? (
+                    <button
+                      className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                      onClick={() => playAnswerAudio(answers[2])}
+                    >
+                      🔊
+                    </button>
+                  ) : null}
+                </div>
+                <div className="flex flex-row items-center justify-center gap-3 w-full  ">
+                  <MyButton
+                    text={answers[3]}
+                    classRest={`bg-secondary ${
+                      selectedIndex === 3 ? "ring-2 ring-primary" : ""
+                    }`}
+                    func={() => checkAnswer(3)}
+                    key={`q${questionNum}-opt-3`}
+                  />
+                  {questionLang === "english" ? (
+                    <button
+                      className="text-md hover:cursor-pointer hover:scale-110 transition-transform"
+                      onClick={() => playAnswerAudio(answers[3])}
+                    >
+                      🔊
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       {status === "correct" ? (
         <img

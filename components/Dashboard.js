@@ -1,28 +1,23 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { AllModules, searchableModules } from "@/data/AllModules";
 import { freeModules } from "@/data/AllModules";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/firebase/config";
 import { useAuthContext } from "@/context/AuthContext";
 import { Stats } from "./Stats";
 import useScreenSize from "@/helpers/useScreenSize";
-import { Profile } from "./Profile";
 import MyButton from "./Button";
 import { useRouter } from "next/navigation";
 import { HowItWorks } from "./HowItWorks";
 import SearchFloatingButton from "./Search";
 import { VocabofDay } from "./VocabofDay";
 import { LastModule } from "./LastModule";
-import BadgeGrid from "./Badges";
 import useStreak from "./Streak";
 import NightSky from "./NightSky";
 
 export const Dashboard = () => {
   const [module, setModule] = useState("Greetings");
-  const { user, isPaidMember, userProfile, refetchUser } = useAuthContext();
+  const { user, isPaidMember, userProfile } = useAuthContext();
   const [reviewedModules, setReviewedModules] = useState([]);
   const [completedModules, setCompletedModules] = useState([]);
   const [lastModule, setLastModule] = useState(null);
@@ -33,10 +28,7 @@ export const Dashboard = () => {
 
   const updateModules = async () => {
     try {
-      let data = userProfile;
-      if (!data && user?.uid) {
-        data = await refetchUser(user.uid);
-      }
+      const data = userProfile;
       if (data) {
         setReviewedModules(data.reviewedModules || []);
         setCompletedModules(data.completedModules || []);
@@ -52,10 +44,10 @@ export const Dashboard = () => {
   };
 
   useEffect(() => {
-    if (user?.uid) {
+    if (user?.uid && userProfile) {
       updateModules();
     }
-  }, [user]);
+  }, [user, userProfile]);
 
   const DisplayRoad = ({ chunk }) => {
     return chunk.map((item, i) => {

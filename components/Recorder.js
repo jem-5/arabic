@@ -8,7 +8,7 @@ import {
   similarityScore,
 } from "@/helpers/pronunciationFunctions";
 
-export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
+export default function Recorder({ currentWord, enabled = true, onScore }) {
   const [status, setStatus] = useState("idle");
   const [heardWord, setHeardWord] = useState("");
   const [score, setScore] = useState(null);
@@ -18,7 +18,6 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
   const isRecordingRef = useRef(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [audioBlob, setAudioBlob] = useState(null);
   const mediaRecorderRef = useRef(null);
   const streamRef = useRef(null);
 
@@ -30,7 +29,6 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
     setStatus("idle");
     setHeardWord("");
     setScore(null);
-    setAudioBlob(null);
     isRecordingRef.current = false;
     setIsRecording(false);
   };
@@ -50,7 +48,12 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition || null;
     if (!SpeechRecognition) {
-      setStatus("SpeechRecognition not available in this browser.");
+      setStatus(
+        "SpeechRecognition is not available in this browser. Please use either Chrome or Edge for best support."
+      );
+      alert(
+        "Speech Recognition is not available in this browser. Please use either Chrome or Edge for best support."
+      );
       return;
     }
     try {
@@ -74,6 +77,7 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
         const score = similarityScore(normalizedHeard, normalizedExpected);
         setScore(score); // inside onresult final
         updateStatus(score);
+        if (onScore && score > 0) onScore(score);
       };
       r.onerror = (e) => setStatus("Error: " + e.error || e.message);
       r.onend = () => {
@@ -125,8 +129,13 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
         <div className="flex items-center justify-end  ">Record:</div>
         {!isRecording && (
           <button
-            onClick={beginSpeechRecognition}
-            className="rounded-full text-2xl hover:cursor-pointer bg-[black] p-2 hover:scale-110 transition-transform"
+            onClick={enabled ? beginSpeechRecognition : undefined}
+            disabled={!enabled}
+            className={`rounded-full text-2xl hover:cursor-pointer bg-[black] p-2 hover:scale-110 transition-transform ${
+              enabled
+                ? "bg-black hover:scale-110 cursor-pointer"
+                : "bg-gray-400 cursor-not-allowed opacity-50"
+            }`}
           >
             🎤
           </button>
