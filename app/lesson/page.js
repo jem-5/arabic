@@ -107,8 +107,13 @@ export default function Lesson() {
   }, [user, topic]);
 
   const downloadPdf = async () => {
+    if (!user) return;
     const token = await user.getIdToken();
+    // 🔥 Warm the server first
+    await fetch("/api/warm", { cache: "no-store" });
 
+    // slight delay to let Render spin up
+    await new Promise((r) => setTimeout(r, 500));
     window.open(
       `/api/pdf?name=${encodeURIComponent(topic)}&token=${token}`,
       "_blank"
