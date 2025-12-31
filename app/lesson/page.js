@@ -58,6 +58,8 @@ export default function Lesson() {
 
     const loadLesson = async () => {
       try {
+        if (!user) return; // or throw
+
         const token = await user.getIdToken();
         const res = await fetch(`/api/approve?topic=${topic}`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -137,7 +139,7 @@ export default function Lesson() {
 
   useEffect(() => {
     if (!lessonData) return;
-    const englishWord = lessonData[questionNum]?.english;
+    const englishWord = lessonData?.[questionNum]?.english;
     const currentTip = CulturalNotes[englishWord] || null;
     setTip(currentTip);
   }, [questionNum, lessonData]);
@@ -317,7 +319,7 @@ export default function Lesson() {
             <div className="card md:card-side    w-full shadow-xl bg-neutral  ">
               <div className="card-body flex flex-col justify-between  w-full  ">
                 <div className="text-4xl flex justify-between items-baseline gap-2">
-                  {lessonData ? lessonData[questionNum].english : null}
+                  {lessonData ? lessonData[questionNum]?.english : null}
                   <Image
                     src={isWordSaved ? "/save-filled.png" : "/save.png"}
                     alt="save icon"

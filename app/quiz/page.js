@@ -48,6 +48,8 @@ export default function Quiz() {
       return;
     }
     const loadLesson = async () => {
+      if (!user) return; // or throw
+
       const token = await user.getIdToken();
       const res = await fetch(`/api/approve?topic=${topic}`, {
         headers: { Authorization: `Bearer ${token}` },
