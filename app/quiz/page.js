@@ -40,8 +40,16 @@ export default function Quiz() {
   const baseUrl = "https://arabicroad.com";
 
   useEffect(() => {
-    if (!user && !Object.keys(freeModules).includes(topic)) {
-      // User not logged in → no approval check needed
+    const isFree = Object.keys(freeModules).includes(topic);
+
+    if (isFree) {
+      setApproved(true);
+      setLessonData(freeModules[topic] || []);
+      setCheckingApproval(false);
+      return;
+    }
+
+    if (!user) {
       setApproved(false);
       setLessonData([]);
       setCheckingApproval(false);

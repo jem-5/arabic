@@ -48,8 +48,26 @@ export default function Lesson() {
   const [lessonData, setLessonData] = useState(null);
 
   useEffect(() => {
-    if (!user && !Object.keys(freeModules).includes(topic)) {
-      // User not logged in → no approval check needed
+    // if (!user && !Object.keys(freeModules).includes(topic)) {
+    //   // User not logged in → no approval check needed
+    //   setApproved(false);
+    //   setLessonData([]);
+    //   setCheckingApproval(false);
+    //   return;
+    // }
+
+    const isFree = Object.keys(freeModules).includes(topic);
+
+    // FREE MODULE → load locally
+    if (isFree) {
+      setApproved(true);
+      setLessonData(freeModules[topic] || []);
+      setCheckingApproval(false);
+      return;
+    }
+
+    // PREMIUM MODULE but NOT LOGGED IN
+    if (!user) {
       setApproved(false);
       setLessonData([]);
       setCheckingApproval(false);
