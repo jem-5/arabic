@@ -40,7 +40,13 @@ export default function Quiz() {
   const baseUrl = "https://arabicroad.com";
 
   useEffect(() => {
-    if (!user) return;
+    if (!user && !Object.keys(freeModules).includes(topic)) {
+      // User not logged in → no approval check needed
+      setApproved(false);
+      setLessonData([]);
+      setCheckingApproval(false);
+      return;
+    }
     const loadLesson = async () => {
       const token = await user.getIdToken();
       const res = await fetch(`/api/approve?topic=${topic}`, {

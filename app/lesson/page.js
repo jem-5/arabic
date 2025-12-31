@@ -48,7 +48,7 @@ export default function Lesson() {
   const [lessonData, setLessonData] = useState(null);
 
   useEffect(() => {
-    if (!user) {
+    if (!user && !Object.keys(freeModules).includes(topic)) {
       // User not logged in → no approval check needed
       setApproved(false);
       setLessonData([]);
