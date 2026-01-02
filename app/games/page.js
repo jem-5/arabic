@@ -63,7 +63,7 @@ const Games = () => {
               <>
                 <span className="text-3xl text-right">🔒 </span>
 
-                <span className="text-md text-right">
+                <span className="text-md text-right text-[red]">
                   Game locked for premium users only.
                 </span>
               </>

@@ -48,14 +48,6 @@ export default function Lesson() {
   const [lessonData, setLessonData] = useState(null);
 
   useEffect(() => {
-    // if (!user && !Object.keys(freeModules).includes(topic)) {
-    //   // User not logged in → no approval check needed
-    //   setApproved(false);
-    //   setLessonData([]);
-    //   setCheckingApproval(false);
-    //   return;
-    // }
-
     const isFree = Object.keys(freeModules).includes(topic);
 
     // FREE MODULE → load locally
@@ -79,6 +71,7 @@ export default function Lesson() {
         if (!user) return; // or throw
 
         const token = await user.getIdToken();
+        console.log("token:", token);
         const res = await fetch(`/api/approve?topic=${topic}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -108,16 +101,13 @@ export default function Lesson() {
 
   const downloadPdf = async () => {
     if (!user) return;
-    const token = await user.getIdToken();
-    // 🔥 Warm the server first
-    await fetch("/api/warm", { cache: "no-store" });
 
-    // slight delay to let Render spin up
-    await new Promise((r) => setTimeout(r, 500));
-    window.open(
-      `/api/pdf?name=${encodeURIComponent(topic)}&token=${token}`,
-      "_blank"
-    );
+    const token = await user.getIdToken();
+
+    // Store token briefly (cookie or memory)
+    document.cookie = `pdfToken=${token}; path=/; max-age=60; secure; samesite=strict`;
+
+    window.open(`/api/pdf?name=${encodeURIComponent(topic)}`, "_blank");
   };
 
   const handlers = useSwipeable({

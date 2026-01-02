@@ -3,17 +3,19 @@ import { getAuth } from "firebase-admin/auth";
 import "@/firebase/firebaseAdmin";
 import { AllModules, freeModules } from "@/data/AllModules";
 
-// This will check that user is paid member before sneding over data for premium content
+// This will check that user is paid member before sending over data for premium content
 
 export async function GET(req) {
   try {
     const authHeader = req.headers.get("authorization");
+    console.log("Auth Header:", authHeader);
     if (!authHeader) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.split(" ")[1];
     const decodedToken = await getAuth().verifyIdToken(token);
+    console.log("Decoded Token:", decodedToken);
 
     const { searchParams } = new URL(req.url);
     const topic = searchParams.get("topic");
