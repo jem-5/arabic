@@ -49,7 +49,7 @@ export default function ProfilePage() {
   }, [user]);
 
   return (
-    <main className="flex-grow flex flex-col items-left p-3 text-secondary w-1/2   rounded-md mt-2 drop-shadow-xl  gap-3  max-[999px]:w-4/5 ">
+    <main className="flex-grow flex flex-col items-left  text-secondary  w-4/5    rounded-md mt-2 drop-shadow-xl  gap-3 lg:w-1/2 ">
       <Profile />
     </main>
   );

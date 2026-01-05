@@ -183,7 +183,7 @@ export const Profile = () => {
   return (
     <div
       className=" bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
-            rounded-2xl shadow-2xl w-full p-8 relative z-50 text-neutral "
+            rounded-2xl shadow-2xl w-full p-6 relative z-50 text-neutral "
     >
       <h3 className="font-bold text-2xl   mb-2">Profile</h3>
 

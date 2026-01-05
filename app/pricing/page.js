@@ -36,7 +36,7 @@ export default function Pricing() {
         <p className="text-center text-base mb-10 max-w-xl px-4 text-md">
           Choose your plan
         </p>
-        <div className="flex flex-col lg:flex-row gap-5 mx-2 items-start justify-start  ">
+        <div className="flex flex-col lg:flex-row gap-5 mx-2 items-center lg:items-start justify-start  ">
           {/* Free Plan */}
           <div className="w-5/6 lg:w-80">
             <h3 className="opacity-0 text-md"> .</h3>
