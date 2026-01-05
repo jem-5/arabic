@@ -39,6 +39,7 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.5.2",
     "react-paypal-js": "^0.0.1-security",
+    "react-speech-kit": "^3.0.1",
     "react-swipeable": "^7.0.2",
     "react-use": "^17.6.0",
     "react-use-audio-player": "^4.0.2",

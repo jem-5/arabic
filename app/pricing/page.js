@@ -36,7 +36,7 @@ export default function Pricing() {
         <p className="text-center text-base mb-10 max-w-xl px-4 text-md">
           Choose your plan
         </p>
-        <div className="flex flex-col lg:flex-row gap-5 mx-2 items-center   ">
+        <div className="flex flex-col lg:flex-row gap-5 mx-2 items-start justify-start  ">
           {/* Free Plan */}
           <div className="w-5/6 lg:w-80">
             <h3 className="opacity-0 text-md"> .</h3>
@@ -169,7 +169,8 @@ export default function Pricing() {
                         const result = await res.json();
                         if (result.success) {
                           toast.success(
-                            "Payment successful! Your membership is now active."
+                            "Payment successful! Your membership is now active.",
+                            { duration: 6000 }
                           );
                           try {
                             // Force refresh of the ID token so new custom claims are available
@@ -318,8 +319,119 @@ export default function Pricing() {
           </div>
         </div>
 
+        <hr className="mt-10 h-1 w-full bg-[white] opacity-45" />
+
+        <div className="m-4">
+          <div className="card   bg-[white] shadow-3xl w-3xl max-w-6xl mx-auto ">
+            <div className="card-body flex flex-col justify-between h-full ">
+              <h2 className="card-title  ">
+                Arabic Road Complete Practice Pack
+              </h2>
+              <h3 className="italic ">
+                A printable, offline reference for learners who prefer studying
+                on paper or without an account.
+              </h3>
+
+              <p className="text-xl font-bold  max-h-fit"> $29 </p>
+              <ul className="mt-4 mb-6 space-y-2  list-none">
+                <li>✅ All vocabulary from every module</li>
+                <li>✅ Arabic + Transliteration + English</li>
+                <li>✅ Printable & offline</li>
+                <li>✅ Lifetime access</li>
+
+                <div className="card-actions  flex-col items-stretch mt-4  ">
+                  {!user ? (
+                    <div className="text-center text-red-600 font-semibold">
+                      You are not logged in. Please{" "}
+                      <Link href="/profile">
+                        <span className="underline">log in</span>
+                      </Link>{" "}
+                      before purchasing a practice pack.
+                    </div>
+                  ) : isPaidMember ? (
+                    <div className="text-center  font-semibold">
+                      🎉 You have a membership already. Practice packs are
+                      included in your membership. Visit your{" "}
+                      <Link href="/profile">
+                        <span className="underline">Account Page</span>
+                      </Link>{" "}
+                      to download the Complete Practice Pack.
+                    </div>
+                  ) : (
+                    <PayPalButtons
+                      className="m-0 p-0 flex flex-col justify-end"
+                      style={{
+                        layout: "horizontal",
+                        color: "white",
+                        shape: "rect",
+                        label: "pay",
+                        height: 40,
+                        tagline: false,
+                        size: "small",
+                      }}
+                      createOrder={(data, actions) => {
+                        return actions.order.create({
+                          purchase_units: [
+                            {
+                              amount: { value: "29", currency_code: "USD" },
+                              description: "Arabic Road Complete Practice Pack",
+                            },
+                          ],
+                        });
+                      }}
+                      onApprove={async (data, actions) => {
+                        const order = await actions.order.capture();
+                        console.log("sending", order.id, user.uid);
+
+                        const res = await fetch("/api/paypal/verify/", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            orderId: order.id,
+                            uid: user.uid,
+                          }),
+                        });
+                        const result = await res.json();
+                        if (result.success) {
+                          toast.success(
+                            "Payment successful! Your product is available on your Profile page."
+                          );
+                          try {
+                            // Force refresh of the ID token so new custom claims are available
+                            if (auth && auth.currentUser) {
+                              await auth.currentUser.getIdToken(true);
+                            }
+                            // Refetch Firestore-backed user doc to pick up isPaidMember flag
+                            if (user?.uid) {
+                              await refetchUser(user.uid);
+                            }
+                          } catch (err) {
+                            console.error(
+                              "Error refreshing token or refetching user:",
+                              err
+                            );
+                          }
+                        } else {
+                          toast.error(
+                            "Payment verification failed. Please contact support."
+                          );
+                        }
+                      }}
+                    />
+                  )}
+                </div>
+              </ul>
+              <p className="text-sm italic text-center mt-1">
+                Interactive lessons, audio, and tracking available via
+                subscription.
+              </p>
+              <p className="text-sm italic text-center ">$29 billed once</p>
+            </div>
+          </div>
+        </div>
+
         {/* Extra Bonus Benefits  */}
-        <div className=" w-full max-w-6xl mx-auto card  bg-base-100 opacity-80 mt-10 p-5">
+        <div className="max-w-6xl mx-auto card  bg-base-100 opacity-80 mt-10 p-5 w-3/4">
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-3 text-sm text-neutral-200 items-center place-items-center">
             <li className="flex items-start gap-2">
               <span className="text-green-400">✔</span>
@@ -342,12 +454,12 @@ export default function Pricing() {
 
         {/* Testimonials  */}
 
-        <div className="mt-10 max-w-6xl mx-auto">
+        <div className="mt-10 max-w-6xl mx-auto w-3/4">
           <h3 className="text-center text-lg text-[white] font-semibold mb-6">
             Loved by learners just like you
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
             <div className="bg-base-100 opacity-80 text-[white] border border-white/10 rounded-lg p-4">
               <p className="text-md mb-3">
                 “Layout and presentation are well done. The UI is very easy to

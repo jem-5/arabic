@@ -45,17 +45,35 @@ export async function POST(req) {
     const orderData = await orderRes.json();
     console.log("PayPal orderData:", orderData);
 
-    if (orderData.status === "COMPLETED") {
-      // 2. Update your database to mark the user as paid
-      // Example with Firestore:
-      // await updateDoc(doc(db, "users", uid), { isPaidMember: true });
-      await adminDb
-        .collection("users")
-        .doc(uid)
-        .set({ isPaidMember: true }, { merge: true });
-      // 3. Set a server-side custom auth claim so the user's ID token
-      // includes `isPaidMember: true`. This must be done on the server only.
+    if (
+      orderData.status === "COMPLETED" &&
+      orderData.purchase_units[0].description ===
+        "Arabic Road Complete Practice Pack"
+    ) {
       try {
+        console.log("Setting boughtPracticePack claim for user:", uid);
+        const auth = getAuth();
+        // Check existing claims to avoid unnecessary writes
+        const userRecord = await auth.getUser(uid);
+        const existingClaims = userRecord.customClaims || {};
+        if (!existingClaims.boughtPracticePack) {
+          await auth.setCustomUserClaims(uid, {
+            ...existingClaims,
+            boughtPracticePack: true,
+          });
+          console.log(`Set boughtPracticePack custom claim for ${uid}`);
+        } else {
+          console.log(`User ${uid} already has boughtPracticePack claim`);
+        }
+      } catch (claimErr) {
+        // Log errors but don't fail the whole verification; Firestore was updated
+        console.error("Failed to set custom user claim:", claimErr);
+      }
+      // Respond with success
+      return NextResponse.json({ success: true });
+    } else if (orderData.status === "COMPLETED") {
+      try {
+        console.log("Setting isPaidMember claim for user:", uid);
         const auth = getAuth();
         // Check existing claims to avoid unnecessary writes
         const userRecord = await auth.getUser(uid);

@@ -20,7 +20,8 @@ import { getAuth } from "firebase/auth";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
-  const { user, userProfile, refetchUser, isPaidMember } = useAuthContext();
+  const { user, userProfile, refetchUser, isPaidMember, boughtPracticePack } =
+    useAuthContext();
   const router = useRouter();
   const [wordsToReview, setWordsToReview] = useState([]);
 
@@ -37,7 +38,8 @@ export const Profile = () => {
     }
   });
 
-  console.log("authUser", user, userProfile);
+  console.log("boughtPracticePack:", boughtPracticePack);
+  console.log("isPaidMember:", isPaidMember);
 
   const playAudio = (src) => {
     if (!src) return;
@@ -77,16 +79,18 @@ export const Profile = () => {
 
     // words to review
     setWordsToReview(userData.missedWords || []);
-    // const words = Object.entries(userData)
-    //   .filter(
-    //     ([key, val]) =>
-    //       Array.isArray(val) &&
-    //       !["completedModules", "reviewedModules"].includes(key)
-    //   )
-    //   .flatMap(([, val]) => val);
-
-    // setWordsToReview(words);
   }, [user?.uid, refetchUser, checkBadges]);
+
+  const downloadPdf = async () => {
+    if (!user) return;
+
+    const token = await user.getIdToken();
+
+    // Store token briefly (cookie or memory)
+    document.cookie = `pdfToken=${token}; path=/; max-age=60; secure; samesite=strict`;
+
+    window.open(`/api/pdf?name=AllModules`, "_blank");
+  };
 
   // Keep savedWords in sync with localStorage
   useEffect(() => {
@@ -103,6 +107,7 @@ export const Profile = () => {
     }
   }, [user]);
 
+  console.log(boughtPracticePack);
   useEffect(() => {
     try {
       localStorage.setItem("savedWords", JSON.stringify(savedWords || []));
@@ -142,48 +147,6 @@ export const Profile = () => {
 
       await updateDoc(userRef, { missedWords: filtered });
       await updateWordsToReview();
-      // find which key contains this word (match by english+arabic as identifier)
-      // let foundKey = null;
-
-      // for (const [key, val] of Object.entries(userData)) {
-      //   if (Array.isArray(val)) {
-      //     const match = val.find(
-      //       (w) =>
-      //         w &&
-      //         w.english === word.english &&
-      //         w.arabic === word.arabic &&
-      //         w.transliteration === word.transliteration
-      //     );
-      //     if (match) {
-      //       foundKey = key;
-      //       break;
-      //     }
-      //   }
-      // }
-
-      // if (!foundKey) {
-      //   // nothing to remove
-      //   setRemovingIndex(null);
-      //   return;
-      // }
-
-      // const newArr = (
-      //   Array.isArray(userData[foundKey]) ? userData[foundKey] : []
-      // ).filter(
-      //   (w) =>
-      //     !(
-      //       w &&
-      //       w.english === word.english &&
-      //       w.arabic === word.arabic &&
-      //       w.transliteration === word.transliteration
-      //     )
-      // );
-
-      // // update Firestore with the new array for that module/key
-      // await updateDoc(userRef, { [foundKey]: newArr });
-
-      // // refresh local state from server to ensure consistency (also recomputes badges)
-      // await updateWordsToReview();
     } catch (err) {
       console.error("Failed to remove word:", err);
     } finally {
@@ -236,10 +199,25 @@ export const Profile = () => {
                 </p>
                 <p className="text-lg ">Membership Type </p>
                 <p className="text-lg ">
-                  {isPaidMember ? "Paid Member" : "Free Member"}
+                  {isPaidMember
+                    ? "Paid Member"
+                    : boughtPracticePack
+                    ? "Practice Pack Member"
+                    : "Free Member"}
                 </p>
               </div>
               <MyButton func={signout} text={"Sign Out"} />
+            </>
+          )}
+
+          {(boughtPracticePack || isPaidMember) && (
+            <>
+              <hr className="my-3" />
+              <p className="font-bold text-2xl   mb-2 ">
+                Download Complete Arabic Road Vocabulary
+              </p>
+
+              <MyButton func={() => downloadPdf()} text={`Download PDF`} />
             </>
           )}
 

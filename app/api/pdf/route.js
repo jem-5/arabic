@@ -13,7 +13,7 @@ export async function GET(req) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const decoded = await getAuth().verifyIdToken(token);
-  if (!decoded.isPaidMember) {
+  if (!decoded.isPaidMember && !decoded.boughtPracticePack) {
     return NextResponse.json({ error: "Upgrade required" }, { status: 403 });
   }
 

@@ -15,6 +15,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [isPaidMember, setIsPaidMember] = React.useState(false);
+  const [boughtPracticePack, setBoughtPracticePack] = React.useState(false);
   const [userProfile, setUserProfile] = React.useState(null);
 
   const refetchUser = React.useCallback(async (uid) => {
@@ -41,10 +42,12 @@ export const AuthContextProvider = ({ children }) => {
   const refreshClaims = async (firebaseUser) => {
     if (!firebaseUser) {
       setIsPaidMember(false);
+      setBoughtPracticePack(false);
       return;
     }
     const tokenResult = await firebaseUser.getIdTokenResult(true);
     setIsPaidMember(tokenResult.claims?.isPaidMember === true);
+    setBoughtPracticePack(tokenResult.claims?.boughtPracticePack === true);
   };
 
   React.useEffect(() => {
@@ -57,6 +60,7 @@ export const AuthContextProvider = ({ children }) => {
         setUser(null);
         setUserProfile(null);
         setIsPaidMember(false);
+        setBoughtPracticePack(false);
       }
       setLoading(false);
     });
@@ -66,7 +70,13 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isPaidMember, userProfile, refetchUser }}
+      value={{
+        user,
+        isPaidMember,
+        boughtPracticePack,
+        userProfile,
+        refetchUser,
+      }}
     >
       {loading ? <div>Loading...</div> : children}
     </AuthContext.Provider>
