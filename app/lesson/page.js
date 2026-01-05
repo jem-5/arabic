@@ -13,7 +13,6 @@ import Link from "next/link";
 
 import { freeModules } from "@/data/AllModules";
 import { useAuthContext } from "@/context/AuthContext";
-import { useSpeechSynthesis } from "react-speech-kit";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
