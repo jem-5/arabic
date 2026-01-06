@@ -45,6 +45,7 @@ export default function Lesson() {
   const [approved, setApproved] = useState(false);
   const [checkingApproval, setCheckingApproval] = useState(true);
   const [lessonData, setLessonData] = useState(null);
+  const [userRecordingUrl, setUserRecordingUrl] = useState(null);
 
   useEffect(() => {
     const isFree = Object.keys(freeModules).includes(topic);
@@ -262,6 +263,14 @@ export default function Lesson() {
     return `/images/mascots/${randomSelection}.jpg`;
   }, [topic, questionNum]);
 
+  const playAB = async () => {
+    const native = new Audio(lessonData[questionNum].audio);
+    const user = new Audio(userRecordingUrl);
+
+    await native.play();
+    native.onended = () => user.play();
+  };
+
   if (checkingApproval) {
     return (
       <main className="flex items-center justify-center h-screen">
@@ -391,8 +400,10 @@ export default function Lesson() {
                     currentWord={lessonData[questionNum].arabic}
                     enabled={!limitReached && user}
                     onScore={() => increment()}
+                    nativeAudio={lessonData[questionNum].audio}
                   />
                 </div>
+
                 <div className="p-1"></div>
               </div>
               <figure>
