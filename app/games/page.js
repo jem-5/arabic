@@ -22,7 +22,7 @@ const Games = () => {
         "Can you find the correct English translation for the Arabic word? This quiz presents 30 questions chosen randomly from the full 1000+ word vocabulary of the curriculum.",
       image: "/echo-game.png",
       link: "/games/echo-match/",
-      premiumOnly: true, // Replace with the actual link to the game
+      premiumOnly: true,
     },
 
     {
@@ -33,44 +33,57 @@ const Games = () => {
       link: "/games/number-sort/",
       premiumOnly: true,
     },
+    {
+      title: "Listen & Tap",
+      description:
+        "Hear a word in Arabic word and tap the correct word from the options. How many can you get right in 60 seconds?",
+      image: "/listen-game.png",
+      link: "/games/listen-tap/",
+      premiumOnly: true,
+    },
   ];
   return (
     <div className="h-fit w-screen flex flex-col items-center  relative overflow-hidden gap-2 mb-2">
       <h1 className="text-2xl font-bold text-neutral z-10">
         Arabic Learning Games
       </h1>
-      {GamesList.map((game, index) => (
-        <div key={index} className="card  image-full w-96  ">
-          <figure>
-            <img src={game.image} alt={game.title} />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">{game.title}</h2>
-            <p>{game.description}</p>
-            <div
-              className={`card-actions justify-end ${
-                game.premiumOnly && !isPaidMember
-                  ? "opacity-50 pointer-events-none"
-                  : ""
-              }`}
-            >
-              {" "}
-              <Link href={game.link}>
-                <MyButton text="Play Now" />
-              </Link>
-            </div>
-            {game.premiumOnly && !isPaidMember && (
-              <>
-                <span className="text-3xl text-right">🔒 </span>
+      <div
+        className="flex md:w-3/4 mx-auto flex-col
+      justify-center items-center gap-10 max-w-6xl md:flex-row flex-wrap"
+      >
+        {GamesList.map((game, index) => (
+          <div key={index} className="card  image-full w-96  ">
+            <figure>
+              <img src={game.image} alt={game.title} />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{game.title}</h2>
+              <p>{game.description}</p>
+              <div
+                className={`card-actions justify-end ${
+                  game.premiumOnly && !isPaidMember
+                    ? "opacity-50 pointer-events-none"
+                    : ""
+                }`}
+              >
+                {" "}
+                <Link href={game.link}>
+                  <MyButton text="Play Now" />
+                </Link>
+              </div>
+              {game.premiumOnly && !isPaidMember && (
+                <>
+                  <span className="text-3xl text-right">🔒 </span>
 
-                <span className="text-md text-right text-[red]">
-                  Game locked for premium users only.
-                </span>
-              </>
-            )}
+                  <span className="text-md text-right text-[red]">
+                    Game locked for premium users only.
+                  </span>
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
       <div className="card bg-neutral w-96 shadow-xl ">
         <div className="card-body">

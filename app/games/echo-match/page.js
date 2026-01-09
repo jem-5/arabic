@@ -112,7 +112,7 @@ const EchoMatch = () => {
   }, [allWords, questionNum]);
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center bg-gray-100">
+    <div>
       {!isGameOver ? (
         <>
           <div className="text-center">
@@ -127,7 +127,7 @@ const EchoMatch = () => {
 
           <div className="divider"></div>
 
-          <h3 className="font-bold text-lg align-end justify-end  text-neutral">
+          <h3 className="font-bold text-lg align-end justify-end  text-neutral text-center">
             Total Correct: {score}
           </h3>
 
@@ -143,7 +143,7 @@ const EchoMatch = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
-                  fill="none"
+                  fill="white"
                   viewBox="0 0 24 24"
                 >
                   <path

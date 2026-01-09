@@ -38,9 +38,6 @@ export const Profile = () => {
     }
   });
 
-  console.log("boughtPracticePack:", boughtPracticePack);
-  console.log("isPaidMember:", isPaidMember);
-
   const playAudio = (src) => {
     if (!src) return;
     const audio = new Audio(src);
@@ -107,7 +104,6 @@ export const Profile = () => {
     }
   }, [user]);
 
-  console.log(boughtPracticePack);
   useEffect(() => {
     try {
       localStorage.setItem("savedWords", JSON.stringify(savedWords || []));

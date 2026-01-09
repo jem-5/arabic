@@ -91,7 +91,7 @@ const OrderGame = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center bg-gray-100">
+    <div>
       {!isGameOver ? (
         <>
           <div className="text-center">
