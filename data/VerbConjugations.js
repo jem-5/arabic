@@ -3849,7 +3849,7 @@ const VerbConjugations = [
     },
   },
   {
-    english: "to call (on the phone)",
+    english: "to call",
     verb: "يتصل",
     transliteration: "yittisil",
     presentTense: {
@@ -4240,3 +4240,7 @@ VerbConjugations.sort((a, b) => {
 });
 
 export default VerbConjugations;
+
+console.log(VerbConjugations.length);
+
+export const freeVerbs = VerbConjugations.slice(0, 5);

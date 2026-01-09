@@ -7,15 +7,42 @@ import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import VerbConjugations from "@/data/VerbConjugations";
+import { freeVerbs } from "@/data/VerbConjugations";
 
 export default function Verb() {
-  const { user } = useAuthContext();
+  const { user, isPaidMember } = useAuthContext();
   const router = useRouter();
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
-  const [currVerb, setCurrVerb] = useState(VerbConjugations[0]);
+  const [verbs, setVerbs] = useState(freeVerbs);
+  const [currVerb, setCurrVerb] = useState(freeVerbs[0]);
   const [tense, setTense] = useState("presentTense");
+
+  console.log(verbs);
+
+  const hasConjugations =
+    currVerb?.["presentTense"] && currVerb?.["presentTense"]["I"];
+
+  useEffect(() => {
+    if (!user) return;
+    const fetchVerbs = async () => {
+      try {
+        const token = await user.getIdToken();
+        const response = await fetch("/api/verbs", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        setVerbs(data.verbs || freeVerbs);
+      } catch (error) {
+        console.log("Error fetching verbs:", error);
+      }
+    };
+
+    fetchVerbs();
+  }, [user]);
 
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}`;
@@ -31,6 +58,65 @@ export default function Verb() {
       console.log(canonicalUrl);
     }
   }, [pathname]);
+
+  const LockedTable = ({ currVerb = freeVerbs[0] }) => {
+    return (
+      <table className="table blur-sm">
+        <tbody>
+          <tr>
+            <td>I</td>
+            <td>
+              {currVerb?.[tense]["I"]["arabic"]} |{" "}
+              {currVerb?.[tense]["I"]["transliteration"]}
+            </td>
+            <td>We</td>
+            <td>
+              {currVerb?.[tense]["we"]["arabic"]} |{" "}
+              {currVerb?.[tense]["we"]["transliteration"]}
+            </td>
+          </tr>
+          <tr>
+            <td>You (m)</td>
+            <td>
+              {currVerb?.[tense]["youM"]["arabic"]} |{" "}
+              {currVerb?.[tense]["youM"]["transliteration"]}
+            </td>
+            <td>You (pl)</td>
+            <td>
+              {currVerb?.[tense]["youPl"]["arabic"]} |{" "}
+              {currVerb?.[tense]["youPl"]["transliteration"]}
+            </td>
+          </tr>
+          <tr>
+            <td>You (f)</td>
+            <td>
+              {currVerb?.[tense]["youF"]["arabic"]} |{" "}
+              {currVerb?.[tense]["youF"]["transliteration"]}
+            </td>
+            <td>They</td>
+            <td>
+              {currVerb?.[tense]["they"]["arabic"]} |{" "}
+              {currVerb?.[tense]["they"]["transliteration"]}
+            </td>
+          </tr>
+          <tr>
+            <td>He</td>
+            <td>
+              {currVerb?.[tense]["he"]["arabic"]} |{" "}
+              {currVerb?.[tense]["he"]["transliteration"]}
+            </td>
+          </tr>
+          <tr>
+            <td>She</td>
+            <td>
+              {currVerb?.[tense]["she"]["arabic"]} |{" "}
+              {currVerb?.[tense]["she"]["transliteration"]}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  };
 
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
@@ -56,7 +142,7 @@ export default function Verb() {
               className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow  "
             >
               <div className="overflow-y-auto max-h-96">
-                {VerbConjugations.map((item, i) => {
+                {verbs.map((item, i) => {
                   return (
                     <li
                       key={i}
@@ -64,8 +150,10 @@ export default function Verb() {
                         setCurrVerb(item);
                         document.activeElement.blur();
                       }}
+                      className="flex flex-row justify-between"
                     >
-                      <a>{item.english}</a>
+                      <span>{item.english}</span>
+                      {item.premium && !isPaidMember ? <span>🔒</span> : null}
                     </li>
                   );
                 })}
@@ -107,64 +195,77 @@ export default function Verb() {
           <div className="divider "></div>
 
           <div className="text-3xl text-center place-content-end">
-            {currVerb.english}: {currVerb.verb} | {currVerb.transliteration}
+            {currVerb?.english}: {currVerb?.verb} | {currVerb?.transliteration}
           </div>
 
           <div className="overflow-x-auto">
-            <table className="table">
-              <tbody>
-                <tr>
-                  <td>I</td>
-                  <td>
-                    {currVerb[tense]["I"]["arabic"]} |{" "}
-                    {currVerb[tense]["I"]["transliteration"]}
-                  </td>
-                  <td>We</td>
-                  <td>
-                    {currVerb[tense]["we"]["arabic"]} |{" "}
-                    {currVerb[tense]["we"]["transliteration"]}
-                  </td>
-                </tr>
-                <tr>
-                  <td>You (m)</td>
-                  <td>
-                    {currVerb[tense]["youM"]["arabic"]} |{" "}
-                    {currVerb[tense]["youM"]["transliteration"]}
-                  </td>
-                  <td>You (pl)</td>
-                  <td>
-                    {currVerb[tense]["youPl"]["arabic"]} |{" "}
-                    {currVerb[tense]["youPl"]["transliteration"]}
-                  </td>
-                </tr>
-                <tr>
-                  <td>You (f)</td>
-                  <td>
-                    {currVerb[tense]["youF"]["arabic"]} |{" "}
-                    {currVerb[tense]["youF"]["transliteration"]}
-                  </td>
-                  <td>They</td>
-                  <td>
-                    {currVerb[tense]["they"]["arabic"]} |{" "}
-                    {currVerb[tense]["they"]["transliteration"]}
-                  </td>
-                </tr>
-                <tr>
-                  <td>He</td>
-                  <td>
-                    {currVerb[tense]["he"]["arabic"]} |{" "}
-                    {currVerb[tense]["he"]["transliteration"]}
-                  </td>
-                </tr>
-                <tr>
-                  <td>She</td>
-                  <td>
-                    {currVerb[tense]["she"]["arabic"]} |{" "}
-                    {currVerb[tense]["she"]["transliteration"]}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            {hasConjugations ? (
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <td>I</td>
+                    <td>
+                      {currVerb?.[tense]["I"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["I"]["transliteration"]}
+                    </td>
+                    <td>We</td>
+                    <td>
+                      {currVerb?.[tense]["we"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["we"]["transliteration"]}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>You (m)</td>
+                    <td>
+                      {currVerb?.[tense]["youM"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["youM"]["transliteration"]}
+                    </td>
+                    <td>You (pl)</td>
+                    <td>
+                      {currVerb?.[tense]["youPl"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["youPl"]["transliteration"]}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>You (f)</td>
+                    <td>
+                      {currVerb?.[tense]["youF"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["youF"]["transliteration"]}
+                    </td>
+                    <td>They</td>
+                    <td>
+                      {currVerb?.[tense]["they"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["they"]["transliteration"]}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>He</td>
+                    <td>
+                      {currVerb?.[tense]["he"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["he"]["transliteration"]}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>She</td>
+                    <td>
+                      {currVerb?.[tense]["she"]["arabic"]} |{" "}
+                      {currVerb?.[tense]["she"]["transliteration"]}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            ) : (
+              <>
+                <span className="text-center text-lg text-[red] mb-4 alert">
+                  🔒 Locked for premium members only. Please
+                  <Link className="underline" href="/pricing">
+                    upgrade
+                  </Link>
+                  for full access.
+                </span>
+                <LockedTable />
+              </>
+            )}
           </div>
         </div>
       </div>
