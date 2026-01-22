@@ -67,9 +67,9 @@ export default function SearchFloatingButton({ searchableModules = [] }) {
       </button>
 
       {/* Shortcut Hint */}
-      <p className="fixed bottom-20 right-5 text-xs text-gray-400 bg-white/60 backdrop-blur-md px-2 py-1 rounded-lg hidden md:block">
-        Press <kbd className="bg-gray-200 px-1 rounded">⌘K</kbd> or{" "}
-        <kbd className="bg-gray-200 px-1 rounded">/</kbd>
+      <p className="fixed bottom-20 right-5 text-xs text-[gray]-400 bg-[black]/60 backdrop-blur-md px-2 py-1 rounded-lg hidden md:block">
+        Press <kbd className="bg-[gray]-200 px-1 rounded">⌘K</kbd> or{" "}
+        <kbd className="bg-[gray]-200 px-1 rounded">/</kbd>
       </p>
 
       {/* Modal */}

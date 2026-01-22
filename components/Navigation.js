@@ -24,6 +24,13 @@ export const Navigation = () => {
               🌙Verbs
             </Link>
 
+            <Link
+              href="/conversation/"
+              className="font-bold text-sm md:text-lg "
+            >
+              💬Conversation
+            </Link>
+
             <Link href="/games/" className="font-bold text-sm md:text-lg ">
               🐫Games
             </Link>
@@ -99,6 +106,12 @@ export const Navigation = () => {
               <Link href="/verbs/" className="font-bold">
                 <button className="  text-sm md:text-lg hover:scale-110 ">
                   Verbs
+                </button>
+              </Link>
+
+              <Link href="/conversation/" className="font-bold">
+                <button className="  text-sm md:text-lg hover:scale-110 ">
+                  Conversation
                 </button>
               </Link>
 
