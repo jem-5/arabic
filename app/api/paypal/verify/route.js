@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { adminDb } from "@/firebase/firebaseAdmin";
 import { getAuth } from "firebase-admin/auth";
 
 // This will check if a payment was successful before changing user status on the server / database
@@ -33,7 +32,41 @@ export async function POST(req) {
     const tokenData = await tokenRes.json();
     const accessToken = tokenData.access_token;
 
+    const auth = getAuth();
+    const userRecord = await auth.getUser(uid);
+    const existingClaims = userRecord.customClaims || {};
+
+    // Subscription flow
+    if (orderId.startsWith("I-")) {
+      const subRes = await fetch(
+        `https://api-m.paypal.com/v1/billing/subscriptions/${orderId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      const subData = await subRes.json();
+      if (subData.status === "ACTIVE") {
+        if (!existingClaims.isPaidMember) {
+          await auth.setCustomUserClaims(uid, {
+            ...existingClaims,
+            isPaidMember: true,
+            membershipType: "subscription",
+            paypalSubscriptionId: orderId,
+          });
+          console.log(`Set isPaidMember, subscription custom claim for ${uid}`);
+        }
+        return NextResponse.json({ success: true });
+      }
+      return NextResponse.json(
+        { success: false, error: "Subscription not active" },
+        { status: 400 }
+      );
+    }
+
     // Get order details
+
     const orderRes = await fetch(
       `https://api-m.paypal.com/v2/checkout/orders/${orderId}`,
       {
@@ -42,8 +75,8 @@ export async function POST(req) {
         },
       }
     );
+
     const orderData = await orderRes.json();
-    console.log("PayPal orderData:", orderData);
 
     if (
       orderData.status === "COMPLETED" &&
@@ -52,10 +85,9 @@ export async function POST(req) {
     ) {
       try {
         console.log("Setting boughtPracticePack claim for user:", uid);
-        const auth = getAuth();
+
         // Check existing claims to avoid unnecessary writes
-        const userRecord = await auth.getUser(uid);
-        const existingClaims = userRecord.customClaims || {};
+
         if (!existingClaims.boughtPracticePack) {
           await auth.setCustomUserClaims(uid, {
             ...existingClaims,
@@ -73,17 +105,17 @@ export async function POST(req) {
       return NextResponse.json({ success: true });
     } else if (orderData.status === "COMPLETED") {
       try {
-        console.log("Setting isPaidMember claim for user:", uid);
-        const auth = getAuth();
+        console.log("Setting isPaidMember, onetime claim for user:", uid);
+
         // Check existing claims to avoid unnecessary writes
-        const userRecord = await auth.getUser(uid);
-        const existingClaims = userRecord.customClaims || {};
+
         if (!existingClaims.isPaidMember) {
           await auth.setCustomUserClaims(uid, {
             ...existingClaims,
             isPaidMember: true,
+            membershipType: "one-time",
           });
-          console.log(`Set isPaidMember custom claim for ${uid}`);
+          console.log(`Set isPaidMember, onetime custom claim for ${uid}`);
         } else {
           console.log(`User ${uid} already has isPaidMember claim`);
         }

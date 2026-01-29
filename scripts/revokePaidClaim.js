@@ -14,6 +14,8 @@ async function revokePaidClaim(uid) {
   const {
     isPaidMember,
     plan,
+    membershipType,
+    boughtPracticePack,
 
     ...remainingClaims
   } = currentClaims;

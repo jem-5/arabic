@@ -154,8 +154,7 @@ export default function Pricing() {
                       onApprove={async (data, actions) => {
                         console.log(
                           "Subscription approved:",
-                          data.subscriptionID,
-                          order
+                          data.subscriptionID
                         );
 
                         const res = await fetch("/api/paypal/verify/", {
@@ -181,6 +180,7 @@ export default function Pricing() {
                             if (user?.uid) {
                               await refetchUser(user.uid);
                             }
+                            window.location.reload();
                           } catch (err) {
                             console.error(
                               "Error refreshing token or refetching user:",
@@ -269,6 +269,7 @@ export default function Pricing() {
                       }}
                       onApprove={async (data, actions) => {
                         const order = await actions.order.capture();
+                        console.log("sending", order);
 
                         const res = await fetch("/api/paypal/verify/", {
                           method: "POST",
@@ -292,6 +293,7 @@ export default function Pricing() {
                             if (user?.uid) {
                               await refetchUser(user.uid);
                             }
+                            window.location.reload();
                           } catch (err) {
                             console.error(
                               "Error refreshing token or refetching user:",
@@ -415,6 +417,7 @@ export default function Pricing() {
                               if (user?.uid) {
                                 await refetchUser(user.uid);
                               }
+                              window.location.reload();
                             } catch (err) {
                               console.error(
                                 "Error refreshing token or refetching user:",

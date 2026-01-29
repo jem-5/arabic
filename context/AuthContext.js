@@ -16,6 +16,7 @@ export const AuthContextProvider = ({ children }) => {
   const [loading, setLoading] = React.useState(true);
   const [isPaidMember, setIsPaidMember] = React.useState(false);
   const [boughtPracticePack, setBoughtPracticePack] = React.useState(false);
+  const [isSubscriber, setIsSubscriber] = React.useState(false);
   const [userProfile, setUserProfile] = React.useState(null);
 
   const refetchUser = React.useCallback(async (uid) => {
@@ -43,11 +44,14 @@ export const AuthContextProvider = ({ children }) => {
     if (!firebaseUser) {
       setIsPaidMember(false);
       setBoughtPracticePack(false);
+      setIsSubscriber(false);
       return;
     }
     const tokenResult = await firebaseUser.getIdTokenResult(true);
     setIsPaidMember(tokenResult.claims?.isPaidMember === true);
     setBoughtPracticePack(tokenResult.claims?.boughtPracticePack === true);
+    setIsSubscriber(tokenResult.claims?.membershipType === "subscription");
+    console.log(tokenResult.claims);
   };
 
   React.useEffect(() => {
@@ -61,6 +65,7 @@ export const AuthContextProvider = ({ children }) => {
         setUserProfile(null);
         setIsPaidMember(false);
         setBoughtPracticePack(false);
+        setIsSubscriber(false);
       }
       setLoading(false);
     });
@@ -74,6 +79,7 @@ export const AuthContextProvider = ({ children }) => {
         user,
         isPaidMember,
         boughtPracticePack,
+        isSubscriber,
         userProfile,
         refetchUser,
       }}

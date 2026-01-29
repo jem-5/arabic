@@ -9,19 +9,24 @@ import SignUpForm from "./SignUpForm";
 import { db } from "@/firebase/config";
 
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-
+import CancelSubscriptionButton from "./CancelSubscriptionButton";
 import BadgeGrid from "./Badges";
 import MyButton from "./Button";
 import { badges } from "./Badges";
 import useStreak from "./Streak";
 import ReviewMissedWords from "./ReviewMissedWords";
 import WordList from "./WordList";
-import { getAuth } from "firebase/auth";
 
 export const Profile = () => {
   const [signInMode, setSignInMode] = useState(true);
-  const { user, userProfile, refetchUser, isPaidMember, boughtPracticePack } =
-    useAuthContext();
+  const {
+    user,
+    userProfile,
+    refetchUser,
+    isPaidMember,
+    boughtPracticePack,
+    isSubscriber,
+  } = useAuthContext();
   const router = useRouter();
   const [wordsToReview, setWordsToReview] = useState([]);
 
@@ -175,7 +180,6 @@ export const Profile = () => {
     });
   };
 
-  console.log(wordsToReview);
   return (
     <div
       className=" bg-gradient-to-br from-[#fff8e7] to-[#fff2d5]  
@@ -200,12 +204,13 @@ export const Profile = () => {
                     : boughtPracticePack
                     ? "Practice Pack Member"
                     : "Free Member"}
+                  {isPaidMember && isSubscriber ? " (Subscriber)" : ""}
                 </p>
               </div>
               <MyButton func={signout} text={"Sign Out"} />
+              {isSubscriber && <CancelSubscriptionButton user={user} />}
             </>
           )}
-
           {(boughtPracticePack || isPaidMember) && (
             <>
               <hr className="my-3" />
