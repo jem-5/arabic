@@ -16,30 +16,45 @@ export const Navigation = () => {
             </a>
           </div>
           <div className="hidden md:flex p-1 md:gap-2 lg:gap-4">
-            <Link href="/dashboard/" className="font-bold text-sm md:text-lg ">
+            <Link
+              href="/dashboard/"
+              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
+            >
               🏺Lessons
             </Link>
 
-            <Link href="/verbs/" className="font-bold text-sm md:text-lg ">
+            <Link
+              href="/verbs/"
+              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
+            >
               🌙Verbs
             </Link>
 
             <Link
               href="/conversation/"
-              className="font-bold text-sm md:text-lg "
+              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
             >
               💬Conversation
             </Link>
 
-            <Link href="/games/" className="font-bold text-sm md:text-lg ">
+            <Link
+              href="/games/"
+              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
+            >
               🐫Games
             </Link>
 
-            <Link href="/pricing/" className="font-bold text-sm md:text-lg ">
+            <Link
+              href="/pricing/"
+              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap"
+            >
               🪙Pricing
             </Link>
 
-            <Link href="/profile/" className="font-bold text-sm md:text-lg ">
+            <Link
+              href="/profile/"
+              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap"
+            >
               🏠Account
             </Link>
           </div>

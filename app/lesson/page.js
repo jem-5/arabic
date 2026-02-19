@@ -10,18 +10,17 @@ import {
   setDoc,
 } from "firebase/firestore";
 import Link from "next/link";
-
 import { freeModules } from "@/data/AllModules";
 import { useAuthContext } from "@/context/AuthContext";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-
 import Image from "next/image";
 import CulturalNotes from "@/data/CulturalNotes";
 import { useSwipeable } from "react-swipeable";
 import confetti from "canvas-confetti";
 import Recorder from "@/components/Recorder";
 import { usePronunciationLimits } from "@/helpers/usePronunciationLimits";
+import UpsellCard from "@/components/UpsellCard";
 
 export default function Lesson() {
   const searchParams = useSearchParams();
@@ -31,7 +30,7 @@ export default function Lesson() {
   const router = useRouter();
   const [tip, setTip] = useState(null);
   const [savedWords, setSavedWords] = useState(
-    JSON.parse(localStorage.getItem("savedWords") || "[]")
+    JSON.parse(localStorage.getItem("savedWords") || "[]"),
   );
   const [isWordSaved, setIsWordSaved] = useState(false);
   const pathname = usePathname();
@@ -46,6 +45,7 @@ export default function Lesson() {
   const [checkingApproval, setCheckingApproval] = useState(true);
   const [lessonData, setLessonData] = useState(null);
   const [userRecordingUrl, setUserRecordingUrl] = useState(null);
+  const [isUpsellCard, setIsUpsellCard] = useState(false);
 
   useEffect(() => {
     const isFree = Object.keys(freeModules).includes(topic);
@@ -161,8 +161,8 @@ export default function Lesson() {
     if (!savedWords || !lessonData) return;
     setIsWordSaved(
       savedWords.some(
-        (word) => word.english === lessonData?.[questionNum]?.english
-      )
+        (word) => word.english === lessonData?.[questionNum]?.english,
+      ),
     );
   }, [questionNum, lessonData]);
 
@@ -179,14 +179,14 @@ export default function Lesson() {
   const handleToggleSave = () => {
     if (isWordSaved) {
       const filteredWords = savedWords.filter(
-        (word) => word.english !== lessonData?.[questionNum]?.english
+        (word) => word.english !== lessonData?.[questionNum]?.english,
       );
       setSavedWords(filteredWords);
       setIsWordSaved(false);
       return;
     } else {
       setSavedWords((prev) =>
-        Array.from(new Set([...prev, lessonData?.[questionNum]]))
+        Array.from(new Set([...prev, lessonData?.[questionNum]])),
       );
       setIsWordSaved(true);
     }
@@ -320,10 +320,10 @@ export default function Lesson() {
           </div>
         </div>
       ) : (
-        <div className="card p-2 md:max-w-3xl   ">
+        <div className="card p-2 md:max-w-3xl relative">
           <div
             {...handlers}
-            className={`
+            className={`relative
     w-full 
     transition-all duration-300 ease-out
     ${swipeDirection === "left" ? "-translate-x-10 opacity-50" : ""}
@@ -337,7 +337,9 @@ export default function Lesson() {
                 Swipe to proceed →
               </div>
             )}
-            <div className="card md:card-side    w-full shadow-xl bg-neutral  ">
+
+            <UpsellCard questionNum={questionNum} lessonData={lessonData} />
+            <div className="   card md:card-side    w-full shadow-xl bg-neutral z-5  ">
               <div className="card-body flex flex-col justify-between  w-full  ">
                 <div className="text-4xl flex justify-between items-baseline gap-2">
                   {lessonData ? lessonData[questionNum]?.english : null}
@@ -390,9 +392,20 @@ export default function Lesson() {
                     Sign in to record audio & receive a pronunciation score.
                   </div>
                 ) : !isPaidMember ? (
-                  <div className="text-right">
-                    {remaining} pronunciation scores left today.
-                  </div>
+                  <>
+                    <div className="text-right">
+                      {remaining} pronunciation scores left today.
+                      {remaining < 1 && (
+                        <div className="italic text-[yellow]">
+                          ❗You&apos;ve used all your free pronunciations for
+                          today. Get unlimited access with a{" "}
+                          <Link href="/pricing" className="underline">
+                            paid membership.
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </>
                 ) : null}
 
                 <div className="p-1">
@@ -408,64 +421,65 @@ export default function Lesson() {
               </div>
               <figure>
                 <img
-                  className="w-1/2 sm:w-2/3 md:w-full "
+                  className="w-1/2 sm:w-2/3 md:w-full   "
                   src={mascotSrc}
                   alt="arabic greeting"
                 />
               </figure>
             </div>
-          </div>
-          {tip && (
-            <div className="bg-neutral p-2 mt-1 card m-auto ">💡{tip}</div>
-          )}
-          <div className="flex flex-row justify-between mt-1 w-full">
-            <MyButton
-              classRest={questionNum === 0 ? "invisible" : "visible"}
-              text={
-                <svg
-                  className="w-5 h-5 "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m15 19-7-7 7-7"
-                  />
-                </svg>
-              }
-              func={handleClickPrevious}
-            />
+            {tip && (
+              <div className="bg-neutral p-2 mt-1 card m-auto ">💡{tip}</div>
+            )}
 
-            <MyButton
-              classRest="bg-neutral"
-              text={
-                <svg
-                  className="w-5 h-5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m9 5 7 7-7 7"
-                  />
-                </svg>
-              }
-              func={handleClickNext}
-            />
+            <div className="flex flex-row justify-between mt-1 w-full">
+              <MyButton
+                classRest={questionNum === 0 ? "invisible" : "visible"}
+                text={
+                  <svg
+                    className="w-5 h-5 "
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m15 19-7-7 7-7"
+                    />
+                  </svg>
+                }
+                func={handleClickPrevious}
+              />
+
+              <MyButton
+                classRest="bg-neutral"
+                text={
+                  <svg
+                    className="w-5 h-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m9 5 7 7-7 7"
+                    />
+                  </svg>
+                }
+                func={handleClickNext}
+              />
+            </div>
           </div>
         </div>
       )}

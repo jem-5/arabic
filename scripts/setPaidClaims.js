@@ -12,7 +12,7 @@ async function setPaidMemberClaim() {
   for (const uid of paidUserUIDs) {
     await admin.auth().setCustomUserClaims(uid, {
       isPaidMember: true,
-      plan: "manual", // optional
+      membershipType: "one-time",
     });
 
     console.log(`✅ Custom claim set for ${uid}`);
