@@ -53,58 +53,6 @@ export default function Recorder({
     }
   };
 
-  // async function beginSpeechRecognition() {
-  //   resetAll();
-  //   const SpeechRecognition =
-  //     window.SpeechRecognition || window.webkitSpeechRecognition || null;
-  //   if (!SpeechRecognition) {
-  //     setStatus(
-  //       "SpeechRecognition is not available in this browser. Please use either Chrome or Edge for best support."
-  //     );
-  //     alert(
-  //       "Speech Recognition is not available in this browser. Please use either Chrome or Edge for best support."
-  //     );
-  //     return;
-  //   }
-  //   try {
-  //     const r = new SpeechRecognition();
-  //     r.lang = "ar-EG";
-  //     r.maxAlternatives = 1;
-  //     r.continuous = true;
-  //     r.interimResults = false;
-
-  //     r.onstart = () => {
-  //       setStatus("listening");
-  //       setIsRecording(true);
-  //     };
-
-  //     r.onresult = (e) => {
-  //       let word = e.results[0][0].transcript;
-  //       setStatus("processing");
-  //       const normalizedHeard = normalizeArabic(word);
-  //       const normalizedExpected = normalizeArabic(currentWord);
-  //       setHeardWord(normalizedHeard);
-  //       const score = similarityScore(normalizedHeard, normalizedExpected);
-  //       setScore(score); // inside onresult final
-  //       updateStatus(score);
-  //       if (onScore && score > 0) onScore(score);
-  //     };
-  //     r.onerror = (e) => setStatus("Error: " + e.error || e.message);
-  //     r.onend = () => {
-  //       // setStatus((prev) => (prev ? prev + " (ended)" : "Ended"));
-  //       setIsRecording(false);
-  //     };
-  //     r.start();
-  //     setTimeout(() => {
-  //       try {
-  //         r.stop();
-  //       } catch (err) {}
-  //     }, 4000);
-  //   } catch (e) {
-  //     setStatus("Failed to start recognition: " + (e.message || e));
-  //   }
-  // }
-
   async function beginSpeechRecognition() {
     resetAll();
     hasFinalizedRef.current = false;
@@ -225,6 +173,8 @@ export default function Recorder({
 
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
+
+    setStatus("idle");
 
     if (recognitionStartTimerRef.current) {
       clearTimeout(recognitionStartTimerRef.current);
