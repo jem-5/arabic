@@ -174,14 +174,14 @@ export default function Recorder({
     }
   }
 
-  const playAB = async () => {
-    if (!userRecordingUrl || !nativeAudio) return;
-    const user = new Audio(userRecordingUrl);
-    const native = new Audio(nativeAudio);
+  // const playAB = async () => {
+  //   if (!userRecordingUrl || !nativeAudio) return;
+  //   const user = new Audio(userRecordingUrl);
+  //   const native = new Audio(nativeAudio);
 
-    await native.play();
-    native.onended = () => user.play();
-  };
+  //   await native.play();
+  //   native.onended = () => user.play();
+  // };
 
   // const stopRecording = () => {
   //   if (!isRecordingRef.current) return;
@@ -290,8 +290,8 @@ export default function Recorder({
               (score >= 70
                 ? "text-[#15f015]"
                 : score >= 50
-                ? "text-[yellow]"
-                : "text-[red]")
+                  ? "text-[yellow]"
+                  : "text-[red]")
             }
           >
             {score}%
@@ -299,7 +299,7 @@ export default function Recorder({
         </div>
       ) : null}
 
-      {userRecordingUrl && (
+      {/* {userRecordingUrl && (
         <div className="  text-lg mt-2 flex items-center gap-2">
           Compare:
           <div
@@ -309,7 +309,7 @@ export default function Recorder({
             ⇄
           </div>
         </div>
-      )}
+      )} */}
 
       {heardWord && (
         <div
@@ -326,7 +326,7 @@ export default function Recorder({
             className="collapse-title font-semibold flex justify-between text-lg cursor-pointer"
             onClick={() => {
               const checkbox = detailsRef.current.querySelector(
-                "input[type='checkbox']"
+                "input[type='checkbox']",
               );
               checkbox.checked = !checkbox.checked;
               setIsOpen(checkbox.checked);
@@ -364,7 +364,7 @@ export default function Recorder({
               }
 
               const missed = Object.entries(freq).flatMap(([ch, count]) =>
-                count > 0 ? Array(count).fill(ch) : []
+                count > 0 ? Array(count).fill(ch) : [],
               );
 
               if (missed.length === 0) {

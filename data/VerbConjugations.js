@@ -4059,14 +4059,155 @@ const VerbConjugations = [
       they: { arabic: "هَيِسْتَخْدِموا", transliteration: "hayistakhdimu" },
     },
   },
+  {
+    english: "to give",
+    verb: "إدّى",
+    transliteration: "iddi",
+    presentTense: {
+      I: { arabic: "بِدّي", transliteration: "biddi" },
+      youM: { arabic: "بِتِدّي", transliteration: "bitiddi" },
+      youF: { arabic: "بِتِدّي", transliteration: "bitiddi" },
+      he: { arabic: "بِيِدّي", transliteration: "biyiddi" },
+      she: { arabic: "بِتِدّي", transliteration: "bitiddi" },
+      we: { arabic: "بِنِدّي", transliteration: "biniddi" },
+      youPl: { arabic: "بـِتـِدّوا", transliteration: "bitiddu" },
+      they: { arabic: "بـِيـِدّوا", transliteration: "biyiddu" },
+    },
+    pastTense: {
+      I: { arabic: "إدّيت", transliteration: "ideet" },
+      youM: { arabic: "إدّيت", transliteration: "ideet" },
+      youF: { arabic: "إدّيت", transliteration: "ideeti" },
+      he: { arabic: "إدّى", transliteration: "ida" },
+      she: { arabic: "إدّيت", transliteration: "ideet" },
+      we: { arabic: "إدّينَا", transliteration: "ideena" },
+      youPl: { arabic: "إدّيتوا", transliteration: "ideetu" },
+      they: { arabic: "إدّوا", transliteration: "idu" },
+    },
+    futureTense: {
+      I: { arabic: "هَدّي", transliteration: "hadi" },
+      youM: { arabic: "هَتِدّي", transliteration: "hatidi" },
+      youF: { arabic: "هَتِدّي", transliteration: "hatidi" },
+      he: { arabic: "هَيِدّي", transliteration: "hayidi" },
+      she: { arabic: "هَتِدّي", transliteration: "hatidi" },
+      we: { arabic: "هـَنـِدّي", transliteration: "hanidi" },
+      youPl: { arabic: "هـَتـِدّوا", transliteration: "hatidu" },
+      they: { arabic: "هـَيـِدّوا", transliteration: "hayidu" },
+    },
+  },
+  {
+    english: "to go down",
+    verb: "نزل",
+    transliteration: "nizil",
+    presentTense: {
+      I: { arabic: "بنزل", transliteration: "banzil" },
+      youM: { arabic: "بتنزل", transliteration: "bitinzil" },
+      youF: { arabic: "بتنزلي", transliteration: "bitinzili" },
+      he: { arabic: "بينزل", transliteration: "biyinzil" },
+      she: { arabic: "بتنزل", transliteration: "bitinzil" },
+      we: { arabic: "بننزل", transliteration: "bininzil" },
+      youPl: { arabic: "بتنزلوا", transliteration: "bitinzilu" },
+      they: { arabic: "بينزلوا", transliteration: "biyinzilu" },
+    },
+    pastTense: {
+      I: { arabic: "نزلت", transliteration: "nizilt" },
+      youM: { arabic: "نزلت", transliteration: "nizilt" },
+      youF: { arabic: "نزلت", transliteration: "nizilti" },
+      he: { arabic: "نزل", transliteration: "nizil" },
+      she: { arabic: "نزلت", transliteration: "nizlit" },
+      we: { arabic: "نزلنَا", transliteration: "nizilna" },
+      youPl: { arabic: "نزلتوا", transliteration: "niziltu" },
+      they: { arabic: "نزلوا", transliteration: "nizlu" },
+    },
+    futureTense: {
+      I: { arabic: "هَنزِل", transliteration: "hanzil" },
+      youM: { arabic: "هَتِنزِل", transliteration: "hatinzil" },
+      youF: { arabic: " هـَتـِنز ِلي", transliteration: "hatinzili" },
+      he: { arabic: "هَيِنزِل", transliteration: "hayinzil" },
+      she: { arabic: "هَتِنزِل", transliteration: "hatinzil" },
+      we: { arabic: "هَنِنزِل", transliteration: "haninzil" },
+      youPl: { arabic: "هَتـِنزـُلوا", transliteration: "hatinzilu" },
+      they: { arabic: "هَيـِنزـُلوا", transliteration: "hayinzilu" },
+    },
+  },
+  {
+    english: "to go up",
+    verb: "طلع",
+    transliteration: "tala'",
+    presentTense: {
+      I: { arabic: "بـَطلـَع", transliteration: "batla'" },
+      youM: { arabic: "بـِتـِطلـَع", transliteration: "bititla'" },
+      youF: { arabic: "بـِتـِطلـَعي", transliteration: "bititla'i" },
+      he: { arabic: "بـِيـِطلـَع", transliteration: "biyitla'" },
+      she: { arabic: "بـِتـِطلـَع", transliteration: "bititla'" },
+      we: { arabic: "بـِنـِطلـَع", transliteration: "binitla'" },
+      youPl: { arabic: "بـِتـِطلـَعوا", transliteration: "bititla'u" },
+      they: { arabic: "بـِيـِطلـَعوا", transliteration: "biyitla'u" },
+    },
+    pastTense: {
+      I: { arabic: "طلعت", transliteration: "tili'at" },
+      youM: { arabic: "طلعت", transliteration: "tili'at" },
+      youF: { arabic: "طـِلـِعتي", transliteration: "tili'ati" },
+      he: { arabic: "طلع", transliteration: "tilia'" },
+      she: { arabic: "طلعت", transliteration: "tila'it" },
+      we: { arabic: " طـِلـِعنا", transliteration: "tili'atu" },
+      youPl: { arabic: "طلعتوا", transliteration: "tili'atu" },
+      they: { arabic: "طَلَعوا", transliteration: "til'au" },
+    },
+    // futureTense: {
+    //   I: { arabic: "هَطِلْ", transliteration:"hatal'" },
+    //   youM: { arabic: "هَتِطْلْ", transliteration："hatatl'" },
+    //   youF： { arabic：  هـَتـِط ِل ْلي", transliteration："hatatl'i" },
+    //   he： { arabic： "هَيِطْلْ", transliteration："hayatl'" },
+    //   she： { arabic： "هَتِطْلْ", transliteration："hatatl'" },
+    //   we： { arabic： "هَنِطْلْ", transliteration："hanatl'" },
+    //   youPl： { arabic：  هـَتـِط ـُلوا", transl iteration："hatatl'u" },
+    //   they： { arabic：  هـَيـِط ـُلوا", transl iteration："hayatl'u" }
+    // }
+  },
 ];
-
-VerbConjugations.sort((a, b) => {
-  return a.english.localeCompare(b.english);
-});
 
 export default VerbConjugations;
 
 console.log(VerbConjugations.length);
 
 export const freeVerbs = VerbConjugations.slice(0, 5);
+
+// يطلع – to go up / appear
+// يركب – to ride
+// يحجز – to book / reserve
+// يقابل – to meet
+// يفضل – to prefer / keep doing
+// يسيب – to leave
+// يقرر – to decide
+// يشرح – to explain
+// يناقش – to discuss
+// يوافق – to agree
+// يرفض – to refuse
+// يقترح – to suggest
+// يشك – to doubt
+// يتأكد – to make sure
+// يصدق – to believe
+// يكذب – to lie
+// يحكي – to tell (a story)
+// يترجم – to translate
+// يعلّم – to teach
+//  ينجح – to succeed
+// يسقط – to fail
+// يحل – to solve
+// يطوّر – to develop
+// يختار – to choose replace the other choose
+// يتجوز – to get married
+// يطلق – to divorce
+// يربي – to raise (kids)
+// يخدم – to serve
+// يطلب – to order / request
+// يخلع – to take off (clothes
+// يصلّح – to fix
+// يجرّب – to try
+// يستلم – to receive
+// يبعث – to send
+// يشيل – to carry / remove
+// يحط – to put
+// يغير – to change
+// يفضل – to stay / prefer
+// يخلص – to finish
