@@ -130,11 +130,7 @@ export default function Verb() {
         justify-between  items-center"
         >
           <div className="dropdown dropdown-bottom  ">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn m-1 bg-secondary    "
-            >
+            <div tabIndex={0} role="button" className="btn m-1 bg-secondary ">
               Change Verb
             </div>
             <ul
@@ -142,21 +138,23 @@ export default function Verb() {
               className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow  "
             >
               <div className="overflow-y-auto max-h-96">
-                {verbs.map((item, i) => {
-                  return (
-                    <li
-                      key={i}
-                      onClick={() => {
-                        setCurrVerb(item);
-                        document.activeElement.blur();
-                      }}
-                      className="flex flex-row justify-between"
-                    >
-                      <span>{item.english}</span>
-                      {item.premium && !isPaidMember ? <span>🔒</span> : null}
-                    </li>
-                  );
-                })}
+                {verbs
+                  .sort((a, b) => a.english.localeCompare(b.english))
+                  .map((item, i) => {
+                    return (
+                      <li
+                        key={i}
+                        onClick={() => {
+                          setCurrVerb(item);
+                          document.activeElement.blur();
+                        }}
+                        className="flex flex-row justify-between"
+                      >
+                        <span>{item.english}</span>
+                        {item.premium && !isPaidMember ? <span>🔒</span> : null}
+                      </li>
+                    );
+                  })}
               </div>
             </ul>
           </div>
