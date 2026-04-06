@@ -128,9 +128,11 @@ export default function VerbsQuizPage() {
         otherVerb[question.tense] &&
         otherVerb[question.tense][question.pronoun];
 
-      answerChoiceType === "arabic"
-        ? opts.add(val.arabic)
-        : opts.add(val.transliteration);
+      if (val) {
+        answerChoiceType === "arabic"
+          ? opts.add(val.arabic)
+          : opts.add(val.transliteration);
+      }
 
       tries++;
     }
