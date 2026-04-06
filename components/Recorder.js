@@ -8,12 +8,7 @@ import {
   similarityScore,
 } from "@/helpers/pronunciationFunctions";
 
-export default function Recorder({
-  currentWord,
-  enabled = true,
-  onScore,
-  nativeAudio,
-}) {
+export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
   const [status, setStatus] = useState("idle");
   const [heardWord, setHeardWord] = useState("");
   const [score, setScore] = useState(null);
@@ -23,13 +18,9 @@ export default function Recorder({
   const isRecordingRef = useRef(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [audioBlob, setAudioBlob] = useState(null);
   const mediaRecorderRef = useRef(null);
   const streamRef = useRef(null);
-
-  const chunksRef = useRef([]);
-  const hasFinalizedRef = useRef(false);
-
-  const [userRecordingUrl, setUserRecordingUrl] = useState(null);
 
   useEffect(() => {
     resetAll();
@@ -39,6 +30,7 @@ export default function Recorder({
     setStatus("idle");
     setHeardWord("");
     setScore(null);
+    setAudioBlob(null);
     isRecordingRef.current = false;
     setIsRecording(false);
   };
@@ -55,126 +47,69 @@ export default function Recorder({
 
   async function beginSpeechRecognition() {
     resetAll();
-    hasFinalizedRef.current = false;
-    chunksRef.current = [];
-
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition || null;
-
     if (!SpeechRecognition) {
-      alert("Speech Recognition not supported");
+      setStatus("SpeechRecognition not available in this browser.");
       return;
     }
-
     try {
-      // 🎤 MIC STREAM
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      streamRef.current = stream;
-
-      const mediaRecorder = new MediaRecorder(stream);
-      mediaRecorderRef.current = mediaRecorder;
-
-      mediaRecorder.ondataavailable = (e) => {
-        if (e.data.size > 0) chunksRef.current.push(e.data);
-      };
-
-      mediaRecorder.onstop = finalizeRecording;
-
-      mediaRecorder.start();
-      isRecordingRef.current = true;
-      setIsRecording(true);
-
-      // 🧠 SPEECH RECOGNITION
       const r = new SpeechRecognition();
-      recognitionRef.current = r;
-
       r.lang = "ar-EG";
-      r.continuous = false;
+      r.maxAlternatives = 1;
+      r.continuous = true;
       r.interimResults = false;
 
-      r.onstart = () => setStatus("listening");
-
-      r.onresult = (e) => {
-        const word = e.results[0][0].transcript;
-        setStatus("processing");
-
-        const normalizedHeard = normalizeArabic(word);
-        const normalizedExpected = normalizeArabic(currentWord);
-
-        setHeardWord(normalizedHeard);
-
-        const score = similarityScore(normalizedHeard, normalizedExpected);
-        setScore(score);
-        updateStatus(score);
-
-        if (onScore && score > 0) onScore(score);
+      r.onstart = () => {
+        setStatus("listening");
+        setIsRecording(true);
       };
 
-      r.onerror = () => stopAll();
-      r.onend = () => stopAll();
-
+      r.onresult = (e) => {
+        let word = e.results[0][0].transcript;
+        setStatus("processing");
+        const normalizedHeard = normalizeArabic(word);
+        const normalizedExpected = normalizeArabic(currentWord);
+        setHeardWord(normalizedHeard);
+        const score = similarityScore(normalizedHeard, normalizedExpected);
+        setScore(score); // inside onresult final
+        updateStatus(score);
+      };
+      r.onerror = (e) => setStatus("Error: " + e.error || e.message);
+      r.onend = () => {
+        // setStatus((prev) => (prev ? prev + " (ended)" : "Ended"));
+        setIsRecording(false);
+      };
       r.start();
-
-      // ⏱ Auto stop after 4s
-      recognitionStartTimerRef.current = setTimeout(stopAll, 4000);
-    } catch (err) {
-      setStatus("Mic error");
+      setTimeout(() => {
+        try {
+          r.stop();
+        } catch (err) {}
+      }, 4000);
+    } catch (e) {
+      setStatus("Failed to start recognition: " + (e.message || e));
     }
   }
 
-  // const playAB = async () => {
-  //   if (!userRecordingUrl || !nativeAudio) return;
-  //   const user = new Audio(userRecordingUrl);
-  //   const native = new Audio(nativeAudio);
-
-  //   await native.play();
-  //   native.onended = () => user.play();
-  // };
-
-  // const stopRecording = () => {
-  //   if (!isRecordingRef.current) return;
-  //   mediaRecorderRef.current?.stop();
-
-  //   streamRef.current?.getTracks().forEach((track) => track.stop());
-  //   streamRef.current = null;
-
-  //   setStatus("processing");
-  //   isRecordingRef.current = false;
-  //   setIsRecording(false);
-  //   updateStatus(score);
-  //   try {
-  //     recognitionRef.current?.stop();
-  //   } catch (e) {
-  //     try {
-  //       recognitionRef.current?.abort?.();
-  //     } catch (err) {}
-  //   }
-  //   recognitionRef.current = null;
-
-  //   if (recognitionStartTimerRef.current) {
-  //     clearTimeout(recognitionStartTimerRef.current);
-  //     recognitionStartTimerRef.current = null;
-  //   }
-  // };
-
-  const stopAll = () => {
+  const stopRecording = () => {
     if (!isRecordingRef.current) return;
+    mediaRecorderRef.current?.stop();
 
-    isRecordingRef.current = false;
-    setIsRecording(false);
-
-    try {
-      recognitionRef.current?.stop();
-    } catch {}
-
-    try {
-      mediaRecorderRef.current?.stop();
-    } catch {}
-
-    streamRef.current?.getTracks().forEach((t) => t.stop());
+    streamRef.current?.getTracks().forEach((track) => track.stop());
     streamRef.current = null;
 
-    setStatus("idle");
+    setStatus("processing");
+    isRecordingRef.current = false;
+    setIsRecording(false);
+    updateStatus(score);
+    try {
+      recognitionRef.current?.stop();
+    } catch (e) {
+      try {
+        recognitionRef.current?.abort?.();
+      } catch (err) {}
+    }
+    recognitionRef.current = null;
 
     if (recognitionStartTimerRef.current) {
       clearTimeout(recognitionStartTimerRef.current);
@@ -184,32 +119,14 @@ export default function Recorder({
 
   const normalizedCurrent = normalizeArabic(currentWord);
   const showShortWordWarning = normalizedCurrent.length <= 3;
-
-  const finalizeRecording = () => {
-    if (hasFinalizedRef.current) return;
-    hasFinalizedRef.current = true;
-
-    if (!chunksRef.current.length) return;
-
-    const blob = new Blob(chunksRef.current, { type: "audio/webm" });
-    const url = URL.createObjectURL(blob);
-
-    setUserRecordingUrl(url);
-  };
-
   return (
     <div>
       <div className="flex  items-center justify-end gap-2">
         <div className="flex items-center justify-end  ">Record:</div>
         {!isRecording && (
           <button
-            onClick={enabled ? beginSpeechRecognition : undefined}
-            disabled={!enabled}
-            className={`rounded-full text-2xl hover:cursor-pointer bg-[black] p-2 hover:scale-110 transition-transform ${
-              enabled
-                ? "bg-black hover:scale-110 cursor-pointer"
-                : "bg-gray-400 cursor-not-allowed opacity-50"
-            }`}
+            onClick={beginSpeechRecognition}
+            className="rounded-full text-2xl hover:cursor-pointer bg-[black] p-2 hover:scale-110 transition-transform"
           >
             🎤
           </button>
@@ -217,7 +134,7 @@ export default function Recorder({
 
         {isRecording && (
           <button
-            onClick={() => stopAll()}
+            onClick={stopRecording}
             className="rounded-full text-2xl hover:cursor-pointer bg-[red] p-2 hover:scale-110 transition-transform"
           >
             ◼
@@ -233,7 +150,7 @@ export default function Recorder({
       )}
       {score > 0 ? (
         <div className="text-lg mt-2">
-          Pronunciation Score:{" "}
+          Pronuncation Score:{" "}
           <span
             className={
               "font-bold " +
@@ -249,23 +166,11 @@ export default function Recorder({
         </div>
       ) : null}
 
-      {/* {userRecordingUrl && (
-        <div className="  text-lg mt-2 flex items-center gap-2">
-          Compare:
-          <div
-            className="inline-flex rounded-full text-xl items-center leading-none justify-center hover:cursor-pointer bg-[black] p-2 hover:scale-110 transition-transform aspect-square  "
-            onClick={() => playAB()}
-          >
-            ⇄
-          </div>
-        </div>
-      )} */}
-
       {heardWord && (
         <div
           ref={detailsRef}
           tabIndex={0}
-          className="collapse  bg-base text-[white] border-[white] border mt-2"
+          className="collapse  bg-base text-[white] border-[white] border "
         >
           <input
             type="checkbox"

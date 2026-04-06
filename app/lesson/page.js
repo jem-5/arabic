@@ -47,6 +47,9 @@ export default function Lesson() {
   const [userRecordingUrl, setUserRecordingUrl] = useState(null);
   const [isUpsellCard, setIsUpsellCard] = useState(false);
 
+  const [recognizedWord, setRecognizedWord] = useState("");
+  const [whisperBlob, setWhisperBlob] = useState(null);
+
   useEffect(() => {
     const isFree = Object.keys(freeModules).includes(topic);
 
@@ -410,10 +413,9 @@ export default function Lesson() {
 
                 <div className="p-1">
                   <Recorder
+                    onRecognized={(word) => setRecognizedWord(word)}
+                    onBlobReady={(blob) => setWhisperBlob(blob)}
                     currentWord={lessonData[questionNum].arabic}
-                    enabled={!limitReached && user}
-                    onScore={() => increment()}
-                    nativeAudio={lessonData[questionNum].audio}
                   />
                 </div>
 
