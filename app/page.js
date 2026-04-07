@@ -115,7 +115,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <section className=" max-w-full flex flex-col items-left p-3 m-3  text-neutral bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-3 w-5/6 lg:w-2/3">
+      {/* <section className=" max-w-full flex flex-col items-left p-3 m-3  text-neutral bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-3 w-5/6 lg:w-2/3">
         <p className=" text-xl ">
           To support our mission to provide a low-cost Arabic education, please
           consider{" "}
@@ -129,7 +129,7 @@ export default async function Home() {
           </span>
           .
         </p>
-      </section>
+      </section> */}
 
       <section className=" max-w-full flex flex-col items-left p-3 m-3 text-neutral  bg-[#ffffff60] rounded-md mt-4 drop-shadow-xl border gap-3 w-5/6 lg:w-2/3">
         <h3 className="font-bold text-xl  self-start text-neutral">
