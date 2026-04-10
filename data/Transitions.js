@@ -165,7 +165,7 @@ const Transitions = [
     arabic: "وأنا كمان",
     audio: "/audio/transitions/me-neither.mp3",
     image: "",
-    transliteration: "we ana kaman",
+    transliteration: "wa ana kaman",
   },
   {
     english: "Never mind",
@@ -179,7 +179,7 @@ const Transitions = [
     arabic: "مرة",
     audio: "/audio/transitions/once.mp3",
     image: "",
-    transliteration: "marra",
+    transliteration: "mara",
   },
   {
     english: "Again",
@@ -200,7 +200,7 @@ const Transitions = [
     arabic: "بعدين",
     audio: "/audio/transitions/afterwards.mp3",
     image: "",
-    transliteration: "ba'deen",
+    transliteration: "ba'dayn",
   },
   {
     english: "A long time ago",

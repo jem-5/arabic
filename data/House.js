@@ -263,7 +263,7 @@ const House = [
     arabic: "اتفضل اقعد",
     audio: "/audio/house/please-sit.mp3",
     image: "/images/house/chair.jpg",
-    transliteration: "tafaddal o'od",
+    transliteration: "itfaddal o'od",
   },
   {
     english: "I like your home",

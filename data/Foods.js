@@ -32,7 +32,7 @@ const Foods = [
     arabic: "لحمة",
     audio: "/audio/foods/meat.mp3",
     image: "/images/foods/meat.jpg",
-    transliteration: "lahm",
+    transliteration: "lahma",
   },
   {
     english: "Chicken",

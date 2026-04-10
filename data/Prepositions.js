@@ -11,14 +11,14 @@ const Prepositions = [
     arabic: "على",
     audio: "/audio/prepositions/on.mp3",
     image: "",
-    transliteration: "ʿAla",
+    transliteration: "ʿala",
   },
   {
     english: "Under",
     arabic: "تحت",
     audio: "/audio/prepositions/under.mp3",
     image: "",
-    transliteration: "taḥt",
+    transliteration: "taht",
   },
   {
     english: "Above",
@@ -32,14 +32,14 @@ const Prepositions = [
     arabic: "تحت",
     audio: "/audio/prepositions/under.mp3",
     image: "",
-    transliteration: "taḥt",
+    transliteration: "taht",
   },
   {
     english: "Next to",
     arabic: "جنب",
     audio: "/audio/prepositions/next.mp3",
     image: "",
-    transliteration: "ganb",
+    transliteration: "ganeb",
   },
   {
     english: "Between",
@@ -60,14 +60,14 @@ const Prepositions = [
     arabic: "قدام",
     audio: "/audio/prepositions/front.mp3",
     image: "",
-    transliteration: "ooddam",
+    transliteration: "oodam",
   },
   {
     english: "Near",
     arabic: "قريب من",
     audio: "/audio/prepositions/near.mp3",
     image: "",
-    transliteration: "orayyeb men",
+    transliteration: "orayeb men",
   },
   {
     english: "Far from",
@@ -102,7 +102,7 @@ const Prepositions = [
     arabic: "بره",
     audio: "/audio/prepositions/outside.mp3",
     image: "",
-    transliteration: "barra",
+    transliteration: "bara",
   },
   {
     english: "Before",
@@ -158,7 +158,7 @@ const Prepositions = [
     arabic: "لحد",
     audio: "/audio/prepositions/until.mp3",
     image: "",
-    transliteration: "leḥadd",
+    transliteration: "lehadd",
   },
   {
     english: "From",
@@ -186,7 +186,7 @@ const Prepositions = [
     arabic: "تحت",
     audio: "/audio/prepositions/down.mp3",
     image: "",
-    transliteration: "taḥt",
+    transliteration: "taht",
   },
   {
     english: "Since early on",

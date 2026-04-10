@@ -25,7 +25,7 @@ const Adjectives = [
     arabic: "قصير",
     audio: "/audio/adjectives/short.mp3",
     image: "",
-    transliteration: "a'seer",
+    transliteration: "aseer",
   },
   {
     english: "Beautiful",
@@ -39,7 +39,7 @@ const Adjectives = [
     arabic: "وشه وحش",
     audio: "/audio/adjectives/ugly.mp3",
     image: "",
-    transliteration: "weshuh We7esh",
+    transliteration: "weshuh wehesh",
   },
   {
     english: "Happy",
@@ -67,7 +67,7 @@ const Adjectives = [
     arabic: "وحش",
     audio: "/audio/adjectives/bad.mp3",
     image: "",
-    transliteration: "we7esh",
+    transliteration: "wehesh",
   },
   {
     english: "Hot",
@@ -81,14 +81,14 @@ const Adjectives = [
     arabic: "برد",
     audio: "/audio/adjectives/cold.mp3",
     image: "",
-    transliteration: "bard",
+    transliteration: "barid",
   },
   {
     english: "Fast",
     arabic: "سريع",
     audio: "/audio/adjectives/fast.mp3",
     image: "",
-    transliteration: "saree'",
+    transliteration: "saria'",
   },
   {
     english: "Slow",
@@ -109,7 +109,7 @@ const Adjectives = [
     arabic: "قديم",
     audio: "/audio/adjectives/old.mp3",
     image: "",
-    transliteration: "addeem",
+    transliteration: "adeem",
   },
   {
     english: "Young",
@@ -221,14 +221,14 @@ const Adjectives = [
     arabic: "ضلمة",
     audio: "/audio/adjectives/dark.mp3",
     image: "",
-    transliteration: "dhelma",
+    transliteration: "dholma",
   },
   {
     english: "Mild",
     arabic: "معتدل",
     audio: "/audio/adjectives/mild.mp3",
     image: "",
-    transliteration: "mo'tadel",
+    transliteration: "moa'tadel",
   },
   {
     english: "Soft",
@@ -242,7 +242,7 @@ const Adjectives = [
     arabic: "قاسي",
     audio: "/audio/adjectives/hard.mp3",
     image: "",
-    transliteration: "qasi",
+    transliteration: "'asi",
   },
   {
     english: "Sweet",
@@ -270,7 +270,7 @@ const Adjectives = [
     arabic: "مالح",
     audio: "/audio/adjectives/salty.mp3",
     image: "",
-    transliteration: "male7",
+    transliteration: "malih",
   },
   {
     english: "Friendly",
@@ -291,7 +291,7 @@ const Adjectives = [
     arabic: "شجاع",
     audio: "/audio/adjectives/brave.mp3",
     image: "",
-    transliteration: "shaga'",
+    transliteration: "shuga'",
   },
   {
     english: "Cowardly",
@@ -340,7 +340,7 @@ const Adjectives = [
     arabic: "وحش",
     audio: "/audio/adjectives/terrible.mp3",
     image: "",
-    transliteration: "we7esh",
+    transliteration: "wehesh",
   },
   {
     english: "Great",
@@ -375,7 +375,7 @@ const Adjectives = [
     arabic: "نحيف",
     audio: "/audio/adjectives/thin.mp3",
     image: "",
-    transliteration: "na7eef",
+    transliteration: "naheef",
   },
   {
     english: "Fat",
@@ -396,7 +396,7 @@ const Adjectives = [
     arabic: "صح",
     audio: "/audio/adjectives/correct.mp3",
     image: "",
-    transliteration: "sa7",
+    transliteration: "sah",
   },
   {
     english: "Authentic",
@@ -410,14 +410,14 @@ const Adjectives = [
     arabic: "متوحش",
     audio: "/audio/adjectives/savage.mp3",
     image: "",
-    transliteration: "metwahesh",
+    transliteration: "motawahish",
   },
   {
     english: "Comfortable",
     arabic: "مريح",
     audio: "/audio/adjectives/comfortable.mp3",
     image: "",
-    transliteration: "maree7",
+    transliteration: "mureeh",
   },
   {
     english: "Reasonable",
@@ -431,7 +431,7 @@ const Adjectives = [
     arabic: "طازج",
     audio: "/audio/adjectives/fresh.mp3",
     image: "",
-    transliteration: "tazij",
+    transliteration: "tazig",
   },
 ];
 export default Adjectives;

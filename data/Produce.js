@@ -18,7 +18,7 @@ const Produce = [
     arabic: "برتقال",
     audio: "/audio/produce/orange.mp3",
     image: "/images/produce/orange.jpg",
-    transliteration: "burtuqal",
+    transliteration: "burtu'al",
   },
   {
     english: "Grapes",
@@ -60,14 +60,14 @@ const Produce = [
     arabic: "أفوكادو",
     audio: "/audio/produce/avocado.mp3",
     image: "/images/produce/avocado.jpg",
-    transliteration: "avokado",
+    transliteration: "afokado",
   },
   {
     english: "Coconut",
     arabic: "جوز الهند",
     audio: "/audio/produce/coconut.mp3",
     image: "/images/produce/coconut.jpg",
-    transliteration: "jawz al-Hind",
+    transliteration: "jawz alhind",
   },
   {
     english: "Tomato",
@@ -88,7 +88,7 @@ const Produce = [
     arabic: "جزرة",
     audio: "/audio/produce/carrot.mp3",
     image: "/images/produce/carrot.jpg",
-    transliteration: "gazara",
+    transliteration: "gazra",
   },
   {
     english: "Onion",
@@ -123,7 +123,7 @@ const Produce = [
     arabic: "باذنجان",
     audio: "/audio/produce/eggplant.mp3",
     image: "/images/produce/eggplant.jpg",
-    transliteration: "bathingan",
+    transliteration: "badingan",
   },
   {
     english: "Zucchini",

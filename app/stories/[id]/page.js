@@ -26,7 +26,6 @@ export default function Stories({ params: { id } }) {
 
   // const [approved, setApproved] = useState(false);
   const lessonData = StoryData.filter((story) => story.slug === id)[0]?.content;
-  // useEffect(() => {
 
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}`;

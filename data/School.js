@@ -25,7 +25,7 @@ const School = [
     arabic: "طالب/طالبة",
     audio: "/audio/school/student.mp3",
     image: "/images/school/student.jpg",
-    transliteration: "talib/Taliba",
+    transliteration: "talib/taliba",
   },
   {
     english: "Principal",
@@ -109,7 +109,7 @@ const School = [
     arabic: "كمبيوتر",
     audio: "/audio/school/computer.mp3",
     image: "",
-    transliteration: "kompyuter",
+    transliteration: "kombyuter",
   },
   {
     english: "Cafeteria",
@@ -193,7 +193,7 @@ const School = [
     arabic: "ركز كويس",
     audio: "/audio/school/listen.mp3",
     image: "",
-    transliteration: "rakkiz kowayes",
+    transliteration: "rakkiz kwayis",
   },
   {
     english: "Write this down",
@@ -207,7 +207,7 @@ const School = [
     arabic: "وقت الاستراحة",
     audio: "/audio/school/time-break.mp3",
     image: "",
-    transliteration: "w'et el-estiraha",
+    transliteration: "w'et el estiraha",
   },
   {
     english: "I need help",
@@ -228,7 +228,7 @@ const School = [
     arabic: "نسيت الواجب",
     audio: "/audio/school/forgot-hw.mp3",
     image: "",
-    transliteration: "nseit el-wagib",
+    transliteration: "nseit el wagib",
   },
   {
     english: "Can I go to the bathroom?",

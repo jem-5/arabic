@@ -11,7 +11,7 @@ const Verbs = [
     arabic: "يعمل",
     audio: "/audio/verbs/do.mp3",
     image: "",
-    transliteration: "ye‘mel",
+    transliteration: "ya‘mel",
   },
   {
     english: "To say",
@@ -95,7 +95,7 @@ const Verbs = [
     arabic: "يتكلم",
     audio: "/audio/verbs/speak.mp3",
     image: "",
-    transliteration: "yitkallem",
+    transliteration: "yetakalem",
   },
   {
     english: "To listen",
@@ -109,7 +109,7 @@ const Verbs = [
     arabic: "يعرف",
     audio: "/audio/verbs/know.mp3",
     image: "",
-    transliteration: "ye‘raf",
+    transliteration: "ya‘raf",
   },
   {
     english: "To understand",
@@ -123,7 +123,7 @@ const Verbs = [
     arabic: "يتعلّم",
     audio: "/audio/verbs/learn.mp3",
     image: "",
-    transliteration: "yit‘allim",
+    transliteration: "yit‘alim",
   },
   {
     english: "To buy",
@@ -137,14 +137,14 @@ const Verbs = [
     arabic: "يبيع",
     audio: "/audio/verbs/sell.mp3",
     image: "",
-    transliteration: "yebee‘",
+    transliteration: "yebia‘",
   },
   {
     english: "To love",
     arabic: "يحبّ",
     audio: "/audio/verbs/love.mp3",
     image: "",
-    transliteration: "yehebb",
+    transliteration: "yihebb",
   },
   {
     english: "To need",
@@ -158,7 +158,7 @@ const Verbs = [
     arabic: "عايز",
     audio: "/audio/verbs/want.mp3",
     image: "",
-    transliteration: "‘Ayez",
+    transliteration: "‘ayez",
   },
   {
     english: "To work",
@@ -256,14 +256,14 @@ const Verbs = [
     arabic: "يساعد",
     audio: "/audio/verbs/help.mp3",
     image: "",
-    transliteration: "yesaa‘ed",
+    transliteration: "yesa‘ed",
   },
   {
     english: "To find",
     arabic: "يلاقي",
     audio: "/audio/verbs/find.mp3",
     image: "",
-    transliteration: "yilaa’i",
+    transliteration: "yila’i",
   },
   {
     english: "To lose",
@@ -277,7 +277,7 @@ const Verbs = [
     arabic: "يدي",
     audio: "/audio/verbs/give.mp3",
     image: "",
-    transliteration: "yiddi",
+    transliteration: "yidi",
   },
   {
     english: "To take",
@@ -298,14 +298,14 @@ const Verbs = [
     arabic: "يطبخ",
     audio: "/audio/verbs/cook.mp3",
     image: "",
-    transliteration: "yotbokh",
+    transliteration: "yatbokh",
   },
   {
     english: "To increase",
     arabic: "يزوّد",
     audio: "/audio/verbs/increase.mp3",
     image: "",
-    transliteration: "yezawwed",
+    transliteration: "yezawed",
   },
   {
     english: "To start",

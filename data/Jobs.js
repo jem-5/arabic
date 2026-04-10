@@ -46,7 +46,7 @@ const Jobs = [
     arabic: "مطور برامج",
     audio: "/audio/jobs/software.mp3",
     image: "",
-    transliteration: "mutawwir Baramig",
+    transliteration: "mutawwir baramig",
   },
   {
     english: "Police",
@@ -95,14 +95,14 @@ const Jobs = [
     arabic: "طبيب أسنان",
     audio: "/audio/jobs/dentist.mp3",
     image: "",
-    transliteration: "tabeeb Asnan",
+    transliteration: "tabeeb asnan",
   },
   {
     english: "Scientist",
     arabic: "عالم",
     audio: "/audio/jobs/scientist.mp3",
     image: "",
-    transliteration: "3alem",
+    transliteration: "'alem",
   },
   {
     english: "Researcher",

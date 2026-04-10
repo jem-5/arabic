@@ -46,7 +46,7 @@ const Insults = [
     arabic: "مزنّق",
     audio: "/audio/insults/annoying.mp3",
     image: "",
-    transliteration: "mazzana’",
+    transliteration: "mozana",
   },
   {
     english: "May you disappear",
@@ -60,7 +60,7 @@ const Insults = [
     arabic: "ربنا ياخدك!",
     audio: "/audio/insults/take.mp3",
     image: "",
-    transliteration: "rabbena yakhodak!",
+    transliteration: "rabena yakhodak!",
   },
   {
     english: "You have no shame",
@@ -95,7 +95,7 @@ const Insults = [
     arabic: "روح في داهية!",
     audio: "/audio/insults/hell.mp3",
     image: "",
-    transliteration: "roh fi dahya!",
+    transliteration: "rooh fi dahya!",
   },
   {
     english: "Dog",
@@ -116,7 +116,7 @@ const Insults = [
     arabic: "حظك وحش",
     audio: "/audio/insults/luck.mp3",
     image: "",
-    transliteration: "hazzak weḥesh",
+    transliteration: "hazak wehesh",
   },
   {
     english: "You're nothing",
@@ -130,7 +130,7 @@ const Insults = [
     arabic: "ابعد عن وشي!",
     audio: "/audio/insults/face.mp3",
     image: "",
-    transliteration: "ebʿed ʿan weshy!",
+    transliteration: "ebʿad ʿan weshy!",
   },
 ];
 

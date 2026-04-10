@@ -39,7 +39,7 @@ const Endearment = [
     arabic: "وردتي",
     audio: "/audio/endearment/flower.mp3",
     image: "",
-    transliteration: "wardtī",
+    transliteration: "wardti",
   },
   {
     english: "My star",
@@ -60,7 +60,7 @@ const Endearment = [
     arabic: "نور حياتي",
     audio: "/audio/endearment/light.mp3",
     image: "",
-    transliteration: "noor ḥayāti",
+    transliteration: "noor hayati",
   },
   {
     english: "Sweetie",
@@ -74,7 +74,7 @@ const Endearment = [
     arabic: "يا حبيبي",
     audio: "/audio/endearment/dear.mp3",
     image: "",
-    transliteration: "ya ḥabibi",
+    transliteration: "ya habibi",
   },
   {
     english: "My sunshine",

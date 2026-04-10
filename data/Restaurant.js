@@ -109,7 +109,7 @@ const Restaurant = [
     arabic: "الأكل تحفة",
     audio: "/audio/restaurant/delicious.mp3",
     image: "/images/restaurant/dish-day.jpg",
-    transliteration: "el-akl to7fa",
+    transliteration: "el-akl tohfa",
   },
   {
     english: "Thank you for the meal",

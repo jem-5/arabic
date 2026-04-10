@@ -60,14 +60,14 @@ const Nature = [
     arabic: "تَلّ",
     audio: "/audio/nature/hill.mp3",
     image: "/images/nature/mountain.jpg",
-    transliteration: "tall",
+    transliteration: "till",
   },
   {
     english: "Desert",
     arabic: "صحرا",
     audio: "/audio/nature/desert.mp3",
     image: "/images/nature/desert.jpg",
-    transliteration: "saḥra",
+    transliteration: "sahra",
   },
   {
     english: "Rock",
@@ -95,7 +95,7 @@ const Nature = [
     arabic: "مطر",
     audio: "/audio/nature/rain.mp3",
     image: "/images/nature/rain.jpg",
-    transliteration: "maṭar",
+    transliteration: "matar",
   },
   {
     english: "Storm",
@@ -151,7 +151,7 @@ const Nature = [
     arabic: "الأرض",
     audio: "/audio/nature/earth.mp3",
     image: "/images/nature/earth.jpg",
-    transliteration: "el-arḍ",
+    transliteration: "el-ard",
   },
   {
     english: "Water",

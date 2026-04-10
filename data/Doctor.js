@@ -18,7 +18,7 @@ const Doctor = [
     arabic: "وصفة طبية",
     audio: "/audio/doctor/prescription.mp3",
     image: "/images/doctor/medicine.jpg",
-    transliteration: "wasfet Tibbi",
+    transliteration: "wasifa tibeya",
   },
   {
     english: "Medicine",
@@ -32,7 +32,7 @@ const Doctor = [
     arabic: "عيادة",
     audio: "/audio/doctor/clinic.mp3",
     image: "/images/doctor/clinic.jpg",
-    transliteration: "‘Ayada",
+    transliteration: "‘ayada",
   },
   {
     english: "Hospital",
@@ -102,14 +102,14 @@ const Doctor = [
     arabic: "عدوى",
     audio: "/audio/doctor/infection.mp3",
     image: "",
-    transliteration: "‘Adwa",
+    transliteration: "‘adwa",
   },
   {
     english: "I have an appointment",
     arabic: "عندي موعد",
     audio: "/audio/doctor/have-appointment.mp3",
     image: "",
-    transliteration: "‘Andi maw‘ed",
+    transliteration: "‘andi maw‘ed",
   },
   {
     english: "I feel sick",
@@ -130,14 +130,14 @@ const Doctor = [
     arabic: "عِنْدُهُ  حرارة ",
     audio: "/audio/doctor/have-fever.mp3",
     image: "",
-    transliteration: " Anda harara",
+    transliteration: "‘anda harara",
   },
   {
     english: "I have a headache",
     arabic: " أنا عندي صداع",
     audio: "/audio/doctor/have-headache.mp3",
     image: "",
-    transliteration: "ana ‘Andi soda‘",
+    transliteration: "ana ‘andi soda‘",
   },
   {
     english: "I am dizzy",
@@ -158,7 +158,7 @@ const Doctor = [
     arabic: "عِندَك حَسَاسِيَّة؟",
     audio: "/audio/doctor/allergies.mp3",
     image: "",
-    transliteration: "‘Andak ḥasāsiyya?",
+    transliteration: "‘andak hasasiyya?",
   },
   {
     english: "Take this medicine",
@@ -179,7 +179,7 @@ const Doctor = [
     arabic: " هو خطير؟",
     audio: "/audio/doctor/is-serious.mp3",
     image: "",
-    transliteration: "howa khaṭeer?",
+    transliteration: "howa khateer?",
   },
   {
     english: "How do you feel?",

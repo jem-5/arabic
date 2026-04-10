@@ -18,21 +18,21 @@ const Adverbs = [
     arabic: "بفرحة",
     audio: "/audio/adverbs/happily.mp3",
     image: "",
-    transliteration: "befarḥa",
+    transliteration: "befarha",
   },
   {
     english: "Sadly",
     arabic: "بحزن",
     audio: "/audio/adverbs/sadly.mp3",
     image: "",
-    transliteration: "beḥozn",
+    transliteration: "behozn",
   },
   {
     english: "Carefully",
     arabic: "بحرص",
     audio: "/audio/adverbs/carefully.mp3",
     image: "",
-    transliteration: "beḥers",
+    transliteration: "behers",
   },
   {
     english: "Carelessly",
@@ -88,14 +88,14 @@ const Adverbs = [
     arabic: "هناك",
     audio: "/audio/adverbs/there.mp3",
     image: "",
-    transliteration: "henak",
+    transliteration: "hunak",
   },
   {
     english: "Everywhere",
     arabic: "في كل حتة",
     audio: "/audio/adverbs/everywhere.mp3",
     image: "",
-    transliteration: "fi kol ḥetta",
+    transliteration: "fi kol hetta",
   },
   {
     english: "Now",
@@ -123,7 +123,7 @@ const Adverbs = [
     arabic: "امبارح",
     audio: "/audio/adverbs/yesterday.mp3",
     image: "",
-    transliteration: "embareḥ",
+    transliteration: "embareh",
   },
   {
     english: "Today",
@@ -172,7 +172,7 @@ const Adverbs = [
     arabic: "متأخر",
     audio: "/audio/adverbs/late.mp3",
     image: "",
-    transliteration: "met'akhar",
+    transliteration: "mot'akhar",
   },
   {
     english: "Very",
@@ -207,7 +207,7 @@ const Adverbs = [
     arabic: "لحسن الحظ",
     audio: "/audio/adverbs/luckily.mp3",
     image: "",
-    transliteration: "leḥosn el-ḥazz",
+    transliteration: "lehosin el-haz",
   },
 ];
 

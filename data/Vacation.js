@@ -25,7 +25,7 @@ const Vacation = [
     arabic: "شاطئ / البحر",
     audio: "/audio/vacation/beach.mp3",
     image: "/images/vacation/beach.jpg",
-    transliteration: "shate' / El-bahr",
+    transliteration: "shate' / el bahr",
   },
   {
     english: "Museum",
@@ -109,14 +109,14 @@ const Vacation = [
     arabic: "تسجيل الوصول",
     audio: "/audio/vacation/check-in.mp3",
     image: "",
-    transliteration: "tasgeel el-wosool",
+    transliteration: "tasgeel el wosool",
   },
   {
     english: "Check-out",
     arabic: "تسجيل المغادرة",
     audio: "/audio/vacation/check-out.mp3",
     image: "",
-    transliteration: "tasgeel el-moghadara",
+    transliteration: "tasgeel el moghadara",
   },
   {
     english: "Air conditioning",
@@ -137,14 +137,14 @@ const Vacation = [
     arabic: "قائمة الأكل",
     audio: "/audio/vacation/menu.mp3",
     image: "/images/vacation/menu.jpg",
-    transliteration: "a'emet el-akl",
+    transliteration: "a'emet el akl",
   },
   {
     english: "Bill",
     arabic: "الفاتورة",
     audio: "/audio/vacation/bill.mp3",
     image: "",
-    transliteration: "el-fatora",
+    transliteration: "el fatora",
   },
   {
     english: "Delicious",
@@ -214,14 +214,14 @@ const Vacation = [
     arabic: "المغادرة",
     audio: "/audio/vacation/departure.mp3",
     image: "",
-    transliteration: "el-moghadara",
+    transliteration: "el moghadara",
   },
   {
     english: "Arrival",
     arabic: "الوصول",
     audio: "/audio/vacation/arrival.mp3",
     image: "",
-    transliteration: "el-wosool",
+    transliteration: "el wosool",
   },
   {
     english: "Luggage",
@@ -242,7 +242,7 @@ const Vacation = [
     arabic: "النجدة!",
     audio: "/audio/vacation/help.mp3",
     image: "",
-    transliteration: "el-nagda!",
+    transliteration: "el nagda!",
   },
   {
     english: "Doctor",
@@ -291,7 +291,7 @@ const Vacation = [
     arabic: "الموبايل مش شغال",
     audio: "/audio/vacation/phone-not-working.mp3",
     image: "",
-    transliteration: "el-mobile mesh shaghala",
+    transliteration: "el mobayl mesh shaghal",
   },
 ];
 

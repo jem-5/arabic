@@ -39,21 +39,21 @@ const Commands = [
     arabic: "تعالى",
     audio: "/audio/commands/come.mp3",
     image: "",
-    transliteration: "ta‘aala",
+    transliteration: "ta‘ala",
   },
   {
     english: "Sit",
     arabic: "اقعد",
     audio: "/audio/commands/sit.mp3",
     image: "",
-    transliteration: "o‘od",
+    transliteration: "e‘od",
   },
   {
     english: "Stand up",
     arabic: "اقف",
     audio: "/audio/commands/stand.mp3",
     image: "",
-    transliteration: "o’af",
+    transliteration: "e’af",
   },
   {
     english: "Wait",
@@ -81,7 +81,7 @@ const Commands = [
     arabic: "اقرا",
     audio: "/audio/commands/read.mp3",
     image: "",
-    transliteration: "i’ra",
+    transliteration: "e’ra",
   },
   {
     english: "Write",
@@ -102,14 +102,14 @@ const Commands = [
     arabic: "افتح",
     audio: "/audio/commands/open.mp3",
     image: "",
-    transliteration: "iftaḥ",
+    transliteration: "iftah",
   },
   {
     english: "Close",
     arabic: "اقفل",
     audio: "/audio/commands/close.mp3",
     image: "",
-    transliteration: "ef'el",
+    transliteration: "e'fel",
   },
   {
     english: "Hurry up",
@@ -130,7 +130,7 @@ const Commands = [
     arabic: "بص",
     audio: "/audio/commands/look.mp3",
     image: "",
-    transliteration: "boss",
+    transliteration: "buss",
   },
 ];
 

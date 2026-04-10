@@ -74,7 +74,7 @@ const Letters = [
     arabic: "ز",
     audio: "/audio/letters/zay.mp3",
     image: "",
-    transliteration: "zay",
+    transliteration: "zayn",
   },
   {
     english: "siin",
@@ -144,7 +144,7 @@ const Letters = [
     arabic: "ق",
     audio: "/audio/letters/qaaf.mp3",
     image: "",
-    transliteration: "ʔaf",
+    transliteration: "qaf",
   },
   {
     english: "kaaf",

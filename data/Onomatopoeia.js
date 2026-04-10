@@ -11,7 +11,7 @@ const Onomatopoeia = [
     arabic: "هوهو",
     audio: "/audio/onomatopeia/wolf.mp3",
     image: "",
-    transliteration: "hawhaw",
+    transliteration: "hawhawa",
   },
   {
     english: "Moo",
@@ -46,7 +46,7 @@ const Onomatopoeia = [
     arabic: "تك تك",
     audio: "/audio/onomatopeia/tick.mp3",
     image: "",
-    transliteration: "tik tik",
+    transliteration: "tek tek",
   },
   {
     english: "Knock Knock",
@@ -60,7 +60,7 @@ const Onomatopoeia = [
     arabic: "غطيط",
     audio: "/audio/onomatopeia/snore.mp3",
     image: "",
-    transliteration: "gheṭeeṭ",
+    transliteration: "gheteet",
   },
   {
     english: "Haha",
