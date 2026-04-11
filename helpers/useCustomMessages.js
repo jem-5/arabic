@@ -12,6 +12,8 @@ export const getErrorMsg = (code) => {
       return "Email invalid";
     case "auth/user-not-found":
       return "User not found";
+    case "auth/weak-password":
+      return "Password is weak. Make sure password is at least 6 characters long.";
     default:
       return "";
   }

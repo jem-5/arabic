@@ -10,7 +10,6 @@ function SignUpForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  console.log(showPassword);
   const handleForm = async (event) => {
     event.preventDefault();
     setErrorMsg("");
@@ -21,12 +20,15 @@ function SignUpForm() {
     if (error) {
       setErrorMsg(getErrorMsg(error.code));
       console.log(error.code);
+      // alert(getErrorMsg(error.code));
+      return;
     }
 
     // else successful
     // console.log(result);
     // return router.push("/profile");
   };
+
   return (
     <div className="wrapper">
       <div className="form-wrapper">
