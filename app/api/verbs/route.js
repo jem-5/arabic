@@ -18,7 +18,7 @@ export async function GET(req) {
   } catch (error) {
     isPaidUser = false;
 
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    // return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const verbs = VerbConjugations.map((verb, index) => {

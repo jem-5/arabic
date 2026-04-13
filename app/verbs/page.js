@@ -18,16 +18,21 @@ export default function Verb() {
   const [currVerb, setCurrVerb] = useState(freeVerbs[0]);
   const [tense, setTense] = useState("presentTense");
 
-  console.log(verbs);
-
   const hasConjugations =
     currVerb?.["presentTense"] && currVerb?.["presentTense"]["I"];
 
   useEffect(() => {
-    if (!user) return;
     const fetchVerbs = async () => {
       try {
-        const token = await user.getIdToken();
+        let token;
+        if (user) {
+          token = await user.getIdToken();
+        } else {
+          token = null;
+        }
+
+        // let token = await user.getIdToken();
+
         const response = await fetch("/api/verbs", {
           method: "GET",
           headers: {
@@ -35,7 +40,8 @@ export default function Verb() {
           },
         });
         const data = await response.json();
-        setVerbs(data.verbs || freeVerbs);
+        console.log(data);
+        setVerbs(data.verbs);
       } catch (error) {
         console.log("Error fetching verbs:", error);
       }
@@ -43,6 +49,13 @@ export default function Verb() {
 
     fetchVerbs();
   }, [user]);
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     setVerbs(verbList);
+  //     return;
+  //   }
+  // }, []);
 
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}`;
@@ -139,22 +152,26 @@ export default function Verb() {
             >
               <div className="overflow-y-auto max-h-96">
                 {verbs
-                  .sort((a, b) => a.english.localeCompare(b.english))
-                  .map((item, i) => {
-                    return (
-                      <li
-                        key={i}
-                        onClick={() => {
-                          setCurrVerb(item);
-                          document.activeElement.blur();
-                        }}
-                        className="flex flex-row justify-between"
-                      >
-                        <span>{item.english}</span>
-                        {item.premium && !isPaidMember ? <span>🔒</span> : null}
-                      </li>
-                    );
-                  })}
+                  ? verbs
+                      .sort((a, b) => a.english.localeCompare(b.english))
+                      .map((item, i) => {
+                        return (
+                          <li
+                            key={i}
+                            onClick={() => {
+                              setCurrVerb(item);
+                              document.activeElement.blur();
+                            }}
+                            className="flex flex-row justify-between"
+                          >
+                            <span>{item.english}</span>
+                            {item.premium && !isPaidMember ? (
+                              <span>🔒</span>
+                            ) : null}
+                          </li>
+                        );
+                      })
+                  : null}
               </div>
             </ul>
           </div>

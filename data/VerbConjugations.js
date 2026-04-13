@@ -4170,6 +4170,10 @@ export default VerbConjugations;
 
 console.log(VerbConjugations.length);
 
+export const verbList = VerbConjugations.map((verb) => {
+  return { english: verb.english };
+});
+
 export const freeVerbs = VerbConjugations.slice(0, 5);
 
 // يطلع – to go up / appear
