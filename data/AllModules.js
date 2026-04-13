@@ -35,6 +35,8 @@ import City from "./City.js";
 import Endearment from "./Endearment.js";
 import Relatives from "./Relatives.js";
 import Conflict from "./Conflict.js";
+import Society from "./Society.js";
+import Conversation from "./Conversation.js";
 
 export const AllModules = {
   Greetings,
@@ -76,10 +78,12 @@ export const AllModules = {
   Onomatopoeia,
   Commands,
   Proverbs,
+  Society,
+  Conversation,
 };
 
 export const searchableModules = Object.entries(AllModules).flatMap(
-  ([name, data]) => data.map((item) => ({ ...item, module: name }))
+  ([name, data]) => data.map((item) => ({ ...item, module: name })),
 );
 
 export const freeModules = {

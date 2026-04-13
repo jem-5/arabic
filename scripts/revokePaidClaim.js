@@ -26,7 +26,7 @@ async function revokePaidClaim(uid) {
 }
 
 (async () => {
-  const UID = "CkhgVrOSI3Yb3S0PFtqj5LAraZo2"; // replace
+  const UID = "4cNYPl8AulOUULRGrPp93yn0Hrx2"; // replace
   await revokePaidClaim(UID);
   process.exit();
 })();
