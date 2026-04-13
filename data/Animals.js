@@ -25,7 +25,7 @@ const Animals = [
     arabic: "سمكه",
     audio: "/audio/animals/fish.mp3",
     image: "/images/animals/fish.jpg",
-    transliteration: "samak",
+    transliteration: "samaka",
   },
   {
     english: "Horse",
