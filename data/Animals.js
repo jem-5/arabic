@@ -22,7 +22,7 @@ const Animals = [
   },
   {
     english: "Fish",
-    arabic: "سمك",
+    arabic: "سمكه",
     audio: "/audio/animals/fish.mp3",
     image: "/images/animals/fish.jpg",
     transliteration: "samak",
@@ -43,7 +43,7 @@ const Animals = [
   },
   {
     english: "Goat",
-    arabic: "معز",
+    arabic: "ماعز",
     audio: "/audio/animals/goat.mp3",
     image: "/images/animals/goat.jpg",
     transliteration: "ma'ez",
