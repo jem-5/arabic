@@ -4,7 +4,7 @@ import "@/firebase/firebaseAdmin";
 import VerbConjugations from "@/data/VerbConjugations";
 
 export async function GET(req) {
-  let isPaidUser = true;
+  let isPaidUser = false;
   try {
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {

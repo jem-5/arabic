@@ -4166,12 +4166,14 @@ const VerbConjugations = [
   },
 ];
 
-export default VerbConjugations;
+export default VerbConjugations.sort((a, b) =>
+  a.english.localeCompare(b.english),
+);
 
 console.log(VerbConjugations.length);
 
 export const verbList = VerbConjugations.map((verb) => {
-  return { english: verb.english };
+  return { english: verb.english, arabic: verb.arabic };
 });
 
 export const freeVerbs = VerbConjugations.slice(0, 5);
