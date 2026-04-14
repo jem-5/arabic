@@ -14,7 +14,7 @@ export default function Verb() {
   const router = useRouter();
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
-  const [verbs, setVerbs] = useState(freeVerbs);
+  const [verbs, setVerbs] = useState([]);
   const [currVerb, setCurrVerb] = useState(verbs[0]);
   const [tense, setTense] = useState("presentTense");
 
@@ -221,51 +221,51 @@ export default function Verb() {
                   <tr>
                     <td>I</td>
                     <td>
-                      {currVerb?.[tense]["I"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["I"]["transliteration"]}
+                      {currVerb?.[tense]?.["I"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["I"]["transliteration"]}
                     </td>
                     <td>We</td>
                     <td>
-                      {currVerb?.[tense]["we"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["we"]["transliteration"]}
+                      {currVerb?.[tense]?.["we"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["we"]["transliteration"]}
                     </td>
                   </tr>
                   <tr>
                     <td>You (m)</td>
                     <td>
-                      {currVerb?.[tense]["youM"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["youM"]["transliteration"]}
+                      {currVerb?.[tense]?.["youM"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["youM"]["transliteration"]}
                     </td>
                     <td>You (pl)</td>
                     <td>
-                      {currVerb?.[tense]["youPl"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["youPl"]["transliteration"]}
+                      {currVerb?.[tense]?.["youPl"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["youPl"]["transliteration"]}
                     </td>
                   </tr>
                   <tr>
                     <td>You (f)</td>
                     <td>
-                      {currVerb?.[tense]["youF"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["youF"]["transliteration"]}
+                      {currVerb?.[tense]?.["youF"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["youF"]["transliteration"]}
                     </td>
                     <td>They</td>
                     <td>
-                      {currVerb?.[tense]["they"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["they"]["transliteration"]}
+                      {currVerb?.[tense]?.["they"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["they"]["transliteration"]}
                     </td>
                   </tr>
                   <tr>
                     <td>He</td>
                     <td>
-                      {currVerb?.[tense]["he"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["he"]["transliteration"]}
+                      {currVerb?.[tense]?.["he"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["he"]["transliteration"]}
                     </td>
                   </tr>
                   <tr>
                     <td>She</td>
                     <td>
-                      {currVerb?.[tense]["she"]["arabic"]} |{" "}
-                      {currVerb?.[tense]["she"]["transliteration"]}
+                      {currVerb?.[tense]?.["she"]["arabic"]} |{" "}
+                      {currVerb?.[tense]?.["she"]["transliteration"]}
                     </td>
                   </tr>
                 </tbody>
