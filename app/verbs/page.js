@@ -14,11 +14,9 @@ export default function Verb() {
   const router = useRouter();
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
-  const [verbs, setVerbs] = useState(VerbConjugations);
+  const [verbs, setVerbs] = useState(freeVerbs);
   const [currVerb, setCurrVerb] = useState(verbs[0]);
   const [tense, setTense] = useState("presentTense");
-
-  console.log("Verbs:", verbs);
 
   useEffect(() => {
     const fetchVerbs = async () => {
@@ -32,8 +30,8 @@ export default function Verb() {
           },
         });
         const data = await response.json();
-        console.log("data", data);
         setVerbs(data.verbs);
+        console.log(data);
         // setVerbs(VerbConjugations);
       } catch (error) {
         console.log("Error fetching verbs:", error);
