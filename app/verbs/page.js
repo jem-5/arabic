@@ -73,7 +73,7 @@ export default function Verb() {
     }
   }, [pathname]);
 
-  const LockedTable = ({ currVerb = freeVerbs[0] }) => {
+  const LockedTable = ({ currVerb = verbs[0] }) => {
     return (
       <table className="table blur-sm">
         <tbody>
@@ -215,7 +215,7 @@ export default function Verb() {
           </div>
 
           <div className="overflow-x-auto">
-            {hasConjugations ? (
+            {isPaidMember ? (
               <table className="table">
                 <tbody>
                   <tr>
