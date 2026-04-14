@@ -38,7 +38,7 @@ export default function Verb() {
         // });
         // const data = await response.json();
         // setVerbs(data.verbs);
-        setVerbs((prev) => [...prev, ...VerbConjugations]);
+        setVerbs(VerbConjugations);
       } catch (error) {
         console.log("Error fetching verbs:", error);
       }
