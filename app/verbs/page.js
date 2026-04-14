@@ -15,12 +15,12 @@ export default function Verb() {
   const pathname = usePathname();
   const baseUrl = "https://arabicroad.com";
   const [verbs, setVerbs] = useState(freeVerbs);
-  const [currVerb, setCurrVerb] = useState(freeVerbs[0]);
+  const [currVerb, setCurrVerb] = useState(verbs[0]);
   const [tense, setTense] = useState("presentTense");
 
   const hasConjugations =
     currVerb?.["presentTense"] && currVerb?.["presentTense"]["I"];
-
+  console.log(hasConjugations);
   useEffect(() => {
     const fetchVerbs = async () => {
       try {
