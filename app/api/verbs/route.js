@@ -15,11 +15,15 @@ export async function GET(req) {
     const decodedToken = await getAuth().verifyIdToken(token);
 
     isPaidUser = decodedToken.isPaidMember === true;
+
+    console.log("Decoded Token:", decodedToken, isPaidUser);
   } catch (error) {
     isPaidUser = false;
 
     // return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
+  console.log("paidUser:", isPaidUser);
 
   const verbs = VerbConjugations.map((verb, index) => {
     const base = {

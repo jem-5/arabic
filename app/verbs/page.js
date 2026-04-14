@@ -31,6 +31,8 @@ export default function Verb() {
           token = null;
         }
 
+        console.log(token);
+
         // let token = await user.getIdToken();
 
         const response = await fetch("/api/verbs", {
@@ -40,7 +42,6 @@ export default function Verb() {
           },
         });
         const data = await response.json();
-        console.log(data);
         setVerbs(data.verbs);
       } catch (error) {
         console.log("Error fetching verbs:", error);
