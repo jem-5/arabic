@@ -19,9 +19,10 @@ export default function Verb() {
   const [tense, setTense] = useState("presentTense");
 
   useEffect(() => {
+    if (!user) return;
     const fetchVerbs = async () => {
       try {
-        let token = await user.getIdToken();
+        const token = await user.getIdToken();
 
         const response = await fetch("/api/verbs", {
           method: "GET",
@@ -30,7 +31,7 @@ export default function Verb() {
           },
         });
         const data = await response.json();
-        setVerbs(data.verbs);
+        setVerbs(data.verbs || freeVerbs);
         console.log(data);
         // setVerbs(VerbConjugations);
       } catch (error) {
