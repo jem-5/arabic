@@ -4,7 +4,7 @@ import "@/firebase/firebaseAdmin";
 import VerbConjugations from "@/data/VerbConjugations";
 
 export async function GET(req) {
-  let isPaidUser = false;
+  let isPaidUser = true;
   try {
     const authHeader = req.headers.get("authorization");
     if (!authHeader) {
@@ -15,15 +15,11 @@ export async function GET(req) {
     const decodedToken = await getAuth().verifyIdToken(token);
 
     isPaidUser = decodedToken.isPaidMember === true;
-
-    console.log("Decoded Token:", decodedToken, isPaidUser);
   } catch (error) {
     isPaidUser = false;
 
     // return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
-  console.log("paidUser:", isPaidUser);
 
   const verbs = VerbConjugations.map((verb, index) => {
     const base = {
