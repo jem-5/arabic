@@ -21,7 +21,7 @@ export default function Verb() {
   useEffect(() => {
     const fetchVerbs = async () => {
       try {
-        let token = await user?.getIdToken();
+        let token = await user.getIdToken();
 
         const response = await fetch("/api/verbs", {
           method: "GET",
