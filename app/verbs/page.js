@@ -29,7 +29,7 @@ export default function Verb() {
         const token = await user.getIdToken();
         console.log("Token:", token);
         const response = await fetch("/api/verbs", {
-          method: "GET",
+          // method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
