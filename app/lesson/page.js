@@ -87,6 +87,7 @@ export default function Lesson() {
         }
 
         const data = await res.json();
+        console.log("approval response:", data);
         setApproved(true);
         setLessonData(data.lesson);
         setCheckingApproval(false);
