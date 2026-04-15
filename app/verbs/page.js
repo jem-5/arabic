@@ -21,13 +21,14 @@ export default function Verb() {
   useEffect(() => {
     const fetchVerbs = async () => {
       try {
-        // if (!user) return;
+        if (!user) return;
 
         // let token;
         // if (!user) token = "12345";
 
         // if (user) token = await user.getIdToken();
-        const token = user ? await user.getIdToken() : "12345";
+        const token = await user.getIdToken();
+
         console.log("Token:", token);
         const response = await fetch("/api/verbs", {
           // method: "GET",

@@ -16,6 +16,7 @@ export async function GET(req) {
     const decodedToken = await getAuth().verifyIdToken(token);
     console.log("decodedToken:", decodedToken);
     isPaidUser = decodedToken.isPaidMember === true;
+    console.log("isPaidUser:", isPaidUser);
   } catch (error) {
     isPaidUser = false;
     // console.error("Error verifying token:", error);
