@@ -20,28 +20,28 @@ export default function Verb() {
 
   useEffect(() => {
     const fetchVerbs = async () => {
-      try {
-        if (!user) return;
+      if (user) {
+        try {
+          // let token;
+          // if (!user) token = "12345";
 
-        // let token;
-        // if (!user) token = "12345";
+          // if (user) token = await user.getIdToken();
+          const token = await user.getIdToken();
 
-        // if (user) token = await user.getIdToken();
-        const token = await user.getIdToken();
-
-        console.log("Token:", token);
-        const response = await fetch("/api/verbs", {
-          // method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        setVerbs(data.verbs || freeVerbs);
-        console.log(data);
-        // setVerbs(VerbConjugations);
-      } catch (error) {
-        console.log("Error fetching verbs:", error);
+          console.log("Token:", token);
+          const response = await fetch("/api/verbs", {
+            // method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          const data = await response.json();
+          setVerbs(data.verbs || freeVerbs);
+          console.log(data);
+          // setVerbs(VerbConjugations);
+        } catch (error) {
+          console.log("Error fetching verbs:", error);
+        }
       }
     };
 
