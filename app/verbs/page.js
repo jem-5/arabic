@@ -22,10 +22,11 @@ export default function Verb() {
     // if (!user) return;
     const fetchVerbs = async () => {
       try {
-        let token;
-        if (!user) token = 12345;
+        // let token;
+        // if (!user) token = "12345";
 
-        if (user) token = await user.getIdToken();
+        // if (user) token = await user.getIdToken();
+        const token = user ? await user.getIdToken() : "12345";
         console.log("Token:", token);
         const response = await fetch("/api/verbs", {
           method: "GET",
