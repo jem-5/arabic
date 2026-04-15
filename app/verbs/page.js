@@ -19,11 +19,12 @@ export default function Verb() {
   const [tense, setTense] = useState("presentTense");
 
   useEffect(() => {
-    if (!user) return;
+    // if (!user) return;
     const fetchVerbs = async () => {
       try {
-        const token = await user.getIdToken();
-
+        let token;
+        if (user) token = await user.getIdToken();
+        if (!user) token = 12345;
         const response = await fetch("/api/verbs", {
           method: "GET",
           headers: {
