@@ -19,9 +19,9 @@ export async function GET(req) {
     console.log("isPaidUser:", isPaidUser);
   } catch (error) {
     isPaidUser = false;
-    // console.error("Error verifying token:", error);
+    console.error("Error verifying token:", error);
 
-    // return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const verbs = VerbConjugations.map((verb, index) => {
