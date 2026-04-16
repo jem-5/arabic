@@ -7,7 +7,10 @@ import { useAuthContext } from "@/context/AuthContext";
 import { Profile } from "@/components/Profile";
 import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import VerbConjugations, { freeVerbs } from "@/data/VerbConjugations";
+import VerbConjugations, {
+  freeVerbs,
+  verbConjugationsLength,
+} from "@/data/VerbConjugations";
 
 export default function Verb() {
   const { user, isPaidMember } = useAuthContext();
@@ -28,7 +31,6 @@ export default function Verb() {
       if (user) {
         try {
           const token = await user.getIdToken();
-
           console.log("Token:", token);
           const response = await fetch("/api/verbs", {
             headers: {
@@ -139,6 +141,9 @@ export default function Verb() {
     <main className="flex-grow flex flex-col items-center p-2 ">
       <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
         <h3 className="font-bold text-lg text-neutral">Verb Conjugator</h3>
+        <h3 className="font-bold text-lg text-neutral">
+          Total Verbs: {verbConjugationsLength}
+        </h3>
       </div>
       <div className="divider"></div>
       <div className="card md:card-side bg-base-100 shadow-xl bg-neutral w-full ">
