@@ -21,20 +21,8 @@ export default function Verb() {
   useEffect(() => {
     const fetchVerbs = async () => {
       if (!user) {
-        // try {
-        const token = "1234567890"; // Dummy token for unauthenticated users
-        const response = await fetch("/api/verbs", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        setVerbs(data.verbs || freeVerbs);
-        console.log(data);
-        // setVerbs(VerbConjugations);
-        // } catch (error) {
-        //   console.log("Error fetching verbs:", error);
-        // }
+        setVerbs(freeVerbs);
+        return;
       }
 
       if (user) {
@@ -43,23 +31,35 @@ export default function Verb() {
 
           console.log("Token:", token);
           const response = await fetch("/api/verbs", {
-            // method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
+
+          if (!response.ok) {
+            console.error("Failed to fetch verbs:", response.status);
+            setVerbs(freeVerbs);
+            return;
+          }
+
           const data = await response.json();
           setVerbs(data.verbs || freeVerbs);
           console.log(data);
-          // setVerbs(VerbConjugations);
         } catch (error) {
           console.log("Error fetching verbs:", error);
+          setVerbs(freeVerbs);
         }
       }
     };
 
     fetchVerbs();
   }, [user]);
+
+  useEffect(() => {
+    if (verbs && verbs.length > 0) {
+      setCurrVerb(verbs[0]);
+    }
+  }, [verbs]);
 
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}`;

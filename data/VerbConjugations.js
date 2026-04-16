@@ -4176,7 +4176,26 @@ export const verbList = VerbConjugations.map((verb) => {
   return { english: verb.english, arabic: verb.arabic };
 });
 
-export const freeVerbs = VerbConjugations.slice(0, 5);
+export const freeVerbs = VerbConjugations.map((verb, index) => {
+  const base = {
+    id: index,
+    english: verb.english,
+    arabic: verb.verb,
+    transliteration: verb.transliteration,
+    premium: index >= 10,
+  };
+
+  if (index < 10) {
+    return {
+      ...base,
+      pastTense: verb.pastTense,
+      presentTense: verb.presentTense,
+      futureTense: verb.futureTense,
+    };
+  } else {
+    return base;
+  }
+});
 
 // يطلع – to go up / appear
 // يركب – to ride
