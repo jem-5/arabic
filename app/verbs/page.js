@@ -20,6 +20,8 @@ export default function Verb() {
   const [verbs, setVerbs] = useState(freeVerbs);
   const [currVerb, setCurrVerb] = useState(verbs[0]);
   const [tense, setTense] = useState("presentTense");
+  const [query, setQuery] = useState("");
+  const [filteredVerbs, setFilteredVerbs] = useState(verbs);
 
   useEffect(() => {
     const fetchVerbs = async () => {
@@ -137,6 +139,26 @@ export default function Verb() {
     );
   };
 
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value === "") {
+      setFilteredVerbs(verbs);
+      setQuery("");
+      return;
+    }
+    setQuery(value);
+    const q = value.toLowerCase().trim();
+    const filtered = verbs.filter(
+      (item) =>
+        item &&
+        ((item.english && item.english.toLowerCase().includes(q)) ||
+          (item.arabic && item.arabic.includes(q)) ||
+          (item.transliteration &&
+            item.transliteration.toLowerCase().includes(q))),
+    );
+    setFilteredVerbs(filtered);
+  };
+
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
       <div className="flex items-center mt-4 w-full flex-col md:flex-row md:justify-between ">
@@ -151,17 +173,30 @@ export default function Verb() {
           className="card-body flex flex-col 
         justify-between  items-center"
         >
-          <div className="dropdown dropdown-bottom  ">
-            <div tabIndex={0} role="button" className="btn m-1 bg-secondary ">
-              Change Verb
+          <div className="dropdown dropdown-bottom  w-1/2 flex flex-col items-center">
+            <div
+              tabIndex={0}
+              role="button"
+              className="   btn m-1 bg-secondary text-[black]  w-full "
+            >
+              Choose Verb
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow  "
+              className="dropdown-content menu bg-base-100 rounded-box z-[1] p-2 shadow w-full "
             >
-              <div className="overflow-y-auto max-h-96">
-                {verbs
-                  ? verbs.map((item, i) => {
+              <div className="overflow-y-auto max-h-96 w-full">
+                <input
+                  type="text"
+                  value={query}
+                  onChange={handleSearch}
+                  placeholder="Type Arabic, English or Transliteration"
+                  className="p-3 border border-neutral bg-white/90 rounded-lg mb-4 
+              text-[black] placeholder-[black] focus:outline-none w-full "
+                />
+
+                {filteredVerbs
+                  ? filteredVerbs.map((item, i) => {
                       return (
                         <li
                           key={i}
