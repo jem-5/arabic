@@ -156,8 +156,10 @@ export default function Verb() {
           (item.transliteration &&
             item.transliteration.toLowerCase().includes(q))),
     );
-    setFilteredVerbs(filtered);
+    setVerbs(filtered);
   };
+
+  console.log("verbs", verbs, filteredVerbs, currVerb);
 
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
@@ -195,8 +197,8 @@ export default function Verb() {
               text-[black] placeholder-[black] focus:outline-none w-full "
                 />
 
-                {filteredVerbs
-                  ? filteredVerbs.map((item, i) => {
+                {verbs
+                  ? verbs.map((item, i) => {
                       return (
                         <li
                           key={i}
