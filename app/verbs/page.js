@@ -48,6 +48,7 @@ export default function Verb() {
 
           const data = await response.json();
           setVerbs(data.verbs || freeVerbs);
+          setFilteredVerbs(data.verbs || freeVerbs);
           console.log(data);
         } catch (error) {
           console.log("Error fetching verbs:", error);
@@ -142,21 +143,23 @@ export default function Verb() {
   const handleSearch = (e) => {
     const value = e.target.value;
     if (value === "") {
-      setFilteredVerbs(verbs);
+      setFilteredVerbs((prev) => verbs);
       setQuery("");
       return;
+    } else {
+      setQuery(value);
+      const q = value.toLowerCase().trim();
+      const filtered = verbs.filter(
+        (item) =>
+          item &&
+          ((item.english && item.english.toLowerCase().includes(q)) ||
+            (item.arabic && item.arabic.includes(q)) ||
+            (item.transliteration &&
+              item.transliteration.toLowerCase().includes(q))),
+      );
+      setFilteredVerbs((prev) => filtered);
     }
-    setQuery(value);
-    const q = value.toLowerCase().trim();
-    const filtered = verbs.filter(
-      (item) =>
-        item &&
-        ((item.english && item.english.toLowerCase().includes(q)) ||
-          (item.arabic && item.arabic.includes(q)) ||
-          (item.transliteration &&
-            item.transliteration.toLowerCase().includes(q))),
-    );
-    setVerbs(filtered);
+    setCurrVerb(filteredVerbs[0]);
   };
 
   console.log("verbs", verbs, filteredVerbs, currVerb);
@@ -197,12 +200,13 @@ export default function Verb() {
               text-[black] placeholder-[black] focus:outline-none w-full "
                 />
 
-                {verbs
-                  ? verbs.map((item, i) => {
+                {filteredVerbs
+                  ? filteredVerbs.map((item, i) => {
                       return (
                         <li
                           key={i}
                           onClick={() => {
+                            console.log(item);
                             setCurrVerb(item);
                             document.activeElement.blur();
                           }}
