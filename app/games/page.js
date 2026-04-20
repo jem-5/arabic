@@ -17,6 +17,14 @@ const Games = () => {
       premiumOnly: false,
     },
     {
+      title: "Vocab Rush",
+      description:
+        "Select the correct Arabic word for the given English translation. How many can you get right out of 30?",
+      image: "/vocab-rush.png",
+      link: "/games/vocab-rush/",
+      premiumOnly: false,
+    },
+    {
       title: "Echo Match Game",
       description:
         "Can you find the correct English translation for the Arabic word? This quiz presents 30 questions chosen randomly from the full 1000+ word vocabulary of the curriculum.",

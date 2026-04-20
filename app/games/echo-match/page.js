@@ -5,7 +5,6 @@ import { AllModules } from "@/data/AllModules";
 
 const EchoMatch = () => {
   const [allWords, setAllWords] = useState([]);
-
   const [isGameOver, setIsGameOver] = useState(false);
   const [timer, setTimer] = useState(30);
   const [score, setScore] = useState(0);
