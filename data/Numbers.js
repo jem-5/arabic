@@ -78,14 +78,14 @@ const Numbers = [
   },
   {
     english: "Eleven",
-    arabic: "حداشر",
+    arabic: "احداعشر",
     audio: "/audio/numbers/11.mp3",
     image: "",
     transliteration: "ahedashar",
   },
   {
     english: "Twelve",
-    arabic: "اتناشر",
+    arabic: "اتناعشر",
     audio: "/audio/numbers/12.mp3",
     image: "",
     transliteration: "etnashar",
@@ -99,7 +99,7 @@ const Numbers = [
   },
   {
     english: "Fourteen",
-    arabic: "أربعتاشر",
+    arabic: "أربعة عشر",
     audio: "/audio/numbers/14.mp3",
     image: "",
     transliteration: "arbaʿtashar",

@@ -132,28 +132,7 @@ const VocabRush = () => {
 
           <div className="card bg-neutral min-w-80 shadow-xl flex flex-col justify-center items-center">
             <div className="card-body flex flex-col justify-center items-center">
-              <h2 className="card-title ">
-                {question}
-
-                {/* <svg
-                  // onClick={playAudio}
-                  className="w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="white"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.5 8.43A4.985 4.985 0 0 1 17 12a4.984 4.984 0 0 1-1.43 3.5m2.794 2.864A8.972 8.972 0 0 0 21 12a8.972 8.972 0 0 0-2.636-6.364M12 6.135v11.73a1 1 0 0 1-1.64.768L6 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h2l4.36-3.633a1 1 0 0 1 1.64.768Z"
-                  />
-                </svg> */}
-              </h2>
+              <h2 className="card-title ">{question}</h2>
 
               <div className="card-actions flex flex-col items-center w-full   ">
                 <div className="flex flex-row items-center justify-center gap-3 w-full  ">

@@ -57,7 +57,7 @@ const Foods = [
   },
   {
     english: "Pasta",
-    arabic: "مكرونة",
+    arabic: "معكرونة",
     audio: "/audio/foods/pasta.mp3",
     image: "/images/foods/pasta.jpg",
     transliteration: "makaroona",

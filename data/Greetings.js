@@ -134,7 +134,7 @@ const Greetings = [
   },
   {
     english: "Of course",
-    arabic: "طبعن",
+    arabic: "طبعاً ",
     audio: "/audio/greetings/of-course.mp3",
     image: "",
     transliteration: "tab'an",
