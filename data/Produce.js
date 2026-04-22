@@ -18,7 +18,7 @@ const Produce = [
     arabic: "برتقال",
     audio: "/audio/produce/orange.mp3",
     image: "/images/produce/orange.jpg",
-    transliteration: "burtu'al",
+    transliteration: "burtuqal",
   },
   {
     english: "Grapes",

@@ -88,7 +88,7 @@ const Body = [
     arabic: "عنق",
     audio: "/audio/body/neck.mp3",
     image: "/images/body/neck.jpg",
-    transliteration: "3on2",
+    transliteration: "'onq",
   },
   {
     english: "Shoulder",
@@ -106,7 +106,7 @@ const Body = [
   },
   {
     english: "Arm",
-    arabic: "درع",
+    arabic: "ذراع",
     audio: "/audio/body/arm.mp3",
     image: "/images/body/arm.jpg",
     transliteration: "der3",
