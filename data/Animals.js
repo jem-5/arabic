@@ -102,7 +102,7 @@ const Animals = [
     arabic: "حمار وحشي",
     audio: "/audio/animals/zebra.mp3",
     image: "/images/animals/zebra.jpg",
-    transliteration: "himar we7shi",
+    transliteration: "himar wehshi",
   },
   {
     english: "Monkey",
@@ -144,14 +144,14 @@ const Animals = [
     arabic: "سلحفاه",
     audio: "/audio/animals/turtle.mp3",
     image: "/images/animals/turtle.jpg",
-    transliteration: "sol7afa",
+    transliteration: "solhafa",
   },
   {
     english: "Bee",
     arabic: "نحله",
     audio: "/audio/animals/bee.mp3",
     image: "/images/animals/bee.jpg",
-    transliteration: "na7la",
+    transliteration: "nahla",
   },
   {
     english: "Spider",
@@ -169,10 +169,10 @@ const Animals = [
   },
   {
     english: "Worm",
-    arabic: "ديدان",
+    arabic: "دودة",
     audio: "/audio/animals/worm.mp3",
     image: "/images/animals/worm.jpg",
-    transliteration: "deedan",
+    transliteration: "dooda",
   },
 ];
 
