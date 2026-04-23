@@ -2016,14 +2016,14 @@ const VerbConjugations = [
     verb: "يصحى",
     transliteration: "yisha",
     futureTense: {
-      I: { arabic: "أنا هصحى", transliteration: "ana hasahi" },
-      youM: { arabic: "إنتَ هتصحى", transliteration: "inta hatsahi" },
-      youF: { arabic: "إنتِ هتصحي", transliteration: "inti hatsahi" },
-      he: { arabic: "هو هيصحو", transliteration: "howwa hayisahi" },
-      she: { arabic: "هي هتصحو", transliteration: "heyya hatsahi" },
-      we: { arabic: "إحنا هنصحى", transliteration: "ehna hansahi" },
-      youPl: { arabic: "إنتو هتصحوا", transliteration: "intu hatsahu" },
-      they: { arabic: "هم هيصحوا", transliteration: "homma hayisahu" },
+      I: { arabic: "أنا هصحى", transliteration: "ana hasha" },
+      youM: { arabic: "إنتَ هتصحى", transliteration: "inta hatisha" },
+      youF: { arabic: "إنتِ هتصحي", transliteration: "inti hatishi" },
+      he: { arabic: "هو هيصحو", transliteration: "howwa hayisha" },
+      she: { arabic: "هي هتصحو", transliteration: "heyya hatisha" },
+      we: { arabic: "إحنا هنصحى", transliteration: "ehna hanisha" },
+      youPl: { arabic: "إنتو هتصحوا", transliteration: "intu hatishu" },
+      they: { arabic: "هم هيصحوا", transliteration: "homma hayishu" },
     },
     pastTense: {
       I: { arabic: "أنا صحيت", transliteration: "ana saheet" },
@@ -2038,35 +2038,35 @@ const VerbConjugations = [
     presentTense: {
       I: {
         arabic: "أنا بصحى",
-        transliteration: "ana basahi",
+        transliteration: "ana basha",
       },
       youM: {
         arabic: "إنتَ بتصحى",
-        transliteration: "inta bitsahi",
+        transliteration: "inta bitisha",
       },
       youF: {
         arabic: "إنتِ بتصحى",
-        transliteration: "inti bitsahi",
+        transliteration: "inti bitishi",
       },
       he: {
         arabic: "هو بيصحى",
-        transliteration: "howwa biyisahi",
+        transliteration: "howwa biyisha",
       },
       she: {
         arabic: "هي بتصحى",
-        transliteration: "heyya bitsahi",
+        transliteration: "heyya bitisha",
       },
       we: {
         arabic: "إحنا بنصحى",
-        transliteration: "ehna binsahi",
+        transliteration: "ehna binisha",
       },
       youPl: {
         arabic: "إنتو بتصحوا",
-        transliteration: "intu bitsahu",
+        transliteration: "intu bitishu",
       },
       they: {
         arabic: "هم بيصحوا",
-        transliteration: "homma biyisahu",
+        transliteration: "homma biyishu",
       },
     },
   },
