@@ -228,6 +228,8 @@ export default function Lesson() {
     }
   };
 
+  console.log(isPaidMember, "isPaidMember");
+
   const handleClickPrevious = (e) => {
     setSwipeDirection("right");
     setTimeout(() => {
@@ -290,6 +292,7 @@ export default function Lesson() {
       </main>
     );
   }
+
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
       <div className="flex flex-row mt-2 w-full px-3 justify-between ">
@@ -342,7 +345,9 @@ export default function Lesson() {
               </div>
             )}
 
-            <UpsellCard questionNum={questionNum} lessonData={lessonData} />
+            {!isPaidMember && (
+              <UpsellCard questionNum={questionNum} lessonData={lessonData} />
+            )}
             <div className="   card md:card-side    w-full shadow-xl bg-neutral z-5  ">
               <div className="card-body flex flex-col justify-between  w-full  ">
                 <div className="text-4xl flex justify-between items-baseline gap-2">

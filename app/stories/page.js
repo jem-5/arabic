@@ -45,26 +45,30 @@ export default function Stories() {
 
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
-      <div className="flex flex-row mt-2 w-full px-3 justify-between ">
-        <h3 className="font-bold text-lg text-[white]">Stories Available </h3>
+      <div className="flex flex-col mt-2 w-full px-3 justify-between ">
+        <h3 className="font-bold text-lg text-[white] text-center mb-8">
+          Stories Available
+        </h3>
 
-        {storyData.map((story) => {
-          return (
-            <Link
-              key={story.slug}
-              href={`/stories/${story.slug}`}
-              className="text-sm  bg-neutral p-2 rounded hover:scale-105 transition-transform"
-            >
-              {story.title}
-            </Link>
-          );
-        })}
+        <div className="grid grid-cols-1 justify-start items-center gap-3   md:grid-cols-2   ">
+          {storyData.map((story) => {
+            return (
+              <Link
+                key={story.slug}
+                href={`/stories/${story.slug}`}
+                className="text-md  bg-neutral  hover:scale-105 transition-transform w-full rounded p-3 text-center"
+              >
+                {story.title}
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
       <MyButton
         text="Back to Dashboard"
         func={() => router.push("/dashboard")}
-        classRest="h-12 bg-neutral"
+        classRest="h-12 bg-neutral mt-32"
       />
     </main>
   );

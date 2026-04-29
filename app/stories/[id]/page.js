@@ -15,6 +15,7 @@ import MyButton from "@/components/Button";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Image from "next/image";
 import StoryData from "@/data/stories/Stories";
+
 export default function Stories({ params: { id } }) {
   // const searchParams = useSearchParams();
   const [questionNum, setQuestionNum] = useState(0);
@@ -25,7 +26,7 @@ export default function Stories({ params: { id } }) {
   const [animateIn, setAnimateIn] = useState(false);
 
   // const [approved, setApproved] = useState(false);
-  const lessonData = StoryData.filter((story) => story.slug === id)[0]?.content;
+  const lessonData = StoryData.filter((story) => story.slug === id)[0];
 
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}`;
@@ -46,13 +47,13 @@ export default function Stories({ params: { id } }) {
     setTimeout(() => setAnimateIn(false), 400);
 
     if (e && typeof e.preventDefault === "function") e.preventDefault();
-    if (questionNum < lessonData.length - 1) {
+    if (questionNum < lessonData.content.length - 1) {
       setQuestionNum((prev) => prev + 1);
       return;
     }
 
-    if (questionNum === lessonData.length - 1) {
-      router.push("/dashboard");
+    if (questionNum === lessonData.content.length - 1) {
+      router.push("/stories");
     }
   };
 
@@ -66,7 +67,7 @@ export default function Stories({ params: { id } }) {
   };
 
   const playAudio = () => {
-    let audio = new Audio(lessonData?.[questionNum]?.audio);
+    let audio = new Audio(lessonData?.content?.[questionNum]?.audio);
     if (!audio) return;
 
     audio.playbackRate = 1;
@@ -76,6 +77,8 @@ export default function Stories({ params: { id } }) {
   useEffect(() => {
     playAudio();
   }, [questionNum]);
+
+  console.log(lessonData);
 
   if (!lessonData) {
     return (
@@ -87,27 +90,31 @@ export default function Stories({ params: { id } }) {
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
       <div className="flex flex-row mt-2 w-full px-3 justify-between ">
-        <h3 className="font-bold text-lg text-[white]">MODULE </h3>
+        <h3 className="font-bold text-lg text-[white]">
+          MODULE: {lessonData ? lessonData.title : null}
+        </h3>
         <h3 className="font-bold text-lg align-end justify-end text-[white]">
-          {questionNum + 1} / {lessonData ? lessonData.length : null}
+          {questionNum + 1} / {lessonData ? lessonData.content.length : null}
         </h3>
       </div>
 
-      <div className="card p-2 md:max-w-3xl relative">
+      <div className="card p-2 md:max-w-4xl relative">
         <div className="   card md:card-side    w-full shadow-xl bg-neutral z-5  ">
-          <div className="card-body flex flex-col justify-start  w-3/4  ">
+          <div className="card-body flex flex-col justify-start  w-full ">
             <div className="text-2xl flex justify-between items-baseline gap-2">
-              {lessonData ? lessonData[questionNum]?.arabic : null}
+              {lessonData ? lessonData.content?.[questionNum]?.arabic : null}
             </div>
-            <div className="flex items-center justify-end w-3/4 rounded p-2">
-              <div className="chat chat-end  ">
-                <div className="  bg-secondary text-2xl text-[white] ">
-                  {lessonData ? lessonData[questionNum].english : null}
+            <div className="flex items-center justify-end w-full rounded p-2">
+              <div className="chat chat-end ">
+                <div className="chat-bubble   bg-secondary text-lg text-[white] p-3 rounded">
+                  {lessonData
+                    ? lessonData.content?.[questionNum].english
+                    : null}
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-2 w-full ">
+            <div className="flex  justify-center gap-2 w-full items-center">
               Listen:
               <button
                 className="text-2xl  bg-[black]    p-2 rounded-full hover:cursor-pointer hover:scale-110 transition-transform"
@@ -119,8 +126,8 @@ export default function Stories({ params: { id } }) {
           </div>
           <figure>
             <img
-              className="w-1/2 sm:w-2/3 md:w-full   "
-              src={lessonData?.[questionNum]?.image ?? null}
+              className="w-full sm:w-2/3 md:w-full   "
+              src={lessonData?.content?.[questionNum]?.image ?? null}
               alt="arabic greeting"
             />
           </figure>
@@ -131,7 +138,7 @@ export default function Stories({ params: { id } }) {
             classRest={questionNum === 0 ? "invisible" : "visible"}
             text={
               <svg
-                className="w-5 h-5 "
+                className="w-5 h-5"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -177,8 +184,8 @@ export default function Stories({ params: { id } }) {
         </div>
       </div>
       <MyButton
-        text="Back to Dashboard"
-        func={() => router.push("/dashboard")}
+        text="Back to Story Dashboard"
+        func={() => router.push("/stories")}
         classRest="h-12 bg-neutral"
       />
     </main>
