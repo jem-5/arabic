@@ -2,13 +2,7 @@
 
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { db } from "@/firebase/config";
-import {
-  doc,
-  updateDoc,
-  arrayUnion,
-  collection,
-  setDoc,
-} from "firebase/firestore";
+
 import Link from "next/link";
 import { useAuthContext } from "@/context/AuthContext";
 import MyButton from "@/components/Button";

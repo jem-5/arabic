@@ -37,6 +37,7 @@ import Relatives from "./Relatives.js";
 import Conflict from "./Conflict.js";
 import Society from "./Society.js";
 import Conversation from "./Conversation.js";
+import Politics from "./Politics.js";
 
 export const AllModules = {
   Greetings,
@@ -80,6 +81,7 @@ export const AllModules = {
   Proverbs,
   Society,
   Conversation,
+  Politics,
 };
 
 export const searchableModules = Object.entries(AllModules).flatMap(
