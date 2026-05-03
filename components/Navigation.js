@@ -112,14 +112,14 @@ export const Navigation = () => {
               className=" gap-2  flex flex-col text-xl"
               onClick={() => setIsOpen(false)}
             >
-              <Link href="/dashboard/" className="font-bold ">
-                <button className="  text-sm md:text-lg  hover:scale-110">
+              <Link href="/dashboard/" className="font-bold">
+                <button className="text-sm md:text-lg  hover:scale-110">
                   Lessons
                 </button>
               </Link>
 
               <Link href="/verbs/" className="font-bold">
-                <button className="  text-sm md:text-lg hover:scale-110 ">
+                <button className="text-sm md:text-lg hover:scale-110">
                   Verbs
                 </button>
               </Link>

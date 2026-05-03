@@ -9,7 +9,7 @@ const StoryData = [
           "I arrived in Egypt tonight. As soon as I got off the plane, I was very happy and a little nervous. I looked around the airport and everything was new to me. I went up to the officer and said: hello. He smiled and said to me: hello, welcome. At that moment, I really felt like I was in Egypt.",
         arabic:
           "أنا وصلت مصر النهارده بالليل. أول ما نزلت من الطيارة، كنت مبسوطة قوي ومتوترة شوية. بصيت حواليّ في المطار وكل حاجة كانت جديدة عليّ. قربت من الضابط وقلت له: السلام عليكم. ابتسم وقال لي: وعليكم السلام، حمد لله على السلامة. حسّيت ساعتها إني فعلًا في مصر.",
-        audio: "",
+        audio: "/audio/stories/1a.mp3",
         image: "/images/stories/1a.jfif",
       },
       {
@@ -17,7 +17,7 @@ const StoryData = [
           "After I finished the procedures, I met someone waiting for me outside. He said: how are you? How are you doing? I said: thank God, I’m good. My name is Jennifer. He asked me: where are you from? I said: I’m from America, but originally I’m half Egyptian. He laughed and said: welcome to your country.",
         arabic:
           "بعد ما خلصت الإجراءات، قابلت واحد مستنيني برّه. قال لي: إزيّك؟ عاملة إيه؟ قلت له: الحمد لله، كويسة. أنا اسمي جينيفر. سألني: إنتي منين؟ قلت له: أنا من أمريكا، بس أصلي نص مصرية. ضحك وقال لي: أهلاً وسهلاً بيكي في بلدك.",
-        audio: "",
+        audio: "/audio/stories/1b.mp3",
         image: "/images/stories/1b.jfif",
       },
       {
