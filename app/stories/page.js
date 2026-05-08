@@ -44,21 +44,28 @@ export default function Stories() {
   }, [pathname]);
 
   return (
-    <main className="flex-grow flex flex-col items-center p-2 ">
+    <main className="flex-grow flex flex-col justify-center items-center p-2 ">
       <div className="flex flex-col mt-2 w-full px-3 justify-between ">
         <h3 className="font-bold text-lg text-[white] text-center mb-8">
           Stories Available
         </h3>
 
-        <div className="grid grid-cols-1 justify-start items-center gap-3   md:grid-cols-2   ">
+        <div className="grid grid-cols-1 justify-center items-center place-content-center place-items-center gap-3   md:grid-cols-2 lg:grid-cols-3 m-auto ">
           {storyData.map((story) => {
             return (
               <Link
                 key={story.slug}
                 href={`/stories/${story.slug}`}
-                className="text-md  bg-neutral  hover:scale-105 transition-transform w-full rounded p-3 text-center"
+                className="text-md  bg-neutral  hover:scale-105 transition-transform w-48  md:w-64 rounded p-3 text-center flex flex-col justify-center items-center"
               >
                 {story.title}
+                <Image
+                  src={story.content[0].image}
+                  alt={story.title}
+                  width={150}
+                  height={100}
+                  className=" h-auto mt-2 rounded w-full "
+                />
               </Link>
             );
           })}
