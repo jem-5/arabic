@@ -1,7 +1,7 @@
 const Drinks = [
   {
     english: "Water",
-    arabic: "مية",
+    arabic: "مياه",
     audio: "/audio/drinks/water.mp3",
     image: "/images/drinks/water.jpg",
     transliteration: "mayya",

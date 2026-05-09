@@ -57,7 +57,7 @@ const Body = [
   },
   {
     english: "Teeth",
-    arabic: "سنان",
+    arabic: "أسنان",
     audio: "/audio/body/teeth.mp3",
     image: "/images/body/teeth.jpg",
     transliteration: "senan",
@@ -85,10 +85,10 @@ const Body = [
   },
   {
     english: "Neck",
-    arabic: "عنق",
+    arabic: "قفة",
     audio: "/audio/body/neck.mp3",
     image: "/images/body/neck.jpg",
-    transliteration: "'onq",
+    transliteration: "afa",
   },
   {
     english: "Shoulder",
@@ -148,10 +148,10 @@ const Body = [
   },
   {
     english: "Foot",
-    arabic: "قدم",
+    arabic: "رجل",
     audio: "/audio/body/foot.mp3",
     image: "/images/body/foot.jpg",
-    transliteration: "addam",
+    transliteration: "rigl",
   },
   {
     english: "Heart",

@@ -7,7 +7,7 @@ admin.initializeApp({
 });
 
 async function setPaidMemberClaim() {
-  const paidUserUIDs = ["4cNYPl8AulOUULRGrPp93yn0Hrx2"];
+  const paidUserUIDs = ["oW9wrTxwM7U0Yhm4InZr7J6ifAn1"];
 
   for (const uid of paidUserUIDs) {
     await admin.auth().setCustomUserClaims(uid, {
