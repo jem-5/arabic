@@ -243,7 +243,7 @@ const StoryData = [
           "I took pictures and walked around. I felt happy to see such an amazing place.",
         arabic:
           "صورت شوية ومشيت حوالين المكان. حسّيت إني مبسوطة إني شفت مكان رائع كده.",
-        audio: "",
+        audio: "/audio/stories/8c.mp3",
         image: "/images/stories/8c.jfif",
       },
     ],
