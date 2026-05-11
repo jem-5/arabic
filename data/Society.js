@@ -21,11 +21,11 @@ const Society = [
     transliteration: "el-ʿadat",
   },
   {
-    english: "values",
-    arabic: "القيم",
-    audio: "/audio/society/values.mp3",
+    english: "value",
+    arabic: "قيمـَة",
+    audio: "/audio/society/value.mp3",
     image: "",
-    transliteration: "el-qiyam",
+    transliteration: "eema",
   },
   {
     english: "respect",

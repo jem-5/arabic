@@ -116,7 +116,7 @@ const Clothing = [
     arabic: "نضارة شمس",
     audio: "/audio/clothing/sunglasses.mp3",
     image: "/images/clothing/sunglasses.jpg",
-    transliteration: "nadara shams",
+    transliteration: "nadarit shams",
   },
   {
     english: "Jewelry",

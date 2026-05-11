@@ -155,7 +155,7 @@ const Nature = [
   },
   {
     english: "Water",
-    arabic: "مَيّة",
+    arabic: "مياه",
     audio: "/audio/nature/water.mp3",
     image: "/images/nature/ocean.jpg",
     transliteration: "mayya",

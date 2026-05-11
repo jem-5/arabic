@@ -113,7 +113,7 @@ const Foods = [
   },
   {
     english: "Candy",
-    arabic: "حلوة",
+    arabic: "حلوى",
     audio: "/audio/foods/candy.mp3",
     image: "/images/foods/candy.jpg",
     transliteration: "halwa",

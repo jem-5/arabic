@@ -183,7 +183,7 @@ const Body = [
   },
   {
     english: "Kidney",
-    arabic: "كلي",
+    arabic: "كلية",
     audio: "/audio/body/kidney.mp3",
     image: "/images/body/kidney.jpg",
     transliteration: "kely",

@@ -64,7 +64,7 @@ const Drinks = [
   },
   {
     english: "Hot Chocolate",
-    arabic: "شوكلاته سخنة",
+    arabic: "شوكولاته ساخنة",
     audio: "/audio/drinks/hot-chocolate.mp3",
     image: "/images/drinks/hot-chocolate.jpg",
     transliteration: "shukolata sakhina",

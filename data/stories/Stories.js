@@ -309,6 +309,254 @@ const StoryData = [
       },
     ],
   },
+  {
+    slug: "the-taxi-driver-wont-stop-talking",
+    title: "The Taxi Driver Won’t Stop Talking",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "I got into the taxi and told the driver where I wanted to go. As soon as we started driving, he began asking me questions. He said: so, where are you from? And what do you think of Egypt so far?",
+        arabic:
+          "ركبت التاكسي وقلت للسواق أنا رايحة فين. أول ما اتحركنا، ابتدى يسألني أسئلة كتير. قال لي: إنتي منين بقى؟ وإيه رأيك في مصر لحد دلوقتي؟",
+        audio: "/audio/stories/11a.mp3",
+        image: "/images/stories/11a.jfif",
+      },
+      {
+        english:
+          "I answered him, and suddenly he started talking about traffic, prices, and life in Egypt. Honestly, he did not stop talking for even one minute. Every time I tried to look out the window quietly, he asked me another question.",
+        arabic:
+          "رديت عليه، وفجأة ابتدى يتكلم عن الزحمة والأسعار والحياة في مصر. بصراحة، ما سكتش ولا دقيقة واحدة. كل ما أحاول أبص من الشباك شوية، يرجع يسألني سؤال تاني.",
+        audio: "/audio/stories/11b.mp3",
+        image: "/images/stories/11b.jfif",
+      },
+      {
+        english:
+          "At the end of the ride, he laughed and said: you have to visit Egypt again for a longer time. I laughed too and said: maybe next time. Even though he talked a lot, the ride was actually fun.",
+        arabic:
+          "في آخر المشوار، ضحك وقال لي: لازم تيجي مصر تاني وتقعدي فترة أطول. ضحكت أنا كمان وقلت له: يمكن المرة الجاية. مع إنه كان بيتكلم كتير، بس المشوار كان ممتع فعلًا.",
+        audio: "/audio/stories/11c.mp3",
+        image: "/images/stories/11c.jfif",
+      },
+    ],
+  },
+  {
+    slug: "the-restaurant-got-the-order-wrong",
+    title: "The Restaurant Got the Order Wrong",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "I went to a restaurant with my friend and ordered grilled chicken with rice. After a while, the waiter brought my food, but it was not what I ordered at all.",
+        arabic:
+          "رحت مطعم مع صاحبتي وطلبت فراخ مشوية مع رز. بعد شوية، الجرسون جاب الأكل، بس ما كانش ده اللي طلبته خالص.",
+        audio: "/audio/stories/12a.mp3",
+        image: "/images/stories/12a.jfif",
+      },
+      {
+        english:
+          "I politely called the waiter and said: excuse me, I think there’s a mistake. I ordered chicken, not meat. He looked surprised and apologized immediately.",
+        arabic:
+          "ناديت الجرسون بذوق وقلت له: لو سمحت، أعتقد في غلطة. أنا طلبت فراخ مش لحمة. بص لي باستغراب واعتذر على طول.",
+        audio: "/audio/stories/12b.mp3",
+        image: "/images/stories/12b.jfif",
+      },
+      {
+        english:
+          "He took the plate back to the kitchen and said the correct order would be ready soon. My friend laughed and said: at least now you have a funny story to tell.",
+        arabic:
+          "خد الطبق ورجع بيه المطبخ وقال إن الأوردر الصح هيكون جاهز حالًا. صاحبتي ضحكت وقالت لي: أهو على الأقل بقى عندك موقف مضحك تحكيه.",
+        audio: "/audio/stories/12c.mp3",
+        image: "/images/stories/12c.jfif",
+      },
+    ],
+  },
+  {
+    slug: "deep-conversation-at-a-cafe",
+    title: "Deep Conversation at a Café",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "One evening, I was sitting at a café with a friend. We started talking about life and the future. He asked me: do you think you’ll live in Egypt someday?",
+        arabic:
+          "في يوم بالليل، كنت قاعدة في كافيه مع صاحبي. ابتدينا نتكلم عن الحياة والمستقبل. سألني: إنتي شايفة إنك ممكن تعيشي في مصر يوم من الأيام؟",
+        audio: "/audio/stories/13a.mp3",
+        image: "/images/stories/13a.jfif",
+      },
+      {
+        english:
+          "Honestly, I wasn’t sure how to answer. Part of me loved the idea, but another part felt nervous about changing my whole life. I told him that sometimes I feel like I belong in two different places.",
+        arabic:
+          "بصراحة، ما كنتش عارفة أرد إزاي. جزء مني كان بيحب الفكرة، بس جزء تاني كان متوتر من فكرة إني أغيّر حياتي كلها. قلت له إني أوقات بحس إني أنتمي لمكانين مختلفين.",
+        audio: "/audio/stories/13b.mp3",
+        image: "/images/stories/13b.jfif",
+      },
+      {
+        english:
+          "He nodded and said: that’s normal. You don’t always have to choose one place or the other. We stayed talking for a long time, and the conversation made me think deeply.",
+        arabic:
+          "هز راسه وقال: ده طبيعي. مش لازم دايمًا تختاري مكان واحد بس. فضلنا نتكلم وقت طويل، والكلام خلاني أفكر بعمق.",
+        audio: "/audio/stories/13c.mp3",
+        image: "/images/stories/13c.jfif",
+      },
+    ],
+  },
+  {
+    slug: "family-gathering-gets-chaotic",
+    title: "Family Gathering Gets Chaotic",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "My family invited me to a big gathering at my aunt’s house. As soon as I arrived, everyone started talking at the same time. Some people were asking me questions, while others were bringing me food.",
+        arabic:
+          "عيلتي عزمتني على تجمع كبير في بيت خالتي. أول ما وصلت، كل الناس ابتدت تتكلم في نفس الوقت. ناس كانت بتسألني أسئلة، وناس تانية كانت بتجيب لي أكل.",
+        audio: "/audio/stories/14a.mp3",
+        image: "/images/stories/14a.jfif",
+      },
+      {
+        english:
+          "Every time I said I was full, someone put more food on my plate anyway. My cousin laughed and said: in this family, nobody lets you stay hungry.",
+        arabic:
+          "كل ما أقول إني شبعت، حد يحط أكل زيادة في طبقي برضه. بنت خالتي ضحكت وقالت: في العيلة دي، محدش بيسيبك جعان.",
+        audio: "/audio/stories/14b.mp3",
+        image: "/images/stories/14b.jfif",
+      },
+      {
+        english:
+          "By the end of the night, I was exhausted from all the noise and conversations, but I also felt really happy. The whole evening felt warm and full of life.",
+        arabic:
+          "في آخر الليلة، كنت مرهقة من الدوشة والكلام الكتير، بس كنت مبسوطة جدًا برضه. السهرة كلها كانت مليانة دفا وحياة.",
+        audio: "/audio/stories/14c.mp3",
+        image: "/images/stories/14c.jfif",
+      },
+    ],
+  },
+  {
+    slug: "crossing-the-street-in-cairo",
+    title: "Crossing the Street in Cairo",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "One day, I needed to cross a very busy street in Cairo. Cars were coming from every direction, and honestly, I had no idea when to move.",
+        arabic:
+          "في يوم، كنت محتاجة أعدّي شارع زحمة جدًا في القاهرة. العربيات كانت جاية من كل اتجاه، وبصراحة ما كنتش عارفة أتحرك إمتى.",
+        audio: "/audio/stories/17a.mp3",
+        image: "/images/stories/17a.jfif",
+      },
+      {
+        english:
+          "I stood there nervously for almost two minutes while everyone else crossed normally. A man next to me noticed and laughed a little. He said: come on, just walk with me.",
+        arabic:
+          "فضلت واقفة متوترة تقريبًا دقيقتين، بينما كل الناس كانت بتعدّي عادي. راجل واقف جنبي خد باله وضحك شوية. قال لي: يلا، بس امشي معايا.",
+        audio: "/audio/stories/17b.mp3",
+        image: "/images/stories/17b.jfif",
+      },
+      {
+        english:
+          "I followed him carefully through the traffic, and somehow we made it to the other side safely. Afterward, I laughed and realized crossing the street in Cairo is basically a life skill.",
+        arabic:
+          "مشيت وراه بحذر وسط الزحمة، وبطريقة ما وصلنا الناحية التانية بأمان. بعد كده ضحكت وحسّيت إن عدّي الشارع في القاهرة مهارة حياة فعلًا.",
+        audio: "/audio/stories/17c.mp3",
+        image: "/images/stories/17c.jfif",
+      },
+    ],
+  },
+  {
+    slug: "waiting-for-a-delivery-that-never-arrives",
+    title: "Waiting for a Delivery That Never Arrives",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "I ordered something online and waited all day for the delivery. The app kept saying: your order is arriving soon, but nobody showed up.",
+        arabic:
+          "طلبت حاجة أونلاين وفضلت مستنية الدليفري طول اليوم. الأبلكيشن كان كل شوية يقول: طلبك هيوصل قريب، بس محدش جه.",
+        audio: "/audio/stories/19a.mp3",
+        image: "/images/stories/19a.jfif",
+      },
+      {
+        english:
+          "A few hours later, the driver finally called me sounding completely lost. He kept asking me for directions even though I had already written the address clearly.",
+        arabic:
+          "بعد كام ساعة، السواق كلمني أخيرًا وكان باين عليه تايه جدًا. فضل يسألني على العنوان مع إني كنت كاتباه بوضوح.",
+        audio: "/audio/stories/19b.mp3",
+        image: "/images/stories/19b.jfif",
+      },
+      {
+        english:
+          "After explaining the location three different times, he eventually arrived. Honestly, by that point I was more relieved than excited about the package itself.",
+        arabic:
+          "بعد ما شرحت له المكان تلات مرات مختلفة، وصل أخيرًا. بصراحة، وقتها كنت مرتاحة إنه وصل أكتر ما كنت متحمسة للطلب نفسه.",
+        audio: "/audio/stories/19c.mp3",
+        image: "/images/stories/19c.jfif",
+      },
+    ],
+  },
+  {
+    slug: "trying-to-understand-song-lyrics",
+    title: "Trying to Understand Song Lyrics",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "My friend sent me an Egyptian song and told me: you have to listen to this. I liked the music immediately, but the lyrics were much harder to understand than I expected.",
+        arabic:
+          "صاحبي بعت لي أغنية مصرية وقال لي: لازم تسمعي دي. عجبتني الموسيقى من أول مرة، بس الكلمات كانت أصعب بكتير مما توقعت.",
+        audio: "/audio/stories/20a.mp3",
+        image: "/images/stories/20a.jfif",
+      },
+      {
+        english:
+          "Every time I thought I understood a sentence, the singer used slang or spoke too quickly. I kept replaying certain parts over and over trying to catch the words.",
+        arabic:
+          "كل ما أحس إني فهمت جملة، المطرب يستخدم slang أو يغني بسرعة جدًا. فضلت أعيد أجزاء معينة كتير وأنا بحاول أفهم الكلام.",
+        audio: "/audio/stories/20b.mp3",
+        image: "/images/stories/20b.jfif",
+      },
+      {
+        english:
+          "Eventually, I looked up the lyrics online and realized I had misunderstood half the song. Still, it felt exciting to slowly understand more each time I listened.",
+        arabic:
+          "في الآخر، دورت على الكلمات أونلاين واكتشفت إني فاهمة نص الأغنية غلط. مع كده، كان إحساس ممتع إني أفهم أكتر شوية كل مرة أسمعها.",
+        audio: "/audio/stories/20c.mp3",
+        image: "/images/stories/20c.jfif",
+      },
+    ],
+  },
+  {
+    slug: "someone-keeps-asking-personal-questions",
+    title: "Someone Keeps Asking Personal Questions",
+    level: "Intermediate",
+    content: [
+      {
+        english:
+          "I was sitting with a group of people when one woman suddenly started asking me very personal questions. First she asked my age, then she asked if I was married.",
+        arabic:
+          "كنت قاعدة مع مجموعة ناس، وفجأة ست ابتدت تسألني أسئلة شخصية جدًا. الأول سألتني عندي كام سنة، وبعدها سألتني إذا كنت متجوزة.",
+        audio: "/audio/stories/21a.mp3",
+        image: "/images/stories/21a.jfif",
+      },
+      {
+        english:
+          "Honestly, I didn’t know how to answer politely without sounding rude. Before I could even finish one answer, she moved on to another question.",
+        arabic:
+          "بصراحة، ما كنتش عارفة أرد بذوق من غير ما أبان rude. قبل ما أخلص إجابة واحدة، كانت تدخل في السؤال اللي بعده على طول.",
+        audio: "/audio/stories/21b.mp3",
+        image: "/images/stories/21b.jfif",
+      },
+      {
+        english:
+          "Later, my friend laughed and told me not to take it personally. He said: people here are just curious sometimes. After thinking about it, I understood what he meant.",
+        arabic:
+          "بعد كده، صاحبي ضحك وقال لي ما آخدش الموضوع بشكل شخصي. قال لي: الناس هنا أوقات بتكون فضولية بس. بعد ما فكرت شوية، فهمت قصده.",
+        audio: "/audio/stories/21c.mp3",
+        image: "/images/stories/21c.jfif",
+      },
+    ],
+  },
 ];
 
 export default StoryData;

@@ -53,7 +53,7 @@ const Endearment = [
     arabic: "قمري",
     audio: "/audio/endearment/moon.mp3",
     image: "",
-    transliteration: "amari",
+    transliteration: "qamari",
   },
   {
     english: "Light of my life",

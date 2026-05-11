@@ -215,7 +215,7 @@ const Numbers = [
     arabic: "تلت مية",
     audio: "/audio/numbers/300.mp3",
     image: "",
-    transliteration: "telet meya",
+    transliteration: "talat miya",
   },
   {
     english: "Four Hundred",

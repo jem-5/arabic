@@ -172,7 +172,7 @@ const Relatives = [
     arabic: "والداي",
     audio: "/audio/relatives/parents.mp3",
     image: "",
-    transliteration: "walday",
+    transliteration: "welday",
   },
 ];
 
