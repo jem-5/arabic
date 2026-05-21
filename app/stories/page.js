@@ -50,7 +50,7 @@ export default function Stories() {
           Stories Available
         </h3>
 
-        <div className="grid grid-cols-1 justify-center items-center place-content-center place-items-center gap-3   md:grid-cols-2 lg:grid-cols-3 m-auto ">
+        <div className="grid grid-cols-1 justify-center items-stretch place-content-stretch place-items-center gap-3   md:grid-cols-2 lg:grid-cols-3 m-auto ">
           {storyData.map((story) => {
             return (
               <Link
@@ -66,6 +66,13 @@ export default function Stories() {
                   height={100}
                   className=" h-auto mt-2 rounded w-full "
                 />
+                {story.level === "Beginner" ? (
+                  <div className="badge badge-success mt-2">{story.level}</div>
+                ) : story.level === "Intermediate" ? (
+                  <div className="badge badge-warning mt-2">{story.level}</div>
+                ) : (
+                  <div className="badge badge-error mt-2">{story.level}</div>
+                )}
               </Link>
             );
           })}

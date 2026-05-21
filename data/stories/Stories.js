@@ -444,7 +444,7 @@ const StoryData = [
         arabic:
           "في يوم، كنت محتاجة أعدّي شارع زحمة جدًا في القاهرة. العربيات كانت جاية من كل اتجاه، وبصراحة ما كنتش عارفة أتحرك إمتى.",
         audio: "/audio/stories/17a.mp3",
-        image: "/images/stories/17a.jfif",
+        image: "/images/stories/17a.jpg",
       },
       {
         english:

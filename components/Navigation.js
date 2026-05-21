@@ -45,6 +45,13 @@ export const Navigation = () => {
             </Link>
 
             <Link
+              href="/stories/"
+              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
+            >
+              📖Stories{" "}
+            </Link>
+
+            <Link
               href="/pricing/"
               className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap"
             >
@@ -133,6 +140,12 @@ export const Navigation = () => {
               <Link href="/games/" className="font-bold">
                 <button className="   text-sm md:text-lg hover:scale-110 ">
                   Games
+                </button>
+              </Link>
+
+              <Link href="/stories/" className="font-bold">
+                <button className="   text-sm md:text-lg hover:scale-110 ">
+                  Stories
                 </button>
               </Link>
 
