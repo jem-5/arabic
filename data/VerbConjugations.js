@@ -4852,9 +4852,9 @@ const VerbConjugations = [
       youF: { arabic: "بعتي", transliteration: "baʿati" },
       he: { arabic: "بعت", transliteration: "baʿat" },
       she: { arabic: "بعتت", transliteration: "baʿatet" },
-      we: { arabic: "بعثنا", transliteration: "baʿasna" },
+      we: { arabic: "بعثنا", transliteration: "baʿatna" },
       youPl: { arabic: "بعتوا", transliteration: "baʿatu" },
-      they: { arabic: "بعثوا", transliteration: "baʿasu" },
+      they: { arabic: "بعثوا", transliteration: "baʿatu" },
     },
     futureTense: {
       I: { arabic: "هبعت", transliteration: "habaʿat" },

@@ -1,166 +1,137 @@
 "use client";
-import Link from "next/link";
-import React from "react";
-import { useState } from "react";
+import React, { useRef } from "react";
 
 export const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const NavigationItems = [
+    {
+      name: "🏺Learn",
+      subLinks: [
+        { name: "📜Lessons", href: "/dashboard/" },
+        { name: "🧭Verb Oasis", href: "/verbs/" },
+      ],
+    },
+    {
+      name: "🌙Practice",
+      subLinks: [
+        { name: "☕Conversation", href: "/conversation/" },
+        { name: "🌴Stories", href: "/stories/" },
+        { name: "🎯Verb Quiz", href: "/verbs-quiz/" },
+      ],
+    },
+    {
+      name: "🐫Play",
+      href: "/games/",
+    },
+    {
+      name: "🏠Profile",
+      href: "/profile/",
+    },
+    {
+      name: "💎Pricing",
+      href: "/pricing/",
+    },
+  ];
 
   return (
     <nav className="w-full bg-base shadow-md z-20">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between ">
           <div className="flex-shrink-0 text-xl font-bold">
-            <a className="btn btn-ghost text-xl  h-full" href="/">
+            <a className="btn btn-ghost h-16 text-xl" href="/">
               <img alt="Arabic Road Logo" src="/logo.png" className="h-18" />
             </a>
           </div>
-          <div className="hidden md:flex p-1 md:gap-2 lg:gap-4">
-            <Link
-              href="/dashboard/"
-              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
-            >
-              🏺Lessons
-            </Link>
 
-            <Link
-              href="/verbs/"
-              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
-            >
-              🌙Verbs
-            </Link>
-
-            <Link
-              href="/conversation/"
-              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
-            >
-              💬Conversation
-            </Link>
-
-            <Link
-              href="/games/"
-              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
-            >
-              🐫Games
-            </Link>
-
-            <Link
-              href="/stories/"
-              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap "
-            >
-              📖Stories{" "}
-            </Link>
-
-            <Link
-              href="/pricing/"
-              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap"
-            >
-              🪙Pricing
-            </Link>
-
-            <Link
-              href="/profile/"
-              className="font-bold text-sm md:text-lg overflow-hidden whitespace-nowrap"
-            >
-              🏠Account
-            </Link>
+          <div className="hidden lg:flex flex-col md:flex-row p-1 md:gap-1 lg:gap-3   ">
+            <ul className="menu menu-horizontal px-1 text-left ">
+              {NavigationItems.map((item, index) => (
+                <li key={index} className="">
+                  {!item.subLinks && (
+                    <a
+                      className="font-bold text-xl overflow-hidden whitespace-nowrap hover:scale-110 "
+                      href={item.href}
+                    >
+                      {item.name}
+                    </a>
+                  )}
+                  {item.subLinks && (
+                    <div className="dropdown dropdown-end text-left z-[200]  hover:scale-110">
+                      <a
+                        tabIndex="0"
+                        className="font-bold text-xl   overflow-hidden whitespace-nowrap  "
+                      >
+                        {item.name}
+                      </a>
+                      <ul
+                        tabIndex="0"
+                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52  left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 mt-4 "
+                      >
+                        {item.subLinks.map((subLink, subIndex) => (
+                          <li key={subIndex}>
+                            <a
+                              className="font-bold text-xl hover:scale-110"
+                              href={subLink.href}
+                            >
+                              {subLink.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="md:hidden">
-            <button
-              className="p-2 rounded-md text-gray-700 hover:bg-gray-100"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? (
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
+          <div className="lg:hidden dropdown flex justify-center items-center">
+            <div tabIndex={0} className="btn btn-ghost btn-circle ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-10 w-10 self-center"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-
-          {isOpen && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-40 z-40"
-              onClick={() => setIsOpen(false)}
-            ></div>
-          )}
-
-          <div
-            className={`fixed top-16 right-0  w-48 bg-base-100 text-secondary border-l border-[secondary] shadow-xl z-50 transform transition-transform duration-300 ease-in-out rounded-l-2xl shadow-[0_0_20px_rgba(0,0,0,0.2)] p-2 ${
-              isOpen ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
-            <div
-              className=" gap-2  flex flex-col text-xl"
-              onClick={() => setIsOpen(false)}
-            >
-              <Link href="/dashboard/" className="font-bold">
-                <button className="text-sm md:text-lg  hover:scale-110">
-                  Lessons
-                </button>
-              </Link>
-
-              <Link href="/verbs/" className="font-bold">
-                <button className="text-sm md:text-lg hover:scale-110">
-                  Verbs
-                </button>
-              </Link>
-
-              <Link href="/conversation/" className="font-bold">
-                <button className="  text-sm md:text-lg hover:scale-110 ">
-                  Conversation
-                </button>
-              </Link>
-
-              <Link href="/games/" className="font-bold">
-                <button className="   text-sm md:text-lg hover:scale-110 ">
-                  Games
-                </button>
-              </Link>
-
-              <Link href="/stories/" className="font-bold">
-                <button className="   text-sm md:text-lg hover:scale-110 ">
-                  Stories
-                </button>
-              </Link>
-
-              <Link href="/pricing/" className="font-bold">
-                <button className="   text-sm md:text-lg hover:scale-110">
-                  Pricing
-                </button>
-              </Link>
-
-              <Link href="/profile/" className="font-bold">
-                <button className="   text-sm md:text-lg hover:scale-110">
-                  Account
-                </button>
-              </Link>
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>
             </div>
+            <ul
+              tabIndex="-1"
+              className=" dropdown-content bg-base-100 rounded-box z-[100] mt-3  shadow flex flex-col justify-start items-start p-2 left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 w-64 gap-1  "
+            >
+              {NavigationItems.map((item, index) => (
+                <li key={index} className=" list-none">
+                  {!item.subLinks && (
+                    <span className="font-bold text-md md:text-lg cursor-pointer rounded p-1 hover:bg-[black] ">
+                      <a href={item.href}>{item.name}</a>
+                    </span>
+                  )}
+                  {item.subLinks && (
+                    <>
+                      <span className="font-bold text-md md:text-lg cursor-default">
+                        {item.name}
+                      </span>
+                      <div className="flex flex-col items-start text-left ml-5">
+                        {item.subLinks.map((subLink, subIndex) => (
+                          <span
+                            key={subIndex}
+                            className="font-bold text-md md:text-lg overflow-hidden whitespace-nowrap rounded p-1 hover:bg-[black] "
+                          >
+                            <a href={subLink.href}>{subLink.name}</a>
+                          </span>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

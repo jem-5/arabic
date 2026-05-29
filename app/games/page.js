@@ -60,7 +60,7 @@ const Games = () => {
       justify-center items-center gap-10 max-w-6xl md:flex-row flex-wrap"
       >
         {GamesList.map((game, index) => (
-          <div key={index} className="card  image-full w-96  ">
+          <div key={index} className="card  image-full w-96 z-[5] ">
             <figure>
               <img src={game.image} alt={game.title} />
             </figure>
