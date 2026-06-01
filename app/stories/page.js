@@ -44,7 +44,7 @@ export default function Stories() {
   }, [pathname]);
 
   return (
-    <main className="flex-grow flex flex-col justify-center items-center p-2 ">
+    <main className="flex-grow flex flex-col justify-center items-center p-2 w-full ">
       <div className="flex flex-col mt-2 w-full px-3 justify-between ">
         <h3 className="font-bold text-lg text-[white] text-center mb-8">
           Stories Available
@@ -56,7 +56,7 @@ export default function Stories() {
               <Link
                 key={story.slug}
                 href={`/stories/${story.slug}`}
-                className="text-md  bg-neutral  hover:scale-105 transition-transform w-48  md:w-64 rounded p-3 text-center flex flex-col justify-center items-center"
+                className="text-md  bg-neutral  hover:scale-105 transition-transform w-3/4  md:w-64 rounded p-3 text-center flex flex-col justify-center items-center"
               >
                 {story.title}
                 <Image
