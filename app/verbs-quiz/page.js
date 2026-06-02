@@ -3,6 +3,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import VerbConjugations from "@/data/VerbConjugations";
 
 const TENSE_KEYS = ["presentTense", "pastTense", "futureTense"];
+const PRONOUN_KEYS = ["I", "youM", "youF", "he", "she", "we", "they", "youPl"];
 
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -38,88 +39,40 @@ export default function VerbsQuizPage() {
   const [answerText, setAnswerText] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
   const [answerChoiceType, setAnswerChoiceType] = useState("arabic");
+  const [pronounFilter, setPronounFilter] = useState("all");
 
-  const makeQuestion = useCallback(() => {
-    const verbItem = pickRandom(VerbConjugations);
-    const tense = pickRandom(TENSE_KEYS);
-    const pronounKeys = Object.keys(verbItem[tense] || {});
-    const pronoun = pickRandom(pronounKeys);
-    // Ask either for english (show arabic) or for arabic (show english)
-    // const direction = Math.random() < 0.5 ? "toEnglish" : "toArabic";
-    const direction = "toArabic"; // focus on Arabic for now
-    // or "transliteration"
+  const makeQuestion = useCallback(
+    (filter = pronounFilter) => {
+      const verbItem = pickRandom(VerbConjugations);
+      const tense = pickRandom(TENSE_KEYS);
+      const pronoun = filter === "all" ? pickRandom(PRONOUN_KEYS) : filter;
+      console.log(pronoun, filter);
 
-    return {
-      verbItem,
-      tense,
-      pronoun,
-      direction,
-      // values for checking
-      arabic: (verbItem[tense] && verbItem[tense][pronoun]?.arabic) || "",
-      transliteration:
-        (verbItem[tense] && verbItem[tense][pronoun]?.transliteration) || "",
-      english: verbItem.english || "",
-    };
-  }, []);
+      const direction = "toArabic";
+
+      return {
+        verbItem,
+        tense,
+        pronoun,
+        direction,
+        arabic: (verbItem[tense] && verbItem[tense][pronoun]?.arabic) || "",
+        transliteration:
+          (verbItem[tense] && verbItem[tense][pronoun]?.transliteration) || "",
+        english: verbItem.english || "",
+      };
+    },
+    [pronounFilter],
+  );
 
   const [question, setQuestion] = useState(() => makeQuestion());
 
-  const nextQuestion = useCallback(() => {
-    setAnswerText("");
-    setShowAnswer(false);
-    setLastResult(null);
-    setQuestion(makeQuestion());
-  }, [makeQuestion]);
-
-  const normalize = (s) => (s || "").toString().trim().toLowerCase();
-
-  const checkAnswer = useCallback(
-    (e) => {
-      e?.preventDefault();
-      const given = normalize(answerText);
-      const correctEnglish = normalize(question.english);
-      const correctArabic = normalize(question.arabic);
-      const correctTrans = normalize(question.transliteration);
-      const correctWithoutTo = correctEnglish.replace(/^to\s+/, "");
-
-      let isCorrect = false;
-      if (question.direction === "toEnglish") {
-        // user should give the English infinitive (e.g. "to drink")
-        if (given === correctEnglish || given === correctWithoutTo)
-          isCorrect = true;
-      } else {
-        // user should give the Arabic conjugation OR transliteration
-        if (given === correctArabic || given === correctTrans) isCorrect = true;
-      }
-
-      setScore((s) => ({
-        correct: s.correct + (isCorrect ? 1 : 0),
-        total: s.total + 1,
-      }));
-      setLastResult({
-        isCorrect,
-        given,
-        expected:
-          question.direction === "toEnglish"
-            ? question.english
-            : question.arabic,
-      });
-      setShowAnswer(true);
-    },
-    [answerText, question],
-  );
-
-  // Multiple-choice options for English->Arabic direction
   const mcOptions = useMemo(() => {
     if (!question || question.direction !== "toArabic") return [];
     const opts = new Set();
-
     const correctA = question.arabic;
     const correctT = question.transliteration;
-
     const correct = answerChoiceType === "arabic" ? correctA : correctT;
     opts.add(correct);
-    // if (correctT) opts.add(correctT);
 
     let tries = 0;
     while (opts.size < 4 && tries < 200) {
@@ -130,10 +83,15 @@ export default function VerbsQuizPage() {
 
       if (val) {
         answerChoiceType === "arabic"
-          ? opts.add(val.arabic)
-          : opts.add(val.transliteration);
+          ? opts.add(
+              question.verbItem[question.tense][pickRandom(PRONOUN_KEYS)]
+                .arabic,
+            )
+          : opts.add(
+              question.verbItem[question.tense][pickRandom(PRONOUN_KEYS)]
+                .transliteration,
+            );
       }
-
       tries++;
     }
 
@@ -142,7 +100,7 @@ export default function VerbsQuizPage() {
       arr[arr.length - 1] = correctA || correctT;
     }
     return arr;
-  }, [question]);
+  }, [question, answerChoiceType]);
 
   const handleChooseOption = useCallback(
     (option) => {
@@ -175,12 +133,7 @@ export default function VerbsQuizPage() {
     [question],
   );
 
-  const hint = useMemo(() => {
-    if (!question) return null;
-    return question.direction === "toEnglish"
-      ? `Arabic: ${question.arabic} — (${question.transliteration})`
-      : `English: ${question.english}`;
-  }, [question]);
+  console.log(pronounFilter);
 
   return (
     <main className="p-6 max-w-3xl mx-auto">
@@ -189,7 +142,7 @@ export default function VerbsQuizPage() {
       </h1>
 
       <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col">
-        <h3 className="text-sm font-bold mb-4 text-neutral">
+        <h3 className="text-sm font-bold  text-neutral">
           Choose answer choice type
         </h3>
         <div className="flex gap-3 text-sm ">
@@ -213,7 +166,35 @@ export default function VerbsQuizPage() {
             <p>Transliteration</p>
           </div>
         </div>
-        <hr />
+        <h3 className="text-sm font-bold  text-neutral">
+          Choose pronoun or skip to cycle through all.
+        </h3>
+        <div className="flex gap-3 text-sm ">
+          <select
+            className="select text-sm bg-[white] border-1 border-neutral "
+            onChange={(e) => {
+              const newFilter = e.target.value;
+              setPronounFilter(newFilter);
+              setQuestion(makeQuestion(newFilter));
+            }}
+          >
+            <option value="all" defaultChecked>
+              All
+            </option>
+            <option value="I">I</option>
+            <option value="youM">You (masculine)</option>
+            <option value="youF">You (feminine)</option>
+            <option value="he">He</option>
+            <option value="she">She</option>
+            <option value="we">We</option>
+            <option value="they">They</option>
+            <option value="youPl">You (plural)</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col">
+        {/* <hr /> */}
 
         <div className="mb-3">
           <h2 className="text-lg text-black ">
