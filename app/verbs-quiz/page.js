@@ -40,14 +40,14 @@ export default function VerbsQuizPage() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [answerChoiceType, setAnswerChoiceType] = useState("arabic");
   const [pronounFilter, setPronounFilter] = useState("all");
+  const [tenseFilter, setTenseFilter] = useState("all");
 
   const makeQuestion = useCallback(
-    (filter = pronounFilter) => {
+    (pronFilter = pronounFilter, tensFilter = tenseFilter) => {
       const verbItem = pickRandom(VerbConjugations);
-      const tense = pickRandom(TENSE_KEYS);
-      const pronoun = filter === "all" ? pickRandom(PRONOUN_KEYS) : filter;
-      console.log(pronoun, filter);
-
+      const tense = tensFilter === "all" ? pickRandom(TENSE_KEYS) : tensFilter;
+      const pronoun =
+        pronFilter === "all" ? pickRandom(PRONOUN_KEYS) : pronFilter;
       const direction = "toArabic";
 
       return {
@@ -61,7 +61,7 @@ export default function VerbsQuizPage() {
         english: verbItem.english || "",
       };
     },
-    [pronounFilter],
+    [pronounFilter, tenseFilter],
   );
 
   const [question, setQuestion] = useState(() => makeQuestion());
@@ -133,69 +133,99 @@ export default function VerbsQuizPage() {
     [question],
   );
 
-  console.log(pronounFilter);
-
   return (
     <main className="p-6 max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold mb-4 text-neutral">
         Verb Conjugation Quiz
       </h1>
 
-      <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col">
-        <h3 className="text-sm font-bold  text-neutral">
-          Choose answer choice type
-        </h3>
-        <div className="flex gap-3 text-sm ">
-          <div className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="radio-2"
-              className="radio radio-sm radio-primary"
-              defaultChecked
-              onClick={() => setAnswerChoiceType("arabic")}
-            />
-            <p>Arabic</p>
+      <div className="bg-white  rounded-lg shadow mb-4 text-black flex-col collapse ">
+        <input id="collapse-1-toggle" type="checkbox" className="peer" />
+        <label
+          htmlFor="collapse-1-toggle"
+          className="fixed inset-0 hidden peer-checked:block"
+        ></label>
+        <div className="collapse-title text-md">⚙️ Settings</div>
+
+        <div className="collapse-content">
+          <h3 className="text-sm font-bold  text-neutral">
+            Choose answer choice type
+          </h3>
+          <div className="flex gap-3 text-sm ">
+            <div className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="radio-2"
+                className="radio radio-sm radio-primary"
+                defaultChecked
+                onClick={() => setAnswerChoiceType("arabic")}
+              />
+              <p>Arabic</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="radio-2"
+                className="radio radio-sm radio-primary"
+                onClick={() => setAnswerChoiceType("transliteration")}
+              />
+              <p>Transliteration</p>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="radio-2"
-              className="radio radio-sm radio-primary"
-              onClick={() => setAnswerChoiceType("transliteration")}
-            />
-            <p>Transliteration</p>
+          <h3 className="text-sm font-bold  text-neutral">
+            Choose pronoun or skip to cycle through all.
+          </h3>
+          <div className="flex gap-3 text-sm ">
+            <select
+              className="select text-sm bg-[white] border-1 border-neutral "
+              onChange={(e) => {
+                const newFilter = e.target.value;
+                setPronounFilter(newFilter);
+                setQuestion(makeQuestion(newFilter, tenseFilter));
+                setShowAnswer(false);
+                setSelectedOption(null);
+              }}
+            >
+              <option value="all" defaultChecked>
+                All
+              </option>
+              <option value="I">I</option>
+              <option value="youM">You (masculine)</option>
+              <option value="youF">You (feminine)</option>
+              <option value="he">He</option>
+              <option value="she">She</option>
+              <option value="we">We</option>
+              <option value="they">They</option>
+              <option value="youPl">You (plural)</option>
+            </select>
           </div>
-        </div>
-        <h3 className="text-sm font-bold  text-neutral">
-          Choose pronoun or skip to cycle through all.
-        </h3>
-        <div className="flex gap-3 text-sm ">
-          <select
-            className="select text-sm bg-[white] border-1 border-neutral "
-            onChange={(e) => {
-              const newFilter = e.target.value;
-              setPronounFilter(newFilter);
-              setQuestion(makeQuestion(newFilter));
-            }}
-          >
-            <option value="all" defaultChecked>
-              All
-            </option>
-            <option value="I">I</option>
-            <option value="youM">You (masculine)</option>
-            <option value="youF">You (feminine)</option>
-            <option value="he">He</option>
-            <option value="she">She</option>
-            <option value="we">We</option>
-            <option value="they">They</option>
-            <option value="youPl">You (plural)</option>
-          </select>
+
+          <h3 className="text-sm font-bold  text-neutral">
+            Choose tense or skip to cycle through all.
+          </h3>
+          <div className="flex gap-3 text-sm ">
+            <select
+              className="select text-sm bg-[white] border-1 border-neutral "
+              onChange={(e) => {
+                const newFilter = e.target.value;
+                setTenseFilter(newFilter);
+                setQuestion(makeQuestion(pronounFilter, newFilter));
+                setShowAnswer(false);
+                setSelectedOption(null);
+              }}
+            >
+              <option value="all" defaultChecked>
+                All
+              </option>
+              <option value="presentTense">Present Tense</option>
+              <option value="pastTense">Past Tense</option>
+              <option value="futureTense">Future Tense</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col">
-        {/* <hr /> */}
-
         <div className="mb-3">
           <h2 className="text-lg text-black ">
             Directions: Translate into Arabic
