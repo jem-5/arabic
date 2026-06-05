@@ -139,15 +139,18 @@ export default function VerbsQuizPage() {
         Verb Conjugation Quiz
       </h1>
 
-      <div className="bg-white  rounded-lg shadow mb-4 text-black flex-col collapse ">
+      <div className="bg-white rounded-lg shadow mb-4 text-black flex-col collapse">
         <input id="collapse-1-toggle" type="checkbox" className="peer" />
         <label
           htmlFor="collapse-1-toggle"
-          className="fixed inset-0 hidden peer-checked:block"
+          className="fixed inset-0 hidden peer-checked:block z-0"
         ></label>
         <div className="collapse-title text-md">⚙️ Settings</div>
 
-        <div className="collapse-content">
+        <div
+          className="collapse-content relative z-10"
+          onClick={(e) => e.stopPropagation()}
+        >
           <h3 className="text-sm font-bold  text-neutral">
             Choose answer choice type
           </h3>
