@@ -63,10 +63,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="w-full h-full ">
+    <html lang="en" className="min-h-screen overflow-hidden">
       <head></head>
 
-      <body className=" min-h-full flex flex-col justify-between items-center  w-full   bg-[url('/bg-mobile.jpg')]  md:bg-[url('/bg.jpg')] bg-cover ">
+      <body className="min-h-screen w-full overflow-x-hidden flex flex-col justify-between items-stretch bg-[url('/bg-mobile.jpg')] md:bg-[url('/bg.jpg')] bg-cover">
         <AuthContextProvider>
           <Navigation />
           {children}
