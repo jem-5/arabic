@@ -63,7 +63,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="min-h-screen overflow-hidden">
+    <html lang="en" className="min-h-screen overflow-x-hidden">
       <head></head>
 
       <body className="min-h-screen w-full overflow-x-hidden flex flex-col justify-between items-stretch bg-[url('/bg-mobile.jpg')] md:bg-[url('/bg.jpg')] bg-cover">
