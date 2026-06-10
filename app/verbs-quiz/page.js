@@ -202,7 +202,6 @@ export default function VerbsQuizPage() {
               <option value="youPl">You (plural)</option>
             </select>
           </div>
-
           <h3 className="text-sm font-bold  text-neutral">
             Choose tense or skip to cycle through all.
           </h3>

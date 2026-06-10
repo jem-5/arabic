@@ -48,7 +48,7 @@ export const Navigation = () => {
                 <li key={index} className="">
                   {!item.subLinks && (
                     <a
-                      className="font-bold text-xl overflow-hidden whitespace-nowrap hover:scale-110 "
+                      className="font-bold text-lg overflow-hidden whitespace-nowrap hover:scale-110 "
                       href={item.href}
                     >
                       {item.name}
@@ -58,7 +58,7 @@ export const Navigation = () => {
                     <div className="dropdown dropdown-end text-left z-[200]  hover:scale-110">
                       <a
                         tabIndex="0"
-                        className="font-bold text-xl   overflow-hidden whitespace-nowrap  "
+                        className="font-bold text-lg   overflow-hidden whitespace-nowrap  "
                       >
                         {item.name}
                       </a>
@@ -108,20 +108,20 @@ export const Navigation = () => {
               {NavigationItems.map((item, index) => (
                 <li key={index} className=" list-none">
                   {!item.subLinks && (
-                    <span className="font-bold text-md md:text-lg cursor-pointer rounded p-1 hover:bg-[black] ">
+                    <span className="font-bold text-sm  cursor-pointer rounded p-1 hover:bg-[black] ">
                       <a href={item.href}>{item.name}</a>
                     </span>
                   )}
                   {item.subLinks && (
                     <>
-                      <span className="font-bold text-md md:text-lg cursor-default">
+                      <span className="font-bold text-sm  cursor-default">
                         {item.name}
                       </span>
-                      <div className="flex flex-col items-start text-left ml-5">
+                      <div className="flex flex-col items-start text-left ml-5 ">
                         {item.subLinks.map((subLink, subIndex) => (
                           <span
                             key={subIndex}
-                            className="font-bold text-md md:text-lg overflow-hidden whitespace-nowrap rounded p-1 hover:bg-[black] "
+                            className="font-bold text-sm  overflow-hidden whitespace-nowrap rounded p-1 hover:bg-[black] "
                           >
                             <a href={subLink.href}>{subLink.name}</a>
                           </span>
