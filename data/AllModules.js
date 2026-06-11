@@ -38,6 +38,11 @@ import Conflict from "./Conflict.js";
 import Society from "./Society.js";
 import Conversation from "./Conversation.js";
 import Politics from "./Politics.js";
+import Emotions from "./Emotions.js";
+import Transportation from "./Transportation.js";
+import Personality from "./Personality.js";
+import Appearance from "./Appearance.js";
+import Descriptions from "./Descriptions.js";
 
 export const AllModules = {
   Greetings,
@@ -60,6 +65,7 @@ export const AllModules = {
   Love,
   City,
   Directions,
+  Transportation,
   Doctor,
   Countries,
   Nature,
@@ -69,9 +75,12 @@ export const AllModules = {
 
   Letters,
   Verbs,
+  Emotions,
+  Personality,
+  Appearance,
+  Descriptions,
   Prepositions,
   Transitions,
-  Adjectives,
   Adverbs,
   Pronouns,
   Endearment,

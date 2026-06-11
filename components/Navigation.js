@@ -58,13 +58,13 @@ export const Navigation = () => {
                     <div className="dropdown dropdown-end text-left z-[200]  hover:scale-110 text-lg">
                       <a
                         tabIndex="0"
-                        className="font-bold text-lg   overflow-hidden whitespace-nowrap hover:none  "
+                        className="font-bold text-lg overflow-hidden whitespace-nowrap"
                       >
                         {item.name}
                       </a>
                       <ul
                         tabIndex="0"
-                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52  left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 mt-4 hover:none"
+                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52  left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 mt-4  "
                       >
                         {item.subLinks.map((subLink, subIndex) => (
                           <li key={subIndex}>

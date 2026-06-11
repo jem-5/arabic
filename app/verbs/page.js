@@ -69,7 +69,6 @@ export default function Verb() {
   useEffect(() => {
     const canonicalUrl = `${baseUrl}${pathname}`;
     let link = document.querySelector("link[rel='canonical']");
-
     if (link) {
       link.setAttribute("href", canonicalUrl);
     } else {

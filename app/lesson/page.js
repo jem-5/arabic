@@ -72,9 +72,7 @@ export default function Lesson() {
     const loadLesson = async () => {
       try {
         if (!user) return; // or throw
-
         const token = await user.getIdToken();
-        console.log("token:", token);
         const res = await fetch(`/api/approve?topic=${topic}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -87,7 +85,7 @@ export default function Lesson() {
         }
 
         const data = await res.json();
-        console.log("approval response:", data);
+
         setApproved(true);
         setLessonData(data.lesson);
         setCheckingApproval(false);
@@ -95,7 +93,7 @@ export default function Lesson() {
         setApproved(false);
         setLessonData([]);
         setCheckingApproval(false);
-        console.log("error:", error);
+        console.error("Error loading lesson:", error);
       } finally {
         setCheckingApproval(false);
       }
@@ -228,8 +226,6 @@ export default function Lesson() {
     }
   };
 
-  console.log(isPaidMember, "isPaidMember");
-
   const handleClickPrevious = (e) => {
     setSwipeDirection("right");
     setTimeout(() => {
@@ -268,14 +264,6 @@ export default function Lesson() {
     const randomSelection = Math.floor(Math.random() * 13);
     return `/images/mascots/${randomSelection}.jpg`;
   }, [topic, questionNum]);
-
-  const playAB = async () => {
-    const native = new Audio(lessonData[questionNum].audio);
-    const user = new Audio(userRecordingUrl);
-
-    await native.play();
-    native.onended = () => user.play();
-  };
 
   if (checkingApproval) {
     return (
