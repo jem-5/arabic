@@ -42,8 +42,8 @@ export const Navigation = () => {
             </a>
           </div>
 
-          <div className="hidden lg:flex flex-col md:flex-row p-1 md:gap-1 lg:gap-3   ">
-            <ul className="menu menu-horizontal px-1 text-left ">
+          <div className="hidden lg:flex flex-col md:flex-row p-1 md:gap-1 lg:gap-2   ">
+            <ul className="menu menu-horizontal px-1 text-left  ">
               {NavigationItems.map((item, index) => (
                 <li key={index} className="">
                   {!item.subLinks && (
@@ -55,16 +55,16 @@ export const Navigation = () => {
                     </a>
                   )}
                   {item.subLinks && (
-                    <div className="dropdown dropdown-end text-left z-[200]  hover:scale-110">
+                    <div className="dropdown dropdown-end text-left z-[200]  hover:scale-110 text-lg">
                       <a
                         tabIndex="0"
-                        className="font-bold text-lg   overflow-hidden whitespace-nowrap  "
+                        className="font-bold text-lg   overflow-hidden whitespace-nowrap hover:none  "
                       >
                         {item.name}
                       </a>
                       <ul
                         tabIndex="0"
-                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52  left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 mt-4 "
+                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52  left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 mt-4 hover:none"
                       >
                         {item.subLinks.map((subLink, subIndex) => (
                           <li key={subIndex}>
