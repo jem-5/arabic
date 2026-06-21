@@ -161,8 +161,6 @@ export default function Verb() {
     setCurrVerb(filteredVerbs[0]);
   };
 
-  console.log("verbs", verbs, filteredVerbs, currVerb);
-
   return (
     <main className="flex-grow flex flex-col items-center p-2 ">
       <div className="flex items-center mt-4 w-full max-w-[700px] flex-col md:flex-row md:justify-between ">
@@ -257,7 +255,8 @@ export default function Verb() {
           <div className="divider "></div>
 
           <div className="text-3xl text-center place-content-end">
-            {currVerb?.english}: {currVerb?.verb} | {currVerb?.transliteration}
+            {currVerb?.english} : {currVerb?.transliteration} -{" "}
+            {currVerb?.arabic}
           </div>
 
           <div className="overflow-x-auto">

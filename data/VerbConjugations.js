@@ -1,8 +1,8 @@
 const VerbConjugations = [
   {
     english: "to drink",
-    verb: "يشرب",
-    transliteration: "yishrab",
+    verb: "شرب",
+    transliteration: "shirib",
     futureTense: {
       I: { arabic: "أنا هشرب", transliteration: "ana hashrab" },
       youM: { arabic: "إنتَ هتشرب", transliteration: "inta hatishrab" },
@@ -60,8 +60,8 @@ const VerbConjugations = [
   },
   {
     english: "to do",
-    verb: "يعمل",
-    transliteration: "yiʿmel",
+    verb: "عمل",
+    transliteration: "'amel",
     futureTense: {
       I: { arabic: "أنا هعمل", transliteration: "ana haʿamal" },
       youM: { arabic: "إنتَ هتعمل", transliteration: "inta hatʿamal" },
@@ -119,8 +119,8 @@ const VerbConjugations = [
   },
   {
     english: "to write",
-    verb: "يكتب",
-    transliteration: "yiktib",
+    verb: "كتب",
+    transliteration: "katab",
     futureTense: {
       I: { arabic: "أنا هكتب", transliteration: "ana haktib" },
       youM: { arabic: "إنتَ هتكتب", transliteration: "inta hatiktib" },
@@ -178,8 +178,8 @@ const VerbConjugations = [
   },
   {
     english: "to work",
-    verb: "يشتغل",
-    transliteration: "yishtaghal",
+    verb: "إشتغل",
+    transliteration: "ishtaghal",
     futureTense: {
       I: { arabic: "أنا هشتغل", transliteration: "ana hashtaghal" },
       youM: { arabic: "إنتَ هتشتغل", transliteration: "inta hatashtaghal" },
@@ -237,8 +237,8 @@ const VerbConjugations = [
   },
   {
     english: "to go",
-    verb: "يروح",
-    transliteration: "yiruh",
+    verb: "راح",
+    transliteration: "rah",
     futureTense: {
       I: { arabic: "أنا هروح", transliteration: "ana harooh" },
       youM: { arabic: "إنتَ هتروح", transliteration: "inta hatrooh" },
@@ -296,8 +296,8 @@ const VerbConjugations = [
   },
   {
     english: "to eat",
-    verb: "ياكل",
-    transliteration: "yakul",
+    verb: "كال",
+    transliteration: "kal",
     futureTense: {
       I: { arabic: "أنا هاكل", transliteration: "ana hakul" },
       youM: { arabic: "إنتَ هتاكل", transliteration: "inta hatakul" },
@@ -355,8 +355,8 @@ const VerbConjugations = [
   },
   {
     english: "to learn",
-    verb: "يتعلّم",
-    transliteration: "yitʿallim",
+    verb: "إتعلّم",
+    transliteration: "itʿallim",
     futureTense: {
       I: { arabic: "أنا هاتعلم", transliteration: "ana hatʿallim" },
       youM: { arabic: "إنتَ هتتعلم", transliteration: "inta hatitʿallim" },
@@ -414,8 +414,8 @@ const VerbConjugations = [
   },
   {
     english: "to study",
-    verb: "يذاكر",
-    transliteration: "yizakar",
+    verb: "زاكر",
+    transliteration: "zakir",
     futureTense: {
       I: { arabic: "أنا هذاكر", transliteration: "ana hazakar" },
       youM: { arabic: "إنتَ هتذاكر", transliteration: "inta hatzakar" },
@@ -474,8 +474,8 @@ const VerbConjugations = [
 
   {
     english: "to understand",
-    verb: "يفهم",
-    transliteration: "yifham",
+    verb: "فهم",
+    transliteration: "fihim",
     futureTense: {
       I: { arabic: "أنا هافهم", transliteration: "ana hafham" },
       youM: { arabic: "إنتَ هتفهم", transliteration: "inta hatifham" },
@@ -533,8 +533,8 @@ const VerbConjugations = [
   },
   {
     english: "to read",
-    verb: "يقرأ",
-    transliteration: "yi'ra",
+    verb: "قرأ",
+    transliteration: "'ara",
     futureTense: {
       I: { arabic: "أنا هاقرا", transliteration: "ana haʾra" },
       youM: { arabic: "إنتَ هتقرا", transliteration: "inta hatiʾra" },
@@ -592,8 +592,8 @@ const VerbConjugations = [
   },
   {
     english: "to speak",
-    verb: "يتكلم",
-    transliteration: "yitkallim",
+    verb: "إتكلم",
+    transliteration: "itkallim",
     futureTense: {
       I: { arabic: "أنا هتكلم", transliteration: "ana hatkallim" },
       youM: { arabic: "إنتَ هتتكلم", transliteration: "inta hatitkallim" },
@@ -651,8 +651,8 @@ const VerbConjugations = [
   },
   {
     english: "to ask",
-    verb: "يسأل",
-    transliteration: "yis'al",
+    verb: "سأل",
+    transliteration: "sal",
     futureTense: {
       I: { arabic: "أنا هاسأل", transliteration: "ana hasʾal" },
       youM: { arabic: "إنتَ هتسأل", transliteration: "inta hatisʾal" },
@@ -710,8 +710,8 @@ const VerbConjugations = [
   },
   {
     english: "to see",
-    verb: "يشوف",
-    transliteration: "yishoof",
+    verb: "شاف",
+    transliteration: "shaf",
     futureTense: {
       I: { arabic: "أنا هاشوف", transliteration: "ana hashoof" },
       youM: { arabic: "إنتَ هتشوف", transliteration: "inta hatshoof" },
@@ -767,10 +767,11 @@ const VerbConjugations = [
       },
     },
   },
+
   {
     english: "to take",
-    verb: "ياخد",
-    transliteration: "yakhod",
+    verb: "خد",
+    transliteration: "khad",
     futureTense: {
       I: { arabic: "أنا هاخد", transliteration: "ana hakhod" },
       youM: { arabic: "إنتَ هتاخد", transliteration: "inta hatakhod" },
@@ -783,14 +784,14 @@ const VerbConjugations = [
     },
 
     pastTense: {
-      I: { arabic: "أنا أخدت", transliteration: "ana akhadt" },
-      youM: { arabic: "إنتَ أخدت", transliteration: "inta akhadt" },
-      youF: { arabic: "إنتِ أخدتِ", transliteration: "inti akhadti" },
-      he: { arabic: "هو أخذ", transliteration: "howwa akhad" },
-      she: { arabic: "هي أخدت", transliteration: "heyya akhadit" },
-      we: { arabic: "إحنا أخدنا", transliteration: "ehna akhadna" },
-      youPl: { arabic: "إنتو أخدتوا", transliteration: "intu akhadtu" },
-      they: { arabic: "هم أخدوا", transliteration: "homma akhadu" },
+      I: { arabic: "أنا خدت", transliteration: "ana khodt" },
+      youM: { arabic: "إنتَ خدت", transliteration: "inta khodt" },
+      youF: { arabic: "إنتِ خدتي", transliteration: "inti khodti" },
+      he: { arabic: "هو خد", transliteration: "howwa khad" },
+      she: { arabic: "هي خدت", transliteration: "heyya khadit" },
+      we: { arabic: "إحنا خدنا", transliteration: "ehna khodna" },
+      youPl: { arabic: "إنتو خدتوا", transliteration: "intu khodtu" },
+      they: { arabic: "هم خدوا", transliteration: "homma khadu" },
     },
     presentTense: {
       I: {
@@ -829,8 +830,8 @@ const VerbConjugations = [
   },
   {
     english: "to come",
-    verb: "يجي",
-    transliteration: "yigi",
+    verb: "جِه",
+    transliteration: "gih",
     futureTense: {
       I: { arabic: "أنا هاجي", transliteration: "ana hagi" },
       youM: { arabic: "إنتَ هتيجي", transliteration: "inta hatigi" },
@@ -889,8 +890,8 @@ const VerbConjugations = [
 
   {
     english: "to know",
-    verb: "يعرف",
-    transliteration: "yi'raf",
+    verb: "عرف",
+    transliteration: "araf",
     futureTense: {
       I: { arabic: "أنا هاعرف", transliteration: "ana haʿaraf" },
       youM: { arabic: "إنتَ هتعرف", transliteration: "inta hatiʿaraf" },
@@ -948,67 +949,67 @@ const VerbConjugations = [
   },
   {
     english: "to find",
-    verb: "يلاقي",
-    transliteration: "yila'i",
+    verb: "لقي",
+    transliteration: "li'i",
     futureTense: {
-      I: { arabic: "أنا هالاقي", transliteration: "ana halaʾi" },
-      youM: { arabic: "إنتَ هتلاقي", transliteration: "inta hatlaʾi" },
-      youF: { arabic: "إنتِ هتلاقي", transliteration: "inti hatlaʾi" },
-      he: { arabic: "هو هيلاقي", transliteration: "howwa hayilaʾi" },
-      she: { arabic: "هي هتلاقي", transliteration: "heyya hatlaʾi" },
-      we: { arabic: "إحنا هنلاقي", transliteration: "ehna hanlaʾi" },
-      youPl: { arabic: "إنتو هتلاقوا", transliteration: "intu hatlaʾu" },
-      they: { arabic: "هم هيلاقوا", transliteration: "homma hayilaʾu" },
+      I: { arabic: "أنا هلقى", transliteration: "ana hal'a" },
+      youM: { arabic: "إنتَ هتلقى", transliteration: "inta hatil'a" },
+      youF: { arabic: "إنتِ هتلقي", transliteration: "inti hatil'i" },
+      he: { arabic: "هو هيلقى", transliteration: "howwa hayil'a" },
+      she: { arabic: "هي هتلقى", transliteration: "heyya hatil'a" },
+      we: { arabic: "إحنا هـَنـِلقى", transliteration: "ehna hanil'a" },
+      youPl: { arabic: "إنتو هـَتـِلقوا", transliteration: "intu hatil'u" },
+      they: { arabic: "هم هـَيـِلقوا", transliteration: "homma hayil'u" },
     },
     pastTense: {
-      I: { arabic: "أنا لقيت", transliteration: "ana la'eet" },
-      youM: { arabic: "إنتَ لقيت", transliteration: "inta la'eet" },
-      youF: { arabic: "إنتِ لقيتي", transliteration: "inti la'eeti" },
-      he: { arabic: "هو لقى", transliteration: "howwa la'a" },
-      she: { arabic: "هي لقيت", transliteration: "heyya la'et" },
-      we: { arabic: "إحنا لقينا", transliteration: "ehna la'eena" },
-      youPl: { arabic: "إنتو لقيتوا", transliteration: "intu la'eetu" },
-      they: { arabic: "هم لقوا", transliteration: "homma la'u" },
+      I: { arabic: "أنا لقيت", transliteration: "ana li'eet" },
+      youM: { arabic: "إنتَ لقيت", transliteration: "inta li'eet" },
+      youF: { arabic: "إنتِ لقيتي", transliteration: "inti li'eeti" },
+      he: { arabic: "هو لقي", transliteration: "howwa li'i" },
+      she: { arabic: "هي لقيت", transliteration: "heyya li'yet" },
+      we: { arabic: "إحنا لقينا", transliteration: "ehna li'eena" },
+      youPl: { arabic: "إنتو لقيتوا", transliteration: "intu li'eetu" },
+      they: { arabic: "هم لقيوا", transliteration: "homma li'yu" },
     },
     presentTense: {
       I: {
-        arabic: "أنا بلاقي",
-        transliteration: "ana bala'i",
+        arabic: "أنا بلقى",
+        transliteration: "ana bal'a",
       },
       youM: {
-        arabic: "إنتَ بتلاقي",
-        transliteration: "inta bitla'i",
+        arabic: "إنتَ بتلقى",
+        transliteration: "inta bitil'a",
       },
       youF: {
-        arabic: "إنتِ بتلاقي",
-        transliteration: "inti bitla'i",
+        arabic: "إنتِ بـِتـِلقي",
+        transliteration: "inti bitil'i",
       },
       he: {
-        arabic: "هو بيلاقي",
-        transliteration: "howwa biyila'i",
+        arabic: "هو بيلقى",
+        transliteration: "howwa biyil'a",
       },
       she: {
-        arabic: "هي بتلاقي",
-        transliteration: "heyya bitla'i",
+        arabic: "هي بتلقى",
+        transliteration: "heyya bitil'a",
       },
       we: {
-        arabic: "إحنا بنلاقي",
-        transliteration: "ehna binla'i",
+        arabic: "إحنا بنلقى",
+        transliteration: "ehna binil'a",
       },
       youPl: {
-        arabic: "إنتو بتلاقوا",
-        transliteration: "intu bitla'u",
+        arabic: "إنتو بتلقوا",
+        transliteration: "intu bitil'u",
       },
       they: {
-        arabic: "هم بيلاقي",
-        transliteration: "homma biyila'u",
+        arabic: "هم بيلقوا",
+        transliteration: "homma biyil'u",
       },
     },
   },
   {
     english: "to hear",
-    verb: "يسمع",
-    transliteration: "yisma'",
+    verb: "سمع",
+    transliteration: "simia'",
     futureTense: {
       I: { arabic: "أنا هاسمع", transliteration: "ana hasmaʿ" },
       youM: { arabic: "إنتَ هتسمع", transliteration: "inta hatismaʿ" },
@@ -1066,8 +1067,8 @@ const VerbConjugations = [
   },
   {
     english: "to open",
-    verb: "يفتح",
-    transliteration: "yiftah",
+    verb: "فتح",
+    transliteration: "fatah",
     futureTense: {
       I: { arabic: "أنا هافتح", transliteration: "ana haftah" },
       youM: { arabic: "إنتَ هتفتح", transliteration: "inta hatiftah" },
@@ -1125,67 +1126,67 @@ const VerbConjugations = [
   },
   {
     english: "to stop",
-    verb: "يوقف",
-    transliteration: "yiwaqqaf",
+    verb: "وقف",
+    transliteration: "wi'if",
     futureTense: {
-      I: { arabic: "أنا هوقف", transliteration: "ana hawa'af" },
-      youM: { arabic: "إنتَ هتوقف", transliteration: "inta hatiwa'af" },
-      youF: { arabic: "إنتِ هتوقفي", transliteration: "inti hatiwa'afi" },
-      he: { arabic: "هو هيتوقف", transliteration: "howwa hayiwa'af" },
-      she: { arabic: "هي هتوقف", transliteration: "heyya hatiwa'af" },
-      we: { arabic: "إحنا هنوقف", transliteration: "ehna haniwa'af" },
-      youPl: { arabic: "إنتو هتوقفوا", transliteration: "intu hatiwa'afu" },
-      they: { arabic: "هم هيتوقفوا", transliteration: "homma hayiwa'afu" },
+      I: { arabic: "أنا هقف", transliteration: "ana ha'af" },
+      youM: { arabic: "إنتَ هتقف", transliteration: "inta hatu'af" },
+      youF: { arabic: "إنتِ هتقفي", transliteration: "inti hatu'afi" },
+      he: { arabic: "هو هيقف", transliteration: "howwa hayu'af" },
+      she: { arabic: "هي هتقف", transliteration: "heyya hatu'af" },
+      we: { arabic: "إحنا هنقف", transliteration: "ehna hanu'af" },
+      youPl: { arabic: "إنتو هتقفوا", transliteration: "intu hatu'afu" },
+      they: { arabic: "هم هيقفوا", transliteration: "homma hayu'afu" },
     },
     pastTense: {
       I: { arabic: "أنا وقفت", transliteration: "ana wa'aft" },
       youM: { arabic: "إنتَ وقفت", transliteration: "inta wa'aft" },
-      youF: { arabic: "إنتِ وقفتِ", transliteration: "inti wa'afti" },
-      he: { arabic: "هو وقف", transliteration: "howwa wa'af" },
-      she: { arabic: "هي وقفت", transliteration: "heyya wa'afit" },
+      youF: { arabic: "إنتِ وقفتي", transliteration: "inti wa'afti" },
+      he: { arabic: "هو وقف", transliteration: "howwa wi'if" },
+      she: { arabic: "هي وقفت", transliteration: "heyya wi'ifit" },
       we: { arabic: "إحنا وقفنا", transliteration: "ehna wa'afna" },
       youPl: { arabic: "إنتو وقفتوا", transliteration: "intu wa'aftu" },
       they: { arabic: "هم وقفوا", transliteration: "homma wa'afu" },
     },
     presentTense: {
       I: {
-        arabic: "أنا بوقف",
-        transliteration: "ana bawa'af",
+        arabic: "أنا بقف",
+        transliteration: "ana ba'af",
       },
       youM: {
-        arabic: "إنتَ بتوقف",
-        transliteration: "inta bitiwa'af",
+        arabic: "إنتَ بتقف",
+        transliteration: "inta bitu'af",
       },
       youF: {
-        arabic: "إنتِ بتوقفي",
-        transliteration: "inti bitiwa'afi",
+        arabic: "إنتِ بتقفي",
+        transliteration: "inti bitu'afi",
       },
       he: {
-        arabic: "هو بيوقف",
-        transliteration: "howwa biyiwa'af",
+        arabic: "هو بيقف",
+        transliteration: "howwa biyu'af",
       },
       she: {
-        arabic: "هي بتوقف",
-        transliteration: "heyya bitiwa'af",
+        arabic: "هي بتقف",
+        transliteration: "heyya bitu'af",
       },
       we: {
-        arabic: "إحنا بنوقف",
-        transliteration: "ehna biniwa'af",
+        arabic: "إحنا بنقف",
+        transliteration: "ehna binu'af",
       },
       youPl: {
-        arabic: "إنتو بتوقفوا",
-        transliteration: "intu bitiwa'afu",
+        arabic: "إنتو بتقفوا",
+        transliteration: "intu bitu'afu",
       },
       they: {
-        arabic: "هم بيوقفوا",
-        transliteration: "homma biyiwa'afu",
+        arabic: "هم بيقفوا",
+        transliteration: "homma biyu'afu",
       },
     },
   },
   {
     english: "to play",
-    verb: "يلعب",
-    transliteration: "yil'ab",
+    verb: "لعب",
+    transliteration: "l'ab",
     futureTense: {
       I: { arabic: "أنا هالعب", transliteration: "ana halʿab" },
       youM: { arabic: "إنتَ هتلعب", transliteration: "inta hatilʿab" },
@@ -1243,8 +1244,8 @@ const VerbConjugations = [
   },
   {
     english: "to enter",
-    verb: "يدخل",
-    transliteration: "yidkhul",
+    verb: "دخل",
+    transliteration: "dakhal",
     futureTense: {
       I: { arabic: "أنا هادخل", transliteration: "ana hadkhul" },
       youM: { arabic: "إنتَ هتدخل", transliteration: "inta hatudkhul" },
@@ -1362,8 +1363,8 @@ const VerbConjugations = [
 
   {
     english: "to be",
-    verb: "يكون",
-    transliteration: "yakun",
+    verb: "كان",
+    transliteration: "kan",
     futureTense: {
       I: { arabic: "أنا َ هـَكون", transliteration: "ana hakoon" },
       youM: { arabic: "إنتَ هـَتكون", transliteration: "inta hatkoon" },
@@ -1421,8 +1422,8 @@ const VerbConjugations = [
   },
   {
     english: "to walk",
-    verb: "يمشي",
-    transliteration: "yimshi",
+    verb: "مشي ",
+    transliteration: "mishi",
     futureTense: {
       I: { arabic: "أنا هـَمشى", transliteration: "ana hamshi" },
       youM: { arabic: "إنتَ هـَتـِمشى", transliteration: "inta hatimshi" },
@@ -1480,8 +1481,8 @@ const VerbConjugations = [
   },
   {
     english: "to sit",
-    verb: "يقعد",
-    transliteration: "yi'ud",
+    verb: "قعد",
+    transliteration: "'Aad",
     futureTense: {
       I: { arabic: "أنا هاقعد", transliteration: "ana haʿud" },
       youM: { arabic: "إنتَ هتقعد", transliteration: "inta hatʿud" },
@@ -1539,8 +1540,8 @@ const VerbConjugations = [
   },
   {
     english: "to cook",
-    verb: "يطبخ",
-    transliteration: "yitbukh",
+    verb: "طبخ",
+    transliteration: "tabakh",
     futureTense: {
       I: { arabic: "أنا هاطبخ", transliteration: "ana hatbukh" },
       youM: { arabic: "إنتَ هتطبخ", transliteration: "inta hatutbukh" },
@@ -1598,8 +1599,8 @@ const VerbConjugations = [
   },
   {
     english: "to become",
-    verb: "يبقى",
-    transliteration: "yib'a",
+    verb: "بقى",
+    transliteration: "ba'a",
     futureTense: {
       I: { arabic: "أنا هـَبقي", transliteration: "ana hab'i" },
       youM: { arabic: "إنتَ هـَتـِبقي", transliteration: "inta hatib'i" },
@@ -1657,8 +1658,8 @@ const VerbConjugations = [
   },
   {
     english: "to remember",
-    verb: "يفتكر",
-    transliteration: "yiftekir",
+    verb: "إفتكر",
+    transliteration: "iftakar",
     futureTense: {
       I: { arabic: "أنا هافتكر", transliteration: "ana haftekir" },
       youM: { arabic: "إنتَ هتفتكر", transliteration: "inta hatiftekir" },
@@ -1717,8 +1718,8 @@ const VerbConjugations = [
 
   {
     english: "to live",
-    verb: "يعيش",
-    transliteration: "yi'eesh",
+    verb: "عاش",
+    transliteration: "Aaesh",
     futureTense: {
       I: { arabic: "أنا هاعيش", transliteration: "ana haʿeesh" },
       youM: { arabic: "إنتَ هتعيش", transliteration: "inta hatʿeesh" },
@@ -1733,11 +1734,11 @@ const VerbConjugations = [
       I: { arabic: "أنا عشت", transliteration: "ana 'aeesht" },
       youM: { arabic: "إنتَ عشت", transliteration: "inta 'aeesht" },
       youF: { arabic: "إنتِ عشتِ", transliteration: "inti 'aeeshti" },
-      he: { arabic: "هو عاش", transliteration: "howwa 'aeesh" },
-      she: { arabic: "هي عاشت", transliteration: "heyya 'aeeshit" },
+      he: { arabic: "هو عاش", transliteration: "howwa 'aesh" },
+      she: { arabic: "هي عاشت", transliteration: "heyya 'aeshit" },
       we: { arabic: "إحنا عشنا", transliteration: "ehna 'aeeshna" },
       youPl: { arabic: "إنتو عشتوا", transliteration: "intu 'aeeshto" },
-      they: { arabic: "هم عاشوا", transliteration: "homma 'aeeshu" },
+      they: { arabic: "هم عاشوا", transliteration: "homma 'aeshu" },
     },
     presentTense: {
       I: {
@@ -1776,8 +1777,8 @@ const VerbConjugations = [
   },
   {
     english: "to die",
-    verb: "يموت",
-    transliteration: "yimoot",
+    verb: "مات",
+    transliteration: "mat",
     futureTense: {
       I: { arabic: "أنا هاموت", transliteration: "ana hamoot" },
       youM: { arabic: "إنتَ هتموت", transliteration: "inta hatmoot" },
@@ -1835,8 +1836,8 @@ const VerbConjugations = [
   },
   {
     english: "to laugh",
-    verb: "يضحك",
-    transliteration: "yidhak",
+    verb: "ضحك",
+    transliteration: "dihik",
     futureTense: {
       I: { arabic: "أنا هضحك", transliteration: "ana hadhak" },
       youM: { arabic: "إنتَ هتضحك", transliteration: "inta hatidhak" },
@@ -1894,8 +1895,8 @@ const VerbConjugations = [
   },
   {
     english: "to cry",
-    verb: "يعيط",
-    transliteration: "yiʿayyat",
+    verb: "عيط",
+    transliteration: "ayyat",
     futureTense: {
       I: { arabic: "أنا هعيط", transliteration: "ana haʿayyat" },
       youM: { arabic: "إنتَ هتعيط", transliteration: "inta hatʿayyat" },
@@ -1954,8 +1955,8 @@ const VerbConjugations = [
 
   {
     english: "to sleep",
-    verb: "ينام",
-    transliteration: "yinaam",
+    verb: "نام",
+    transliteration: "nam",
     futureTense: {
       I: { arabic: "أنا هنام", transliteration: "ana hanam" },
       youM: { arabic: "إنتَ هتنام", transliteration: "inta hatnam" },
@@ -2013,8 +2014,8 @@ const VerbConjugations = [
   },
   {
     english: "to wake up",
-    verb: "يصحى",
-    transliteration: "yisha",
+    verb: "صحي",
+    transliteration: "sihi",
     futureTense: {
       I: { arabic: "أنا هصحى", transliteration: "ana hasha" },
       youM: { arabic: "إنتَ هتصحى", transliteration: "inta hatisha" },
@@ -2029,11 +2030,11 @@ const VerbConjugations = [
       I: { arabic: "أنا صحيت", transliteration: "ana saheet" },
       youM: { arabic: "إنتَ صحيت", transliteration: "inta saheet" },
       youF: { arabic: "إنتِ صحيتي", transliteration: "inti saheeti" },
-      he: { arabic: "هو صحى", transliteration: "howwa saha" },
-      she: { arabic: "هي صحت", transliteration: "heyya sahit" },
+      he: { arabic: "هو صحى", transliteration: "howwa sahi" },
+      she: { arabic: "هي صحت", transliteration: "heyya sahyit" },
       we: { arabic: "إحنا صحينا", transliteration: "ehna saheena" },
       youPl: { arabic: "إنتو صحيتم", transliteration: "intu saheetu" },
-      they: { arabic: "هم صحوا", transliteration: "homma sahu" },
+      they: { arabic: "هم صحوا", transliteration: "homma sahyu" },
     },
     presentTense: {
       I: {
@@ -2073,8 +2074,8 @@ const VerbConjugations = [
 
   {
     english: "to buy",
-    verb: "يشتري",
-    transliteration: "yishtiri",
+    verb: "إشترى",
+    transliteration: "ishtara",
     futureTense: {
       I: { arabic: "أنا هشتري", transliteration: "ana hashtiri" },
       youM: { arabic: "إنتَ هتشتري", transliteration: "inta hatishtiri" },
@@ -2132,8 +2133,8 @@ const VerbConjugations = [
   },
   {
     english: "to sell",
-    verb: "يبيع",
-    transliteration: "yibiʿ",
+    verb: "باع",
+    transliteration: "baea",
     futureTense: {
       I: { arabic: "أنا هبيع", transliteration: "ana habiʿa" },
       youM: { arabic: "إنتَ هتبيع", transliteration: "inta hatbiʿa" },
@@ -2191,8 +2192,8 @@ const VerbConjugations = [
   },
   {
     english: "to stand",
-    verb: "يقا َم",
-    transliteration: "y'am",
+    verb: "قام",
+    transliteration: "'aem",
     futureTense: {
       I: { arabic: "أنا هـَقوم", transliteration: "ana ha'oom" },
       youM: { arabic: "إنتَ هـَتقوم", transliteration: "inta hat'oom" },
@@ -2250,8 +2251,8 @@ const VerbConjugations = [
   },
   {
     english: "to run",
-    verb: "يجري",
-    transliteration: "yigri",
+    verb: "جري",
+    transliteration: "giri",
     futureTense: {
       I: { arabic: "أنا هَجْرِي", transliteration: "ana hagri" },
       youM: { arabic: "إنتَ هَتِجْرِي", transliteration: "inta hatigri" },
@@ -2266,11 +2267,11 @@ const VerbConjugations = [
       I: { arabic: "أنا جريت", transliteration: "ana gareet" },
       youM: { arabic: "إنتَ جريت", transliteration: "inta gareet" },
       youF: { arabic: "إنتِ جريتي", transliteration: "inti gareeti" },
-      he: { arabic: "هو جرى", transliteration: "howwa gara" },
-      she: { arabic: "هي جرت", transliteration: "heyya garit" },
+      he: { arabic: "هو جرى", transliteration: "howwa giri" },
+      she: { arabic: "هي جرت", transliteration: "heyya giriyit" },
       we: { arabic: "إحنا جرينا", transliteration: "ehna gareena" },
       youPl: { arabic: "إنتو جريتوا", transliteration: "intu gareetu" },
-      they: { arabic: "هم جروا", transliteration: "homma garu" },
+      they: { arabic: "هم جروا", transliteration: "homma garyu" },
     },
     presentTense: {
       I: {
@@ -2309,8 +2310,8 @@ const VerbConjugations = [
   },
   {
     english: "to sing",
-    verb: "يغني",
-    transliteration: "yighanni",
+    verb: "غنّى",
+    transliteration: "ghanna",
     futureTense: {
       I: { arabic: "أنا هغني", transliteration: "ana haghanni" },
       youM: { arabic: "إنتَ هتغني", transliteration: "inta hatghanni" },
@@ -2368,8 +2369,8 @@ const VerbConjugations = [
   },
   {
     english: "to say",
-    verb: "يقول",
-    transliteration: "yiʾul",
+    verb: "قال",
+    transliteration: "'ael",
     futureTense: {
       I: { arabic: "أنا هقول", transliteration: "ana haʾool" },
       youM: { arabic: "إنتَ هتقول", transliteration: "inta hatʾool" },
@@ -2427,8 +2428,8 @@ const VerbConjugations = [
   },
   {
     english: "to fear",
-    verb: "يخاف",
-    transliteration: "yikhaf",
+    verb: "خاف",
+    transliteration: "khaf",
     futureTense: {
       I: { arabic: "أنا هخاف", transliteration: "ana hakhaf" },
       youM: { arabic: "إنتَ هتخاف", transliteration: "inta hatkhaf" },
@@ -2486,8 +2487,8 @@ const VerbConjugations = [
   },
   {
     english: "to love",
-    verb: "يحب",
-    transliteration: "yihibb",
+    verb: "حبّ",
+    transliteration: "habb",
     futureTense: {
       I: { arabic: "أنا هـَحـِبّ", transliteration: "ana hahibb" },
       youM: { arabic: "إنتَ هتحب", transliteration: "inta hathibb" },
@@ -2545,8 +2546,8 @@ const VerbConjugations = [
   },
   {
     english: "to hate",
-    verb: "يكره",
-    transliteration: "yikrah",
+    verb: "كره",
+    transliteration: "kirih",
     futureTense: {
       I: { arabic: "أنا هكره", transliteration: "ana hakrah" },
       youM: { arabic: "إنتَ هتكره", transliteration: "inta hatikrah" },
@@ -2604,8 +2605,8 @@ const VerbConjugations = [
   },
   {
     english: "to drive",
-    verb: "يسوق",
-    transliteration: "yisuʾ",
+    verb: "ساق",
+    transliteration: "sae'",
     futureTense: {
       I: { arabic: "أنا هسوق", transliteration: "ana hasoo'" },
       youM: { arabic: "إنتَ هتسوق", transliteration: "inta hatsoo'" },
@@ -2663,8 +2664,8 @@ const VerbConjugations = [
   },
   {
     english: "to return",
-    verb: "يرجع",
-    transliteration: "yirgaʿ",
+    verb: "رجع",
+    transliteration: "raga'",
     futureTense: {
       I: { arabic: "أنا هرجع", transliteration: "ana haraga'" },
       youM: { arabic: "إنتَ هترجع", transliteration: "inta hatiragaʿ" },
@@ -2722,8 +2723,8 @@ const VerbConjugations = [
   },
   {
     english: "to begin",
-    verb: "يبدأ",
-    transliteration: "yibdaʾ",
+    verb: "بدأ",
+    transliteration: "bada'",
     futureTense: {
       I: { arabic: "أنا هبدأ", transliteration: "ana habdaʾ" },
       youM: { arabic: "إنتَ هتبدأ", transliteration: "inta hatibdaʾ" },
@@ -2781,8 +2782,8 @@ const VerbConjugations = [
   },
   {
     english: "to end",
-    verb: "ينهي",
-    transliteration: "yinhi",
+    verb: "أنهى",
+    transliteration: "anha",
     futureTense: {
       I: { arabic: "أنا َ هـَنهي", transliteration: "ana hanhi" },
       youM: { arabic: "إنت َ هـَتـِنهي", transliteration: "inta hatinhi" },
@@ -2840,8 +2841,8 @@ const VerbConjugations = [
   },
   {
     english: "to celebrate",
-    verb: "يحتفل",
-    transliteration: "yihtafil",
+    verb: "احتفل",
+    transliteration: "ihtafal",
     futureTense: {
       I: { arabic: "أنا هحتفل", transliteration: "ana hahtifil" },
       youM: { arabic: "إنتَ هتحتفل", transliteration: "inta hatihtifil" },
@@ -2875,8 +2876,8 @@ const VerbConjugations = [
   },
   {
     english: "to visit",
-    verb: "يزار",
-    transliteration: "yizar",
+    verb: "زار",
+    transliteration: "zar",
     futureTense: {
       I: { arabic: "أنا َ هـَزور", transliteration: "ana hazoor" },
       youM: { arabic: " إنت َ هـَتزور", transliteration: "inta hatzoor" },
@@ -2910,8 +2911,8 @@ const VerbConjugations = [
   },
   {
     english: "to insult",
-    verb: "يشتم",
-    transliteration: "yishtim",
+    verb: "شتم",
+    transliteration: "shatam",
     futureTense: {
       I: { arabic: "أنا هـَشتـِم", transliteration: "ana hashtim" },
       youM: { arabic: "إنتَ هـَتـِشتـِم", transliteration: "inta hatishtim" },
@@ -2948,8 +2949,8 @@ const VerbConjugations = [
   },
   {
     english: "to dream",
-    verb: "يحلم",
-    transliteration: "yihlam",
+    verb: "حلِم",
+    transliteration: "hilim",
     futureTense: {
       I: { arabic: "أنا هحلم", transliteration: "ana hahlam" },
       youM: { arabic: "إنتَ هتحلم", transliteration: "inta hatihlam" },
@@ -2983,8 +2984,8 @@ const VerbConjugations = [
   },
   {
     english: "to win",
-    verb: "يكسب",
-    transliteration: "yiksab",
+    verb: "كسب",
+    transliteration: "kisib",
     futureTense: {
       I: { arabic: "أنا هكسب", transliteration: "ana haksab" },
       youM: { arabic: "إنتَ هتكسب", transliteration: "inta hatiksab" },
@@ -3018,8 +3019,8 @@ const VerbConjugations = [
   },
   {
     english: "to lose",
-    verb: "يخسر",
-    transliteration: "yikhsar",
+    verb: "خسر",
+    transliteration: "khisir",
     futureTense: {
       I: { arabic: "أنا هخسر", transliteration: "ana hakhsar" },
       youM: { arabic: "إنتَ هتخسر", transliteration: "inta hatikhsar" },
@@ -3054,8 +3055,8 @@ const VerbConjugations = [
 
   {
     english: "to think",
-    verb: "يفكر",
-    transliteration: "yifakkar",
+    verb: "فكر",
+    transliteration: "fakkar",
     futureTense: {
       I: { arabic: "أنا هفكر", transliteration: "ana hafakkar" },
       youM: { arabic: "إنتَ هتفكر", transliteration: "inta hatifakkar" },
@@ -3089,8 +3090,8 @@ const VerbConjugations = [
   },
   {
     english: "to enjoy",
-    verb: "يستمتع",
-    transliteration: "yistamtiʿ",
+    verb: "إستمتع",
+    transliteration: "istamtiaʿ",
     futureTense: {
       I: { arabic: "أنا هستمتع", transliteration: "ana hastamtaʿ" },
       youM: { arabic: "إنتَ هتستمتع", transliteration: "inta hatistamtaʿ" },
@@ -3125,8 +3126,8 @@ const VerbConjugations = [
 
   {
     english: "to wash",
-    verb: "يغسل",
-    transliteration: "yighsil",
+    verb: "غسل",
+    transliteration: "ghasal",
     futureTense: {
       I: { arabic: "أنا هغسل", transliteration: "ana haghsil" },
       youM: { arabic: "إنتَ هتغسل", transliteration: "inta hatighsil" },
@@ -3160,8 +3161,8 @@ const VerbConjugations = [
   },
   {
     english: "to forget",
-    verb: "ينسى",
-    transliteration: "yinsa",
+    verb: "نسي",
+    transliteration: "nisi",
     futureTense: {
       I: { arabic: "أنا هنسى", transliteration: "ana hansa" },
       youM: { arabic: "إنتَ هتنسى", transliteration: "inta hatinsa" },
@@ -3195,8 +3196,8 @@ const VerbConjugations = [
   },
   {
     english: "to search",
-    verb: "يدوَّر",
-    transliteration: "yidawwar",
+    verb: "دوَّر",
+    transliteration: "dawwar",
     futureTense: {
       I: { arabic: "أنا هادور", transliteration: "ana hadawwar" },
       youM: { arabic: "إنتَ هتدور", transliteration: "inta hatidawwar" },
@@ -3231,8 +3232,8 @@ const VerbConjugations = [
 
   {
     english: "to try",
-    verb: "يحاول",
-    transliteration: "yihawil",
+    verb: "حاول",
+    transliteration: "hawil",
     futureTense: {
       I: { arabic: "أنا هِحَاوِل", transliteration: "ana hahawil" },
       youM: { arabic: "إنتَ هِتِحَاوِل", transliteration: "inta hathawil" },
@@ -3269,8 +3270,8 @@ const VerbConjugations = [
   },
   {
     english: "to choose",
-    verb: "يختار",
-    transliteration: "yekhtar",
+    verb: "إختار",
+    transliteration: "ikhtar",
     presentTense: {
       I: { arabic: "باختار", transliteration: "bakhtar" },
       youM: { arabic: "بتختار", transliteration: "bitikhtar" },
@@ -3306,8 +3307,8 @@ const VerbConjugations = [
 
   {
     english: "to prepare",
-    verb: "يحضر",
-    transliteration: "yihaddar",
+    verb: "حضر",
+    transliteration: "haddar",
     futureTense: {
       I: { arabic: "أنا هِحَضِّر", transliteration: "ana hahaddar" },
       youM: { arabic: "إنتَ هِتِحَضِّر", transliteration: "inta hatihaddar" },
@@ -3350,8 +3351,8 @@ const VerbConjugations = [
   },
   {
     english: "to wear",
-    verb: "يلبس",
-    transliteration: "yilbis",
+    verb: "لبس",
+    transliteration: "libis",
     futureTense: {
       I: { arabic: "أنا هِلبِس", transliteration: "ana halabbis" },
       youM: { arabic: "إنتَ هِتِلبِس", transliteration: "inta hatlabbis" },
@@ -3363,14 +3364,14 @@ const VerbConjugations = [
       they: { arabic: "هم هِيِلبِسُوا", transliteration: "homma hayilabbisu" },
     },
     pastTense: {
-      I: { arabic: "أنا لبست", transliteration: "ana labbist" },
-      youM: { arabic: "إنتَ لبست", transliteration: "inta labbist" },
-      youF: { arabic: "إنتِ لبستي", transliteration: "inti labbisti" },
-      he: { arabic: "هو لبس", transliteration: "howwa labbis" },
-      she: { arabic: "هي لبست", transliteration: "heyya labbisit" },
-      we: { arabic: "إحنا لبسنا", transliteration: "ehna labbisna" },
-      youPl: { arabic: "إنتو لبستوا", transliteration: "intu labbistu" },
-      they: { arabic: "هم لبسوا", transliteration: "homma labbisu" },
+      I: { arabic: "أنا لبست", transliteration: "ana libbist" },
+      youM: { arabic: "إنتَ لبست", transliteration: "inta libbist" },
+      youF: { arabic: "إنتِ لبستي", transliteration: "inti libbisti" },
+      he: { arabic: "هو لبس", transliteration: "howwa libis" },
+      she: { arabic: "هي لبست", transliteration: "heyya libisit" },
+      we: { arabic: "إحنا لبسنا", transliteration: "ehna libbisna" },
+      youPl: { arabic: "إنتو لبستوا", transliteration: "intu libbistu" },
+      they: { arabic: "هم لبسوا", transliteration: "homma libbisu" },
     },
     presentTense: {
       I: { arabic: "أنا بلبس", transliteration: "ana balabbis" },
@@ -3385,8 +3386,8 @@ const VerbConjugations = [
   },
   {
     english: "to answer",
-    verb: "يجاوِب",
-    transliteration: "yigawib",
+    verb: "جاوِب",
+    transliteration: "gawib",
     futureTense: {
       I: { arabic: "أنا  هـَجا َو ِب", transliteration: "ana hagawib" },
       youM: { arabic: "إنت َ هـَتجا َو ِب", transliteration: "inta hatgawib" },
@@ -3432,8 +3433,8 @@ const VerbConjugations = [
   },
   {
     english: "to refuse",
-    verb: "يرفض",
-    transliteration: "yirfud",
+    verb: "رفض",
+    transliteration: "rafad",
     futureTense: {
       I: { arabic: "أنا هـَرفـُض", transliteration: "ana harfud" },
       youM: { arabic: "إنتَ هـَنـُرفـُض", transliteration: "inta haturfud" },
@@ -3477,8 +3478,8 @@ const VerbConjugations = [
 
   {
     english: "to need",
-    verb: "يحتاج",
-    transliteration: "yihtag",
+    verb: "إحتاج",
+    transliteration: "ihtag",
     presentTense: {
       I: { arabic: "بحتاج", transliteration: "bahtag" },
       youM: { arabic: "بتحتاج", transliteration: "bitihtag" },
@@ -3513,8 +3514,8 @@ const VerbConjugations = [
 
   {
     english: "to help",
-    verb: "يساعد",
-    transliteration: "yisaʿid",
+    verb: "ساعد",
+    transliteration: "saeʿid",
     presentTense: {
       I: { arabic: "بساعد", transliteration: "basaʿid" },
       youM: { arabic: "بتساعد", transliteration: "bitsaʿid" },
@@ -3529,8 +3530,8 @@ const VerbConjugations = [
       I: { arabic: "ساعدت", transliteration: "saʿaidt" },
       youM: { arabic: "ساعدت", transliteration: "saʿaidt" },
       youF: { arabic: "ساعدتي", transliteration: "saʿaidti" },
-      he: { arabic: "ساعد", transliteration: "saʿaid" },
-      she: { arabic: "ساعدت", transliteration: "saʿaidit" },
+      he: { arabic: "ساعد", transliteration: "saeʿaid" },
+      she: { arabic: "ساعدت", transliteration: "saeʿaidit" },
       we: { arabic: "ساعدنا", transliteration: "saʿaidna" },
       youPl: { arabic: "ساعدتوا", transliteration: "saʿaidtu" },
       they: { arabic: "ساعدوا", transliteration: "saʿadu" },
@@ -3548,8 +3549,8 @@ const VerbConjugations = [
   },
   {
     english: "to wait",
-    verb: "يستنى",
-    transliteration: "yistanna",
+    verb: "إستنّى",
+    transliteration: "istanna",
     presentTense: {
       I: { arabic: "بستنى", transliteration: "bastanna" },
       youM: { arabic: "بتستنى", transliteration: "bitistanna" },
@@ -3584,8 +3585,8 @@ const VerbConjugations = [
 
   {
     english: "to carry",
-    verb: "يشيل",
-    transliteration: "yesheel",
+    verb: "شال",
+    transliteration: "shaal",
     presentTense: {
       I: { arabic: "بشيل", transliteration: "basheel" },
       youM: { arabic: "بتشيل", transliteration: "bitsheel" },
@@ -3619,8 +3620,8 @@ const VerbConjugations = [
   },
   {
     english: "to clean",
-    verb: "ينضف",
-    transliteration: "yinaddaf",
+    verb: "نضف",
+    transliteration: "naddaf",
     presentTense: {
       I: { arabic: "بنضف", transliteration: "banaddaf" },
       youM: { arabic: "بتنضف", transliteration: "bitinaddaf" },
@@ -3654,8 +3655,8 @@ const VerbConjugations = [
   },
   {
     english: "to bring",
-    verb: "يجيب",
-    transliteration: "yigeeb",
+    verb: "جاب",
+    transliteration: "gaeb",
     presentTense: {
       I: { arabic: "بجيب", transliteration: "bageeb" },
       youM: { arabic: "بتجيب", transliteration: "bitgeeb" },
@@ -3670,8 +3671,8 @@ const VerbConjugations = [
       I: { arabic: "جبت", transliteration: "geebt" },
       youM: { arabic: "جبت", transliteration: "geebt" },
       youF: { arabic: "جبتي", transliteration: "geebti" },
-      he: { arabic: "جاب", transliteration: "gab" },
-      she: { arabic: "جابت", transliteration: "gabit" },
+      he: { arabic: "جاب", transliteration: "gaeb" },
+      she: { arabic: "جابت", transliteration: "gaebit" },
       we: { arabic: "جبنا", transliteration: "geebna" },
       youPl: { arabic: "جبتوا", transliteration: "geebtu" },
       they: { arabic: "جابوا", transliteration: "gabu" },
@@ -3689,8 +3690,8 @@ const VerbConjugations = [
   },
   {
     english: "to call",
-    verb: "يتصل",
-    transliteration: "yittisil",
+    verb: "اتصل",
+    transliteration: "ittasal",
     presentTense: {
       I: { arabic: "باتصل", transliteration: "batassal" },
       youM: { arabic: "بتتصل", transliteration: "bititassal" },
@@ -3724,8 +3725,8 @@ const VerbConjugations = [
   },
   {
     english: "to stay / remain",
-    verb: "يفضل",
-    transliteration: "yifdal",
+    verb: "فضل",
+    transliteration: "fidil",
     presentTense: {
       I: { arabic: "بافضل", transliteration: "bafdal" },
       youM: { arabic: "بتفضل", transliteration: "bitifdal" },
@@ -3760,7 +3761,7 @@ const VerbConjugations = [
   {
     english: "to arrive",
     verb: "وصل",
-    transliteration: "wisil",
+    transliteration: "wasal",
     presentTense: {
       I: { arabic: "بوصل", transliteration: "bawasal" },
       youM: { arabic: "بتوصل", transliteration: "bitiwasal" },
@@ -3795,16 +3796,16 @@ const VerbConjugations = [
   {
     english: "to go out",
     verb: "خرج",
-    transliteration: "khrog",
+    transliteration: "kharag",
     presentTense: {
-      I: { arabic: "بخرج", transliteration: "bakharag" },
-      youM: { arabic: "بتخرج", transliteration: "bitikharag" },
-      youF: { arabic: "بتخرج", transliteration: "bitikharagi" },
-      he: { arabic: "بيخرج", transliteration: "biyikharag" },
-      she: { arabic: "بتخرج", transliteration: "bitikharag" },
-      we: { arabic: "بنخرج", transliteration: "binikharag" },
-      youPl: { arabic: "بتخرجوا", transliteration: "bitikharugu" },
-      they: { arabic: "بيخرجوا", transliteration: "biyikharugu" },
+      I: { arabic: "بخرج", transliteration: "bakhrog" },
+      youM: { arabic: "بتخرج", transliteration: "bitukhrog" },
+      youF: { arabic: "بتخرج", transliteration: "bitukhrogi" },
+      he: { arabic: "بيخرج", transliteration: "biyukhrog" },
+      she: { arabic: "بتخرج", transliteration: "bitukhrog" },
+      we: { arabic: "بنخرج", transliteration: "binukhrog" },
+      youPl: { arabic: "بتخرجوا", transliteration: "bitukhrugu" },
+      they: { arabic: "بيخرجوا", transliteration: "biyukhrugu" },
     },
     pastTense: {
       I: { arabic: "خرجت", transliteration: "kharagt" },
@@ -3817,14 +3818,14 @@ const VerbConjugations = [
       they: { arabic: "خرجوا", transliteration: "kharagu" },
     },
     futureTense: {
-      I: { arabic: "هاخرج", transliteration: "hakharog" },
-      youM: { arabic: "هتخرج", transliteration: "hatikharag" },
-      youF: { arabic: "هتخرج", transliteration: "hatikharagi" },
-      he: { arabic: "هيخرج", transliteration: "hayikharag" },
-      she: { arabic: "هتخرج", transliteration: "hatikharag" },
-      we: { arabic: "هنخرج", transliteration: "hanikharag" },
-      youPl: { arabic: "هتخرجوا", transliteration: "hatikharagu" },
-      they: { arabic: "هيخرجوا", transliteration: "hayikharagu" },
+      I: { arabic: "هاخرج", transliteration: "hakhrog" },
+      youM: { arabic: "هتخرج", transliteration: "hatukhrog" },
+      youF: { arabic: "هتخرج", transliteration: "hatukhrogi" },
+      he: { arabic: "هيخرج", transliteration: "hayukhrog" },
+      she: { arabic: "هتخرج", transliteration: "hatukhrog" },
+      we: { arabic: "هنخرج", transliteration: "hanukhrog" },
+      youPl: { arabic: "هتخرجوا", transliteration: "hatukhrogu" },
+      they: { arabic: "هيخرجوا", transliteration: "hayukhrogu" },
     },
   },
   {
@@ -3866,7 +3867,7 @@ const VerbConjugations = [
   {
     english: "to build",
     verb: "بنَى",
-    transliteration: "bina",
+    transliteration: "bana",
     presentTense: {
       I: { arabic: "ببني", transliteration: "babni" },
       youM: { arabic: "بتبني", transliteration: "bitibni" },
@@ -3882,7 +3883,7 @@ const VerbConjugations = [
       youM: { arabic: "بنيت", transliteration: "baneet" },
       youF: { arabic: "بنيتي", transliteration: "baneeti" },
       he: { arabic: "بنى", transliteration: "bana" },
-      she: { arabic: "بنت", transliteration: "banit" },
+      she: { arabic: "بنت", transliteration: "banyit" },
       we: { arabic: "بنين", transliteration: "baneena" },
       youPl: { arabic: "بنيتوا", transliteration: "baneetu" },
       they: { arabic: "بناوا", transliteration: "banu" },
@@ -3903,7 +3904,7 @@ const VerbConjugations = [
     verb: "دَفَع",
     transliteration: "daf'a",
     presentTense: {
-      I: { arabic: "أنا بأدفع ", transliteration: "ana badfa''" },
+      I: { arabic: "أنا بأدفع ", transliteration: "ana badfa'" },
       youM: { arabic: "بتدفع", transliteration: "bitidfa'" },
       youF: { arabic: "بتدفعي", transliteration: "bitidfa'i" },
       he: { arabic: "بيدفع", transliteration: "biyidfa" },
@@ -3938,14 +3939,14 @@ const VerbConjugations = [
     verb: "كَسَر",
     transliteration: "kasar",
     presentTense: {
-      I: { arabic: "بَاكْسَر", transliteration: "baksar" },
-      youM: { arabic: "بِتْكِسَر", transliteration: "bitiksar" },
-      youF: { arabic: "بِتْكِسَر", transliteration: "bitiksar" },
-      he: { arabic: "بِيكْسَر", transliteration: "biyiksar" },
-      she: { arabic: "بِتْكِسَر", transliteration: "bitiksar" },
-      we: { arabic: "بِنِكْسَر", transliteration: "biniksar" },
-      youPl: { arabic: "بِتْكِسَروا", transliteration: "bitiksaru" },
-      they: { arabic: "بِيكْسَروا", transliteration: "biyiksaru" },
+      I: { arabic: "بَاكْسَر", transliteration: "bakasar" },
+      youM: { arabic: "بِتْكِسَر", transliteration: "bitikasar" },
+      youF: { arabic: "بِتْكِسَر", transliteration: "bitikasar" },
+      he: { arabic: "بِيكْسَر", transliteration: "biyikasar" },
+      she: { arabic: "بِتْكِسَر", transliteration: "bitikasar" },
+      we: { arabic: "بِنِكْسَر", transliteration: "binikasar" },
+      youPl: { arabic: "بِتْكِسَروا", transliteration: "bitikasaru" },
+      they: { arabic: "بِيكْسَروا", transliteration: "biyikasaru" },
     },
     pastTense: {
       I: { arabic: "كَسَرْت", transliteration: "kasart" },
@@ -3958,20 +3959,20 @@ const VerbConjugations = [
       they: { arabic: "كَسَروا", transliteration: "kasaru" },
     },
     futureTense: {
-      I: { arabic: "هَاكْسَر", transliteration: "haksar" },
-      youM: { arabic: "هَتْكِسَر", transliteration: "hatiksar" },
-      youF: { arabic: "هَتْكِسَر", transliteration: "hatiksar" },
-      he: { arabic: "هَيِكْسَر", transliteration: "hayiksar" },
-      she: { arabic: "هَتْكِسَر", transliteration: "hatiksar" },
-      we: { arabic: "هَانِكْسَر", transliteration: "haniksar" },
-      youPl: { arabic: "هَتْكِسَروا", transliteration: "hatiksaru" },
-      they: { arabic: "هَيِكْسَروا", transliteration: "hayiksaru" },
+      I: { arabic: "هَاكْسَر", transliteration: "hakasar" },
+      youM: { arabic: "هَتْكِسَر", transliteration: "hatikasar" },
+      youF: { arabic: "هَتْكِسَر", transliteration: "hatikasar" },
+      he: { arabic: "هَيِكْسَر", transliteration: "hayikasar" },
+      she: { arabic: "هَتْكِسَر", transliteration: "hatikasar" },
+      we: { arabic: "هَانِكْسَر", transliteration: "hanikasar" },
+      youPl: { arabic: "هَتْكِسَروا", transliteration: "hatikasaru" },
+      they: { arabic: "هَيِكْسَروا", transliteration: "hayikasaru" },
     },
   },
   {
-    english: "to repeat",
+    english: "to repeat / return",
     verb: "رَجَّع",
-    transliteration: "raga'a",
+    transliteration: "raga'",
     presentTense: {
       I: { arabic: "بَرَجِّع", transliteration: "baraga'" },
       youM: { arabic: "بِتْرَجِّع", transliteration: "bitiraga'" },
@@ -3986,7 +3987,7 @@ const VerbConjugations = [
       I: { arabic: "رَجَّعْت", transliteration: "raga't" },
       youM: { arabic: "رَجَّعْت", transliteration: "raga't" },
       youF: { arabic: "رَجَّعْتِ", transliteration: "raga'ti" },
-      he: { arabic: "رَجَّع", transliteration: "raga'a" },
+      he: { arabic: "رَجَّع", transliteration: "raga'" },
       she: { arabic: "رَجَّعَت", transliteration: "raga'it" },
       we: { arabic: "رَجَّعْنَا", transliteration: "raga'na" },
       youPl: { arabic: "رَجَّعْتوا", transliteration: "raga'tu" },
@@ -4006,7 +4007,7 @@ const VerbConjugations = [
   {
     english: "to use",
     verb: "اِسْتَخْدَم",
-    transliteration: "istakhdam",
+    transliteration: "istakhdim",
     presentTense: {
       I: { arabic: "بِسْتَخْدِم", transliteration: "bastakhdim" },
       youM: { arabic: "بِتِسْتَخْدِم", transliteration: "bitistakhdim" },
@@ -4041,9 +4042,9 @@ const VerbConjugations = [
   {
     english: "to give",
     verb: "إدّى",
-    transliteration: "iddi",
+    transliteration: "idda",
     presentTense: {
-      I: { arabic: "بِدّي", transliteration: "biddi" },
+      I: { arabic: "بِدّي", transliteration: "baddi" },
       youM: { arabic: "بِتِدّي", transliteration: "bitiddi" },
       youF: { arabic: "بِتِدّي", transliteration: "bitiddi" },
       he: { arabic: "بِيِدّي", transliteration: "biyiddi" },
@@ -4114,12 +4115,11 @@ const VerbConjugations = [
     transliteration: "hatt",
     presentTense: {
       I: { arabic: "بحطّ", transliteration: "bahutt" },
-      youM: { arabic: "بتحطّ", transliteration: "bitihutt" },
+      youM: { arabic: "بتحطّ", transliteration: "bithutt" },
       youF: { arabic: "بتحطّي", transliteration: "bithutti" },
       he: { arabic: "بيحطّ", transliteration: "biyihutt" },
       she: { arabic: "بتحطّ", transliteration: "bithutt" },
       we: { arabic: "بنحطّ", transliteration: "binhutt" },
-
       youPl: { arabic: "بتحطّوا", transliteration: "bithuttu" },
       they: { arabic: "بيحطّوا", transliteration: "biyihuttu" },
     },
@@ -4128,7 +4128,7 @@ const VerbConjugations = [
       youM: { arabic: "حطّيت", transliteration: "hatteet" },
       youF: { arabic: "حطّيتي", transliteration: "hatteeti" },
       he: { arabic: "حطّ", transliteration: "hatt" },
-      she: { arabic: "حطّت", transliteration: "hatteet" },
+      she: { arabic: "حطّت", transliteration: "hattit" },
       we: { arabic: "حطّينا", transliteration: "hatteena " },
       youPl: { arabic: "حطّيتوا", transliteration: "hatteetu" },
       they: { arabic: "حطّوا", transliteration: "hattu" },
@@ -4147,8 +4147,8 @@ const VerbConjugations = [
 
   {
     english: "to ride",
-    verb: "يركب",
-    transliteration: "yerkab",
+    verb: "ركب",
+    transliteration: "rikib",
     presentTense: {
       I: { arabic: "بركب", transliteration: "barkab" },
       youM: { arabic: "بتركب", transliteration: "bitirkab" },
@@ -4184,10 +4184,10 @@ const VerbConjugations = [
 
   {
     english: "to reserve",
-    verb: "يحجز",
-    transliteration: "yehgez",
+    verb: "حجز",
+    transliteration: "hagaz",
     presentTense: {
-      I: { arabic: "بحجز", transliteration: "bahgez" },
+      I: { arabic: "بحجز", transliteration: "bahgiz" },
       youM: { arabic: "بتحجز", transliteration: "bitihgiz" },
       youF: { arabic: "بتحجزي", transliteration: "bitihgizi" },
       he: { arabic: "بيحجز", transliteration: "biyihgiz" },
@@ -4201,13 +4201,13 @@ const VerbConjugations = [
       youM: { arabic: "حجزت", transliteration: "hagazt" },
       youF: { arabic: "حجزتي", transliteration: "hagazti" },
       he: { arabic: "حجز", transliteration: "hagaz" },
-      she: { arabic: "حجزت", transliteration: "hagazet" },
+      she: { arabic: "حجزت", transliteration: "hagazit" },
       we: { arabic: "حجزنا", transliteration: "hagazna" },
       youPl: { arabic: "حجزتوا", transliteration: "hagaztu" },
       they: { arabic: "حجزوا", transliteration: "hagazu" },
     },
     futureTense: {
-      I: { arabic: "هحجز", transliteration: "hahgez" },
+      I: { arabic: "هحجز", transliteration: "hahgiz" },
       youM: { arabic: "هتحجز", transliteration: "hatihgiz" },
       youF: { arabic: "هتحجزي", transliteration: "hatihgizi" },
       he: { arabic: "هيحجز", transliteration: "hayihgiz" },
@@ -4219,25 +4219,24 @@ const VerbConjugations = [
   },
   {
     english: "to meet",
-    verb: "يقابل",
-    transliteration: "yeʾabel",
+    verb: "قابل",
+    transliteration: "ʾabel",
     presentTense: {
       I: { arabic: "بقابل", transliteration: "baʾabel" },
       youM: { arabic: "بتقابل", transliteration: "bitʾabel" },
       youF: { arabic: "بتقابلي", transliteration: "bitʾabeli" },
-      he: { arabic: "بيقابل", transliteration: "biyʾabel" },
+      he: { arabic: "بيقابل", transliteration: "biyiʾabel" },
       she: { arabic: "بتقابل", transliteration: "bitʾabel" },
       we: { arabic: "بنقابل", transliteration: "binʾabel" },
-
-      youPl: { arabic: "بتقابلوا", transliteration: "bitʾabelu" },
-      they: { arabic: "بيقابلوا", transliteration: "biyʾabelu" },
+      youPl: { arabic: "بتقابلوا", transliteration: "bitʾablu" },
+      they: { arabic: "بيقابلوا", transliteration: "biyʾablu" },
     },
     pastTense: {
-      I: { arabic: "قابلت", transliteration: "ʾaelt" },
+      I: { arabic: "قابلت", transliteration: "ʾabelt" },
       youM: { arabic: "قابلت", transliteration: "ʾabelt" },
       youF: { arabic: "قابلتي", transliteration: "ʾabelti" },
       he: { arabic: "قابل", transliteration: "ʾabel" },
-      she: { arabic: "قابلت", transliteration: "ʾabelet" },
+      she: { arabic: "قابلت", transliteration: "ʾablit" },
       we: { arabic: "قابلنا", transliteration: "ʾabelna" },
       youPl: { arabic: "قابلتوا", transliteration: "ʾabeltu" },
       they: { arabic: "قابلوا", transliteration: "ʾabelu" },
@@ -4245,28 +4244,28 @@ const VerbConjugations = [
     futureTense: {
       I: { arabic: "هقابل", transliteration: "haʾabel" },
       youM: { arabic: "هتقابل", transliteration: "hatʾabel" },
-      youF: { arabic: "هتقابلي", transliteration: "hatʾabeli" },
-      he: { arabic: "هيقابل", transliteration: "hayʾabel" },
+      youF: { arabic: "هتقابلي", transliteration: "hatʾabli" },
+      he: { arabic: "هيقابل", transliteration: "hayiʾabel" },
       she: { arabic: "هتقابل", transliteration: "hatʾabel" },
       we: { arabic: "هنقابل", transliteration: "hanʾabel" },
-      youPl: { arabic: "هتقابلوا", transliteration: "hatʾabelu" },
-      they: { arabic: "هيقابلوا", transliteration: "hayʾabelu" },
+      youPl: { arabic: "هتقابلوا", transliteration: "hatʾablu" },
+      they: { arabic: "هيقابلوا", transliteration: "hayiʾablu" },
     },
   },
   {
     english: "to decide",
-    verb: "يقرر",
-    transliteration: "yeʾarrar",
+    verb: "قرر",
+    transliteration: "'arrar",
     presentTense: {
       I: { arabic: "بقرر", transliteration: "baʾarrar" },
-      youM: { arabic: "بتقرر", transliteration: "bitʾarrar" },
-      youF: { arabic: "بتقرري", transliteration: "bitʾarrari" },
-      he: { arabic: "بيقرر", transliteration: "biyʾarrar" },
-      she: { arabic: "بتقرر", transliteration: "bitʾarrar" },
-      we: { arabic: "بنقرر", transliteration: "binʾarrar" },
+      youM: { arabic: "بتقرر", transliteration: "bitiʾarrar" },
+      youF: { arabic: "بتقرري", transliteration: "bitiʾarrari" },
+      he: { arabic: "بيقرر", transliteration: "biyiʾarrar" },
+      she: { arabic: "بتقرر", transliteration: "bitiʾarrar" },
+      we: { arabic: "بنقرر", transliteration: "biniʾarrar" },
 
-      youPl: { arabic: "بتقرروا", transliteration: "bitʾarraru" },
-      they: { arabic: "بيقرروا", transliteration: "biyʾarraru" },
+      youPl: { arabic: "بتقرروا", transliteration: "bitiʾarraru" },
+      they: { arabic: "بيقرروا", transliteration: "biyiʾarraru" },
     },
     pastTense: {
       I: { arabic: "قررت", transliteration: "ʾarrart" },
@@ -4280,28 +4279,28 @@ const VerbConjugations = [
     },
     futureTense: {
       I: { arabic: "هقرر", transliteration: "haʾarrar" },
-      youM: { arabic: "هتقرر", transliteration: "hatʾarrar" },
-      youF: { arabic: "هتقرري", transliteration: "hatʾarrari" },
-      he: { arabic: "هيقرر", transliteration: "hayʾarrar" },
-      she: { arabic: "هتقرر", transliteration: "hatʾarrar" },
-      we: { arabic: "هنقرر", transliteration: "hanʾarrar" },
-      youPl: { arabic: "هتقرروا", transliteration: "hatʾarraru" },
-      they: { arabic: "هيقرروا", transliteration: "hayʾarraru" },
+      youM: { arabic: "هتقرر", transliteration: "hatiʾarrar" },
+      youF: { arabic: "هتقرري", transliteration: "hatiʾarrari" },
+      he: { arabic: "هيقرر", transliteration: "hayiʾarrar" },
+      she: { arabic: "هتقرر", transliteration: "hatiʾarrar" },
+      we: { arabic: "هنقرر", transliteration: "haniʾarrar" },
+      youPl: { arabic: "هتقرروا", transliteration: "hatiʾarraru" },
+      they: { arabic: "هيقرروا", transliteration: "hayiʾarraru" },
     },
   },
   {
     english: "to explain",
-    verb: "يشرح",
-    transliteration: "yishrah",
+    verb: "شرح",
+    transliteration: "sharah",
     presentTense: {
       I: { arabic: "بشرح", transliteration: "bashrah" },
-      youM: { arabic: "بتشرح", transliteration: "bitshrah" },
-      youF: { arabic: "بتشرحي", transliteration: "bitshrahi" },
+      youM: { arabic: "بتشرح", transliteration: "bitishrah" },
+      youF: { arabic: "بتشرحي", transliteration: "bitishrahi" },
       he: { arabic: "بيشرح", transliteration: "biyishrah" },
-      she: { arabic: "بتشرح", transliteration: "bitshrah" },
-      we: { arabic: "بنشرح", transliteration: "binshrah" },
+      she: { arabic: "بتشرح", transliteration: "bitishrah" },
+      we: { arabic: "بنشرح", transliteration: "binishrah" },
 
-      youPl: { arabic: "بتشرحوا", transliteration: "bitshrahu" },
+      youPl: { arabic: "بتشرحوا", transliteration: "bitishrahu" },
       they: { arabic: "بيشرحوا", transliteration: "biyishrahu" },
     },
     pastTense: {
@@ -4309,72 +4308,72 @@ const VerbConjugations = [
       youM: { arabic: "شرحت", transliteration: "sharaht" },
       youF: { arabic: "شرحتي", transliteration: "sharahti" },
       he: { arabic: "شرح", transliteration: "sharah" },
-      she: { arabic: "شرحت", transliteration: "sharahet" },
+      she: { arabic: "شرحت", transliteration: "sharahit" },
       we: { arabic: "شرحنا", transliteration: "sharahna" },
       youPl: { arabic: "شرحتوا", transliteration: "sharahtu" },
       they: { arabic: "شرحوا", transliteration: "sharahu" },
     },
     futureTense: {
       I: { arabic: "هشرح", transliteration: "hashrah" },
-      youM: { arabic: "هتشرح", transliteration: "hatshrah" },
-      youF: { arabic: "هتشرحي", transliteration: "hatshrahi" },
+      youM: { arabic: "هتشرح", transliteration: "hatishrah" },
+      youF: { arabic: "هتشرحي", transliteration: "hatishrahi" },
       he: { arabic: "هيشرح", transliteration: "hayishrah" },
-      she: { arabic: "هتشرح", transliteration: "hatshrah" },
-      we: { arabic: "هنشرح", transliteration: "hanshrah" },
-      youPl: { arabic: "هتشرحوا", transliteration: "hatshrahu" },
+      she: { arabic: "هتشرح", transliteration: "hatishrah" },
+      we: { arabic: "هنشرح", transliteration: "hanishrah" },
+      youPl: { arabic: "هتشرحوا", transliteration: "hatishrahu" },
       they: { arabic: "هيشرحوا", transliteration: "hayishrahu" },
     },
   },
   {
     english: "to agree",
-    verb: "يوافق",
-    transliteration: "yewafeʾ",
+    verb: "وافق",
+    transliteration: "waefi'",
     presentTense: {
       I: { arabic: "بوافق", transliteration: "bawafeʾ" },
       youM: { arabic: "بتوافق", transliteration: "bitwafeʾ" },
       youF: { arabic: "بتوافقي", transliteration: "bitwafeʾi" },
-      he: { arabic: "بيوافق", transliteration: "biywafeʾ" },
+      he: { arabic: "بيوافق", transliteration: "biyiwafeʾ" },
       she: { arabic: "بتوافق", transliteration: "bitwafeʾ" },
       we: { arabic: "بنوافق", transliteration: "binwafeʾ" },
 
-      youPl: { arabic: "بتوافقوا", transliteration: "bitwafeʾu" },
-      they: { arabic: "بيوافقوا", transliteration: "biywafeʾu" },
+      youPl: { arabic: "بتوافقوا", transliteration: "bitwafʾu" },
+      they: { arabic: "بيوافقوا", transliteration: "biywafʾu" },
     },
     pastTense: {
-      I: { arabic: "وافقت", transliteration: "wafaʾt" },
-      youM: { arabic: "وافقت", transliteration: "wafaʾt" },
-      youF: { arabic: "وافقتي", transliteration: "wafaʾti" },
-      he: { arabic: "وافق", transliteration: "wafaʾ" },
-      she: { arabic: "وافقت", transliteration: "wafaʾet" },
-      we: { arabic: "وافقنا", transliteration: "wafaʾna" },
-      youPl: { arabic: "وافقتوا", transliteration: "wafaʾtu" },
-      they: { arabic: "وافقوا", transliteration: "wafaʾu" },
+      I: { arabic: "وافقت", transliteration: "wafiʾt" },
+      youM: { arabic: "وافقت", transliteration: "wafiʾt" },
+      youF: { arabic: "وافقتي", transliteration: "wafiʾti" },
+      he: { arabic: "وافق", transliteration: "wafiʾ" },
+      she: { arabic: "وافقت", transliteration: "wafiʾit" },
+      we: { arabic: "وافقنا", transliteration: "wafiʾna" },
+      youPl: { arabic: "وافقتوا", transliteration: "wafiʾtu" },
+      they: { arabic: "وافقوا", transliteration: "wafiʾu" },
     },
     futureTense: {
-      I: { arabic: "هوافق", transliteration: "hawafeʾ" },
-      youM: { arabic: "هتوافق", transliteration: "hatwafeʾ" },
-      youF: { arabic: "هتوافقي", transliteration: "hatwafeʾi" },
-      he: { arabic: "هيوافق", transliteration: "haywafeʾ" },
-      she: { arabic: "هتوافق", transliteration: "hatwafeʾ" },
-      we: { arabic: "هنوافق", transliteration: "hanwafeʾ" },
-      youPl: { arabic: "هتوافقوا", transliteration: "hatwafeʾu" },
-      they: { arabic: "هيوافقوا", transliteration: "haywafeʾu" },
+      I: { arabic: "هوافق", transliteration: "hawafiʾ" },
+      youM: { arabic: "هتوافق", transliteration: "hatwafiʾ" },
+      youF: { arabic: "هتوافقي", transliteration: "hatwafiʾi" },
+      he: { arabic: "هيوافق", transliteration: "hayiwafiʾ" },
+      she: { arabic: "هتوافق", transliteration: "hatwafiʾ" },
+      we: { arabic: "هنوافق", transliteration: "hanwafiʾ" },
+      youPl: { arabic: "هتوافقوا", transliteration: "hatwafʾu" },
+      they: { arabic: "هيوافقوا", transliteration: "hayiwafʾu" },
     },
   },
   {
     english: "to doubt",
-    verb: "يشك",
-    transliteration: "yishakk",
+    verb: "شك",
+    transliteration: "shakk",
     presentTense: {
-      I: { arabic: "بشك", transliteration: "bashakk" },
-      youM: { arabic: "بتشك", transliteration: "bitshakk" },
-      youF: { arabic: "بتشكي", transliteration: "bitshakki" },
-      he: { arabic: "بيشك", transliteration: "biyishakk" },
-      she: { arabic: "بتشك", transliteration: "bitshakk" },
-      we: { arabic: "بنشك", transliteration: "binshakk" },
+      I: { arabic: "بشك", transliteration: "bashukk" },
+      youM: { arabic: "بتشك", transliteration: "bitshukk" },
+      youF: { arabic: "بتشكي", transliteration: "bitshukki" },
+      he: { arabic: "بيشك", transliteration: "biyishukk" },
+      she: { arabic: "بتشك", transliteration: "bitshukk" },
+      we: { arabic: "بنشك", transliteration: "binshukk" },
 
-      youPl: { arabic: "بتشكوا", transliteration: "bitshakku" },
-      they: { arabic: "بيشكوا", transliteration: "biyishakku" },
+      youPl: { arabic: "بتشكوا", transliteration: "bitshukku" },
+      they: { arabic: "بيشكوا", transliteration: "biyishukku" },
     },
     pastTense: {
       I: { arabic: "شكّيت", transliteration: "shakkeet" },
@@ -4387,20 +4386,20 @@ const VerbConjugations = [
       they: { arabic: "شكّوا", transliteration: "shakku" },
     },
     futureTense: {
-      I: { arabic: "هشك", transliteration: "hashakk" },
-      youM: { arabic: "هتشك", transliteration: "hatshakk" },
-      youF: { arabic: "هتشكي", transliteration: "hatshakki" },
-      he: { arabic: "هيشك", transliteration: "hayishakk" },
-      she: { arabic: "هتشك", transliteration: "hatshakk" },
-      we: { arabic: "هنشك", transliteration: "hanshakk" },
-      youPl: { arabic: "هتشكوا", transliteration: "hatshakku" },
-      they: { arabic: "هيشكوا", transliteration: "hayishakku" },
+      I: { arabic: "هشك", transliteration: "hashukk" },
+      youM: { arabic: "هتشك", transliteration: "hatshukk" },
+      youF: { arabic: "هتشكي", transliteration: "hatshukki" },
+      he: { arabic: "هيشك", transliteration: "hayishukk" },
+      she: { arabic: "هتشك", transliteration: "hatshukk" },
+      we: { arabic: "هنشك", transliteration: "hanshukk" },
+      youPl: { arabic: "هتشكوا", transliteration: "hatshukku" },
+      they: { arabic: "هيشكوا", transliteration: "hayishukku" },
     },
   },
   {
     english: "to make sure",
-    verb: "يتأكد",
-    transliteration: "yetʾakked",
+    verb: "إتأكد",
+    transliteration: "itʾakked",
     presentTense: {
       I: { arabic: "بتأكد", transliteration: "batʾakked" },
       youM: { arabic: "بتتأكد", transliteration: "bititʾakked" },
@@ -4435,53 +4434,53 @@ const VerbConjugations = [
   },
   {
     english: "to lie",
-    verb: "يكدب",
-    transliteration: "yikdeb",
+    verb: "كدب",
+    transliteration: "kidib",
     presentTense: {
       I: { arabic: "بكدب", transliteration: "bakdeb" },
-      youM: { arabic: "بتكدب", transliteration: "bitkdeb" },
-      youF: { arabic: "بتكدبي", transliteration: "bitkedbi" },
+      youM: { arabic: "بتكدب", transliteration: "bitikdeb" },
+      youF: { arabic: "بتكدبي", transliteration: "bitikdebi" },
       he: { arabic: "بيكدب", transliteration: "biyikdeb" },
-      she: { arabic: "بتكدب", transliteration: "bitkdeb" },
-      we: { arabic: "بنكذب", transliteration: "binkedeb" },
+      she: { arabic: "بتكدب", transliteration: "bitikdeb" },
+      we: { arabic: "بنكذب", transliteration: "binikedeb" },
 
-      youPl: { arabic: "بتكدبوا", transliteration: "bitkedbu" },
+      youPl: { arabic: "بتكدبوا", transliteration: "bitikdebu" },
       they: { arabic: "بيكدبوا", transliteration: "biyikdebu" },
     },
     pastTense: {
-      I: { arabic: "كدبت", transliteration: "kedebt" },
-      youM: { arabic: "كدبت", transliteration: "kedebt" },
-      youF: { arabic: "كدبتي", transliteration: "kedebti" },
-      he: { arabic: "كدب", transliteration: "kedeb" },
-      she: { arabic: "كدبت", transliteration: "kedebet" },
-      we: { arabic: "كدبنا", transliteration: "kedebna" },
-      youPl: { arabic: "كدبتوا", transliteration: "kedebtu" },
-      they: { arabic: "كدبوا", transliteration: "kedebu" },
+      I: { arabic: "كدبت", transliteration: "kidibt" },
+      youM: { arabic: "كدبت", transliteration: "kidibt" },
+      youF: { arabic: "كدبتي", transliteration: "kidibti" },
+      he: { arabic: "كدب", transliteration: "kidib" },
+      she: { arabic: "كدبت", transliteration: "kidbit" },
+      we: { arabic: "كدبنا", transliteration: "kidibna" },
+      youPl: { arabic: "كدبتوا", transliteration: "kidibtu" },
+      they: { arabic: "كدبوا", transliteration: "kidbu" },
     },
     futureTense: {
-      I: { arabic: "هكدب", transliteration: "hakdeb" },
-      youM: { arabic: "هتكدب", transliteration: "hatkdeb" },
-      youF: { arabic: "هتكدبي", transliteration: "hatkedbi" },
-      he: { arabic: "هيكدب", transliteration: "hayikdeb" },
-      she: { arabic: "هتكدب", transliteration: "hatkdeb" },
-      we: { arabic: "هنكدب", transliteration: "hankedeb" },
-      youPl: { arabic: "هتكدبوا", transliteration: "hatkedbu" },
-      they: { arabic: "هيكدبوا", transliteration: "hayikdebu" },
+      I: { arabic: "هكدب", transliteration: "hakdib" },
+      youM: { arabic: "هتكدب", transliteration: "hatikdib" },
+      youF: { arabic: "هتكدبي", transliteration: "hatikdibi" },
+      he: { arabic: "هيكدب", transliteration: "hayikdib" },
+      she: { arabic: "هتكدب", transliteration: "hatikdib" },
+      we: { arabic: "هنكدب", transliteration: "hanikdib" },
+      youPl: { arabic: "هتكدبوا", transliteration: "hatikdibu" },
+      they: { arabic: "هيكدبوا", transliteration: "hayikdibu" },
     },
   },
   {
     english: "to translate",
-    verb: "يترجم",
-    transliteration: "yitargem",
+    verb: "ترجم",
+    transliteration: "targem",
     presentTense: {
-      I: { arabic: "بترجم", transliteration: "batarjem" },
-      youM: { arabic: "بتترجم", transliteration: "bititargem" },
-      youF: { arabic: "بتترجمي", transliteration: "bititargemi" },
+      I: { arabic: "بترجم", transliteration: "batargem" },
+      youM: { arabic: "بتترجم", transliteration: "bittargem" },
+      youF: { arabic: "بتترجمي", transliteration: "bittargemi" },
       he: { arabic: "بيترجم", transliteration: "biyitargem" },
-      she: { arabic: "بتترجم", transliteration: "bititargem" },
-      we: { arabic: "بنترجم", transliteration: "binitargem" },
+      she: { arabic: "بتترجم", transliteration: "bittargem" },
+      we: { arabic: "بنترجم", transliteration: "bintargem" },
 
-      youPl: { arabic: "بتترجموا", transliteration: "bititargemu" },
+      youPl: { arabic: "بتترجموا", transliteration: "bittargemu" },
       they: { arabic: "بيترجموا", transliteration: "biyitargemu" },
     },
     pastTense: {
@@ -4495,37 +4494,37 @@ const VerbConjugations = [
       they: { arabic: "ترجموا", transliteration: "targamu" },
     },
     futureTense: {
-      I: { arabic: "هترجم", transliteration: "hatarjem" },
-      youM: { arabic: "هتترجم", transliteration: "hatitargem" },
-      youF: { arabic: "هتترجمي", transliteration: "hatitargemi" },
+      I: { arabic: "هترجم", transliteration: "hatargem" },
+      youM: { arabic: "هتترجم", transliteration: "hattargem" },
+      youF: { arabic: "هتترجمي", transliteration: "hattargemi" },
       he: { arabic: "هيترجم", transliteration: "hayitargem" },
-      she: { arabic: "هتترجم", transliteration: "hatitargem" },
-      we: { arabic: "هنترجم", transliteration: "hanitargem" },
-      youPl: { arabic: "هتترجموا", transliteration: "hatitargemu" },
+      she: { arabic: "هتترجم", transliteration: "hattargem" },
+      we: { arabic: "هنترجم", transliteration: "hantargem" },
+      youPl: { arabic: "هتترجموا", transliteration: "hattargemu" },
       they: { arabic: "هيترجموا", transliteration: "hayitargemu" },
     },
   },
   {
     english: "to teach",
-    verb: "يعلّم",
-    transliteration: "yiʿallem",
+    verb: "علّم",
+    transliteration: "ʿallem",
     presentTense: {
       I: { arabic: "بعلّم", transliteration: "baʿallem" },
       youM: { arabic: "بتعلّم", transliteration: "bitʿallem" },
       youF: { arabic: "بتعلّمي", transliteration: "bitʿallemi" },
-      he: { arabic: "بيعلّم", transliteration: "biyʿallem" },
+      he: { arabic: "بيعلّم", transliteration: "biyiʿallem" },
       she: { arabic: "بتعلّم", transliteration: "bitʿallem" },
       we: { arabic: "بنعلّم", transliteration: "binʿallem" },
 
       youPl: { arabic: "بتعلّموا", transliteration: "bitʿallemu" },
-      they: { arabic: "بيعلّموا", transliteration: "biyʿallemu" },
+      they: { arabic: "بيعلّموا", transliteration: "biyiʿallemu" },
     },
     pastTense: {
       I: { arabic: "علّمت", transliteration: "ʿallemt" },
       youM: { arabic: "علّمت", transliteration: "ʿallemt" },
       youF: { arabic: "علّمتي", transliteration: "ʿallemti" },
       he: { arabic: "علّم", transliteration: "ʿallem" },
-      she: { arabic: "علّمت", transliteration: "ʿallemet" },
+      she: { arabic: "علّمت", transliteration: "ʿallemit" },
       we: { arabic: "علّمنا", transliteration: "ʿallemna" },
       youPl: { arabic: "علّمتوا", transliteration: "ʿallemtu" },
       they: { arabic: "علّموا", transliteration: "ʿallemu" },
@@ -4534,47 +4533,47 @@ const VerbConjugations = [
       I: { arabic: "هعلّم", transliteration: "haʿallem" },
       youM: { arabic: "هتعلّم", transliteration: "hatʿallem" },
       youF: { arabic: "هتعلّمي", transliteration: "hatʿallemi" },
-      he: { arabic: "هيعلّم", transliteration: "hayʿallem" },
+      he: { arabic: "هيعلّم", transliteration: "hayiʿallem" },
       she: { arabic: "هتعلّم", transliteration: "hatʿallem" },
       we: { arabic: "هنعلّم", transliteration: "hanʿallem" },
       youPl: { arabic: "هتعلّموا", transliteration: "hatʿallemu" },
-      they: { arabic: "هيعلّموا", transliteration: "hayʿallemu" },
+      they: { arabic: "هيعلّموا", transliteration: "hayiʿallemu" },
     },
   },
   {
     english: "to succeed",
-    verb: "ينجح",
-    transliteration: "yengah",
+    verb: "نجح",
+    transliteration: "nigih",
     presentTense: {
       I: { arabic: "بنجح", transliteration: "bengah" },
       youM: { arabic: "بتنجح", transliteration: "bitengah" },
       youF: { arabic: "بتنجحي", transliteration: "bitengahi" },
       he: { arabic: "بينجح", transliteration: "biyengah" },
       she: { arabic: "بتنجح", transliteration: "bitengah" },
-      we: { arabic: "بنجح", transliteration: "bengah" },
+      we: { arabic: "بنجح", transliteration: "biningah" },
 
       youPl: { arabic: "بتنجحوا", transliteration: "bitengahu" },
       they: { arabic: "بينجحوا", transliteration: "biyengahu" },
     },
     pastTense: {
-      I: { arabic: "نجحت", transliteration: "nagaht" },
-      youM: { arabic: "نجحت", transliteration: "nagaht" },
-      youF: { arabic: "نجحتي", transliteration: "nagahti" },
-      he: { arabic: "نجح", transliteration: "nagah" },
-      she: { arabic: "نجحت", transliteration: "nagahet" },
-      we: { arabic: "نجحنا", transliteration: "nagahna" },
-      youPl: { arabic: "نجحتوا", transliteration: "nagahtu" },
-      they: { arabic: "نجحوا", transliteration: "nagahu" },
+      I: { arabic: "نجحت", transliteration: "nigiht" },
+      youM: { arabic: "نجحت", transliteration: "nigiht" },
+      youF: { arabic: "نجحتي", transliteration: "nigihti" },
+      he: { arabic: "نجح", transliteration: "nigh" },
+      she: { arabic: "نجحت", transliteration: "nighit" },
+      we: { arabic: "نجحنا", transliteration: "nigihna" },
+      youPl: { arabic: "نجحتوا", transliteration: "nigihtu" },
+      they: { arabic: "نجحوا", transliteration: "nighu" },
     },
     futureTense: {
       I: { arabic: "هنجح", transliteration: "hangah" },
-      youM: { arabic: "هتنجح", transliteration: "hatengah" },
-      youF: { arabic: "هتنجحي", transliteration: "hatengahi" },
-      he: { arabic: "هينجح", transliteration: "hayengah" },
-      she: { arabic: "هتنجح", transliteration: "hatengah" },
-      we: { arabic: "هننجح", transliteration: "hanengah" },
-      youPl: { arabic: "هتنجحوا", transliteration: "hatengahu" },
-      they: { arabic: "هينجحوا", transliteration: "hayengahu" },
+      youM: { arabic: "هتنجح", transliteration: "hatingah" },
+      youF: { arabic: "هتنجحي", transliteration: "hatingahi" },
+      he: { arabic: "هينجح", transliteration: "hayingah" },
+      she: { arabic: "هتنجح", transliteration: "hatingah" },
+      we: { arabic: "هننجح", transliteration: "haningah" },
+      youPl: { arabic: "هتنجحوا", transliteration: "hatingahu" },
+      they: { arabic: "هينجحوا", transliteration: "hayingahu" },
     },
   },
 
@@ -4605,19 +4604,19 @@ const VerbConjugations = [
     },
     futureTense: {
       I: { arabic: "هحل", transliteration: "hahell" },
-      youM: { arabic: "هتحل", transliteration: "hatihell" },
-      youF: { arabic: "هتحلي", transliteration: "hatihelli" },
+      youM: { arabic: "هتحل", transliteration: "hathell" },
+      youF: { arabic: "هتحلي", transliteration: "hathelli" },
       he: { arabic: "هيحل", transliteration: "hayihell" },
-      she: { arabic: "هتحل", transliteration: "hatihell" },
-      we: { arabic: "هنحل", transliteration: "hanihell" },
-      youPl: { arabic: "هتحلوا", transliteration: "hatihellu" },
+      she: { arabic: "هتحل", transliteration: "hathell" },
+      we: { arabic: "هنحل", transliteration: "hanhell" },
+      youPl: { arabic: "هتحلوا", transliteration: "hathellu" },
       they: { arabic: "هيحلوا", transliteration: "hayihellu" },
     },
   },
   {
     english: "to get married",
-    verb: "يتجوز",
-    transliteration: "yetgawwez",
+    verb: "إتجوز",
+    transliteration: "itgawwez",
     presentTense: {
       I: { arabic: "بتجوز", transliteration: "batgawwez" },
       youM: { arabic: "بتتجوز", transliteration: "bititgawwez" },
@@ -4652,54 +4651,54 @@ const VerbConjugations = [
   },
   {
     english: "to serve",
-    verb: "يخدم",
-    transliteration: "yikhdem",
+    verb: "قدم",
+    transliteration: "addim",
     presentTense: {
-      I: { arabic: "بخدم", transliteration: "bakhdem" },
-      youM: { arabic: "بتخدم", transliteration: "bitkhdem" },
-      youF: { arabic: "بتخدمي", transliteration: "bitkhdemi" },
-      he: { arabic: "بيخدم", transliteration: "biykhdem" },
-      she: { arabic: "بتخدم", transliteration: "bitkhdem" },
-      we: { arabic: "بنخدم", transliteration: "binkhdem" },
+      I: { arabic: "بقدّم", transliteration: "ba'addim" },
+      youM: { arabic: "بتقدّم", transliteration: "bit'addim" },
+      youF: { arabic: "بتقدّمي", transliteration: "bit'addimi" },
+      he: { arabic: "بيقدّم", transliteration: "biyi'addim" },
+      she: { arabic: "بتقدّم", transliteration: "bit'addim" },
+      we: { arabic: "بنقدّم", transliteration: "bin'addim" },
 
-      youPl: { arabic: "بتخدموا", transliteration: "bitkhdemu" },
-      they: { arabic: "بيخدموا", transliteration: "biykhdemu" },
+      youPl: { arabic: "بتقدّموا", transliteration: "bit'addimu" },
+      they: { arabic: "بيقدّموا", transliteration: "biyi'addimu" },
     },
     pastTense: {
-      I: { arabic: "خدمت", transliteration: "khedemt" },
-      youM: { arabic: "خدمت", transliteration: "khedemt" },
-      youF: { arabic: "خدمتي", transliteration: "khedemti" },
-      he: { arabic: "خدم", transliteration: "khedem" },
-      she: { arabic: "خدمت", transliteration: "khedemet" },
-      we: { arabic: "خدمنا", transliteration: "khedemna" },
-      youPl: { arabic: "خدمتوا", transliteration: "khedemtu" },
-      they: { arabic: "خدموا", transliteration: "khedemu" },
+      I: { arabic: " قدّمت", transliteration: "'addimt" },
+      youM: { arabic: "قدّمت", transliteration: "'addimt" },
+      youF: { arabic: " قدّمتي", transliteration: "'addimti" },
+      he: { arabic: "قدِّم", transliteration: "'addim" },
+      she: { arabic: " قدّمـِت", transliteration: "'addimit" },
+      we: { arabic: "قدّمنا", transliteration: "'addimna" },
+      youPl: { arabic: "قدّمتوا", transliteration: "'addimtu" },
+      they: { arabic: "قدّموا", transliteration: "'addimu" },
     },
     futureTense: {
-      I: { arabic: "هخدم", transliteration: "hakhdem" },
-      youM: { arabic: "هتخدم", transliteration: "hatkhdem" },
-      youF: { arabic: "هتخدمي", transliteration: "hatkhdemi" },
-      he: { arabic: "هيخدم", transliteration: "haykhdem" },
-      she: { arabic: "هتخدم", transliteration: "hatkhdem" },
-      we: { arabic: "هنخدم", transliteration: "hankhdem" },
-      youPl: { arabic: "هتخدموا", transliteration: "hatkhdemu" },
-      they: { arabic: "هيخدموا", transliteration: "haykhdemu" },
+      I: { arabic: "هقدّم", transliteration: "ha'addim" },
+      youM: { arabic: "هتقدّم", transliteration: "hat'addim" },
+      youF: { arabic: "هتقدّمي", transliteration: "hat'addimi" },
+      he: { arabic: "هيقدّم", transliteration: "hayi'addim" },
+      she: { arabic: "هتقدّم", transliteration: "hat'addim" },
+      we: { arabic: "هنقدّم", transliteration: "han'addim" },
+      youPl: { arabic: "هتقدّموا", transliteration: "hat'addimu" },
+      they: { arabic: "هيقدّموا", transliteration: "hayi'addimu" },
     },
   },
   {
     english: "to order / request",
-    verb: "يطلب",
-    transliteration: "yitlob",
+    verb: "طلب",
+    transliteration: "talab",
     presentTense: {
       I: { arabic: "بطلب", transliteration: "batlob" },
-      youM: { arabic: "بتطلب", transliteration: "bittlob" },
-      youF: { arabic: "بتطلبي", transliteration: "bittlobi" },
-      he: { arabic: "بيطلب", transliteration: "biytlob" },
-      she: { arabic: "بتطلب", transliteration: "bittlob" },
-      we: { arabic: "بنطلب", transliteration: "bintlob" },
+      youM: { arabic: "بتطلب", transliteration: "bitutlob" },
+      youF: { arabic: "بتطلبي", transliteration: "bitutlobi" },
+      he: { arabic: "بيطلب", transliteration: "biyutlob" },
+      she: { arabic: "بتطلب", transliteration: "bitutlob" },
+      we: { arabic: "بنطلب", transliteration: "binutlob" },
 
-      youPl: { arabic: "بتطلبوا", transliteration: "bittlobu" },
-      they: { arabic: "بيطلبوا", transliteration: "biytlobu" },
+      youPl: { arabic: "بتطلبوا", transliteration: "bitutlobu" },
+      they: { arabic: "بيطلبوا", transliteration: "biyutlobu" },
     },
     pastTense: {
       I: { arabic: "طلبت", transliteration: "talabt" },
@@ -4713,65 +4712,30 @@ const VerbConjugations = [
     },
     futureTense: {
       I: { arabic: "هطلب", transliteration: "hatlob" },
-      youM: { arabic: "هتطلب", transliteration: "hattlob" },
-      youF: { arabic: "هتطلبي", transliteration: "hattlobi" },
-      he: { arabic: "هيطلب", transliteration: "haytlob" },
-      she: { arabic: "هتطلب", transliteration: "hattlob" },
-      we: { arabic: "هنطلب", transliteration: "hantlob" },
-      youPl: { arabic: "هتطلبوا", transliteration: "hattlobu" },
-      they: { arabic: "هيطلبوا", transliteration: "haytlobu" },
+      youM: { arabic: "هتطلب", transliteration: "hatutlob" },
+      youF: { arabic: "هتطلبي", transliteration: "hatutlobi" },
+      he: { arabic: "هيطلب", transliteration: "hayutlob" },
+      she: { arabic: "هتطلب", transliteration: "hatutlob" },
+      we: { arabic: "هنطلب", transliteration: "hanutlob" },
+      youPl: { arabic: "هتطلبوا", transliteration: "hatutlobu" },
+      they: { arabic: "هيطلبوا", transliteration: "hayutlobu" },
     },
   },
-  {
-    english: "to take off (clothes)",
-    verb: "يخلع",
-    transliteration: "yikhlaʿ",
-    presentTense: {
-      I: { arabic: "بخلع", transliteration: "bakhlaʿ" },
-      youM: { arabic: "بتخلع", transliteration: "bitkhlaʿ" },
-      youF: { arabic: "بتخلعي", transliteration: "bitkhlaʿi" },
-      he: { arabic: "بيخلع", transliteration: "biyikhlaʿ" },
-      she: { arabic: "بتخلع", transliteration: "bitkhlaʿ" },
-      we: { arabic: "بنخلع", transliteration: "binkhlaʿ" },
 
-      youPl: { arabic: "بتخلعوا", transliteration: "bitkhlaʿu" },
-      they: { arabic: "بيخلعوا", transliteration: "biyikhlaʿu" },
-    },
-    pastTense: {
-      I: { arabic: "خلعت", transliteration: "khalaʿt" },
-      youM: { arabic: "خلعت", transliteration: "khalaʿt" },
-      youF: { arabic: "خلعتي", transliteration: "khalaʿti" },
-      he: { arabic: "خلع", transliteration: "khalaʿ" },
-      she: { arabic: "خلعت", transliteration: "khalaʿet" },
-      we: { arabic: "خلعنا", transliteration: "khalaʿna" },
-      youPl: { arabic: "خلعتوا", transliteration: "khalaʿtu" },
-      they: { arabic: "خلعوا", transliteration: "khalaʿu" },
-    },
-    futureTense: {
-      I: { arabic: "هخلع", transliteration: "hakhlaʿ" },
-      youM: { arabic: "هتخلع", transliteration: "hatkhlaʿ" },
-      youF: { arabic: "هتخلعي", transliteration: "hatkhlaʿi" },
-      he: { arabic: "هيخلع", transliteration: "hayikhlaʿ" },
-      she: { arabic: "هتخلع", transliteration: "hatkhlaʿ" },
-      we: { arabic: "هنخلع", transliteration: "hankhlaʿ" },
-      youPl: { arabic: "هتخلعوا", transliteration: "hatkhlaʿu" },
-      they: { arabic: "هيخلعوا", transliteration: "hayikhlaʿu" },
-    },
-  },
   {
     english: "to fix",
-    verb: "يصلّح",
-    transliteration: "yisalleh",
+    verb: "صلّح",
+    transliteration: "sallah",
     presentTense: {
-      I: { arabic: "بصلّح", transliteration: "basalleh" },
-      youM: { arabic: "بتصلّح", transliteration: "bitsalleh" },
-      youF: { arabic: "بتصلّحي", transliteration: "bitsallehi" },
-      he: { arabic: "بيصلّح", transliteration: "biysalleh" },
-      she: { arabic: "بتصلّح", transliteration: "bitsalleh" },
-      we: { arabic: "بنصلّح", transliteration: "binsalleh" },
+      I: { arabic: "بصلّح", transliteration: "basallah" },
+      youM: { arabic: "بتصلّح", transliteration: "bitsallah" },
+      youF: { arabic: "بتصلّحي", transliteration: "bitsallahi" },
+      he: { arabic: "بيصلّح", transliteration: "biysallah" },
+      she: { arabic: "بتصلّح", transliteration: "bitsallah" },
+      we: { arabic: "بنصلّح", transliteration: "binsallah" },
 
-      youPl: { arabic: "بتصلّحوا", transliteration: "bitsallehu" },
-      they: { arabic: "بيصلّحوا", transliteration: "biysallehu" },
+      youPl: { arabic: "بتصلّحوا", transliteration: "bitsallahu" },
+      they: { arabic: "بيصلّحوا", transliteration: "biysallahu" },
     },
     pastTense: {
       I: { arabic: "صلّحت", transliteration: "sallaht" },
@@ -4784,20 +4748,20 @@ const VerbConjugations = [
       they: { arabic: "صلّحوا", transliteration: "sallahu" },
     },
     futureTense: {
-      I: { arabic: "هصلّح", transliteration: "hasalleh" },
-      youM: { arabic: "هتصلّح", transliteration: "hatsalleh" },
-      youF: { arabic: "هتصلّحي", transliteration: "hatsallehi" },
-      he: { arabic: "هيصلّح", transliteration: "haysalleh" },
-      she: { arabic: "هتصلّح", transliteration: "hatsalleh" },
-      we: { arabic: "هنصلّح", transliteration: "hansalleh" },
-      youPl: { arabic: "هتصلّحوا", transliteration: "hatsallehu" },
-      they: { arabic: "هيصلّحوا", transliteration: "haysallehu" },
+      I: { arabic: "هصلّح", transliteration: "hasallah" },
+      youM: { arabic: "هتصلّح", transliteration: "hatsallah" },
+      youF: { arabic: "هتصلّحي", transliteration: "hatsallahi" },
+      he: { arabic: "هيصلّح", transliteration: "hayisallah" },
+      she: { arabic: "هتصلّح", transliteration: "hatsallah" },
+      we: { arabic: "هنصلّح", transliteration: "hansallah" },
+      youPl: { arabic: "هتصلّحوا", transliteration: "hatsallahu" },
+      they: { arabic: "هيصلّحوا", transliteration: "haysallahu" },
     },
   },
   {
     english: "to receive",
-    verb: "يستلم",
-    transliteration: "yistalem",
+    verb: "إستلم",
+    transliteration: "istalem",
     presentTense: {
       I: { arabic: "بستلم", transliteration: "bastalem" },
       youM: { arabic: "بتستلم", transliteration: "bitistalem" },
@@ -4833,8 +4797,8 @@ const VerbConjugations = [
 
   {
     english: "to send",
-    verb: "يبعث",
-    transliteration: "yibʿat",
+    verb: "بعث",
+    transliteration: "bʿat",
     presentTense: {
       I: { arabic: "ببعت", transliteration: "babaʿat" },
       youM: { arabic: "بتبعت", transliteration: "bitbaʿat" },
@@ -4869,88 +4833,89 @@ const VerbConjugations = [
   },
   {
     english: "to change",
-    verb: "يغير",
+    verb: "غيير",
     transliteration: "yighayyir",
     presentTense: {
-      I: { arabic: "بغير", transliteration: "baghayyir" },
-      youM: { arabic: "بتغير", transliteration: "bitghayyir" },
-      youF: { arabic: "بتغيري", transliteration: "bitghayyiri" },
-      he: { arabic: "بيغير", transliteration: "biyghayyir" },
-      she: { arabic: "بتغير", transliteration: "bitghayyir" },
-      we: { arabic: "بنغير", transliteration: "binghayyir" },
+      I: { arabic: "بغيير", transliteration: "baghayyar" },
+      youM: { arabic: "بتغيير", transliteration: "bitighayyar" },
+      youF: { arabic: "بتغييري", transliteration: "bitighayyari" },
+      he: { arabic: "بيغيير", transliteration: "biyighayyar" },
+      she: { arabic: "بتغيير", transliteration: "bitighayyar" },
+      we: { arabic: "بنغيير", transliteration: "binighayyar" },
 
-      youPl: { arabic: "بتغيروا", transliteration: "bitghayyiru" },
-      they: { arabic: "بيغيروا", transliteration: "biyghayyiru" },
+      youPl: { arabic: "بتغييروا", transliteration: "bitighayyaru" },
+      they: { arabic: "بيغييروا", transliteration: "biyighayyaru" },
     },
     pastTense: {
-      I: { arabic: "غيرت", transliteration: "ghayyirt" },
-      youM: { arabic: "غيرت", transliteration: "ghayyirt" },
-      youF: { arabic: "غيرتي", transliteration: "ghayyirti" },
-      he: { arabic: "غير", transliteration: "ghayyir" },
-      she: { arabic: "غيرت", transliteration: "ghayyiret" },
-      we: { arabic: "غيرنا", transliteration: "ghayyirna" },
-      youPl: { arabic: "غيرتوا", transliteration: "ghayyirtu" },
-      they: { arabic: "غيروا", transliteration: "ghayyiru" },
+      I: { arabic: "غييرت", transliteration: "ghayyart" },
+      youM: { arabic: "غييرت", transliteration: "ghayyart" },
+      youF: { arabic: "غييرتي", transliteration: "ghayyarti" },
+      he: { arabic: "غيير", transliteration: "ghayyar" },
+      she: { arabic: "غييرت", transliteration: "ghayyarit" },
+      we: { arabic: "غييرنا", transliteration: "ghayyarna" },
+      youPl: { arabic: "غييرتوا", transliteration: "ghayyartu" },
+      they: { arabic: "غييروا", transliteration: "ghayyaru" },
     },
     futureTense: {
-      I: { arabic: "هغير", transliteration: "haghayyir" },
-      youM: { arabic: "هتغير", transliteration: "hatghayyir" },
-      youF: { arabic: "هتغيري", transliteration: "hatghayyiri" },
-      he: { arabic: "هيغير", transliteration: "hayghayyir" },
-      she: { arabic: "هتغير", transliteration: "hatghayyir" },
-      we: { arabic: "هنغير", transliteration: "hanghayyir" },
-      youPl: { arabic: "هتغيروا", transliteration: "hatghayyiru" },
-      they: { arabic: "هيغيروا", transliteration: "hayghayyiru" },
+      I: { arabic: "هغيير", transliteration: "haghayyar" },
+      youM: { arabic: "هتغيير", transliteration: "hatighayyar" },
+      youF: { arabic: "هتغييري", transliteration: "hatighayyari" },
+      he: { arabic: "هيغيير", transliteration: "hayighayyar" },
+      she: { arabic: "هتغيير", transliteration: "hatighayyar" },
+      we: { arabic: "هنغيير", transliteration: "hanighayyar" },
+      youPl: { arabic: "هتغييروا", transliteration: "hatighayyaru" },
+      they: { arabic: "هيغييروا", transliteration: "hayighayyaru" },
     },
   },
+
   {
     english: "to finish",
-    verb: "يخلص",
-    transliteration: "yikhlas",
+    verb: "خلص",
+    transliteration: "khilis",
     presentTense: {
       I: { arabic: "بخلص", transliteration: "bakhlas" },
-      youM: { arabic: "بتخلص", transliteration: "bitkhlas" },
-      youF: { arabic: "بتخلصي", transliteration: "bitkhlasi" },
+      youM: { arabic: "بتخلص", transliteration: "bitikhlas" },
+      youF: { arabic: "بتخلصي", transliteration: "bitikhlasi" },
       he: { arabic: "بيخلص", transliteration: "biyikhlas" },
-      she: { arabic: "بتخلص", transliteration: "bitkhlas" },
-      we: { arabic: "بنخلص", transliteration: "binkhlas" },
+      she: { arabic: "بتخلص", transliteration: "bitikhlas" },
+      we: { arabic: "بنخلص", transliteration: "binikhlas" },
 
-      youPl: { arabic: "بتخلصوا", transliteration: "bitkhlasu" },
+      youPl: { arabic: "بتخلصوا", transliteration: "bitikhlasu" },
       they: { arabic: "بيخلصوا", transliteration: "biyikhlasu" },
     },
     pastTense: {
-      I: { arabic: "خلصت", transliteration: "khalast" },
-      youM: { arabic: "خلصت", transliteration: "khalast" },
-      youF: { arabic: "خلصتي", transliteration: "khalasti" },
-      he: { arabic: "خلص", transliteration: "khalas" },
-      she: { arabic: "خلصت", transliteration: "khalaset" },
-      we: { arabic: "خلصنا", transliteration: "khalasna" },
-      youPl: { arabic: "خلصتوا", transliteration: "khalastu" },
-      they: { arabic: "خلصوا", transliteration: "khalasu" },
+      I: { arabic: "خلصت", transliteration: "khilist" },
+      youM: { arabic: "خلصت", transliteration: "khilist" },
+      youF: { arabic: "خلصتي", transliteration: "khilisti" },
+      he: { arabic: "خلص", transliteration: "khilis" },
+      she: { arabic: "خلصت", transliteration: "khilsit" },
+      we: { arabic: "خلصنا", transliteration: "khilisna" },
+      youPl: { arabic: "خلصتوا", transliteration: "khilistu" },
+      they: { arabic: "خلصوا", transliteration: "khilisu" },
     },
     futureTense: {
       I: { arabic: "هخلص", transliteration: "hakhlas" },
-      youM: { arabic: "هتخلص", transliteration: "hatkhlas" },
-      youF: { arabic: "هتخلصي", transliteration: "hatkhlasi" },
+      youM: { arabic: "هتخلص", transliteration: "hatikhlas" },
+      youF: { arabic: "هتخلصي", transliteration: "hatikhlasi" },
       he: { arabic: "هيخلص", transliteration: "hayikhlas" },
-      she: { arabic: "هتخلص", transliteration: "hatkhlas" },
-      we: { arabic: "هنخلص", transliteration: "hankhlas" },
-      youPl: { arabic: "هتخلصوا", transliteration: "hatkhlasu" },
+      she: { arabic: "هتخلص", transliteration: "hatikhlas" },
+      we: { arabic: "هنخلص", transliteration: "hanikhlas" },
+      youPl: { arabic: "هتخلصوا", transliteration: "hatikhlasu" },
       they: { arabic: "هيخلصوا", transliteration: "hayikhlasu" },
     },
   },
   {
     english: "to support",
-    verb: "يدعم",
-    transliteration: "yadumu",
+    verb: "دعم",
+    transliteration: "da'm",
     presentTense: {
       I: { arabic: "بدعم", transliteration: "bada'am" },
-      youM: { arabic: "بتدعم", transliteration: "bitda'am" },
-      youF: { arabic: "بتدعمي", transliteration: "bitda'ami" },
+      youM: { arabic: "بتدعم", transliteration: "bitida'am" },
+      youF: { arabic: "بتدعمي", transliteration: "bitida'ami" },
       he: { arabic: "بيدعم", transliteration: "biyid'am" },
-      she: { arabic: "بتدعم", transliteration: "bitda'am" },
-      we: { arabic: "بندعم", transliteration: "binda'am" },
-      youPl: { arabic: "بتدعموا", transliteration: "bitda'amu" },
+      she: { arabic: "بتدعم", transliteration: "bitida'am" },
+      we: { arabic: "بندعم", transliteration: "binida'am" },
+      youPl: { arabic: "بتدعموا", transliteration: "bitida'amu" },
       they: { arabic: "بيدعموا", transliteration: "biyid'amu" },
     },
     pastTense: {
@@ -4958,31 +4923,31 @@ const VerbConjugations = [
       youM: { arabic: "دعمت", transliteration: "da'amt" },
       youF: { arabic: "دعمتي", transliteration: "da'amti" },
       he: { arabic: "دعم", transliteration: "da'am" },
-      she: { arabic: "دعمت", transliteration: "da'amat" },
+      she: { arabic: "دعمت", transliteration: "da'amit" },
       we: { arabic: "دعمنا", transliteration: "da'amna" },
       youPl: { arabic: "دعموا", transliteration: "da'amtu" },
       they: { arabic: "دعموا", transliteration: "da'amu" },
     },
     futureTense: {
       I: { arabic: "هدعم", transliteration: "hada'am" },
-      youM: { arabic: "هتدعم", transliteration: "hatda'am" },
-      youF: { arabic: "هتدعمي", transliteration: "hatda'ami" },
+      youM: { arabic: "هتدعم", transliteration: "hatida'am" },
+      youF: { arabic: "هتدعمي", transliteration: "hatida'ami" },
       he: { arabic: "هيدعم", transliteration: "hayida'am" },
-      she: { arabic: "هتدعم", transliteration: "hatda'am" },
-      we: { arabic: "hندعم", translucention: "handa'am" },
-      youPl: { arabic: "هتدعموا", transliteration: "hatda'amu" },
+      she: { arabic: "هتدعم", transliteration: "hatida'am" },
+      we: { arabic: "hندعم", translucention: "hanida'am" },
+      youPl: { arabic: "هتدعموا", transliteration: "hatida'amu" },
       they: { arabic: "هيدعموا", transliteration: "hayida'amu" },
     },
   },
   {
     english: "to argue",
-    verb: "يتجادل",
-    transliteration: "yitgādal",
+    verb: "جادل",
+    transliteration: "gadal",
 
     presentTense: {
-      I: { arabic: "بتجادل", transliteration: "batgādal" },
-      youM: { arabic: "بتتجادل", transliteration: "bititgādal" },
-      youF: { arabic: "بتتجادلي", transliteration: "bititgādali" },
+      I: { arabic: "بتجادل", transliteration: "bagādal" },
+      youM: { arabic: "بتجادل", transliteration: "bitgādal" },
+      youF: { arabic: "بتجادلي", transliteration: "bitgādali" },
       he: { arabic: "بيتجادل", transliteration: "biyitgādal" },
       she: { arabic: "بتتجادل", transliteration: "bititgādal" },
       we: { arabic: "بنتجادل", transliteration: "binitgādal" },
@@ -5014,11 +4979,11 @@ const VerbConjugations = [
   },
   {
     english: "to disagree",
-    verb: "يختلف",
-    transliteration: "yikhtilef",
+    verb: "إختلف",
+    transliteration: "ikhtalaf",
 
     presentTense: {
-      I: { arabic: "بختلف", transliteration: "bakhtilef" },
+      I: { arabic: "بختلف", transliteration: "bakhtilif" },
       youM: { arabic: "بتختلف", transliteration: "bitikhtilef" },
       youF: { arabic: "بتختلفي", transliteration: "bitikhtilfi" },
       he: { arabic: "بيختلف", transliteration: "biyikhtilef" },
@@ -5053,29 +5018,29 @@ const VerbConjugations = [
 
   {
     english: "to accept",
-    verb: "يقبل",
-    transliteration: "yi'bal",
+    verb: "قبل",
+    transliteration: "'ibil",
 
     presentTense: {
       I: { arabic: "بقبل", transliteration: "ba'bal" },
       youM: { arabic: "بتقبل", transliteration: "biti'bal" },
       youF: { arabic: "بتقبلي", transliteration: "biti'bali" },
       he: { arabic: "بيقبل", transliteration: "biyi'bal" },
-      she: { arabic: "بتقبل", transliteration: "bit'bal" },
+      she: { arabic: "بتقبل", transliteration: "biti'bal" },
       we: { arabic: "بنقبل", transliteration: "bini'bal" },
       youPl: { arabic: "بتقبلوا", transliteration: "biti'balu" },
       they: { arabic: "بيقبلوا", transliteration: "biyi'balu" },
     },
 
     pastTense: {
-      I: { arabic: "قبلت", transliteration: " 'ebelt" },
-      youM: { arabic: "قبلت", transliteration: "'ebelt" },
-      youF: { arabic: "قبلتي", transliteration: "'ebelti" },
-      he: { arabic: "قبل", transliteration: "'ebel" },
-      she: { arabic: "قبلت", transliteration: "'ebelit" },
-      we: { arabic: "قبلنا", transliteration: "'ebelna" },
-      youPl: { arabic: "قبلتوا", transliteration: "'ebeltu" },
-      they: { arabic: "قبلوا", transliteration: "'ebelu" },
+      I: { arabic: "قبلت", transliteration: " 'ibilt" },
+      youM: { arabic: "قبلت", transliteration: "'ibilt" },
+      youF: { arabic: "قبلتي", transliteration: "'ibilti" },
+      he: { arabic: "قبل", transliteration: "'ibil" },
+      she: { arabic: "قبلت", transliteration: "'ibilit" },
+      we: { arabic: "قبلنا", transliteration: "'ibilna" },
+      youPl: { arabic: "قبلتوا", transliteration: "'ibiltu" },
+      they: { arabic: "قبلوا", transliteration: "'iblu" },
     },
 
     futureTense: {
@@ -5085,24 +5050,24 @@ const VerbConjugations = [
       he: { arabic: "هيقبل", transliteration: "hayi'bal" },
       she: { arabic: "هتقبل", transliteration: "hati'bal" },
       we: { arabic: "هنقبل", transliteration: "hani'bal" },
-      youPl: { arabic: "هتقبلوا", transliteration: "hat'balu" },
+      youPl: { arabic: "هتقبلوا", transliteration: "hati'balu" },
       they: { arabic: "هيقبلوا", transliteration: "hayi'balu" },
     },
   },
   {
     english: "to clarify",
-    verb: "يوضح",
-    transliteration: "yewaDDaH",
+    verb: "وضح",
+    transliteration: "waDDaH",
 
     presentTense: {
       I: { arabic: "بوضح", transliteration: "bawaDDaH" },
       youM: { arabic: "بتوضح", transliteration: "bitwaDDaH" },
       youF: { arabic: "بتوضحي", transliteration: "bitwaDDaHi" },
-      he: { arabic: "بيوضح", transliteration: "biyewaDDaH" },
+      he: { arabic: "بيوضح", transliteration: "biyiwaDDaH" },
       she: { arabic: "بتوضح", transliteration: "bitwaDDaH" },
       we: { arabic: "بنوضح", transliteration: "binwaDDaH" },
       youPl: { arabic: "بتوضحوا", transliteration: "bitwaDDaHu" },
-      they: { arabic: "بيوضحوا", transliteration: "biyewaDDaHu" },
+      they: { arabic: "بيوضحوا", transliteration: "biyiwaDDaHu" },
     },
 
     pastTense: {
@@ -5129,8 +5094,8 @@ const VerbConjugations = [
   },
   {
     english: "to improve",
-    verb: "يتحسن",
-    transliteration: "yit7assan",
+    verb: "إتحسن",
+    transliteration: "ithassan",
 
     presentTense: {
       I: { arabic: "بتحسن", transliteration: "batHassan" },
@@ -5167,13 +5132,13 @@ const VerbConjugations = [
   },
   {
     english: "to bargain / haggle",
-    verb: "يفاصل",
-    transliteration: "yifāṣel",
+    verb: "فاصل",
+    transliteration: "fāṣel",
 
     presentTense: {
-      I: { arabic: "بفاصل", transliteration: "bifāṣel" },
-      youM: { arabic: "بتفاصل", transliteration: "bitfāṣel" },
-      youF: { arabic: "بتفاصلي", transliteration: "bitfāṣli" },
+      I: { arabic: "بفاصل", transliteration: "bafāṣel" },
+      youM: { arabic: "بتفاصل", transliteration: "batfāṣel" },
+      youF: { arabic: "بتفاصلي", transliteration: "batfāṣli" },
       he: { arabic: "بيفاصل", transliteration: "biyifāṣel" },
       she: { arabic: "بتفاصل", transliteration: "bitfāṣel" },
       we: { arabic: "بنفاصل", transliteration: "binfāṣel" },
@@ -5205,8 +5170,8 @@ const VerbConjugations = [
   },
   {
     english: "to miss (long for)",
-    verb: "يوحش",
-    transliteration: "yiwa77ash",
+    verb: "وحش",
+    transliteration: "wahash",
 
     presentTense: {
       I: { arabic: "بوحش", transliteration: "bawahash" },
@@ -5243,18 +5208,18 @@ const VerbConjugations = [
   },
   {
     english: "to miss (fail to hit)",
-    verb: "يفلت",
-    transliteration: "yiflet",
+    verb: "فلت",
+    transliteration: "falat",
 
     presentTense: {
-      I: { arabic: "بفلت", transliteration: "baflet" },
-      youM: { arabic: "بتفلت", transliteration: "bitiflet" },
-      youF: { arabic: "بتفلتِ", transliteration: "bitifleti" },
-      he: { arabic: "بيفلت", transliteration: "biyiflet" },
-      she: { arabic: "بتفلت", transliteration: "bitflet" },
-      we: { arabic: "بنفلت", transliteration: "biniflet" },
-      youPl: { arabic: "بتفلتوا", transliteration: "bitifletu" },
-      they: { arabic: "بيفلتوا", transliteration: "biyifletu" },
+      I: { arabic: "بفلت", transliteration: "baflit" },
+      youM: { arabic: "بتفلت", transliteration: "bitiflit" },
+      youF: { arabic: "بتفلتِ", transliteration: "bitifliti" },
+      he: { arabic: "بيفلت", transliteration: "biyiflit" },
+      she: { arabic: "بتفلت", transliteration: "bitflit" },
+      we: { arabic: "بنفلت", transliteration: "biniflit" },
+      youPl: { arabic: "بتفلتوا", transliteration: "bitiflitu" },
+      they: { arabic: "بيفلتوا", transliteration: "biyiflitu" },
     },
 
     pastTense: {
@@ -5269,20 +5234,20 @@ const VerbConjugations = [
     },
 
     futureTense: {
-      I: { arabic: "هفلت", transliteration: "haflet" },
-      youM: { arabic: "هتفلت", transliteration: "hatiflet" },
-      youF: { arabic: "هتفلتِ", transliteration: "hatifleti" },
-      he: { arabic: "هيفلت", transliteration: "hayiflet" },
-      she: { arabic: "هتفلت", transliteration: "hatiflet" },
-      we: { arabic: "هنفلت", transliteration: "haniflet" },
-      youPl: { arabic: "هتفلتوا", transliteration: "hatifletu" },
-      they: { arabic: "هيفلتوا", transliteration: "hayifletu" },
+      I: { arabic: "هفلت", transliteration: "haflit" },
+      youM: { arabic: "هتفلت", transliteration: "hatiflit" },
+      youF: { arabic: "هتفلتِ", transliteration: "hatifliti" },
+      he: { arabic: "هيفلت", transliteration: "hayiflit" },
+      she: { arabic: "هتفلت", transliteration: "hatiflit" },
+      we: { arabic: "هنفلت", transliteration: "haniflit" },
+      youPl: { arabic: "هتفلتوا", transliteration: "hatiflitu" },
+      they: { arabic: "هيفلتوا", transliteration: "hayiflitu" },
     },
   },
   {
     english: "to deserve",
-    verb: "يستحق",
-    transliteration: "yistaheqq",
+    verb: "إستحق",
+    transliteration: "istaha'",
 
     presentTense: {
       I: { arabic: "باستحق", transliteration: "bastaha'" },
@@ -5319,8 +5284,8 @@ const VerbConjugations = [
   },
   {
     english: "to memorize / save",
-    verb: "يحفظ",
-    transliteration: "yiHfaZ",
+    verb: "حفظ",
+    transliteration: "hifiz",
 
     presentTense: {
       I: { arabic: "بحفظ", transliteration: "baHfaZ" },
@@ -5356,9 +5321,9 @@ const VerbConjugations = [
     },
   },
   {
-    english: "to captivate / attract",
-    verb: "يشد",
-    transliteration: "yishidd",
+    english: "to captivate / attract / pull",
+    verb: "شد",
+    transliteration: "shidd",
 
     presentTense: {
       I: { arabic: "بشد", transliteration: "bashidd" },
@@ -5372,14 +5337,14 @@ const VerbConjugations = [
     },
 
     pastTense: {
-      I: { arabic: "شديت", transliteration: "shaddeet" },
-      youM: { arabic: "شديت", transliteration: "shaddeet" },
-      youF: { arabic: "شديتي", transliteration: "shaddeeti" },
-      he: { arabic: "شد", transliteration: "shadd" },
-      she: { arabic: "شدت", transliteration: "shaddit" },
-      we: { arabic: "شدينا", transliteration: "shaddeena" },
-      youPl: { arabic: "شديتوا", transliteration: "shaddeetu" },
-      they: { arabic: "شدوا", transliteration: "shaddu" },
+      I: { arabic: "شديت", transliteration: "shiddeet" },
+      youM: { arabic: "شديت", transliteration: "shiddeet" },
+      youF: { arabic: "شديتي", transliteration: "shiddeeti" },
+      he: { arabic: "شد", transliteration: "shidd" },
+      she: { arabic: "شدت", transliteration: "shiddit" },
+      we: { arabic: "شدينا", transliteration: "shiddeena" },
+      youPl: { arabic: "شديتوا", transliteration: "shiddeetu" },
+      they: { arabic: "شدوا", transliteration: "shiddu" },
     },
 
     futureTense: {
@@ -5395,8 +5360,8 @@ const VerbConjugations = [
   },
   {
     english: "to plan",
-    verb: "يخطط",
-    transliteration: "yikhaTTiT",
+    verb: "خطط",
+    transliteration: "khaTTaT",
 
     presentTense: {
       I: { arabic: "بخطط", transliteration: "bakhaTTaT" },
@@ -5433,8 +5398,8 @@ const VerbConjugations = [
   },
   {
     english: "to leave",
-    verb: "يسيب",
-    transliteration: "yiseeb",
+    verb: "ساَب",
+    transliteration: "sab",
 
     presentTense: {
       I: { arabic: "بسيب", transliteration: "baseeb" },
@@ -5471,18 +5436,18 @@ const VerbConjugations = [
   },
   {
     english: "to push",
-    verb: "يزق",
-    transliteration: "yizzo'",
+    verb: "زق",
+    transliteration: "za'",
 
     presentTense: {
-      I: { arabic: "بزق", transliteration: "bazzo'" },
-      youM: { arabic: "بتزق", transliteration: "bitzzo'" },
-      youF: { arabic: "بتزقي", transliteration: "bitzzo'i" },
-      he: { arabic: "بيزق", transliteration: "biyizzo'" },
-      she: { arabic: "بتزق", transliteration: "bitzzo'" },
-      we: { arabic: "بنزق", transliteration: "binzzo'" },
-      youPl: { arabic: "بتزقوا", transliteration: "bitzzo'u" },
-      they: { arabic: "بيزقوا", transliteration: "biyizzo'u" },
+      I: { arabic: "بزق", transliteration: "bazo'" },
+      youM: { arabic: "بتزق", transliteration: "bitzo'" },
+      youF: { arabic: "بتزقي", transliteration: "bitzo'i" },
+      he: { arabic: "بيزق", transliteration: "biyizo'" },
+      she: { arabic: "بتزق", transliteration: "bitzo'" },
+      we: { arabic: "بنزق", transliteration: "binzo'" },
+      youPl: { arabic: "بتزقوا", transliteration: "bitzo'u" },
+      they: { arabic: "بيزقوا", transliteration: "biyizo'u" },
     },
 
     pastTense: {
@@ -5490,27 +5455,27 @@ const VerbConjugations = [
       youM: { arabic: "زقيت", transliteration: "za'eet" },
       youF: { arabic: "زقيتي", transliteration: "za'eeti" },
       he: { arabic: "زق", transliteration: "za'" },
-      she: { arabic: "زقت", transliteration: "za'at" },
+      she: { arabic: "زقت", transliteration: "za'it" },
       we: { arabic: "زقينا", transliteration: "za'eena" },
       youPl: { arabic: "زقيتوا", transliteration: "za'eetu" },
       they: { arabic: "زقوا", transliteration: "za'u" },
     },
 
     futureTense: {
-      I: { arabic: "هزق", transliteration: "hazzo'" },
-      youM: { arabic: "هتزق", transliteration: "hatzzo'" },
-      youF: { arabic: "هتزقي", transliteration: "hatzzo'i" },
-      he: { arabic: "هيزق", transliteration: "hayizzo'" },
-      she: { arabic: "هتزق", transliteration: "hatzzo'" },
-      we: { arabic: "هنزق", transliteration: "hanzzo'" },
-      youPl: { arabic: "هتزقوا", transliteration: "hatzzo'u" },
-      they: { arabic: "هيزقوا", transliteration: "hayizzo'u" },
+      I: { arabic: "هزق", transliteration: "hazo'" },
+      youM: { arabic: "هتزق", transliteration: "hatzo'" },
+      youF: { arabic: "هتزقي", transliteration: "hatzo'i" },
+      he: { arabic: "هيزق", transliteration: "hayizo'" },
+      she: { arabic: "هتزق", transliteration: "hatzo'" },
+      we: { arabic: "هنزق", transliteration: "hanzo'" },
+      youPl: { arabic: "هتزقوا", transliteration: "hatzo'u" },
+      they: { arabic: "هيزقوا", transliteration: "hayizo'u" },
     },
   },
   {
     english: "to hit",
-    verb: "يضرب",
-    transliteration: "yiDrab",
+    verb: "ضرب",
+    transliteration: "darab",
     presentTense: {
       I: { arabic: "بضرب", transliteration: "baDrab" },
       youM: { arabic: "بتضرب", transliteration: "bitiDrab" },
@@ -5546,8 +5511,8 @@ const VerbConjugations = [
   },
   {
     english: "to hug",
-    verb: "يحضن",
-    transliteration: "yiHDon",
+    verb: "حضن",
+    transliteration: "hadan",
 
     presentTense: {
       I: { arabic: "بحضن", transliteration: "baHDon" },
@@ -5583,8 +5548,8 @@ const VerbConjugations = [
   },
   {
     english: "to kiss",
-    verb: "يبوس",
-    transliteration: "yiboos",
+    verb: "باَس",
+    transliteration: "bas",
 
     presentTense: {
       I: { arabic: "ببوس", transliteration: "baboos" },
@@ -5621,8 +5586,8 @@ const VerbConjugations = [
   },
   {
     english: "to try / to taste",
-    verb: "يجرب",
-    transliteration: "yigarrib",
+    verb: "جرب",
+    transliteration: "garrib",
 
     presentTense: {
       I: { arabic: "بجرب", transliteration: "bagarrib" },
@@ -5659,49 +5624,49 @@ const VerbConjugations = [
   },
   {
     english: "to tolerate / to endure",
-    verb: "يتحمّل",
-    transliteration: "yitHammal",
+    verb: "إستحمّل",
+    transliteration: "istahmil",
 
     presentTense: {
-      I: { arabic: "بتحمّل", transliteration: "batHammal" },
-      youM: { arabic: "بتتحمّل", transliteration: "bititHammal" },
-      youF: { arabic: "بتتحمّلي", transliteration: "bititHammali" },
-      he: { arabic: "بيتحمّل", transliteration: "biyitHammal" },
-      she: { arabic: "بتتحمّل", transliteration: "bititHammal" },
-      we: { arabic: "بنتحمّل", transliteration: "binitHammal" },
-      youPl: { arabic: "بتتحمّلوا", transliteration: "bititHammalu" },
-      they: { arabic: "بيتحمّلوا", transliteration: "biyitHammalu" },
+      I: { arabic: "بستحمل", transliteration: "bastahmil" },
+      youM: { arabic: "بتستحمل", transliteration: "bitistahmil" },
+      youF: { arabic: "بتستحمّلي", transliteration: "bitistahmili" },
+      he: { arabic: "بيستحمل", transliteration: "biyistahmil" },
+      she: { arabic: "بتستحمّلي", transliteration: "bitistahmil" },
+      we: { arabic: "بنستحمل", transliteration: "binistahmil" },
+      youPl: { arabic: "بتستحمّلوا", transliteration: "bitistahmilu" },
+      they: { arabic: "بيستحمّلوا", transliteration: "biyistahmilu" },
     },
 
     pastTense: {
-      I: { arabic: "اتحمّلت", transliteration: "itHammalt" },
-      youM: { arabic: "اتحمّلت", transliteration: "itHammalt" },
-      youF: { arabic: "اتحمّلتي", transliteration: "itHammalti" },
-      he: { arabic: "اتحمّل", transliteration: "itHammal" },
-      she: { arabic: "اتحمّلت", transliteration: "itHammalit" },
-      we: { arabic: "اتحمّلنا", transliteration: "itHammalna" },
-      youPl: { arabic: "اتحمّلتوا", transliteration: "itHammaltu" },
-      they: { arabic: "اتحمّلوا", transliteration: "itHammalu" },
+      I: { arabic: "إستحملت", transliteration: "istahmilt" },
+      youM: { arabic: "إستحملت", transliteration: "istahmilt" },
+      youF: { arabic: "إستحملتي", transliteration: "istahmilti" },
+      he: { arabic: "إستحمل", transliteration: "istahmil" },
+      she: { arabic: "إستحملت", transliteration: "istahmilit" },
+      we: { arabic: "إستحملنا", transliteration: "istahmilna" },
+      youPl: { arabic: "إستحملتوا", transliteration: "istahmiltu" },
+      they: { arabic: "يستحمّلوا", transliteration: "istahmilu" },
     },
 
     futureTense: {
-      I: { arabic: "هتحمّل", transliteration: "haṭHammal" },
-      youM: { arabic: "هتتحمّل", transliteration: "hatitHammal" },
-      youF: { arabic: "هتتحمّلي", transliteration: "hatitHammali" },
-      he: { arabic: "هيتحمّل", transliteration: "hayitHammal" },
-      she: { arabic: "هتتحمّل", transliteration: "hatitHammal" },
-      we: { arabic: "هنتحمّل", transliteration: "hanitHammal" },
-      youPl: { arabic: "هتتحمّلوا", transliteration: "hatitHammalu" },
-      they: { arabic: "هيتحمّلوا", transliteration: "hayitHammalu" },
+      I: { arabic: "هستحمل", transliteration: "" },
+      youM: { arabic: "هتستحمل", transliteration: "hatistahmil" },
+      youF: { arabic: "هتستحمّلي", transliteration: "hatistahmili" },
+      he: { arabic: "هستحمل", transliteration: "hayistahmil" },
+      she: { arabic: "هتستحمّلي", transliteration: "hatistahmil" },
+      we: { arabic: "هستحمل", transliteration: "hanistahmil" },
+      youPl: { arabic: "هتستحمّلوا", transliteration: "hatistahmilu" },
+      they: { arabic: "هستحمّلوا", transliteration: "hayistahmilu" },
     },
   },
   {
     english: "to let / to allow",
-    verb: "يخلّي",
-    transliteration: "yikhalli",
+    verb: "خلّى",
+    transliteration: "khalla",
 
     presentTense: {
-      I: { arabic: "بخلّي", transliteration: "bikhalli" },
+      I: { arabic: "بخلّي", transliteration: "bakhalli" },
       youM: { arabic: "بتخلّي", transliteration: "bitkhalli" },
       youF: { arabic: "بتخلّي", transliteration: "bitkhalli" },
       he: { arabic: "بيخلّي", transliteration: "biyikhalli" },
@@ -5712,13 +5677,13 @@ const VerbConjugations = [
     },
 
     pastTense: {
-      I: { arabic: "خلّيت", transliteration: "khallēt" },
-      youM: { arabic: "خلّيت", transliteration: "khallēt" },
-      youF: { arabic: "خلّيتي", transliteration: "khallēti" },
+      I: { arabic: "خلّيت", transliteration: "khalleet" },
+      youM: { arabic: "خلّيت", transliteration: "khalleet" },
+      youF: { arabic: "خلّيتي", transliteration: "khalleeti" },
       he: { arabic: "خلّى", transliteration: "khalla" },
-      she: { arabic: "خلّت", transliteration: "khallat" },
-      we: { arabic: "خلّينا", transliteration: "khallēna" },
-      youPl: { arabic: "خلّيتوا", transliteration: "khallētu" },
+      she: { arabic: "خلّت", transliteration: "khallit" },
+      we: { arabic: "خلّينا", transliteration: "khalleena" },
+      youPl: { arabic: "خلّيتوا", transliteration: "khalleetu" },
       they: { arabic: "خلّوا", transliteration: "khallu" },
     },
 
@@ -5766,3 +5731,10 @@ export const freeVerbs = VerbConjugations.map((verb, index) => {
     return base;
   }
 });
+
+// MORE VERBS
+// yegael establish
+// order otlob
+// meet qabelt
+// إتعـَوّ ِد get used to
+// spend time

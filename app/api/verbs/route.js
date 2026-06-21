@@ -30,6 +30,7 @@ export async function GET(req) {
       english: verb.english,
       arabic: verb.verb,
       transliteration: verb.transliteration,
+      verb: verb.verb,
       premium: index >= 10,
     };
 
