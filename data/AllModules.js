@@ -74,7 +74,7 @@ export const AllModules = {
   Conflict,
 
   Letters,
-  Verbs,
+  // Verbs,
   Emotions,
   Personality,
   Appearance,

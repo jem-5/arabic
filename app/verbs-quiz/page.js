@@ -321,7 +321,7 @@ export default function VerbsQuizPage() {
         </button>
       </div>
 
-      <div className="flex flex-col items-center justify-between gap-3 ">
+      <div className="flex flex-col items-center justify-center gap-3 ">
         <div className="badge badge-primary p-4">
           <strong>
             Score: {score.correct} / {score.total}
@@ -330,7 +330,7 @@ export default function VerbsQuizPage() {
 
         <div>
           <button
-            className="btn btn-sm mr-2"
+            className="btn btn-sm "
             onClick={() => {
               setScore({ correct: 0, total: 0 });
               setLastResult(null);
