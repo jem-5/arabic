@@ -107,7 +107,7 @@ export function DifferentLetters({ heard = "", expected = "" }) {
   return (
     <div className=" w-full ">
       <div className="flex gap-1 items-center  ">
-        <div className="mr-2 text-lg  ">Expected Word:</div>
+        <div className="mr-2 text-lg  text-[white]">Expected Word:</div>
         <div
           className="flex gap-1 items-center  "
           dir="rtl"
@@ -119,10 +119,10 @@ export function DifferentLetters({ heard = "", expected = "" }) {
               cell.type === "match"
                 ? " py-0.5 rounded  text-[lightgreen]"
                 : cell.type === "substitute"
-                ? " py-0.5 rounded   text-[yellow]"
-                : cell.type === "delete"
-                ? " py-0.5 rounded   text-[red]"
-                : " py-0.5 rounded  text-[gray]"; // insert
+                  ? " py-0.5 rounded   text-[yellow]"
+                  : cell.type === "delete"
+                    ? " py-0.5 rounded   text-[red]"
+                    : " py-0.5 rounded  text-[gray]"; // insert
             return (
               <div key={key} className={`${cls} text-xl`} title={cell.type}>
                 {cell.expected || "•"}
@@ -133,7 +133,7 @@ export function DifferentLetters({ heard = "", expected = "" }) {
       </div>
 
       <div className="flex gap-1 items-center mt-1 ">
-        <div className="mr-2 text-lg ">Heard Word:</div>
+        <div className="mr-2 text-lg  text-[white]">Heard Word:</div>
         <div
           className="flex gap-1 items-center  "
           dir="rtl"
@@ -145,10 +145,10 @@ export function DifferentLetters({ heard = "", expected = "" }) {
               cell.type === "match"
                 ? " py-0.5 rounded  text-[lightgreen]"
                 : cell.type === "substitute"
-                ? " py-0.5 rounded  text-[yellow]"
-                : cell.type === "insert"
-                ? " py-0.5 rounded  text-[lightblue]"
-                : " py-0.5 rounded   text-[red]"; // delete -> missing in heard
+                  ? " py-0.5 rounded  text-[yellow]"
+                  : cell.type === "insert"
+                    ? " py-0.5 rounded  text-[lightblue]"
+                    : " py-0.5 rounded   text-[red]"; // delete -> missing in heard
             return (
               <div key={key} className={`${cls} text-xl`} title={cell.type}>
                 {cell.heard || "•"}

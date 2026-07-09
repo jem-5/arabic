@@ -8,7 +8,12 @@ import {
   similarityScore,
 } from "@/helpers/pronunciationFunctions";
 
-export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
+export default function Recorder({
+  onRecognized,
+  currentWord,
+  onBlobReady,
+  onSendData,
+}) {
   const [status, setStatus] = useState("idle");
   const [heardWord, setHeardWord] = useState("");
   const [score, setScore] = useState(null);
@@ -72,8 +77,11 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
         const normalizedExpected = normalizeArabic(currentWord);
         setHeardWord(normalizedHeard);
         const score = similarityScore(normalizedHeard, normalizedExpected);
+
         setScore(score); // inside onresult final
         updateStatus(score);
+        onSendData(score);
+        console.log(score);
       };
       r.onerror = (e) => setStatus("Error: " + e.error || e.message);
       r.onend = () => {
@@ -119,6 +127,7 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
 
   const normalizedCurrent = normalizeArabic(currentWord);
   const showShortWordWarning = normalizedCurrent.length <= 3;
+
   return (
     <div>
       <div className="flex  items-center justify-end gap-2">
@@ -150,14 +159,14 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
       )}
       {score > 0 ? (
         <div className="text-lg mt-2">
-          Pronuncation Score:{" "}
+          Pronunciation Score:{" "}
           <span
             className={
               "font-bold " +
               (score >= 70
-                ? "text-[#15f015]"
+                ? "text-[green]"
                 : score >= 50
-                  ? "text-[yellow]"
+                  ? "text-[#F6BE00]"
                   : "text-[red]")
             }
           >
@@ -178,7 +187,7 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
           />
 
           <div
-            className="collapse-title font-semibold flex justify-between text-lg cursor-pointer"
+            className="collapse-title font-semibold flex justify-between text-lg cursor-pointer text-[black] bg-neutral text-[white]"
             onClick={() => {
               const checkbox = detailsRef.current.querySelector(
                 "input[type='checkbox']",
@@ -204,9 +213,11 @@ export default function Recorder({ onRecognized, currentWord, onBlobReady }) {
               </svg>
             </span>
           </div>
-          <div className="collapse-content text-sm animate-fadeIn">
+          <div className="collapse-content text-sm animate-fadeIn bg-neutral text-[white]">
             <DifferentLetters heard={heardWord} expected={currentWord} />
-            <div className=" mr-2 text-lg  ">Letters You Missed:</div>
+            <div className=" mr-2 text-lg text-[white] ">
+              Letters You Missed:
+            </div>
             {(() => {
               const heard = normalizeArabic(heardWord || "");
               const expected = normalizeArabic(currentWord || "");
