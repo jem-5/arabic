@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "firebase-admin/auth";
+import "@/firebase/firebaseAdmin";
 
 // This will check if a payment was successful before changing user status on the server / database
 export async function POST(req) {
@@ -10,14 +11,14 @@ export async function POST(req) {
 
       return NextResponse.json(
         { success: false, error: "Missing orderId or uid" },
-        { status: 400 }
+        { status: 400 },
       );
     }
     // 1. Verify the order with PayPal
     const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
     const PAYPAL_SECRET = process.env.NEXT_PUBLIC_PAYPAL_SECRET;
     const basicAuth = Buffer.from(
-      `${PAYPAL_CLIENT_ID}:${PAYPAL_SECRET}`
+      `${PAYPAL_CLIENT_ID}:${PAYPAL_SECRET}`,
     ).toString("base64");
 
     // Get PayPal access token
@@ -44,7 +45,7 @@ export async function POST(req) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       const subData = await subRes.json();
       if (subData.status === "ACTIVE") {
@@ -61,7 +62,7 @@ export async function POST(req) {
       }
       return NextResponse.json(
         { success: false, error: "Subscription not active" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -73,7 +74,7 @@ export async function POST(req) {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      }
+      },
     );
 
     const orderData = await orderRes.json();
@@ -130,7 +131,7 @@ export async function POST(req) {
 
       return NextResponse.json(
         { success: false, error: "Order not completed" },
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (error) {
@@ -138,7 +139,7 @@ export async function POST(req) {
 
     return NextResponse.json(
       { success: false, error: error.message },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

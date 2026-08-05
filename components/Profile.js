@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
 import { useAuthContext } from "@/context/AuthContext";
-
 import { useRouter } from "next/navigation";
 import signout from "@/firebase/auth/signout";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 import { db } from "@/firebase/config";
-
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import CancelSubscriptionButton from "./CancelSubscriptionButton";
 import BadgeGrid from "./Badges";
@@ -96,6 +94,8 @@ export const Profile = () => {
 
   // Keep savedWords in sync with localStorage
   useEffect(() => {
+    console.log("user info from auth context", user, userProfile);
+
     try {
       async function updateToken() {
         if (!user) return;
@@ -119,7 +119,7 @@ export const Profile = () => {
 
   const handleRemoveSavedWord = (item) => {
     const filteredWords = (savedWords || []).filter(
-      (word) => word.english !== item.english
+      (word) => word.english !== item.english,
     );
     // update state; effect will sync localStorage
     setSavedWords(filteredWords);
@@ -143,7 +143,7 @@ export const Profile = () => {
             w.english === word.english &&
             w.arabic === word.arabic &&
             w.transliteration === word.transliteration
-          )
+          ),
       );
 
       await updateDoc(userRef, { missedWords: filtered });
@@ -202,13 +202,22 @@ export const Profile = () => {
                   {isPaidMember
                     ? "Paid Member"
                     : boughtPracticePack
-                    ? "Practice Pack Member"
-                    : "Free Member"}
+                      ? "Practice Pack Member"
+                      : "Free Member"}
                   {isPaidMember && isSubscriber ? " (Subscriber)" : ""}
                 </p>
               </div>
               <MyButton func={signout} text={"Sign Out"} />
-              {isSubscriber && <CancelSubscriptionButton user={user} />}
+              {isSubscriber && (
+                <>
+                  <CancelSubscriptionButton user={user} />
+                  <p className="text-sm text-gray-500 mt-2">
+                    You may cancel your subscription at any time by either
+                    clicking the button above or by going to your PayPal account
+                    subscription settings.
+                  </p>
+                </>
+              )}
             </>
           )}
           {(boughtPracticePack || isPaidMember) && (

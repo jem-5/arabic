@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "firebase-admin/auth";
+import "@/firebase/firebaseAdmin";
 
 // This will handle PayPal subscription cancellations
 export async function POST(req) {
@@ -18,12 +19,12 @@ export async function POST(req) {
     if (!subscriptionId) {
       return NextResponse.json(
         { error: "No subscription found for user" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const basicAuth = Buffer.from(
-      `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}:${process.env.NEXT_PUBLIC_PAYPAL_SECRET}`
+      `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}:${process.env.NEXT_PUBLIC_PAYPAL_SECRET}`,
     ).toString("base64");
 
     const tokenRes = await fetch("https://api-m.paypal.com/v1/oauth2/token", {
@@ -48,7 +49,7 @@ export async function POST(req) {
         body: JSON.stringify({
           reason: "User requested cancellation",
         }),
-      }
+      },
     );
 
     if (!cancelRes.ok) {
@@ -56,7 +57,7 @@ export async function POST(req) {
       console.log("Failed to cancel subscription:", err);
       return NextResponse.json(
         { error: "Failed to cancel subscription" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -72,7 +73,7 @@ export async function POST(req) {
     console.log("Error cancelling subscription:", error);
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -154,7 +154,7 @@ export default function Pricing() {
                       onApprove={async (data, actions) => {
                         console.log(
                           "Subscription approved:",
-                          data.subscriptionID
+                          data.subscriptionID,
                         );
 
                         const res = await fetch("/api/paypal/verify/", {
@@ -169,7 +169,7 @@ export default function Pricing() {
                         if (result.success) {
                           toast.success(
                             "Payment successful! Your membership is now active.",
-                            { duration: 6000 }
+                            { duration: 6000 },
                           );
                           try {
                             // Force refresh of the ID token so new custom claims are available
@@ -184,13 +184,13 @@ export default function Pricing() {
                           } catch (err) {
                             console.error(
                               "Error refreshing token or refetching user:",
-                              err
+                              err,
                             );
                           }
                           router.push("/dashboard");
                         } else {
                           toast.error(
-                            "Payment verification failed. Please contact support."
+                            "Payment verification failed. Please contact support.",
                           );
                         }
                       }}
@@ -282,7 +282,7 @@ export default function Pricing() {
                         const result = await res.json();
                         if (result.success) {
                           toast.success(
-                            "Payment successful! Your membership is now active."
+                            "Payment successful! Your membership is now active.",
                           );
                           try {
                             // Force refresh of the ID token so new custom claims are available
@@ -297,13 +297,13 @@ export default function Pricing() {
                           } catch (err) {
                             console.error(
                               "Error refreshing token or refetching user:",
-                              err
+                              err,
                             );
                           }
                           router.push("/dashboard");
                         } else {
                           toast.error(
-                            "Payment verification failed. Please contact support."
+                            "Payment verification failed. Please contact support.",
                           );
                         }
                       }}
@@ -406,7 +406,7 @@ export default function Pricing() {
                           const result = await res.json();
                           if (result.success) {
                             toast.success(
-                              "Payment successful! Your product is available on your Profile page."
+                              "Payment successful! Your product is available on your Profile page.",
                             );
                             try {
                               // Force refresh of the ID token so new custom claims are available
@@ -421,12 +421,12 @@ export default function Pricing() {
                             } catch (err) {
                               console.error(
                                 "Error refreshing token or refetching user:",
-                                err
+                                err,
                               );
                             }
                           } else {
                             toast.error(
-                              "Payment verification failed. Please contact support."
+                              "Payment verification failed. Please contact support.",
                             );
                           }
                         }}
