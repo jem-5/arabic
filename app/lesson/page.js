@@ -336,7 +336,7 @@ export default function Lesson() {
             {!isPaidMember && (
               <UpsellCard questionNum={questionNum} lessonData={lessonData} />
             )}
-            <div className="   card md:card-side    w-full shadow-xl bg-neutral z-5  ">
+            <div className="card md:card-side    w-full shadow-xl bg-neutral z-5  ">
               <div className="card-body flex flex-col justify-between  w-full  ">
                 <div className="text-4xl flex justify-between items-baseline gap-2">
                   {lessonData ? lessonData[questionNum]?.english : null}

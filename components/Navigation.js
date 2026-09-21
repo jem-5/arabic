@@ -15,7 +15,8 @@ export const Navigation = () => {
       subLinks: [
         { name: "☕Conversation", href: "/conversation/" },
         { name: "🌴Stories", href: "/stories/" },
-        { name: "🎯Verb Quiz", href: "/verbs-quiz/" },
+        { name: "🎯Verb Conjugator", href: "/verbs-quiz/" },
+        { name: "💬Say the Verb", href: "/say-verb/" },
       ],
     },
     {
