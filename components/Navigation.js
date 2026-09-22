@@ -6,16 +6,17 @@ export const Navigation = () => {
     {
       name: "🏺Learn",
       subLinks: [
-        { name: "📜Lessons", href: "/dashboard/" },
-        { name: "🧭Verb Oasis", href: "/verbs/" },
+        { name: "📜Vocab Lessons", href: "/dashboard/" },
+        { name: "🧭Verb Hub", href: "/verbs/" },
+        { name: "📍Explore Egypt", href: "/map/" },
       ],
     },
     {
       name: "🌙Practice",
       subLinks: [
-        { name: "☕Conversation", href: "/conversation/" },
-        { name: "🌴Stories", href: "/stories/" },
-        { name: "🎯Verb Conjugator", href: "/verbs-quiz/" },
+        { name: "☕Arabic Texting", href: "/conversation/" },
+        { name: "🌴Immersive Stories", href: "/stories/" },
+        { name: "🎯Conjugate the Verb", href: "/verbs-quiz/" },
         { name: "💬Say the Verb", href: "/say-verb/" },
       ],
     },
@@ -85,7 +86,7 @@ export const Navigation = () => {
             </ul>
           </div>
 
-          <div className="lg:hidden dropdown flex justify-center items-center">
+          <div className="lg:hidden dropdown flex justify-center items-center ">
             <div tabIndex={0} className="btn btn-ghost btn-circle ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +105,7 @@ export const Navigation = () => {
             </div>
             <ul
               tabIndex="-1"
-              className=" dropdown-content bg-base-100 rounded-box z-[100] mt-3  shadow flex flex-col justify-start items-start p-2 left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 w-64 gap-1  "
+              className=" dropdown-content bg-base-100 rounded-box z-[100] mt-3  shadow flex flex-col justify-start items-start p-2 left-1/2 -translate-x-1/2 top-1/2 +translate-y-1/2 min-w-80 gap-1  "
             >
               {NavigationItems.map((item, index) => (
                 <li key={index} className=" list-none">
