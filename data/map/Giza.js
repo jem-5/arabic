@@ -12,7 +12,7 @@ const Giza = {
       "Ektishef el-Gīza men khilāl el-ahrām we-Abū el-Hōl wel-tārīkh el-Maṣri el-ʾadīm wel-taʿbīrāt wel-taqāfa el-momayyaza lel-manṭaʾa.",
   },
 
-  image: "/images/map/giza/giza.JPG",
+  image: "/images/map/giza/giza.jpg",
 
   vocabulary: [
     {
