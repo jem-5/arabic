@@ -12,7 +12,7 @@ const Aswan = {
       "Ektishef Aswān men khilāl en-Nīl wet-taʾāfa en-Nūbeyya wel-maʿābed el-ʾadīma wel-gozor el-hādya wet-taʿbīrāt el-maḥalliyya wet-taqālīd el-momayyaza le-ganūb Maṣr.",
   },
 
-  image: "/images/map/aswan/aswan.JPG",
+  image: "/images/map/aswan/aswan.jpg",
 
   vocabulary: [
     {

@@ -12,7 +12,7 @@ const Luxor = {
       "Ektishef el-Oṣor men khilāl el-maʿābed el-ʾadīma we-maʾāber el-molūk wel-taʾālīd ʿala en-Nīl wet-taʿbīrāt el-maḥalliyya wel-mawāqeʿ el-athareyya el-momayyaza le-Madīnet Tība el-ʾadīma.",
   },
 
-  image: "/images/map/luxor/luxor.JPG",
+  image: "/images/map/luxor/luxor.jpg",
 
   vocabulary: [
     {
