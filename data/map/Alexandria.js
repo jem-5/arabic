@@ -179,7 +179,7 @@ const Alexandria = {
       arabic: "كبدة إسكندراني",
       audio: "/audio/map/alexandria/kebda-eskandarani.mp3",
       transliteration: "kebda Eskandarāni",
-      image: "/images/map/alexandria/kebda.JPG",
+      image: "/images/map/alexandria/kebda.jpg",
       description:
         "Thinly sliced beef liver cooked with garlic, cumin, chili, and green peppers, usually served hot in bread with lemon.",
     },
@@ -189,7 +189,7 @@ const Alexandria = {
       arabic: "صيادية",
       audio: "/audio/map/alexandria/sayadeya.mp3",
       transliteration: "sayādiyya",
-      image: "/images/map/alexandria/sayadeya.JPG",
+      image: "/images/map/alexandria/sayadeya.jpg",
       description:
         "A seafood dish of fish served with richly seasoned rice, often prepared with caramelized onions and spices.",
     },
@@ -199,7 +199,7 @@ const Alexandria = {
       arabic: "سمك سنجاري",
       audio: "/audio/map/alexandria/sinjari.mp3",
       transliteration: "samak sengāri",
-      image: "/images/map/alexandria/sinjari.JPG",
+      image: "/images/map/alexandria/sinjari.jpg",
       description:
         "A whole fish opened and filled with a seasoned vegetable mixture before being grilled or baked.",
     },
@@ -209,7 +209,7 @@ const Alexandria = {
       arabic: "سمك سلطان إبراهيم مشوي",
       audio: "/audio/map/alexandria/sultan-ibrahim.mp3",
       transliteration: "samak Solṭān Ibrāhīm mashwi",
-      image: "/images/map/alexandria/sultan.JPG",
+      image: "/images/map/alexandria/sultan.jpg",
       description:
         "Small red mullet grilled whole and commonly served with lemon and simple seasonings.",
     },
@@ -219,7 +219,7 @@ const Alexandria = {
       arabic: "سبيط مشوي",
       audio: "/audio/map/alexandria/grilled-calamari.mp3",
       transliteration: "sabeṭ mashwi",
-      image: "/images/map/alexandria/calamari.JPG",
+      image: "/images/map/alexandria/calamari.jpg",
       description:
         "Fresh squid grilled and seasoned simply, reflecting Alexandria's strong Mediterranean seafood tradition.",
     },
@@ -229,7 +229,7 @@ const Alexandria = {
       arabic: "طاجن جمبري",
       audio: "/audio/map/alexandria/shrimp-tagine.mp3",
       transliteration: "ṭāgen gambari",
-      image: "/images/map/alexandria/shrimp.JPG",
+      image: "/images/map/alexandria/shrimp.jpg",
       description:
         "Shrimp baked in a traditional clay tagine with a savory sauce and vegetables.",
     },
@@ -239,7 +239,7 @@ const Alexandria = {
       arabic: "طاجن سبيط",
       audio: "/audio/map/alexandria/calamari-tagine.mp3",
       transliteration: "ṭāgen sabeṭ",
-      image: "/images/map/alexandria/calamari-tag.JPG",
+      image: "/images/map/alexandria/calamari-tag.jpg",
       description:
         "Tender squid cooked in a rich sauce and baked in a traditional Egyptian clay dish.",
     },
@@ -249,7 +249,7 @@ const Alexandria = {
       arabic: "أكلات بحرية إسكندراني",
       audio: "/audio/map/alexandria/seafood.mp3",
       transliteration: "aklāt baḥreyya Eskandarāni",
-      image: "/images/map/alexandria/seafood.JPG",
+      image: "/images/map/alexandria/seafood.jpg",
       description:
         "Fresh fish and seafood prepared in the city's Mediterranean style and commonly enjoyed along the waterfront.",
     },
@@ -261,7 +261,7 @@ const Alexandria = {
       arabic: "مكتبة الإسكندرية",
       audio: "/audio/map/alexandria/bibliotheca-alexandrina.mp3",
       transliteration: "Maktabet el-Eskendereyya",
-      image: "/images/map/alexandria/bibliotheca.JPG",
+      image: "/images/map/alexandria/bibliotheca.jpg",
       description:
         "A major cultural and research center overlooking the Mediterranean, inspired by the ancient Library of Alexandria.",
     },
@@ -271,7 +271,7 @@ const Alexandria = {
       arabic: "قلعة قايتباي",
       audio: "/audio/map/alexandria/qaitbay.mp3",
       transliteration: "ʾalʿet Qāytebāy",
-      image: "/images/map/alexandria/qaitbay.JPG",
+      image: "/images/map/alexandria/qaitbay.jpg",
       description:
         "A 15th-century fortress on Alexandria's waterfront built on the site associated with the ancient Lighthouse of Alexandria.",
     },
@@ -281,7 +281,7 @@ const Alexandria = {
       arabic: "مقابر كوم الشقافة",
       audio: "/audio/map/alexandria/kom-el-shoqafa.mp3",
       transliteration: "maqāber Kom el-Shoʾafā",
-      image: "/images/map/alexandria/catacombs.JPG",
+      image: "/images/map/alexandria/catacombs.jpg",
       description:
         "A remarkable Roman-era underground necropolis where Egyptian, Greek, and Roman artistic traditions come together.",
     },
@@ -291,7 +291,7 @@ const Alexandria = {
       arabic: "عمود السواري",
       audio: "/audio/map/alexandria/pompeys-pillar.mp3",
       transliteration: "ʿamūd el-Sawāri",
-      image: "/images/map/alexandria/pompeys-pillar.JPG",
+      image: "/images/map/alexandria/pompeys-pillar.jpg",
       description:
         "A massive ancient column from the Roman period standing near the remains of the Serapeum.",
     },
@@ -301,7 +301,7 @@ const Alexandria = {
       arabic: "كوم الدكة",
       audio: "/audio/map/alexandria/kom-el-dikka.mp3",
       transliteration: "Kom el-Dekka",
-      image: "/images/map/alexandria/kom.JPG",
+      image: "/images/map/alexandria/kom.jpg",
       description:
         "An archaeological site containing a Roman theater, baths, lecture halls, mosaics, and remains of ancient Alexandria.",
     },
@@ -311,7 +311,7 @@ const Alexandria = {
       arabic: "قصر المنتزه",
       audio: "/audio/map/alexandria/montaza-palace.mp3",
       transliteration: "ʾaṣr el-Montaza",
-      image: "/images/map/alexandria/montaza-palace.JPG",
+      image: "/images/map/alexandria/montaza-palace.jpg",
       description:
         "A historic royal palace complex surrounded by extensive gardens on Alexandria's Mediterranean coastline.",
     },
@@ -321,7 +321,7 @@ const Alexandria = {
       arabic: "كوبري ستانلي",
       audio: "/images/map/alexandria/stanley-bridge.mp3",
       transliteration: "Kobri Stanley",
-      image: "/images/map/alexandria/stanley-bridge.JPG",
+      image: "/images/map/alexandria/stanley-bridge.jpg",
       description:
         "A distinctive bridge stretching along Alexandria's Mediterranean waterfront and one of the city's recognizable modern landmarks.",
     },
@@ -331,7 +331,7 @@ const Alexandria = {
       arabic: "كورنيش الإسكندرية",
       audio: "/audio/map/alexandria/corniche.mp3",
       transliteration: "Kornīsh el-Eskendereyya",
-      image: "/images/map/alexandria/corniche.JPG",
+      image: "/images/map/alexandria/corniche.jpg",
       description:
         "Alexandria's famous waterfront road running beside the Mediterranean and connecting many of the city's coastal neighborhoods.",
     },
