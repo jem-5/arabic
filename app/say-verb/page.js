@@ -109,7 +109,7 @@ export default function SayVerbPage() {
   }, [recognizedWord]);
 
   return (
-    <main className="p-6 max-w-3xl mx-auto">
+    <main className="p-6 max-w-3xl mx-auto mb-auto">
       <h1 className="text-2xl font-bold mb-4 text-neutral">
         Say the Verb Quiz
       </h1>

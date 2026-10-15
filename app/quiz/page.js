@@ -262,7 +262,7 @@ export default function Quiz() {
   }
 
   return (
-    <main className="flex-grow flex flex-col items-center p-2 min-w-80 ">
+    <main className="flex-grow flex flex-col items-center p-2 min-w-80 mb-auto ">
       {!approved ? (
         <div className="alert alert-warning shadow-lg w-full">
           <div>

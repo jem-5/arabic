@@ -97,7 +97,7 @@ export default function SentenceBuilder() {
   };
 
   return (
-    <main className="p-6 max-w-3xl mx-auto">
+    <main className="p-6 max-w-3xl mx-auto mb-auto">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold mb-4 text-neutral">
           Sentence Builder
