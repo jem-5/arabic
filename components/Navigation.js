@@ -18,6 +18,7 @@ export const Navigation = () => {
         { name: "🌴Immersive Stories", href: "/stories/" },
         { name: "🎯Conjugate the Verb", href: "/verbs-quiz/" },
         { name: "💬Say the Verb", href: "/say-verb/" },
+        { name: "✍Build a Sentence", href: "/sentence-builder/" },
       ],
     },
     {
