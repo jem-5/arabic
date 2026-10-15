@@ -64,7 +64,12 @@ export default function SentenceBuilder() {
         text,
       })),
     );
-    if (shuffled.length > 1 && arraysMatch(shuffled, correctWords)) {
+
+    const isAlreadyCorrect = arraysMatch(
+      shuffled.map((word) => word.text),
+      correctWords,
+    );
+    if (shuffled.length > 1 && isAlreadyCorrect) {
       [shuffled[0], shuffled[1]] = [shuffled[1], shuffled[0]];
     }
     setProblem(shuffled.toReversed());
