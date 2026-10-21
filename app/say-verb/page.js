@@ -46,6 +46,33 @@ export default function SayVerbPage() {
   const [recognizedWord, setRecognizedWord] = useState("");
   const [whisperBlob, setWhisperBlob] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [questionNum, setQuestionNum] = useState(0);
+
+  const filteredQuestions = useMemo(() => {
+    const numQuestions = 40;
+
+    const questions = VerbConjugations.flatMap((verbItem) => {
+      const tenses = tenseFilter === "all" ? TENSE_KEYS : [tenseFilter];
+
+      const pronouns = pronounFilter === "all" ? PRONOUN_KEYS : [pronounFilter];
+
+      return tenses.flatMap((tense) =>
+        pronouns
+          .filter((pronoun) => verbItem[tense]?.[pronoun]?.arabic)
+          .map((pronoun) => ({
+            verbItem,
+            tense,
+            pronoun,
+            direction: "toArabic",
+            arabic: verbItem[tense][pronoun].arabic,
+            english: verbItem.english || "",
+          })),
+      );
+    });
+    return shuffle(questions).slice(0, numQuestions);
+  }, [tenseFilter, pronounFilter]);
+
+  const totalQuestions = filteredQuestions.length;
 
   const handleScoreFromRecorder = (data) => {
     console.log(data);
@@ -65,30 +92,18 @@ export default function SayVerbPage() {
   };
 
   const makeQuestion = useCallback(
-    (pronFilter = pronounFilter, tensFilter = tenseFilter) => {
-      const verbItem = pickRandom(VerbConjugations);
-      const tense = tensFilter === "all" ? pickRandom(TENSE_KEYS) : tensFilter;
-      const pronoun =
-        pronFilter === "all" ? pickRandom(PRONOUN_KEYS) : pronFilter;
-      const direction = "toArabic";
-
-      return {
-        verbItem,
-        tense,
-        pronoun,
-        direction,
-        arabic: (verbItem[tense] && verbItem[tense][pronoun]?.arabic) || "",
-
-        english: verbItem.english || "",
-      };
+    (questions = filteredQuestions, index = 0) => {
+      if (questions.length === 0) return null;
+      return questions[index % questions.length];
     },
-    [pronounFilter, tenseFilter],
+    [filteredQuestions],
   );
 
-  const [question, setQuestion] = useState(() => makeQuestion());
+  const [question, setQuestion] = useState(() =>
+    makeQuestion(filteredQuestions, 0),
+  );
 
   const handleAudio = (option) => {
-    console.log(option);
     if (!question) return;
     const given = (option || "").toString().trim().toLowerCase();
     const correctArabic = (question.arabic || "")
@@ -108,11 +123,32 @@ export default function SayVerbPage() {
     handleAudio(recognizedWord);
   }, [recognizedWord]);
 
+  useEffect(() => {
+    setQuestion(makeQuestion(filteredQuestions, 0));
+    setQuestionNum(0);
+    setShowAnswer(false);
+    setSelectedOption(null);
+    setRecognizedWord("");
+    setAnswerText("");
+  }, [filteredQuestions, makeQuestion]);
+
+  const formattedTense = question?.tense
+    ? question.tense
+        .replace("Tense", "")
+        .replace(/^./, (char) => char.toUpperCase())
+    : "";
+
   return (
     <main className="p-6 max-w-3xl mx-auto mb-auto">
-      <h1 className="text-2xl font-bold mb-4 text-neutral">
-        Say the Verb Quiz
-      </h1>
+      <div className="flex justify-between items-baseline">
+        {" "}
+        <h1 className="text-2xl font-bold mb-4 text-neutral">
+          Say the Verb Quiz
+        </h1>
+        <h3 className=" text-neutral font-bold">
+          {questionNum + 1} / {totalQuestions}
+        </h3>
+      </div>
 
       <div className="bg-white rounded-lg shadow mb-4 text-black flex-col collapse">
         <input id="collapse-1-toggle" type="checkbox" className="peer" />
@@ -132,12 +168,9 @@ export default function SayVerbPage() {
           <div className="flex gap-3 text-sm ">
             <select
               className="select text-sm bg-[white] border-1 border-neutral "
+              value={pronounFilter}
               onChange={(e) => {
-                const newFilter = e.target.value;
-                setPronounFilter(newFilter);
-                setQuestion(makeQuestion(newFilter, tenseFilter));
-                setShowAnswer(false);
-                setSelectedOption(null);
+                setPronounFilter(e.target.value);
               }}
             >
               <option value="all" defaultChecked>
@@ -159,12 +192,9 @@ export default function SayVerbPage() {
           <div className="flex gap-3 text-sm ">
             <select
               className="select text-sm bg-[white] border-1 border-neutral "
+              value={tenseFilter}
               onChange={(e) => {
-                const newFilter = e.target.value;
-                setTenseFilter(newFilter);
-                setQuestion(makeQuestion(pronounFilter, newFilter));
-                setShowAnswer(false);
-                setSelectedOption(null);
+                setTenseFilter(e.target.value);
               }}
             >
               <option value="all" defaultChecked>
@@ -179,22 +209,31 @@ export default function SayVerbPage() {
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col">
+        <div className="flex items-center w-full mb-3">
+          <h2 className="  whitespace-nowrap mr-2 ">Progress</h2>
+          <progress
+            className="progress progress-primary "
+            value={questionNum + 1}
+            max={filteredQuestions.length}
+          ></progress>
+          <div className="badge badge-success whitespace-nowrap ml-2">
+            ⭐Score: {score.correct}
+          </div>
+        </div>
         <div className="mb-3">
           <h2 className="text-lg text-black ">
             Directions: Translate into Arabic
           </h2>
           <div>
             <p>
-              <strong>Tense:</strong>{" "}
-              {question.tense.replace("Tense", "").charAt(0).toUpperCase() +
-                question.tense.replace("Tense", "").slice(1)}
+              <strong>Tense:</strong> {formattedTense}
             </p>
             <p>
-              <strong>Pronoun:</strong> {handlePronouns(question.pronoun)}
+              <strong>Pronoun:</strong> {handlePronouns(question?.pronoun)}
             </p>
 
             <p>
-              <strong>Verb:</strong> {question.english}
+              <strong>Verb:</strong> {question?.english}
             </p>
           </div>
         </div>
@@ -204,41 +243,36 @@ export default function SayVerbPage() {
             setRecognizedWord(word);
           }}
           onBlobReady={(blob) => setWhisperBlob(blob)}
-          currentWord={question.arabic}
+          currentWord={question?.arabic}
           onSendData={handleScoreFromRecorder}
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center gap-3 ">
-        <div className="badge badge-primary p-4 text-lg">
-          <strong>
-            Score: {score.correct} / {score.total}
-          </strong>
-        </div>
+      <div className="flex flex-row justify-between w-full">
+        <button
+          className={` btn btn-sm mt-3    `}
+          onClick={() => {
+            setScore({ correct: 0, total: 0 });
+            setLastResult(null);
+          }}
+        >
+          Reset Game
+        </button>
 
-        <div className="flex flex-row justify-between w-full">
-          <button
-            className="btn text-md btn-md "
-            onClick={() => {
-              setScore({ correct: 0, total: 0 });
-              setLastResult(null);
-            }}
-          >
-            Reset Game
-          </button>
-
-          <button
-            className="btn text-md btn-md"
-            onClick={() => {
-              setQuestion(makeQuestion());
-              setAnswerText("");
-              setShowAnswer(false);
-              setLastResult(null);
-            }}
-          >
-            Next Question
-          </button>
-        </div>
+        <button
+          className={` btn btn-sm mt-3   `}
+          disabled={totalQuestions === 0}
+          onClick={() => {
+            const nextIndex = (questionNum + 1) % totalQuestions;
+            setQuestion(makeQuestion(filteredQuestions, nextIndex));
+            setAnswerText("");
+            setShowAnswer(false);
+            setLastResult(null);
+            setQuestionNum(nextIndex);
+          }}
+        >
+          Next Question
+        </button>
       </div>
     </main>
   );

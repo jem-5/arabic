@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState, useEffect } from "react";
 import VerbConjugations from "@/data/VerbConjugations";
 
 const TENSE_KEYS = ["presentTense", "pastTense", "futureTense"];
@@ -41,30 +41,41 @@ export default function VerbsQuizPage() {
   const [answerChoiceType, setAnswerChoiceType] = useState("arabic");
   const [pronounFilter, setPronounFilter] = useState("all");
   const [tenseFilter, setTenseFilter] = useState("all");
+  const [questionNum, setQuestionNum] = useState(0);
 
-  const makeQuestion = useCallback(
-    (pronFilter = pronounFilter, tensFilter = tenseFilter) => {
-      const verbItem = pickRandom(VerbConjugations);
-      const tense = tensFilter === "all" ? pickRandom(TENSE_KEYS) : tensFilter;
-      const pronoun =
-        pronFilter === "all" ? pickRandom(PRONOUN_KEYS) : pronFilter;
-      const direction = "toArabic";
+  const questions = useMemo(() => {
+    const allQuestions = VerbConjugations.flatMap((verbItem) => {
+      const tenses = tenseFilter === "all" ? TENSE_KEYS : [tenseFilter];
 
-      return {
-        verbItem,
-        tense,
-        pronoun,
-        direction,
-        arabic: (verbItem[tense] && verbItem[tense][pronoun]?.arabic) || "",
-        transliteration:
-          (verbItem[tense] && verbItem[tense][pronoun]?.transliteration) || "",
-        english: verbItem.english || "",
-      };
-    },
-    [pronounFilter, tenseFilter],
-  );
+      const pronouns = pronounFilter === "all" ? PRONOUN_KEYS : [pronounFilter];
 
-  const [question, setQuestion] = useState(() => makeQuestion());
+      return tenses.flatMap((tense) =>
+        pronouns
+          .filter((pronoun) => verbItem[tense]?.[pronoun]?.arabic)
+          .map((pronoun) => ({
+            verbItem,
+            tense,
+            pronoun,
+            direction: "toArabic",
+            arabic: verbItem[tense][pronoun].arabic,
+            transliteration: verbItem[tense][pronoun].transliteration || "",
+            english: verbItem.english || "",
+          })),
+      );
+    });
+
+    return shuffle(allQuestions).slice(0, 40);
+  }, [tenseFilter, pronounFilter]);
+
+  const totalQuestions = questions.length;
+  const question = questions[questionNum] ?? null;
+
+  useEffect(() => {
+    setQuestionNum(0);
+    setShowAnswer(false);
+    setSelectedOption(null);
+    setLastResult(null);
+  }, [tenseFilter, pronounFilter]);
 
   const mcOptions = useMemo(() => {
     if (!question || question.direction !== "toArabic") return [];
@@ -135,9 +146,14 @@ export default function VerbsQuizPage() {
 
   return (
     <main className="p-6 max-w-3xl mx-auto mb-auto">
-      <h1 className="text-2xl font-bold mb-4 text-neutral">
-        Verb Conjugation Quiz
-      </h1>
+      <div className="flex justify-between items-baseline">
+        <h1 className="text-2xl font-bold mb-4 text-neutral">
+          Verb Conjugation Quiz
+        </h1>
+        <h3 className=" text-neutral font-bold">
+          {questionNum + 1} / {totalQuestions}
+        </h3>
+      </div>
 
       <div className="bg-white rounded-lg shadow mb-4 text-black flex-col collapse">
         <input id="collapse-1-toggle" type="checkbox" className="peer" />
@@ -182,11 +198,7 @@ export default function VerbsQuizPage() {
             <select
               className="select text-sm bg-[white] border-1 border-neutral "
               onChange={(e) => {
-                const newFilter = e.target.value;
-                setPronounFilter(newFilter);
-                setQuestion(makeQuestion(newFilter, tenseFilter));
-                setShowAnswer(false);
-                setSelectedOption(null);
+                setPronounFilter(e.target.value);
               }}
             >
               <option value="all" defaultChecked>
@@ -209,11 +221,7 @@ export default function VerbsQuizPage() {
             <select
               className="select text-sm bg-[white] border-1 border-neutral "
               onChange={(e) => {
-                const newFilter = e.target.value;
-                setTenseFilter(newFilter);
-                setQuestion(makeQuestion(pronounFilter, newFilter));
-                setShowAnswer(false);
-                setSelectedOption(null);
+                setTenseFilter(e.target.value);
               }}
             >
               <option value="all" defaultChecked>
@@ -228,6 +236,18 @@ export default function VerbsQuizPage() {
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col">
+        <div className="flex items-center w-full mb-3">
+          <h2 className="  whitespace-nowrap mr-2 ">Progress</h2>
+          <progress
+            className="progress progress-primary "
+            value={totalQuestions > 0 ? questionNum + 1 : 0}
+            max={Math.max(totalQuestions, 1)}
+          ></progress>
+          <div className="badge badge-success whitespace-nowrap ml-2">
+            ⭐Score: {score.correct}
+          </div>
+        </div>
+
         <div className="mb-3">
           <h2 className="text-lg text-black ">
             Directions: Translate into Arabic
@@ -304,41 +324,42 @@ export default function VerbsQuizPage() {
           </div>
         )}
 
-        <button
-          className={
-            showAnswer
-              ? `w-full btn btn-sm mt-3 mx-auto  `
-              : `w-full btn btn-sm mt-3 mx-auto hidden disabled `
-          }
-          onClick={() => {
-            setQuestion(makeQuestion());
-            setAnswerText("");
-            setShowAnswer(false);
-            setLastResult(null);
-          }}
-        >
-          Next Question
-        </button>
+        {showAnswer && questionNum < totalQuestions - 1 && (
+          <div className="flex justify-center">
+            <button
+              className={
+                showAnswer
+                  ? ` btn btn-sm mt-3 mx-auto   `
+                  : ` btn btn-sm mt-3 mx-auto hidden disabled `
+              }
+              onClick={() => {
+                if (questionNum < totalQuestions - 1) {
+                  setQuestionNum((prev) => prev + 1);
+                  setAnswerText("");
+                  setShowAnswer(false);
+                  setLastResult(null);
+                  setSelectedOption(null);
+                }
+              }}
+            >
+              Next Question
+            </button>
+          </div>
+        )}
       </div>
 
-      <div className="flex flex-col items-center justify-center gap-3 ">
-        <div className="badge badge-primary p-4">
-          <strong>
-            Score: {score.correct} / {score.total}
-          </strong>
-        </div>
-
-        <div>
-          <button
-            className="btn btn-sm "
-            onClick={() => {
-              setScore({ correct: 0, total: 0 });
-              setLastResult(null);
-            }}
-          >
-            Reset Game
-          </button>
-        </div>
+      <div className="flex justify-center">
+        <button
+          className={` btn btn-sm mt-3  mx-auto `}
+          onClick={() => {
+            setScore({ correct: 0, total: 0 });
+            setLastResult(null);
+            setQuestionNum(0);
+            () => questions();
+          }}
+        >
+          Reset Game
+        </button>
       </div>
     </main>
   );

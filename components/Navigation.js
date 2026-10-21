@@ -6,19 +6,19 @@ export const Navigation = () => {
     {
       name: "🏺Learn",
       subLinks: [
-        { name: "📜Vocab Lessons", href: "/dashboard/" },
-        { name: "🧭Verb Hub", href: "/verbs/" },
+        { name: "📜Vocabulary", href: "/dashboard/" },
+        { name: "🧭Verb Guide", href: "/verbs/" },
         { name: "📍Explore Egypt", href: "/map/" },
       ],
     },
     {
       name: "🌙Practice",
       subLinks: [
-        { name: "☕Arabic Texting", href: "/conversation/" },
-        { name: "🌴Immersive Stories", href: "/stories/" },
-        { name: "🎯Conjugate the Verb", href: "/verbs-quiz/" },
-        { name: "💬Say the Verb", href: "/say-verb/" },
-        { name: "✍Build a Sentence", href: "/sentence-builder/" },
+        { name: "☕Real-Life Texting", href: "/conversation/" },
+        { name: "🌴Stories", href: "/stories/" },
+        { name: "🎯Verb Challenge", href: "/verbs-quiz/" },
+        { name: "💬Speak the Verb", href: "/say-verb/" },
+        { name: "✍Sentence Builder", href: "/sentence-builder/" },
       ],
     },
     {
@@ -72,7 +72,7 @@ export const Navigation = () => {
                         {item.subLinks.map((subLink, subIndex) => (
                           <li key={subIndex}>
                             <a
-                              className="font-bold text-xl hover:scale-110"
+                              className="font-bold text-md hover:scale-110"
                               href={subLink.href}
                             >
                               {subLink.name}
