@@ -33,7 +33,7 @@ export default function LearningRoadmap() {
     (100).toFixed(0);
 
   return (
-    <main className="p-6  mx-auto mb-auto">
+    <main className="p-6  mx-auto mb-auto w-full max-w-2xl">
       <h1 className="text-2xl font-bold text-neutral">Learning Roadmap</h1>
 
       <h2 className="text-lg font-bold mb-4 text-neutral">
