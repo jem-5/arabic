@@ -5,6 +5,17 @@ import { NODES } from "../../data/conversation/Nodes";
 import { TRANSITIONS } from "../../data/conversation/Transitions";
 import { processChoice } from "../../helpers/conversationEngine";
 import MyButton from "../../components/Button";
+import { db } from "@/firebase/config";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  deleteField,
+  arrayRemove,
+} from "firebase/firestore";
+import { useAuthContext } from "@/context/AuthContext";
 
 export default function ConversationPage() {
   const [currentNodeId, setCurrentNodeId] = useState("START");
@@ -17,20 +28,42 @@ export default function ConversationPage() {
             timestamp: Date.now(),
           },
         ]
-      : []
+      : [],
   );
   const [typing, setTyping] = useState(false);
   const currentNode = NODES ? NODES[currentNodeId] : null;
   const chatEndRef = useRef(null);
   const [visitedNodeIds, setVisitedNodeIds] = useState(
-    () => new Set(["START"])
+    () => new Set(["START"]),
   );
+
+  const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
 
   useEffect(() => {
     const unvisited = Object.keys(NODES).filter(
-      (nodeId) => !visitedNodeIds.has(nodeId)
+      (nodeId) => !visitedNodeIds.has(nodeId),
     );
   }, [visitedNodeIds]);
+
+  useEffect(() => {
+    if (currentNode.choices.length === 0) saveProgress();
+  }, [currentNode]);
+
+  const saveProgress = async () => {
+    console.log("update now");
+    const usersRef = collection(db, "users");
+
+    await setDoc(
+      doc(usersRef, user.uid),
+      {
+        "assessments.conversation": true,
+      },
+
+      { merge: true },
+    );
+
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
+  };
 
   useEffect(() => {
     if (chatEndRef.current) {
@@ -108,7 +141,7 @@ export default function ConversationPage() {
               {msg.sender === "user"
                 ? `Seen at ${new Date(msg.timestamp).toLocaleTimeString()}`
                 : `Received at ${new Date(
-                    msg.timestamp
+                    msg.timestamp,
                   ).toLocaleTimeString()} `}
             </div>
           </div>
@@ -143,6 +176,8 @@ export default function ConversationPage() {
           <MyButton
             func={() => {
               setCurrentNodeId("START");
+              setVisitedNodeIds(new Set(["START"]));
+
               if (NODES && NODES.START) {
                 setMessages([
                   {

@@ -5,7 +5,17 @@ import Sentences from "@/data/sentences/Sentences";
 import MyButton from "@/components/Button";
 import { useSortable, isSortable } from "@dnd-kit/react/sortable";
 import { DragDropProvider } from "@dnd-kit/react";
-import { LucideHeading2 } from "lucide-react";
+import { useAuthContext } from "@/context/AuthContext";
+import { db } from "@/firebase/config";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  deleteField,
+  arrayRemove,
+} from "firebase/firestore";
 
 function shuffleArray(arr) {
   const shuffled = [...arr];
@@ -44,9 +54,14 @@ export default function SentenceBuilder() {
   const [showEnglish, setShowEnglish] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [score, setScore] = useState(0);
+  const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
 
+  const questionsRound = 20;
   const problems = useMemo(
-    () => shuffledSentences.filter((item) => item.difficulty === level),
+    () =>
+      shuffledSentences
+        .filter((item) => item.difficulty === level)
+        .slice(0, questionsRound),
     [level, shuffledSentences],
   );
   const currentProblem = problems[questionNum];
@@ -95,6 +110,32 @@ export default function SentenceBuilder() {
     setIsCorrect(correct);
     setShowAnswer(true);
   };
+
+  const saveProgress = async (result) => {
+    const usersRef = collection(db, "users");
+
+    await setDoc(
+      doc(usersRef, user.uid),
+      {
+        assessments: {
+          sentenceBuilder: result,
+        },
+      },
+      { merge: true },
+    );
+
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
+  };
+
+  useEffect(() => {
+    if (questionNum === problems.length - 1) {
+      const regScore = (
+        ((score + (isCorrect ? 1 : 0)) / problems.length) *
+        100
+      ).toFixed(0);
+      saveProgress(regScore);
+    }
+  }, [questionNum]);
 
   return (
     <main className="p-6 max-w-3xl mx-auto mb-auto">

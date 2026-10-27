@@ -20,7 +20,6 @@ import Prayers from "./Prayers.js";
 import Verbs from "./Verbs.js";
 import Prepositions from "./Prepositions.js";
 import Transitions from "./Transitions.js";
-import Adjectives from "./Adjectives.js";
 import Adverbs from "./Adverbs.js";
 import Pronouns from "./Pronouns.js";
 import Commands from "./Commands.js";

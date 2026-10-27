@@ -2,6 +2,17 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import VerbConjugations from "@/data/VerbConjugations";
 import Recorder from "@/components/Recorder";
+import { db } from "@/firebase/config";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  deleteField,
+  arrayRemove,
+} from "firebase/firestore";
+import { useAuthContext } from "@/context/AuthContext";
 
 const TENSE_KEYS = ["presentTense", "pastTense", "futureTense"];
 const PRONOUN_KEYS = ["I", "youM", "youF", "he", "she", "we", "they", "youPl"];
@@ -48,8 +59,9 @@ export default function SayVerbPage() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [questionNum, setQuestionNum] = useState(0);
 
+  const { user, refetchUser } = useAuthContext();
   const filteredQuestions = useMemo(() => {
-    const numQuestions = 40;
+    const numQuestions = 20;
 
     const questions = VerbConjugations.flatMap((verbItem) => {
       const tenses = tenseFilter === "all" ? TENSE_KEYS : [tenseFilter];
@@ -83,6 +95,16 @@ export default function SayVerbPage() {
       total: s.total + 1,
     }));
   };
+
+  useEffect(() => {
+    if (questionNum === filteredQuestions.length - 1) {
+      const regScore = (
+        ((score.correct + (isCorrect ? 1 : 0)) / filteredQuestions.length) *
+        100
+      ).toFixed(0);
+      saveProgress(regScore);
+    }
+  });
 
   const handleGrading = () => {
     setScore((s) => ({
@@ -131,6 +153,21 @@ export default function SayVerbPage() {
     setRecognizedWord("");
     setAnswerText("");
   }, [filteredQuestions, makeQuestion]);
+
+  const saveProgress = async (result) => {
+    const usersRef = collection(db, "users");
+    await setDoc(
+      doc(usersRef, user?.uid),
+      {
+        assessments: {
+          sayVerb: result,
+        },
+      },
+      { merge: true },
+    );
+
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
+  };
 
   const formattedTense = question?.tense
     ? question.tense

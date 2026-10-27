@@ -223,8 +223,18 @@ export const Profile = () => {
           {(boughtPracticePack || isPaidMember) && (
             <>
               <hr className="my-3" />
-              <p className="font-bold text-2xl   mb-2 ">
-                Download Complete Arabic Road Vocabulary
+              <p className="font-bold text-2xl   mb-2 ">Learning Journey</p>
+              <p className="text-lg">
+                <a href="/learning-roadmap/">
+                  🗺️Click here for your customized Learning Roadmap
+                </a>
+              </p>
+
+              <hr className="my-3" />
+              <p className="font-bold text-2xl   mb-2 ">Complete Vocabulary</p>
+              <p>
+                Click the following button to download the complete vocabulary
+                from the curriculum.
               </p>
 
               <MyButton func={() => downloadPdf()} text={`Download PDF`} />

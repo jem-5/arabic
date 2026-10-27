@@ -1,7 +1,17 @@
 "use client";
 import React, { useCallback, useMemo, useState, useEffect } from "react";
 import VerbConjugations from "@/data/VerbConjugations";
-
+import { db } from "@/firebase/config";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  deleteField,
+  arrayRemove,
+} from "firebase/firestore";
+import { useAuthContext } from "@/context/AuthContext";
 const TENSE_KEYS = ["presentTense", "pastTense", "futureTense"];
 const PRONOUN_KEYS = ["I", "youM", "youF", "he", "she", "we", "they", "youPl"];
 
@@ -42,6 +52,7 @@ export default function VerbsQuizPage() {
   const [pronounFilter, setPronounFilter] = useState("all");
   const [tenseFilter, setTenseFilter] = useState("all");
   const [questionNum, setQuestionNum] = useState(0);
+  const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
 
   const questions = useMemo(() => {
     const allQuestions = VerbConjugations.flatMap((verbItem) => {
@@ -64,7 +75,7 @@ export default function VerbsQuizPage() {
       );
     });
 
-    return shuffle(allQuestions).slice(0, 40);
+    return shuffle(allQuestions).slice(0, 20);
   }, [tenseFilter, pronounFilter]);
 
   const totalQuestions = questions.length;
@@ -140,9 +151,32 @@ export default function VerbsQuizPage() {
             : question.arabic,
       });
       setShowAnswer(true);
+      if (questionNum === questions.length - 1) {
+        const regScore = (
+          ((score.correct + (isCorrect ? 1 : 0)) / questions.length) *
+          100
+        ).toFixed(0);
+        saveProgress(regScore);
+      }
     },
     [question],
   );
+
+  const saveProgress = async (result) => {
+    const usersRef = collection(db, "users");
+
+    await setDoc(
+      doc(usersRef, user.uid),
+      {
+        assessments: {
+          verbConjugation: result,
+        },
+      },
+      { merge: true },
+    );
+
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
+  };
 
   return (
     <main className="p-6 max-w-3xl mx-auto mb-auto">
@@ -355,6 +389,8 @@ export default function VerbsQuizPage() {
             setScore({ correct: 0, total: 0 });
             setLastResult(null);
             setQuestionNum(0);
+            setShowAnswer(false);
+            setAnswerText("");
             () => questions();
           }}
         >

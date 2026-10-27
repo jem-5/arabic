@@ -18,7 +18,7 @@ import StoryData from "@/data/stories/Stories";
 export default function Stories() {
   const searchParams = useSearchParams();
   const [questionNum, setQuestionNum] = useState(0);
-  const { user, isPaidMember, userProfile } = useAuthContext();
+  const { user, refetchUser, isPaidMember, userProfile } = useAuthContext();
   const router = useRouter();
   const topic = searchParams.get("topic") || "FirstDay";
   const pathname = usePathname();
@@ -43,6 +43,21 @@ export default function Stories() {
     }
   }, [pathname]);
 
+  const saveProgress = async (name) => {
+    console.log("update now");
+    const usersRef = collection(db, "users");
+    const newElements = [name];
+    await updateDoc(
+      doc(usersRef, user.uid),
+
+      { "assessments.stories": arrayUnion(...newElements) },
+
+      { merge: true },
+    );
+
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
+  };
+
   return (
     <main className="flex-grow flex flex-col justify-center items-center p-2 w-full ">
       <div className="flex flex-col mt-2 w-full px-3 justify-between ">
@@ -54,6 +69,7 @@ export default function Stories() {
           {storyData.map((story) => {
             return (
               <Link
+                onClick={() => saveProgress(story.slug)}
                 key={story.slug}
                 href={`/stories/${story.slug}`}
                 className="text-md  bg-neutral  hover:scale-105 transition-transform w-3/4  md:w-64 rounded p-3 text-center flex flex-col justify-center items-center"

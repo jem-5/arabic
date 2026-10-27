@@ -11,6 +11,17 @@ import Aswan from "@/data/map/Aswan";
 import PortSaid from "@/data/map/PortSaid";
 import Mansoura from "@/data/map/Mansoura";
 import SharmElSheikh from "@/data/map/SharmElSheikh";
+import { useAuthContext } from "@/context/AuthContext";
+import { db } from "@/firebase/config";
+import {
+  doc,
+  updateDoc,
+  arrayUnion,
+  collection,
+  setDoc,
+  deleteField,
+  arrayRemove,
+} from "firebase/firestore";
 
 const Mapper = ({ onRegionClick }) => {
   const [parentWidth, setParentWidth] = useState(400);
@@ -113,6 +124,7 @@ export default function ClickableMap() {
   const [region, setRegion] = useState("cairo");
   const [questionNum, setQuestionNum] = useState(0);
   const [topic, setTopic] = useState(null);
+  const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
 
   const Regions = {
     cairo: Cairo,
@@ -125,8 +137,24 @@ export default function ClickableMap() {
     sharmelsheikh: SharmElSheikh,
   };
 
+  const saveProgress = async (name) => {
+    console.log("update now");
+    const usersRef = collection(db, "users");
+    const newElements = [name];
+    await updateDoc(
+      doc(usersRef, user.uid),
+
+      { "assessments.map": arrayUnion(...newElements) },
+
+      { merge: true },
+    );
+
+    if (refetchUser && user?.uid) await refetchUser(user.uid);
+  };
+
   const handleRegionClick = (name) => {
     setRegion(name);
+    saveProgress(name);
     console.log("region", region);
   };
 
