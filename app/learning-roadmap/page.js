@@ -28,9 +28,10 @@ export default function LearningRoadmap() {
     userProfile?.userProfile?.assessments?.stories?.length;
   const totalStories = StoryData.length;
 
-  const vocabComplete =
-    (reviewedModules?.length / Object.keys(AllModules).length) *
-    (100).toFixed(0);
+  const vocabComplete = reviewedModules
+    ? (reviewedModules?.length / Object.keys(AllModules).length) *
+      (100).toFixed(0)
+    : 0;
 
   return (
     <main className="p-6  mx-auto mb-auto w-full max-w-2xl">
@@ -53,7 +54,7 @@ export default function LearningRoadmap() {
           </div>
           <div className="flex flex-col justify-center items-center p-2">
             <div className=" text-secondary text-3xl font-bold ">
-              {vocabComplete}%
+              {vocabComplete.toFixed(0)}%
             </div>
             <div className="text-xs text-secondary text-center  ">
               Reviewed {reviewedModules?.length}/
