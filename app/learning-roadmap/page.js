@@ -57,7 +57,7 @@ export default function LearningRoadmap() {
               {vocabComplete.toFixed(0)}%
             </div>
             <div className="text-xs text-secondary text-center  ">
-              Reviewed {reviewedModules?.length}/
+              Reviewed {reviewedModules ? reviewedModules?.length : 0}/
               {Object.keys(AllModules).length} modules
             </div>
           </div>
