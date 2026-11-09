@@ -55,6 +55,7 @@ export default function SentenceBuilder() {
   const [showHint, setShowHint] = useState(false);
   const [score, setScore] = useState(0);
   const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
+  const [roundComplete, setRoundComplete] = useState(false);
 
   const questionsRound = 20;
   const problems = useMemo(
@@ -94,7 +95,7 @@ export default function SentenceBuilder() {
   }, [currentProblem]);
 
   const checkAnswer = () => {
-    if (!currentProblem) return;
+    if (!currentProblem || showAnswer) return;
 
     const correctAnswer = currentProblem.arabic.split(" ");
 
@@ -102,13 +103,18 @@ export default function SentenceBuilder() {
     // const userAnswer = problem.toReversed();
     const correct = arraysMatch(correctAnswer, answerWords);
 
-    if (correct) {
-      setScore((prev) => prev + 1);
-    }
+    const newScore = score + (correct ? 1 : 0);
 
+    setScore(newScore);
     setUserAnswer(answerWords.join(" "));
     setIsCorrect(correct);
     setShowAnswer(true);
+
+    if (questionNum === problems.length - 1) {
+      const regScore = ((newScore / problems.length) * 100).toFixed(0);
+      saveProgress(regScore);
+      setRoundComplete(true);
+    }
   };
 
   const saveProgress = async (result) => {
@@ -126,16 +132,6 @@ export default function SentenceBuilder() {
 
     if (refetchUser && user?.uid) await refetchUser(user.uid);
   };
-
-  useEffect(() => {
-    if (questionNum === problems.length - 1) {
-      const regScore = (
-        ((score + (isCorrect ? 1 : 0)) / problems.length) *
-        100
-      ).toFixed(0);
-      saveProgress(regScore);
-    }
-  }, [questionNum]);
 
   return (
     <main className="p-6 max-w-3xl mx-auto mb-auto">
@@ -167,6 +163,7 @@ export default function SentenceBuilder() {
             onClick={(e) => {
               setLevel(e.target.value);
               setQuestionNum(0);
+              setScore(0);
               setShowAnswer(false);
               setIsCorrect(false);
             }}
@@ -332,9 +329,9 @@ export default function SentenceBuilder() {
                 setShowAnswer(false);
                 setIsCorrect(false);
                 setUserAnswer([]);
-                setQuestionNum((prev) =>
-                  prev < problems.length - 1 ? prev + 1 : 0,
-                );
+                if (questionNum < problems.length - 1) {
+                  setQuestionNum((prev) => prev + 1);
+                }
               }}
             >
               Next Question

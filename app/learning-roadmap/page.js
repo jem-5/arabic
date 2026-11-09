@@ -70,7 +70,7 @@ export default function LearningRoadmap() {
           <div className="stat   flex  flex-col ">
             <div className="stat-title ">Conjugation & Verb Usage</div>
             <div className="stat-value text-secondary text-2xl ">
-              🧠Verbs Guide
+              🧠Verb Quiz
             </div>
             <div className="stat-desc text-lg ">
               <a href="/verbs-quiz/">Click to go here👆</a>
@@ -182,7 +182,7 @@ export default function LearningRoadmap() {
           <div className="stat   flex  flex-col ">
             <div className="stat-title ">Practice a Conversation</div>
             <div className="stat-value text-secondary text-2xl ">
-              🗪Arabic Texting
+              🗯️Arabic Texting
             </div>
             <div className="stat-desc text-lg ">
               <a href="/conversation/">Click to go here👆</a>
