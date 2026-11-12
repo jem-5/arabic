@@ -16,6 +16,7 @@ import {
   deleteField,
   arrayRemove,
 } from "firebase/firestore";
+import Image from "next/image";
 
 function shuffleArray(arr) {
   const shuffled = [...arr];
@@ -55,7 +56,7 @@ export default function SentenceBuilder() {
   const [showHint, setShowHint] = useState(false);
   const [score, setScore] = useState(0);
   const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
-  const [roundComplete, setRoundComplete] = useState(false);
+  const [roundComplete, setRoundComplete] = useState(true);
 
   const questionsRound = 20;
   const problems = useMemo(
@@ -144,201 +145,248 @@ export default function SentenceBuilder() {
         </h3>
       </div>
 
-      <div className="bg-white rounded-lg shadow mb-4 text-black flex-col collapse">
-        <input id="collapse-1-toggle" type="checkbox" className="peer" />
-        <label
-          htmlFor="collapse-1-toggle"
-          className="fixed inset-0 hidden peer-checked:block z-0"
-        ></label>
-        <div className="collapse-title text-md">⚙️ Settings</div>
-        <div
-          className="collapse-content relative z-10"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <h3 className="text-sm font-bold  text-neutral">
-            Choose sentence difficulty level
-          </h3>
-          <div
-            className="flex gap-3 text-sm"
-            onClick={(e) => {
-              setLevel(e.target.value);
-              setQuestionNum(0);
-              setScore(0);
-              setShowAnswer(false);
-              setIsCorrect(false);
-            }}
-          >
-            <label className="flex justify-center">
-              <input
-                type="radio"
-                name="radio-1"
-                className="radio"
-                value="basic"
-                defaultChecked
-              />
-              <span>Basic</span>
-            </label>
-
-            <label className="flex justify-center">
-              <input
-                type="radio"
-                name="radio-1"
-                value="intermediate"
-                className="radio"
-              />
-              <span>Intermediate</span>
-            </label>
-
-            <label className="flex justify-center">
-              <input
-                type="radio"
-                name="radio-1"
-                value="advanced"
-                className="radio"
-              />
-              <span>Advanced</span>
-            </label>
+      {roundComplete ? (
+        <div className="bg-neutral p-6 rounded-lg shadow mb-4 text-white flex-col flex w-[400px] lg:w-[650px] ">
+          <img
+            src="/lanterns.JPG"
+            alt="lanterns"
+            className="rounded-lg m-auto w-full max-h-[200px] object-cover "
+          />
+          <div className=" text-sm text-center p-3 text-primary font-bold">
+            ROUND COMPLETE
           </div>
-          <h3 className="text-sm font-bold  text-neutral">
-            Provide English translation
-          </h3>
-          <div
-            className="flex gap-3 text-sm  "
-            onClick={(e) => {
-              setShowEnglish((prev) => !prev);
-            }}
-          >
-            <label className="label">
-              <input
-                type="checkbox"
-                className="toggle"
-                checked={showEnglish}
-                onChange={(e) => setShowEnglish(e.target.checked)}
-              />
-              {showEnglish ? "Show" : "Hide"}
-            </label>
+          <div className="text-3xl text-center  mb-2">Excellent work!</div>
+          <div className="text-lg text-center text-accent mb-2">
+            You have reached the end of this round. Keep building your Arabic
+            skills!
           </div>
-
-          <h3 className="text-sm font-bold  text-neutral">Provide hint</h3>
-          <div
-            className="flex gap-3 text-sm  "
-            onClick={(e) => {
-              setShowHint((prev) => !prev);
-            }}
-          >
-            <label className="label">
-              <input
-                type="checkbox"
-                className="toggle"
-                checked={showHint}
-                onChange={(e) => setShowHint(e.target.checked)}
-              />
-              {showHint ? "Show" : "Hide"}
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col flex">
-        <div className="flex items-center w-full mb-3">
-          <h2 className="  whitespace-nowrap mr-2 ">Progress</h2>
-          <progress
-            className="progress progress-primary "
-            value={questionNum + 1}
-            max={problems.length}
-          ></progress>
-          <div className="badge badge-success whitespace-nowrap ml-2">
-            ⭐Score: {score}
-          </div>
-        </div>
-        <div className="mb-3">
-          <h2 className="text-lg text-black">
-            Directions: Put the words in the right order.
-          </h2>
-          {showEnglish && (
-            <h3 className="text-lg text-black">
-              👉English: {problems[questionNum]?.english}
-            </h3>
-          )}
-
-          {showHint && (
-            <h3 className="text-lg text-black">
-              💡Hint: The first word is{" "}
-              {problems[questionNum]?.arabic.split(" ")[0]}
-            </h3>
-          )}
-        </div>
-        <div>
-          <DragDropProvider
-            onDragEnd={(event) => {
-              if (event.canceled) return;
-
-              const { source } = event.operation;
-
-              if (isSortable(source)) {
-                const { initialIndex, index } = source;
-
-                if (initialIndex !== index) {
-                  setProblem((items) => {
-                    let newItems = [...items];
-
-                    const [removed] = newItems.splice(initialIndex, 1);
-
-                    newItems.splice(index, 0, removed);
-
-                    return newItems;
-                  });
-                }
-              }
-            }}
-          >
-            <ul className="border-b-4 border-black border-double">
-              {problem &&
-                problem.map((word, index) => {
-                  return <Sortable key={word.id} word={word} index={index} />;
-                })}
-            </ul>
-          </DragDropProvider>
-        </div>
-        <button
-          className={` btn btn-sm mt-3 mx-auto  `}
-          onClick={() => checkAnswer()}
-        >
-          Check Answer
-        </button>
-
-        {showAnswer && (
-          <div
-            className={`mt-4 p-3 rounded flex flex-col  ${
-              isCorrect ? "bg-green-400" : "bg-red-400"
-            }`}
-          >
+          <div className="flex flex-col border-2 border-accent p-2 text-center rounded-lg ">
             <div>
-              <strong>{isCorrect ? "Correct" : "Incorrect"}</strong>
+              <div className="flex flex-col">YOUR RESULTS</div>
+              <div className="flex flex-col text-2xl text-accent font-bold">
+                {score} / {problems.length}
+              </div>
+              <div className="flex flex-col">Correct Answers </div>
             </div>
-            <div className="text-sm ">You answered: {userAnswer}</div>
-            <div className="text-sm mt-1">
-              Expected: {problems[questionNum]?.arabic}
+            <hr className="border-[white]"></hr>
+            <div className="flex text-center w-full gap-2">
+              <div className="flex flex-col w-1/2">
+                <div className="text-2xl text-accent font-bold mb-2">90%</div>
+                <div className=" ">Final Score</div>
+              </div>
+
+              <div className="flex flex-col w-1/2">
+                <div className="text-2xl text-accent font-bold mb-2">
+                  {problems.length}
+                </div>
+                <div className=" ">Questions Answered</div>
+              </div>
             </div>
-            <div className="text-sm mt-1">
-              English: {problems[questionNum]?.english}
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="bg-white rounded-lg shadow mb-4 text-black flex-col collapse">
+            <input id="collapse-1-toggle" type="checkbox" className="peer" />
+            <label
+              htmlFor="collapse-1-toggle"
+              className="fixed inset-0 hidden peer-checked:block z-0"
+            ></label>
+            <div className="collapse-title text-md">⚙️ Settings</div>
+            <div
+              className="collapse-content relative z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="text-sm font-bold  text-neutral">
+                Choose sentence difficulty level
+              </h3>
+              <div
+                className="flex gap-3 text-sm"
+                onClick={(e) => {
+                  setLevel(e.target.value);
+                  setQuestionNum(0);
+                  setScore(0);
+                  setShowAnswer(false);
+                  setIsCorrect(false);
+                }}
+              >
+                <label className="flex justify-center">
+                  <input
+                    type="radio"
+                    name="radio-1"
+                    className="radio"
+                    value="basic"
+                    defaultChecked
+                  />
+                  <span>Basic</span>
+                </label>
+
+                <label className="flex justify-center">
+                  <input
+                    type="radio"
+                    name="radio-1"
+                    value="intermediate"
+                    className="radio"
+                  />
+                  <span>Intermediate</span>
+                </label>
+
+                <label className="flex justify-center">
+                  <input
+                    type="radio"
+                    name="radio-1"
+                    value="advanced"
+                    className="radio"
+                  />
+                  <span>Advanced</span>
+                </label>
+              </div>
+              <h3 className="text-sm font-bold  text-neutral">
+                Provide English translation
+              </h3>
+              <div
+                className="flex gap-3 text-sm  "
+                onClick={(e) => {
+                  setShowEnglish((prev) => !prev);
+                }}
+              >
+                <label className="label">
+                  <input
+                    type="checkbox"
+                    className="toggle"
+                    checked={showEnglish}
+                    onChange={(e) => setShowEnglish(e.target.checked)}
+                  />
+                  {showEnglish ? "Show" : "Hide"}
+                </label>
+              </div>
+
+              <h3 className="text-sm font-bold  text-neutral">Provide hint</h3>
+              <div
+                className="flex gap-3 text-sm  "
+                onClick={(e) => {
+                  setShowHint((prev) => !prev);
+                }}
+              >
+                <label className="label">
+                  <input
+                    type="checkbox"
+                    className="toggle"
+                    checked={showHint}
+                    onChange={(e) => setShowHint(e.target.checked)}
+                  />
+                  {showHint ? "Show" : "Hide"}
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow mb-4 text-black flex-col flex">
+            <div className="flex items-center w-full mb-3">
+              <h2 className="  whitespace-nowrap mr-2 ">Progress</h2>
+              <progress
+                className="progress progress-primary "
+                value={questionNum + 1}
+                max={problems.length}
+              ></progress>
+              <div className="badge badge-success whitespace-nowrap ml-2">
+                ⭐Score: {score}
+              </div>
+            </div>
+            <div className="mb-3">
+              <h2 className="text-lg text-black">
+                Directions: Put the words in the right order.
+              </h2>
+              {showEnglish && (
+                <h3 className="text-lg text-black">
+                  👉English: {problems[questionNum]?.english}
+                </h3>
+              )}
+
+              {showHint && (
+                <h3 className="text-lg text-black">
+                  💡Hint: The first word is{" "}
+                  {problems[questionNum]?.arabic.split(" ")[0]}
+                </h3>
+              )}
+            </div>
+            <div>
+              <DragDropProvider
+                onDragEnd={(event) => {
+                  if (event.canceled) return;
+
+                  const { source } = event.operation;
+
+                  if (isSortable(source)) {
+                    const { initialIndex, index } = source;
+
+                    if (initialIndex !== index) {
+                      setProblem((items) => {
+                        let newItems = [...items];
+
+                        const [removed] = newItems.splice(initialIndex, 1);
+
+                        newItems.splice(index, 0, removed);
+
+                        return newItems;
+                      });
+                    }
+                  }
+                }}
+              >
+                <ul className="border-b-4 border-black border-double">
+                  {problem &&
+                    problem.map((word, index) => {
+                      return (
+                        <Sortable key={word.id} word={word} index={index} />
+                      );
+                    })}
+                </ul>
+              </DragDropProvider>
             </div>
             <button
-              className={` btn btn-sm mt-3 mx-auto `}
-              onClick={() => {
-                setShowAnswer(false);
-                setIsCorrect(false);
-                setUserAnswer([]);
-                if (questionNum < problems.length - 1) {
-                  setQuestionNum((prev) => prev + 1);
-                }
-              }}
+              className={` btn btn-sm mt-3 mx-auto  `}
+              onClick={() => checkAnswer()}
             >
-              Next Question
+              Check Answer
             </button>
+
+            {showAnswer && (
+              <div
+                className={`mt-4 p-3 rounded flex flex-col  ${
+                  isCorrect ? "bg-green-400" : "bg-red-400"
+                }`}
+              >
+                <div>
+                  <strong>{isCorrect ? "Correct" : "Incorrect"}</strong>
+                </div>
+                <div className="text-sm ">You answered: {userAnswer}</div>
+                <div className="text-sm mt-1">
+                  Expected: {problems[questionNum]?.arabic}
+                </div>
+                <div className="text-sm mt-1">
+                  English: {problems[questionNum]?.english}
+                </div>
+                {!roundComplete && (
+                  <button
+                    className={` btn btn-sm mt-3 mx-auto `}
+                    onClick={() => {
+                      setShowAnswer(false);
+                      setIsCorrect(false);
+                      setUserAnswer([]);
+                      if (questionNum < problems.length - 1) {
+                        setQuestionNum((prev) => prev + 1);
+                      }
+                    }}
+                  >
+                    Next Question
+                  </button>
+                )}
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </main>
   );
 }
