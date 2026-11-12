@@ -171,7 +171,9 @@ export default function SentenceBuilder() {
             <hr className="border-[white]"></hr>
             <div className="flex text-center w-full gap-2">
               <div className="flex flex-col w-1/2">
-                <div className="text-2xl text-accent font-bold mb-2">90%</div>
+                <div className="text-2xl text-accent font-bold mb-2">
+                  {((score / problems.length) * 100).toFixed(0)}
+                </div>
                 <div className=" ">Final Score</div>
               </div>
 
