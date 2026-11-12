@@ -56,7 +56,7 @@ export default function SentenceBuilder() {
   const [showHint, setShowHint] = useState(false);
   const [score, setScore] = useState(0);
   const { user, userProfile, isPaidMember, refetchUser } = useAuthContext();
-  const [roundComplete, setRoundComplete] = useState(true);
+  const [roundComplete, setRoundComplete] = useState(false);
 
   const questionsRound = 20;
   const problems = useMemo(
@@ -148,7 +148,7 @@ export default function SentenceBuilder() {
       {roundComplete ? (
         <div className="bg-neutral p-6 rounded-lg shadow mb-4 text-white flex-col flex w-[400px] lg:w-[650px] ">
           <img
-            src="/lanterns.JPG"
+            src="/lanterns.jpg"
             alt="lanterns"
             className="rounded-lg m-auto w-full max-h-[200px] object-cover "
           />
